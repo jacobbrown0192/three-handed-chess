@@ -4,28 +4,28 @@ import java.util.Vector;
 import threePlayerChessa.Piece;
 
 public class Team {
-	private int _colour;
-	private String _name;
-	private move[] _moveList;
-	private int _number;
-	public Main _unnamed_Main_;
-	public Menu _unnamed_Menu_;
-	public Vector<Piece> _pieces = new Vector<Piece>();
+	private int colour;
+	private String name;
+	private move[] moveList;
+	private int number;
+	public Main unnamedMain;
+	public Menu unnamedMenu;
+	public Vector<Piece> pieces = new Vector<Piece>();
 
 	public int getColour() {
-		return this._colour;
+		return this.colour;
 	}
 
 	public void setColour(int aColour) {
-		this._colour = aColour;
+		this.colour = aColour;
 	}
 
 	public String getName() {
-		return this._name;
+		return this.name;
 	}
 
 	public void setName(String aName) {
-		this._name = aName;
+		this.name = aName;
 	}
 
 	public Team() {
@@ -33,10 +33,10 @@ public class Team {
 	}
 
 	public int getNumber() {
-		return this._number;
+		return this.number;
 	}
 
 	public void setNumber(int aNumber) {
-		this._number = aNumber;
+		this.number = aNumber;
 	}
 }

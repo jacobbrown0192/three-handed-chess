@@ -1,46 +1,49 @@
 package threePlayerChessa;
 
 public class Tile {
-	private boolean _colour;
-	private int _number;
-	private Alphabet _letter;
-	private Piece _piece;
-	public Segment _unnamed_Segment_;
-	public Piece _unnamed_Piece_;
+	private boolean colour;
+	private int number;
+	private int letter;
+	private Piece piece;
+	public Segment unnamedSegment;
+	public Piece unnamedPiece;
 
 	public boolean getColour() {
-		return this._colour;
+		return this.colour;
 	}
 
 	public void setColour(boolean aColour) {
-		this._colour = aColour;
+		this.colour = aColour;
 	}
 
 	public int getNumber() {
-		return this._number;
+		return this.number;
 	}
 
 	public void setNumber(int aNumber) {
-		this._number = aNumber;
+		this.number = aNumber;
 	}
 
-	public Alphabet getLetter() {
-		return this._letter;
+	public int getLetter() {
+		return this.letter;
 	}
 
-	public void setLetter(Alphabet aLetter) {
-		this._letter = aLetter;
+	public void setLetter(int aLetter) {
+		this.letter = aLetter;
 	}
 
 	public Piece getPiece() {
-		return this._piece;
+		return this.piece;
 	}
 
 	public void setPiece(Piece aPiece) {
-		this._piece = aPiece;
+		this.piece = aPiece;
 	}
 
-	public Tile(boolean aColour, int aNum, Alphabet aLet, Piece aPiece) {
-		throw new UnsupportedOperationException();
+	public Tile(boolean aColour, int aNum, int aLet, Piece aPiece) {
+		setColour(aColour);
+		setNumber(aNum);
+		setLetter(aLet);
+		setPiece(aPiece);
 	}
 }
