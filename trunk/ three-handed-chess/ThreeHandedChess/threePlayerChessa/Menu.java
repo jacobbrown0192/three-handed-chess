@@ -1,9 +1,9 @@
 package threePlayerChessa;
 
 public class Menu {
-	public Main _unnamed_Main_;
-	public Team _unnamed_Team_;
-	public Board _unnamed_Board_;
+	public Main unnamed_Main_;
+	public Team unnamed_Team_;
+	public Board unnamed_Board_;
 
 	public Menu() {
 		throw new UnsupportedOperationException();
