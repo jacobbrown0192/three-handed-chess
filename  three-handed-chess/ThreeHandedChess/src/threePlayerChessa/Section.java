@@ -7,8 +7,8 @@ public class Section {
 	private Segment segment1;
 	private Segment segment2;
 	private Team colour;
-	public Board unnamed_Board_;
-	public Vector<Segment> unnamed_Segment_ = new Vector<Segment>();
+	public Board unnamedBoard;
+	public Vector<Segment> unnamedSegment = new Vector<Segment>();
 
 	public Segment getSegment1() {
 		return this.segment1;
@@ -34,7 +34,7 @@ public class Section {
 		this.colour = aColour;
 	}
 
-	public Section(Segment aSeg1, Segement aSeg2) {
-		throw new UnsupportedOperationException();
+	public Section(Segment aSeg1, Segment aSeg2) {
+		
 	}
 }
