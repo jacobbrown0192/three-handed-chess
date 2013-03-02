@@ -10,6 +10,14 @@ public abstract class Piece {
 		return player;
 	}
 
+	public Board getTheBoard() {
+		return theBoard;
+	}
+
+	public void setTheBoard(Board theBoard) {
+		this.theBoard = theBoard;
+	}
+
 	public void setPlayer(Team player) {
 		this.player = player;
 	}
@@ -30,7 +38,12 @@ public abstract class Piece {
 		this.currentTile.setPiece(nextPiece);
 	}
 
-	public Piece(Tile startTile){
-		currentTile = startTile;		
+	public Piece(Team player, String name, Board theBoard, Tile currentTile) {
+		this.player = player;
+		this.name = name;
+		this.theBoard = theBoard;
+		this.currentTile = currentTile;
 	}
+
+
 }
