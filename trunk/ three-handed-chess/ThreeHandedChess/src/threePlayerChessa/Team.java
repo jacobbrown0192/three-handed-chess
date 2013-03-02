@@ -6,7 +6,7 @@ import threePlayerChessa.Piece;
 public class Team {
 	private int colour;
 	private String name;
-	private move[] moveList;
+	private Vector<MoveList> moves = new Vector<MoveList>();
 	private int number;
 	public Main unnamedMain;
 	public Menu unnamedMenu;
@@ -38,5 +38,10 @@ public class Team {
 
 	public void setNumber(int aNumber) {
 		this.number = aNumber;
+	}
+	public void addToMoveList(int num, int let)
+	{
+		MoveList temp = new MoveList(num,let);
+		moves.add(temp);
 	}
 }
