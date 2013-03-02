@@ -1,7 +1,7 @@
 package threePlayerChessa;
 
 public class Pause_Menu {
-	public Main _unnamed_Main_;
+	public Main unnamed_Main_;
 
 	public Pause_Menu() {
 		throw new UnsupportedOperationException();
