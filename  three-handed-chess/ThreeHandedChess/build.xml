@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="build">
+	<path id="build.classpath">
+		<pathelement location="classes"/>
+	</path>
+	<target name="init">
+		<mkdir dir="classes"/>
+	</target>
+	<target name="clean">
+		<delete dir="classes"/>
+	</target>
+	<target depends="init" name="build">
+		<javac srcdir="." destdir="classes" source="1.5" target="1.5" fork="yes">
+			<classpath refid="build.classpath"/>
+			<include name="threePlayerChessa/Computer.java"/>
+			<include name="threePlayerChessa/Team.java"/>
+			<include name="threePlayerChessa/Pawn.java"/>
+			<include name="threePlayerChessa/Knight.java"/>
+			<include name="threePlayerChessa/Rook.java"/>
+			<include name="threePlayerChessa/King.java"/>
+			<include name="threePlayerChessa/Bishop.java"/>
+			<include name="threePlayerChessa/Queen.java"/>
+			<include name="threePlayerChessa/Piece.java"/>
+			<include name="threePlayerChessa/Tile.java"/>
+			<include name="threePlayerChessa/Segment.java"/>
+			<include name="threePlayerChessa/Section.java"/>
+			<include name="threePlayerChessa/Board.java"/>
+			<include name="threePlayerChessa/Pause_Menu.java"/>
+			<include name="threePlayerChessa/Main.java"/>
+			<include name="threePlayerChessa/Menu.java"/>
+			<include name="GUI_Interface/Board.java"/>
+			<include name="GUI_Interface/Menu.java"/>
+		</javac>
+	</target>
+</project>
