@@ -14,11 +14,6 @@ public class Coordinate
         return array;
     }
     
-    public void setX (double x)
-    {
-    	this.x = x;
-    }
-    
     public void setLocation (Coordinate[] array, int indexA, int indexB)
     {
     	int index = (indexA + indexB)/2;
