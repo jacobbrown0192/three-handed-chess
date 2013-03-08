@@ -38,7 +38,6 @@ public class Board extends JPanel
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		
-		double x1, y1, x2, y2;
 		int w = getWidth();
 		int h = (int)(getWidth()*Math.cos(Math.PI/6));
 		
@@ -46,6 +45,8 @@ public class Board extends JPanel
 		
 		g2.setColor(Color.white);
 		g2.fillRect(0, 0, getWidth(), getHeight());
+		g2.setPaint(Color.black);
+		g2.setStroke(stroke);
 		
 		Coordinate[] a = Coordinate.CoordinateSet(25);
 		Coordinate[] b = Coordinate.CoordinateSet(25);
@@ -53,10 +54,7 @@ public class Board extends JPanel
 		Coordinate[] d = Coordinate.CoordinateSet(25);
 		Coordinate[] e = Coordinate.CoordinateSet(25);
 		Coordinate[] f = Coordinate.CoordinateSet(25);
-	
-//		a[0].setX((1/4)*((double)w));
-		double test;
-		test = (w/4);
+		
 		a[0].x = w/4; 		a[0].y = 0; 
 		a[4].x = w/2;		a[4].y = 0;
 		a[20].x = w/8;		a[20].y = h/4;
@@ -94,189 +92,41 @@ public class Board extends JPanel
 		f[0].setSection(f);		
 
 		// draw GeneralPath (polyline)
-		g2.setPaint(Color.black);
-		g2.setStroke(stroke);
 		
-		//Draw A
-		int x2Points[] = {(int)a[0].x, (int)a[4].x, (int)a[24].x, (int)a[20].x, (int)a[0].x};
-		int y2Points[] = {(int)a[0].y, (int)a[4].y, (int)a[24].y, (int)a[20].y, (int)a[0].y};
-		GeneralPath polyline1 = new GeneralPath(GeneralPath.WIND_EVEN_ODD, x2Points.length);
-		polyline1.moveTo (x2Points[0], y2Points[0]);
-		for (int i = 1; i < x2Points.length; i++)
+		paintSection(g, a);
+		paintSection(g, b);
+		paintSection(g, c);
+		paintSection(g, d);
+		paintSection(g, e);
+		paintSection(g, f);
+	}
+	
+	public void paintSection(Graphics g, Coordinate[] sec)
+	{
+		for (int i = 0; i < 19; i++)
 		{
-		         polyline1.lineTo(x2Points[i], y2Points[i]);
+			if (i != 4 && i != 9 && i != 14)
+			{
+				paintTile(g, sec, i);
+			}
+		}
+	}
+	
+	public void paintTile(Graphics g, Coordinate[] sec, int uL)
+	{
+		Graphics2D g2 = (Graphics2D) g;
+		
+		int xPoints[] = {(int)sec[uL].x, (int)sec[uL + 1].x, (int)sec[uL + 6].x, (int)sec[uL + 5].x, (int)sec[uL].x};
+		int yPoints[] = {(int)sec[uL].y, (int)sec[uL + 1].y, (int)sec[uL + 6].y, (int)sec[uL + 5].y, (int)sec[uL].y};
+		
+		GeneralPath polyline1 = new GeneralPath(GeneralPath.WIND_EVEN_ODD, xPoints.length);
+		polyline1.moveTo (xPoints[0], yPoints[0]);
+		
+		for (int i = 1; i < xPoints.length; i++)
+		{
+		         polyline1.lineTo(xPoints[i], yPoints[i]);
 		}
 		g2.draw(polyline1);
-		
-		//Draw B
-		GeneralPath polyline2 = new GeneralPath(GeneralPath.WIND_EVEN_ODD, x2Points.length);
-		for (int i = 0; i < x2Points.length; i++)
-		{
-			switch(i)
-			{
-			case 0:
-				x2Points[i] = (int)b[0].x;
-				y2Points[i] = (int)b[0].y;
-				break;
-			case 1:
-				x2Points[i] = (int)b[4].x;
-				y2Points[i] = (int)b[4].y;
-				break;
-			case 2:
-				x2Points[i] = (int)b[24].x;
-				y2Points[i] = (int)b[24].y;
-				break;
-			case 3:
-				x2Points[i] = (int)b[20].x;
-				y2Points[i] = (int)b[20].y;
-				break;
-			case 4:
-				x2Points[i] = (int)b[0].x;
-				y2Points[i] = (int)b[0].y;
-				break;
-			}
-		}
-		polyline2.moveTo (x2Points[0], y2Points[0]);
-		for (int index = 1; index < x2Points.length; index++) {
-		         polyline2.lineTo(x2Points[index], y2Points[index]);
-		}
-		g2.draw(polyline2);
-		
-		//Draw C
-		GeneralPath polyline3 = new GeneralPath(GeneralPath.WIND_EVEN_ODD, x2Points.length);
-		for (int i = 0; i < x2Points.length; i++)
-		{
-			switch(i)
-			{
-			case 0:
-				x2Points[i] = (int)c[0].x;
-				y2Points[i] = (int)c[0].y;
-				break;
-			case 1:
-				x2Points[i] = (int)c[4].x;
-				y2Points[i] = (int)c[4].y;
-				break;
-			case 2:
-				x2Points[i] = (int)c[24].x;
-				y2Points[i] = (int)c[24].y;
-				break;
-			case 3:
-				x2Points[i] = (int)c[20].x;
-				y2Points[i] = (int)c[20].y;
-				break;
-			case 4:
-				x2Points[i] = (int)c[0].x;
-				y2Points[i] = (int)c[0].y;
-				break;
-			}
-		}
-		polyline3.moveTo (x2Points[0], y2Points[0]);
-		for (int index = 1; index < x2Points.length; index++) {
-		         polyline3.lineTo(x2Points[index], y2Points[index]);
-		}
-		g2.draw(polyline3);
-		
-		//Draw D
-		GeneralPath polyline4 = new GeneralPath(GeneralPath.WIND_EVEN_ODD, x2Points.length);
-		for (int i = 0; i < x2Points.length; i++)
-		{
-			switch(i)
-			{
-			case 0:
-				x2Points[i] = (int)d[0].x;
-				y2Points[i] = (int)d[0].y;
-				break;
-			case 1:
-				x2Points[i] = (int)d[4].x;
-				y2Points[i] = (int)d[4].y;
-				break;
-			case 2:
-				x2Points[i] = (int)d[24].x;
-				y2Points[i] = (int)d[24].y;
-				break;
-			case 3:
-				x2Points[i] = (int)d[20].x;
-				y2Points[i] = (int)d[20].y;
-				break;
-			case 4:
-				x2Points[i] = (int)d[0].x;
-				y2Points[i] = (int)d[0].y;
-				break;
-			}
-		}
-		polyline4.moveTo (x2Points[0], y2Points[0]);
-		for (int index = 1; index < x2Points.length; index++) {
-		         polyline4.lineTo(x2Points[index], y2Points[index]);
-		}
-		g2.draw(polyline4);
-		
-		//Draw E
-		GeneralPath polyline5 = new GeneralPath(GeneralPath.WIND_EVEN_ODD, x2Points.length);
-		for (int i = 0; i < x2Points.length; i++)
-		{
-			switch(i)
-			{
-			case 0:
-				x2Points[i] = (int)e[0].x;
-				y2Points[i] = (int)e[0].y;
-				break;
-			case 1:
-				x2Points[i] = (int)e[4].x;
-				y2Points[i] = (int)e[4].y;
-				break;
-			case 2:
-				x2Points[i] = (int)e[24].x;
-				y2Points[i] = (int)e[24].y;
-				break;
-			case 3:
-				x2Points[i] = (int)e[20].x;
-				y2Points[i] = (int)e[20].y;
-				break;
-			case 4:
-				x2Points[i] = (int)e[0].x;
-				y2Points[i] = (int)e[0].y;
-				break;
-			}
-		}
-		polyline5.moveTo (x2Points[0], y2Points[0]);
-		for (int index = 1; index < x2Points.length; index++) {
-		         polyline5.lineTo(x2Points[index], y2Points[index]);
-		}
-		g2.draw(polyline5);
-		
-		//Draw F
-		GeneralPath polyline6 = new GeneralPath(GeneralPath.WIND_EVEN_ODD, x2Points.length);
-		for (int i = 0; i < x2Points.length; i++)
-		{
-			switch(i)
-			{
-			case 0:
-				x2Points[i] = (int)f[0].x;
-				y2Points[i] = (int)f[0].y;
-				break;
-			case 1:
-				x2Points[i] = (int)f[4].x;
-				y2Points[i] = (int)f[4].y;
-				break;
-			case 2:
-				x2Points[i] = (int)f[24].x;
-				y2Points[i] = (int)f[24].y;
-				break;
-			case 3:
-				x2Points[i] = (int)f[20].x;
-				y2Points[i] = (int)f[20].y;
-				break;
-			case 4:
-				x2Points[i] = (int)f[0].x;
-				y2Points[i] = (int)f[0].y;
-				break;
-			}
-		}
-		polyline6.moveTo (x2Points[0], y2Points[0]);
-		for (int index = 1; index < x2Points.length; index++) {
-		         polyline6.lineTo(x2Points[index], y2Points[index]);
-		}
-		g2.draw(polyline6);	
 	}
 	
 	public static void main(String s[])
