@@ -5,8 +5,7 @@ public class Tile {
 	private int number;
 	private int letter;
 	private Piece piece;
-	public Segment unnamedSegment;
-	public Piece unnamedPiece;
+	public Segment segment;
 
 	public boolean getColour() {
 		return this.colour;
@@ -38,6 +37,7 @@ public class Tile {
 
 	public void setPiece(Piece aPiece) {
 		this.piece = aPiece;
+		this.piece.setCurrentTile(this);
 	}
 
 	public Tile(boolean aColour, int aNum, int aLet, Piece aPiece) {
