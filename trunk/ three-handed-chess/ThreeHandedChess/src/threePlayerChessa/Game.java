@@ -18,6 +18,8 @@ public class Game {
 	public PlayerConfigurationMenuGUI playerConfigGUI;
 	public CallForStalemateGUI stalmateGUI;
 	public BoardGUI boardGUI;
+	public BottomBoardGUI bBoardGUI;
+	public TopBoardGUI tBoardGUI;
 	public JFrame gameFrame;
 	
 	public Game() {
@@ -108,11 +110,28 @@ public class Game {
 	public void setStalemate(CallForStalemateMenu stalemate) {
 		this.stalemate = stalemate;
 	}
+	
+	public BottomBoardGUI getbBoardGUI() {
+		return bBoardGUI;
+	}
+	public void setbBoardGUI(BottomBoardGUI bBoardGUI) {
+		this.bBoardGUI = bBoardGUI;
+	}
+
+	public TopBoardGUI gettBoardGUI() {
+		return tBoardGUI;
+	}
+	public void settBoardGUI(TopBoardGUI tBoardGUI) {
+		this.tBoardGUI = tBoardGUI;
+	}
+
 
 	public void startGame(){
 		gameFrame.getContentPane().removeAll();
 	    gameFrame.getContentPane().repaint();
+		gameFrame.getContentPane().add(tBoardGUI);
 		gameFrame.getContentPane().add(boardGUI);
+		gameFrame.getContentPane().add(bBoardGUI);
 		gameFrame.setVisible(true);
 		theBoard.reset();
 		gameTeams.elementAt(0).addPiecesToBoard();

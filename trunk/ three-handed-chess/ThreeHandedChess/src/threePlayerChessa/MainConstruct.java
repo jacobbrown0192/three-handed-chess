@@ -9,6 +9,8 @@ import GUI_Interface.CallForStalemateGUI;
 import GUI_Interface.MainMenuGUI;
 import GUI_Interface.PauseMenuGUI;
 import GUI_Interface.PlayerConfigurationMenuGUI;
+import GUI_Interface.BottomBoardGUI;
+import GUI_Interface.TopBoardGUI;
 
 import threePlayerChessa.Team;
 import threePlayerChessa.PauseMenu;
@@ -26,6 +28,8 @@ public class MainConstruct {
 	public PlayerConfigurationMenuGUI playerConfigGUI;
 	public CallForStalemateGUI stalemateGUI;
 	public BoardGUI boardGUI;
+	public BottomBoardGUI bBoardGUI;
+	public TopBoardGUI tBoardGUI;
 	JFrame gameFrame;
 	
 	
@@ -158,6 +162,14 @@ public class MainConstruct {
 		BoardGUI aBoardGUI = new BoardGUI(theGame);
 		boardGUI = aBoardGUI;
 		
+		BottomBoardGUI bboardGUI = new BottomBoardGUI(theGame);
+		bBoardGUI = bboardGUI;
+		
+		TopBoardGUI tboardGUI = new TopBoardGUI(theGame);
+		tBoardGUI = tboardGUI;		
+		
+		
+		
 		gameFrame.add(MenuGUI);			
 			
 		
@@ -173,6 +185,8 @@ public class MainConstruct {
 		theGame.setPauseMenu(pauseMenu);
 		theGame.setPlyerConfig(plyerConfig);
 		theGame.setStalemate(stalemate);
+		theGame.setbBoardGUI(bBoardGUI);
+		theGame.settBoardGUI(tBoardGUI);
 		
 		
 		
