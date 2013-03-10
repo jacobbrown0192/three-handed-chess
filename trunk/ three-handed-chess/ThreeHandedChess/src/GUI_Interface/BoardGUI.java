@@ -8,14 +8,15 @@ package GUI_Interface;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.GeneralPath;
-
 import javax.swing.*;
+import threePlayerChessa.Game;
 
 public class BoardGUI extends JFrame implements MouseListener
 {
 	JLayeredPane layeredPane;
 	JFrame chessBoard;
 	JLabel ChessPiece;
+	Game theGame;
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -33,8 +34,9 @@ public class BoardGUI extends JFrame implements MouseListener
                                                       BasicStroke.JOIN_MITER, 
                                                       10.0f, dash1, 0.0f);
 	
-	public BoardGUI()
+	public BoardGUI(Game aGame)
 	{
+		this.theGame = aGame;
 		initComponents();
 		/*
 		Dimension boardSize = new Dimension(600, 600);
@@ -220,6 +222,12 @@ public class BoardGUI extends JFrame implements MouseListener
 				g.setColor(Color.black);
 				g.drawPolygon(poly);
 			}
+			
+			@Override
+			public Dimension getPreferredSize()
+			{
+				return new Dimension(600,600);
+			}
 		};
 		
 		
@@ -238,7 +246,7 @@ public class BoardGUI extends JFrame implements MouseListener
 	
 	public static void main(String s[])
 	{
-		JFrame frame = new BoardGUI();
+		JFrame frame = new BoardGUI(null);
 		//Board board = new Board();
 		
 		//JFrame frame = new JFrame("Three Handed Chess");
