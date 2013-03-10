@@ -23,7 +23,9 @@ public class PauseMenu {
 		gameTeams.elementAt(2).addPiecesToBoard();
 		theGame.gameFrame.getContentPane().removeAll();
 	    theGame.gameFrame.getContentPane().repaint();
+		theGame.gameFrame.getContentPane().add(theGame.tBoardGUI);
 		theGame.gameFrame.getContentPane().add(theGame.boardGUI);
+		theGame.gameFrame.getContentPane().add(theGame.bBoardGUI);
 		theGame.gameFrame.setVisible(true);
 	}
 
@@ -45,7 +47,9 @@ public class PauseMenu {
 	public void resume() {
 		theGame.gameFrame.getContentPane().removeAll();
 	    theGame.gameFrame.getContentPane().repaint();
+		theGame.gameFrame.getContentPane().add(theGame.tBoardGUI);
 		theGame.gameFrame.getContentPane().add(theGame.boardGUI);
+		theGame.gameFrame.getContentPane().add(theGame.bBoardGUI);
 		theGame.gameFrame.setVisible(true);
 	}
 }
