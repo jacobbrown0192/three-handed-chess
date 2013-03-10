@@ -19,7 +19,10 @@ public class Menu {
 	}
 	
 	public void playerConfig() {
-		//open PlayerConfigurationMenu
+		theGame.gameFrame.getContentPane().removeAll();
+	    theGame.gameFrame.getContentPane().repaint();
+		theGame.gameFrame.getContentPane().add(theGame.playerConfigGUI);
+		theGame.gameFrame.setVisible(true);
 	}
 
 

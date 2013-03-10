@@ -28,8 +28,10 @@ public class CallForStalemateMenu {
 	}
 	
 	public void no(){
-		//Close Menu
-		//Display stalemate rejected 
+		theGame.gameFrame.getContentPane().removeAll();
+	    theGame.gameFrame.getContentPane().repaint();
+		theGame.gameFrame.getContentPane().add(theGame.pauseMenuGUI);
+		theGame.gameFrame.setVisible(true);
 	}
 	
 	

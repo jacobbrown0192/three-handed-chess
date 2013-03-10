@@ -2,6 +2,8 @@ package threePlayerChessa;
 
 import java.util.Vector;
 
+import javax.swing.JFrame;
+
 import GUI_Interface.BoardGUI;
 import GUI_Interface.CallForStalemateGUI;
 import GUI_Interface.MainMenuGUI;
@@ -24,10 +26,26 @@ public class MainConstruct {
 	public PlayerConfigurationMenuGUI playerConfigGUI;
 	public CallForStalemateGUI stalemateGUI;
 	public BoardGUI boardGUI;
+	JFrame gameFrame;
 	
 	
+	/**
+	 * 
+	 */
 	public MainConstruct() {
 		super();
+		
+		Game mainGame = new Game();
+		this.theGame = mainGame;		
+		
+		Human team1 = new Human(1,"Player 1",1,null,null);
+		Human team2 = new Human(2,"Player 2",2,null,null);
+		Human team3 = new Human(3,"Player 3",3,null,null);
+		
+		this.gameTeams.add(team1);
+		this.gameTeams.add(team2);
+		this.gameTeams.add(team3);
+		
 		Board temp = new Board(gameTeams);
 		this.theBoard = temp;
 		
@@ -67,7 +85,7 @@ public class MainConstruct {
 		teamPieces.add(knight2);
 		teamPieces.add(rook2);
 		
-		Human team1 = new Human(1,"Player 1",1,this.theBoard,teamPieces);
+		team1.addFullTeam(teamPieces);
 		
 		pawn1.setPlayer(this.gameTeams.elementAt(1));
 		pawn2.setPlayer(this.gameTeams.elementAt(1));
@@ -86,7 +104,7 @@ public class MainConstruct {
 		knight2.setPlayer(this.gameTeams.elementAt(1));
 		rook2.setPlayer(this.gameTeams.elementAt(1));
 			
-		Human team2 = new Human(2,"Player 2",2,this.theBoard,teamPieces);
+		team2.addFullTeam(teamPieces);
 
 		pawn1.setPlayer(this.gameTeams.elementAt(1));
 		pawn2.setPlayer(this.gameTeams.elementAt(1));
@@ -105,16 +123,14 @@ public class MainConstruct {
 		knight2.setPlayer(this.gameTeams.elementAt(1));
 		rook2.setPlayer(this.gameTeams.elementAt(1));
 			
-		Human team3 = new Human(3,"Player 3",3,this.theBoard,teamPieces);
-		
-		this.gameTeams.add(team1);
-		this.gameTeams.add(team2);
-		this.gameTeams.add(team3);
+		team1.addboard(theBoard);
+		team2.addboard(theBoard);
+		team3.addboard(theBoard);
 		
 		Menu tempMenu = new Menu(this.theBoard,this.gameTeams,this.theGame);
 		this.mainMenu = tempMenu;
 		
-		PauseMenu tempPause = new PauseMenu(this.theBoard ,this.gameTeams);
+		PauseMenu tempPause = new PauseMenu(this.theBoard ,this.gameTeams, this.theGame);
 		this.pauseMenu = tempPause;
 		
 		PlayerConfigurationMenu config = new PlayerConfigurationMenu(this.theBoard, this.gameTeams,this.theGame);
@@ -122,6 +138,10 @@ public class MainConstruct {
 		
 		CallForStalemateMenu callStale = new CallForStalemateMenu(this.theBoard, this.theGame);		
 		this.stalemate = callStale;
+	
+		
+		JFrame aGameFrame = new JFrame();		
+		gameFrame = aGameFrame;
 		
 		MainMenuGUI MenuGUI = new MainMenuGUI(theGame);
 		mainMenuGUI = MenuGUI;
@@ -136,18 +156,32 @@ public class MainConstruct {
 		stalemateGUI = staleGUI;
 		
 		BoardGUI aBoardGUI = new BoardGUI(theGame);
+		boardGUI = aBoardGUI;
 		
-		public BoardGUI boardGUI;
+		gameFrame.add(MenuGUI);			
+			
+		
+		theGame.setBoardGUI(boardGUI);
+		theGame.setGameFrame(gameFrame);
+		theGame.setMainMenuGUI(mainMenuGUI);
+		theGame.setPauseMenuGUI(pauseMenuGUI);
+		theGame.setPlayerConfigGUI(playerConfigGUI);
+		theGame.setStalmateGUI(stalemateGUI);
+		theGame.setTheBoard(theBoard);
+		theGame.setGameTeams(gameTeams);
+		theGame.setMainMenu(mainMenu);
+		theGame.setPauseMenu(pauseMenu);
+		theGame.setPlyerConfig(plyerConfig);
+		theGame.setStalemate(stalemate);
 		
 		
 		
-		Game mainGame = new Game(this.gameTeams,this.theBoard,this.mainMenu,this.pauseMenu,this.plyerConfig,this.stalemate);
-		this.theGame = mainGame;		
 	}
 	
-	
-	
-
-
-
+	public static void main(String s[])
+	{
+		MainConstruct maker  = new MainConstruct();
+        maker.gameFrame.setSize(600,600);
+		maker.gameFrame.setVisible(true);		
+	}	
 }

@@ -23,7 +23,6 @@ public class MainMenuGUI extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	int buttonPress;
-	JFrame frame = new JFrame("ThreeHandedChessBoard");
 	
 	/**
 	 * Create the panel.
@@ -62,6 +61,14 @@ public class MainMenuGUI extends JPanel {
 		});
 		add(btnClose);
 	}
+	
+	public void makeVisable(){
+		
+	}
+	
+	
+	
+	
 }
 
 

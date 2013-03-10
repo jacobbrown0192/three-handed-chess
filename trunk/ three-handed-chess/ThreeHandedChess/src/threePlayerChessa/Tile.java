@@ -37,7 +37,6 @@ public class Tile {
 
 	public void setPiece(Piece aPiece) {
 		this.piece = aPiece;
-		this.piece.setCurrentTile(this);
 	}
 
 	public Tile(boolean aColour, int aNum, int aLet, Piece aPiece) {
