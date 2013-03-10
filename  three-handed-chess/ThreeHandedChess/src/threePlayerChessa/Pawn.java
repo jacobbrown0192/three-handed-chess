@@ -4,8 +4,9 @@ public class Pawn extends Piece {
 
 	
 
-	public Pawn(Tile startTile) {
-		super(startTile);
+
+	public Pawn(Team player, String name, Board theBoard, Tile currentTile) {
+		super(player, name, theBoard, currentTile);
 		// TODO Auto-generated constructor stub
 	}
 

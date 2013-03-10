@@ -29,6 +29,14 @@ public abstract class Piece {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public Tile getCurrentTile() {
+		return currentTile;
+	}
+
+	public void setCurrentTile(Tile currentTile) {
+		this.currentTile = currentTile;
+	}
 
 	public void move(Tile aStartTile, Tile aMoveTile){
 		

@@ -3,8 +3,9 @@ package threePlayerChessa;
 public class Queen extends Piece {
 
 
-	public Queen(Tile startTile) {
-		super(startTile);
+
+	public Queen(Team player, String name, Board theBoard, Tile currentTile) {
+		super(player, name, theBoard, currentTile);
 		// TODO Auto-generated constructor stub
 	}
 

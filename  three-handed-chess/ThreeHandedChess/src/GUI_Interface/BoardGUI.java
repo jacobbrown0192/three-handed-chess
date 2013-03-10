@@ -10,7 +10,7 @@ import java.awt.geom.GeneralPath;
 
 import javax.swing.*;
 
-public class Board extends JPanel
+public class BoardGUI extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 	
@@ -28,7 +28,7 @@ public class Board extends JPanel
                                                       BasicStroke.JOIN_MITER, 
                                                       10.0f, dash1, 0.0f);
 	
-	public Board()
+	public BoardGUI()
 	{
 		
 	}
@@ -48,12 +48,12 @@ public class Board extends JPanel
 		g2.setPaint(Color.black);
 		g2.setStroke(stroke);
 		
-		Coordinate[] a = Coordinate.CoordinateSet(25);
-		Coordinate[] b = Coordinate.CoordinateSet(25);
-		Coordinate[] c = Coordinate.CoordinateSet(25);
-		Coordinate[] d = Coordinate.CoordinateSet(25);
-		Coordinate[] e = Coordinate.CoordinateSet(25);
-		Coordinate[] f = Coordinate.CoordinateSet(25);
+		CoordinateGUI[] a = CoordinateGUI.CoordinateSet(25);
+		CoordinateGUI[] b = CoordinateGUI.CoordinateSet(25);
+		CoordinateGUI[] c = CoordinateGUI.CoordinateSet(25);
+		CoordinateGUI[] d = CoordinateGUI.CoordinateSet(25);
+		CoordinateGUI[] e = CoordinateGUI.CoordinateSet(25);
+		CoordinateGUI[] f = CoordinateGUI.CoordinateSet(25);
 		
 		a[0].x = w/4; 		a[0].y = 0; 
 		a[4].x = w/2;		a[4].y = 0;
@@ -101,7 +101,7 @@ public class Board extends JPanel
 		paintSection(g, f);
 	}
 	
-	public void paintSection(Graphics g, Coordinate[] sec)
+	public void paintSection(Graphics g, CoordinateGUI[] sec)
 	{
 		for (int i = 0; i < 19; i++)
 		{
@@ -112,7 +112,7 @@ public class Board extends JPanel
 		}
 	}
 	
-	public void paintTile(Graphics g, Coordinate[] sec, int uL)
+	public void paintTile(Graphics g, CoordinateGUI[] sec, int uL)
 	{
 		Graphics2D g2 = (Graphics2D) g;
 		
@@ -131,7 +131,7 @@ public class Board extends JPanel
 	
 	public static void main(String s[])
 	{
-		Board board = new Board();
+		BoardGUI board = new BoardGUI();
 		
 		JFrame frame = new JFrame("ThreeHandedChessBoard");
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

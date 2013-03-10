@@ -10,6 +10,17 @@ public class Team {
 	private int number;
 	public Vector<Piece> pieces = new Vector<Piece>();
 	public Board theBoard;
+	public boolean evil;
+	public int AIDificulty;
+	
+	public Team(int colour, String name, int number, Board theBoard, Vector<Piece> pieces) {
+		super();
+		this.colour = colour;
+		this.name = name;
+		this.number = number;
+		this.pieces = pieces;
+		this.theBoard = theBoard;
+	}	
 	
 	public int getColour() {
 		return this.colour;
@@ -26,14 +37,13 @@ public class Team {
 	public void setName(String aName) {
 		this.name = aName;
 	}
-	
-	public Team(int colour, String name, int number, Vector<Piece> pieces, Board theBoard) {
-		super();
-		this.colour = colour;
-		this.name = name;
-		this.number = number;
-		this.pieces = pieces;
-		this.theBoard = theBoard;
+		
+	public boolean isEvil() {
+		return evil;
+	}
+
+	public void setEvil(boolean evil) {
+		this.evil = evil;
 	}
 
 	public int getNumber() {
@@ -44,6 +54,14 @@ public class Team {
 		this.number = aNumber;
 	}
 	
+	public int getAIDificulty() {
+		return AIDificulty;
+	}
+
+	public void setAIDificulty(int aIDificulty) {
+		AIDificulty = aIDificulty;
+	}
+
 	public void addToMoveList(int num, int let){
 		MoveList temp = new MoveList(num,let);
 		moves.add(temp);
@@ -54,14 +72,71 @@ public class Team {
 	}
 	
 	public void addPiecesToBoard(){
+		int piece = 0;
+		Section temp = null;
+		for (int i =0; i <3; i++){
+			if(theBoard.sections.elementAt(i).getColour() == this){
+				temp = theBoard.sections.elementAt(i);
+			}
+		}
+		if (this.getNumber() == 1){
+			for(int i = 0; i <4; i++){
+				temp.segments.elementAt(0).tiles.elementAt(i+4).setPiece(pieces.elementAt(piece));
+				piece++;
+			}
+			for(int i = 0; i <4; i++){
+				temp.segments.elementAt(1).tiles.elementAt(i+4).setPiece(pieces.elementAt(piece));
+				piece++;
+			}
+			for(int i = 0; i <4; i++){
+				temp.segments.elementAt(0).tiles.elementAt(i).setPiece(pieces.elementAt(piece));
+				piece++;
+			}
+			for(int i = 0; i <4; i++){
+				temp.segments.elementAt(1).tiles.elementAt(i).setPiece(pieces.elementAt(piece));
+				piece++;
+			}
+			
+		}
+		if(this.getNumber() == 2){
+			for(int i = 0; i <4; i++){
+				temp.segments.elementAt(0).tiles.elementAt(11-i).setPiece(pieces.elementAt(piece));
+				piece++;
+			}
+			for(int i = 0; i <4; i++){
+				temp.segments.elementAt(1).tiles.elementAt(11-i).setPiece(pieces.elementAt(piece));
+				piece++;
+			}
+			for(int i = 0; i <4; i++){
+				temp.segments.elementAt(0).tiles.elementAt(15-i).setPiece(pieces.elementAt(piece));
+				piece++;
+			}
+			for(int i = 0; i <4; i++){
+				temp.segments.elementAt(1).tiles.elementAt(15-i).setPiece(pieces.elementAt(piece));
+				piece++;
+			}
+			
+			
+		}
+		if(this.getNumber() == 3){
+			for(int i = 0; i <4; i++){
+				temp.segments.elementAt(0).tiles.elementAt(11-i).setPiece(pieces.elementAt(piece));
+				piece++;
+			}
+			for(int i = 0; i <4; i++){
+				temp.segments.elementAt(1).tiles.elementAt(8+i).setPiece(pieces.elementAt(piece));
+				piece++;
+			}
+			for(int i = 0; i <4; i++){
+				temp.segments.elementAt(0).tiles.elementAt(15-i).setPiece(pieces.elementAt(piece));
+				piece++;
+			}
+			for(int i = 0; i <4; i++){
+				temp.segments.elementAt(1).tiles.elementAt(12+i).setPiece(pieces.elementAt(piece));
+				piece++;
+			}
+		}
 		
 	}
-	
-	public void resetBoard(){
-		this.resetBoard();
-		this.addPiecesToBoard();		
-	}
-	
-	
-	
+		
 }
