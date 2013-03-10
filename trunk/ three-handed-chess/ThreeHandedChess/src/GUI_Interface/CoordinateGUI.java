@@ -1,27 +1,27 @@
 package GUI_Interface;
 
 
-public class Coordinate
+public class CoordinateGUI
 {
 	public double x;
 	public double y;
 	
-    public static Coordinate[] CoordinateSet(int size)
+    public static CoordinateGUI[] CoordinateSet(int size)
     {
-        Coordinate[] array = new Coordinate[size];
+        CoordinateGUI[] array = new CoordinateGUI[size];
         for(int i=0; i<size; i++)
-            array[i] = new Coordinate();
+            array[i] = new CoordinateGUI();
         return array;
     }
     
-    public void setLocation (Coordinate[] array, int indexA, int indexB)
+    public void setLocation (CoordinateGUI[] array, int indexA, int indexB)
     {
     	int index = (indexA + indexB)/2;
     	array[index].x = (array[indexA].x + array[indexB].x)/2;
     	array[index].y = (array[indexA].y + array[indexB].y)/2;
     }
     
-    public void setSection (Coordinate[] section)
+    public void setSection (CoordinateGUI[] section)
     {
 		section[0].setLocation(section, 0, 20);
 		section[0].setLocation(section, 0, 10);
