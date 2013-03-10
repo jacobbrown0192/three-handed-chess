@@ -5,13 +5,15 @@ import java.util.Vector;
 public class PauseMenu {
 	public Board theBoard;
 	public Vector<Team> gameTeams = new Vector<Team>();
+	public Game theGame;
 
 
 
-	public PauseMenu(Board theBoard, Vector<Team> gameTeams) {
+	public PauseMenu(Board theBoard, Vector<Team> gameTeams, Game theGame) {
 		super();
 		this.theBoard = theBoard;
 		this.gameTeams = gameTeams;
+		this.theGame = theGame;
 	}
 
 	public void reset() {
@@ -19,19 +21,31 @@ public class PauseMenu {
 		gameTeams.elementAt(0).addPiecesToBoard();
 		gameTeams.elementAt(1).addPiecesToBoard();
 		gameTeams.elementAt(2).addPiecesToBoard();
+		theGame.gameFrame.getContentPane().removeAll();
+	    theGame.gameFrame.getContentPane().repaint();
+		theGame.gameFrame.getContentPane().add(theGame.boardGUI);
+		theGame.gameFrame.setVisible(true);
 	}
 
 	public void endGame() {
 		theBoard.reset();
+		theGame.gameFrame.getContentPane().removeAll();
+	    theGame.gameFrame.getContentPane().repaint();
+		theGame.gameFrame.getContentPane().add(theGame.mainMenuGUI);
+		theGame.gameFrame.setVisible(true);
 	}
 
 	public void callForStalemate() {
-		/*
-		 * open callforstalemate menu
-		 */
+		theGame.gameFrame.getContentPane().removeAll();
+	    theGame.gameFrame.getContentPane().repaint();
+		theGame.gameFrame.getContentPane().add(theGame.stalmateGUI);
+		theGame.gameFrame.setVisible(true);
 	}
 
 	public void resume() {
-		//something about remove GUI from screen im not really sure
+		theGame.gameFrame.getContentPane().removeAll();
+	    theGame.gameFrame.getContentPane().repaint();
+		theGame.gameFrame.getContentPane().add(theGame.boardGUI);
+		theGame.gameFrame.setVisible(true);
 	}
 }

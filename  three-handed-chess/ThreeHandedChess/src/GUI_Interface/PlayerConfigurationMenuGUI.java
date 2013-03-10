@@ -38,7 +38,7 @@ public class PlayerConfigurationMenuGUI extends JPanel {
 	public PlayerConfigurationMenuGUI(Game aGame) {
 		theGame = aGame;
 		setBorder(new EmptyBorder(20, 20, 20, 20));
-		setLayout(new GridLayout(6, 3, 0, 20));
+		setLayout(new GridLayout(7, 3, 0, 20));
 		
 		JLabel label = new JLabel("");
 		add(label);
@@ -132,6 +132,20 @@ public class PlayerConfigurationMenuGUI extends JPanel {
 		slider.setMaximum(10);
 		slider.setValue(5);
 		add(slider);
+		
+		JLabel label_2 = new JLabel("");
+		add(label_2);
+		
+		JButton btnNewButton_3 = new JButton("Close");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				theGame.plyerConfig.close();
+			}
+		});
+		add(btnNewButton_3);
+		
+		JLabel lblNewLabel = new JLabel("");
+		add(lblNewLabel);
 
 	}
 }

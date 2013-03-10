@@ -71,6 +71,17 @@ public class Team {
 		pieces.add(addedPiece);
 	}
 	
+	public void addboard(Board aBoard){
+		theBoard = aBoard;
+	}
+	
+	
+	public void addFullTeam(Vector<Piece> aPieces){
+		pieces = aPieces;
+	}
+	
+	
+	
 	public void addPiecesToBoard(){
 		int piece = 0;
 		Section temp = null;
