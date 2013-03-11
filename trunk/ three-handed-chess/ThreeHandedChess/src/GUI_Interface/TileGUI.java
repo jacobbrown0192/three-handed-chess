@@ -5,6 +5,7 @@ import javax.swing.*;
 
 public class TileGUI extends JPanel
 {
+	private static final long serialVersionUID = 1L;
 	public Polygon poly;
 	public int number;
 	public String section;
@@ -26,16 +27,19 @@ public class TileGUI extends JPanel
 	protected void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
-		
+		g.setColor(Color.black);
+		g.drawPolygon(poly);
+		/*
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g2.setPaintMode();
 		g2.setPaint(Color.black);
 		g2.setStroke(stroke);
 		
-		g2.drawPolygon(poly);
+		g2.drawPolygon(poly);*/
 	}
 	
+
 	public MouseAdapter createMouseListener (final int num, final String sec)
 	{
 		MouseAdapter ma = new MouseAdapter()

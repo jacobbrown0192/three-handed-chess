@@ -99,7 +99,7 @@ public class BoardGUI extends JPanel
 		createSection(f, "f");
 	}
 	
-	public void paint(Graphics g){}
+	//public void paint(Graphics g){}
 	
 	public void createSection(CoordinateGUI[] sec, String section)
 	{
@@ -142,29 +142,36 @@ public class BoardGUI extends JPanel
 	
 	public static void main(String s[])
 	{
-		final JFrame frame = new JFrame("Foo");
-		final BoardGUI board = new BoardGUI(null);
+		JFrame frame = new JFrame("Foo");
+		JPanel board = new JPanel();
 		
 		frame.setContentPane(board);
 		board.setPreferredSize(new Dimension(600,600));
 		board.setBackground(Color.white);
-/*		
+	
 		int xPoints[] = {20, 50, 30, 20};
 		int yPoints[] = {20, 20, 40, 40};
 		
 		Polygon poly = new Polygon(xPoints, yPoints, xPoints.length);
 		
-		final TileGUI tile = new TileGUI(poly, 0, 2);
+		final TileGUI tile = new TileGUI(poly, "a", 2);
 		
 		tile.setBounds(poly.getBounds());
+		//tile.setBounds(0, 0, 300, 300);
 		tile.setBackground(Color.white);
 		board.add(tile);
+/*		
+		int xPoints2[] = {50, 60, 40, 30};
+		int yPoints2[] = {20, 20, 40, 40};
 		
+		Polygon poly2 = new Polygon(xPoints2, yPoints2, xPoints2.length);
 		
-		final TileGUI tile2 = new TileGUI(poly, 1, 3);
+		final TileGUI tile2 = new TileGUI(poly, "a", 3);
+		tile.setBounds(poly.getBounds());
+		board.add(tile2);
 */		
-		
 		frame.pack();
+		
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		
