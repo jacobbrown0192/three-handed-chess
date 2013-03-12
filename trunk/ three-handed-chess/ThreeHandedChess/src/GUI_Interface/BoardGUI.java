@@ -6,15 +6,31 @@ package GUI_Interface;
 //}
 
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.geom.GeneralPath;
 
 import javax.swing.*;
 
 import threePlayerChessa.Game;
 
-public class BoardGUI extends JPanel
+public class BoardGUI extends JPanel implements MouseListener
 {
 	private static final long serialVersionUID = 1L;
+	
+	public CoordinateGUI[] a = CoordinateGUI.CoordinateSet(25);
+	public CoordinateGUI[] b = CoordinateGUI.CoordinateSet(25);
+	public CoordinateGUI[] c = CoordinateGUI.CoordinateSet(25);
+	public CoordinateGUI[] d = CoordinateGUI.CoordinateSet(25);
+	public CoordinateGUI[] e = CoordinateGUI.CoordinateSet(25);
+	public CoordinateGUI[] f = CoordinateGUI.CoordinateSet(25);
+	
+	public TileGUI[] quadA = TileGUI.TileSet(16);
+	public TileGUI[] quadB = TileGUI.TileSet(16);
+	public TileGUI[] quadC = TileGUI.TileSet(16);
+	public TileGUI[] quadD = TileGUI.TileSet(16);
+	public TileGUI[] quadE = TileGUI.TileSet(16);
+	public TileGUI[] quadF = TileGUI.TileSet(16);
 	
     final static Color bg = Color.white;
     final static Color fg = Color.black;
@@ -34,7 +50,7 @@ public class BoardGUI extends JPanel
 	public BoardGUI(Game aGame)
 	{
 		theGame = aGame;
-		
+		addMouseListener(this);
 	}
 	
 	public void paint(Graphics g)
@@ -51,13 +67,6 @@ public class BoardGUI extends JPanel
 		g2.fillRect(0, 0, getWidth(), getHeight());
 		g2.setPaint(Color.black);
 		g2.setStroke(stroke);
-		
-		CoordinateGUI[] a = CoordinateGUI.CoordinateSet(25);
-		CoordinateGUI[] b = CoordinateGUI.CoordinateSet(25);
-		CoordinateGUI[] c = CoordinateGUI.CoordinateSet(25);
-		CoordinateGUI[] d = CoordinateGUI.CoordinateSet(25);
-		CoordinateGUI[] e = CoordinateGUI.CoordinateSet(25);
-		CoordinateGUI[] f = CoordinateGUI.CoordinateSet(25);
 		
 		a[0].x = w/4; 		a[0].y = 0; 
 		a[4].x = w/2;		a[4].y = 0;
@@ -97,41 +106,93 @@ public class BoardGUI extends JPanel
 
 		// draw GeneralPath (polyline)
 		
-		paintSection(g, a);
-		paintSection(g, b);
-		paintSection(g, c);
-		paintSection(g, d);
-		paintSection(g, e);
-		paintSection(g, f);
+		paintSection(g, a, "a");
+		paintSection(g, b, "b");
+		paintSection(g, c, "c");
+		paintSection(g, d, "d");
+		paintSection(g, e, "e");
+		paintSection(g, f, "f");
 	}
 	
-	public void paintSection(Graphics g, CoordinateGUI[] sec)
+	public void paintSection(Graphics g, CoordinateGUI[] sec, String sectionName)
 	{
 		for (int i = 0; i < 19; i++)
 		{
 			if (i != 4 && i != 9 && i != 14)
 			{
-				paintTile(g, sec, i);
+				paintTile(g, sec, i, sectionName);
 			}
 		}
 	}
 	
-	public void paintTile(Graphics g, CoordinateGUI[] sec, int uL)
+	public void paintTile(Graphics g, CoordinateGUI[] sec, int uL, String sectionName)
 	{
 		Graphics2D g2 = (Graphics2D) g;
 		
-		int xPoints[] = {(int)sec[uL].x, (int)sec[uL + 1].x, (int)sec[uL + 6].x, (int)sec[uL + 5].x, (int)sec[uL].x};
-		int yPoints[] = {(int)sec[uL].y, (int)sec[uL + 1].y, (int)sec[uL + 6].y, (int)sec[uL + 5].y, (int)sec[uL].y};
+		int xPoints[] = {(int)sec[uL].x, (int)sec[uL + 1].x, (int)sec[uL + 6].x, (int)sec[uL + 5].x}; //, (int)sec[uL].x};
+		int yPoints[] = {(int)sec[uL].y, (int)sec[uL + 1].y, (int)sec[uL + 6].y, (int)sec[uL + 5].y}; //, (int)sec[uL].y};
 		
-		GeneralPath polyline1 = new GeneralPath(GeneralPath.WIND_EVEN_ODD, xPoints.length);
-		polyline1.moveTo (xPoints[0], yPoints[0]);
+		Polygon poly = new Polygon(xPoints, yPoints, xPoints.length);
 		
-		for (int i = 1; i < xPoints.length; i++)
+		int tileNum = 100;
+		
+		if (uL < 4)
 		{
-		         polyline1.lineTo(xPoints[i], yPoints[i]);
+			tileNum = uL;
 		}
-		g2.draw(polyline1);
+		else if (uL < 9)
+		{
+			tileNum = uL - 1;
+		}
+		else if (uL < 14)
+		{
+			tileNum = uL - 2;
+		}
+		else if (uL < 19)
+		{
+			tileNum = uL - 3;
+		}
+	
+		switch(sectionName)
+		{
+			case "a":
+				quadA[tileNum].setTile(poly, sectionName, tileNum);
+				break;
+			case "b":
+				quadB[tileNum].setTile(poly, sectionName, tileNum);
+				break;
+			case "c":
+				quadC[tileNum].setTile(poly, sectionName, tileNum);
+				break;
+			case "d":
+				quadD[tileNum].setTile(poly, sectionName, tileNum);
+				break;
+			case "e":
+				quadE[tileNum].setTile(poly, sectionName, tileNum);
+				break;
+			case "f":
+				quadF[tileNum].setTile(poly, sectionName, tileNum);
+				break;
+		}
+		
+		g2.draw(poly);
 	}
+	
+	private void searchForTile(MouseEvent e, TileGUI[] quad)
+	{
+		for (int i=0; i < 16; i++)
+		{
+			if (quad[i].checkIfContained(e))
+			{
+				System.out.println("Found Tile!");
+				System.out.println(quad[i].getSection());
+				System.out.println(i);
+				break;
+			}
+		}
+		
+	}
+	
 	
 	public static void main(String s[])
 	{
@@ -142,5 +203,41 @@ public class BoardGUI extends JPanel
 		frame.add(board);
         frame.setSize(500,600);
         frame.setVisible(true);
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e)
+	{
+		searchForTile(e, quadA);
+		searchForTile(e, quadB);
+		searchForTile(e, quadC);
+		searchForTile(e, quadD);
+		searchForTile(e, quadE);
+		searchForTile(e, quadF);	
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e)
+	{
+
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e)
+	{
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e)
+	{
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) 
+	{
+		
 	}
 }
