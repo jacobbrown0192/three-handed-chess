@@ -1,5 +1,6 @@
 package threePlayerChessa;
 
+import java.awt.BorderLayout;
 import java.util.Vector;
 
 import javax.swing.JFrame;
@@ -129,13 +130,13 @@ public class Game {
 	public void startGame(){
 		gameFrame.getContentPane().removeAll();
 	    gameFrame.getContentPane().repaint();
-		gameFrame.getContentPane().add(tBoardGUI);
+		gameFrame.getContentPane().add(tBoardGUI,BorderLayout.NORTH);
 		gameFrame.getContentPane().add(boardGUI);
-		gameFrame.getContentPane().add(bBoardGUI);
+		gameFrame.getContentPane().add(bBoardGUI,BorderLayout.SOUTH);
 		gameFrame.setVisible(true);
 		theBoard.reset();
-		gameTeams.elementAt(0).addPiecesToBoard();
-		gameTeams.elementAt(1).addPiecesToBoard();
-		gameTeams.elementAt(2).addPiecesToBoard();		
+		//gameTeams.elementAt(0).addPiecesToBoard();
+		//gameTeams.elementAt(1).addPiecesToBoard();
+		//gameTeams.elementAt(2).addPiecesToBoard();		
 	}	
 }

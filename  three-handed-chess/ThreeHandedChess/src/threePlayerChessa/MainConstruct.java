@@ -1,7 +1,7 @@
 package threePlayerChessa;
 
+import java.awt.BorderLayout;
 import java.util.Vector;
-
 import javax.swing.JFrame;
 
 import GUI_Interface.BoardGUI;
@@ -143,9 +143,13 @@ public class MainConstruct {
 		CallForStalemateMenu callStale = new CallForStalemateMenu(this.theBoard, this.theGame);		
 		this.stalemate = callStale;
 	
+
+
 		
+				
 		JFrame aGameFrame = new JFrame();		
 		gameFrame = aGameFrame;
+		gameFrame.setLayout(new BorderLayout(0, 0));
 		
 		MainMenuGUI MenuGUI = new MainMenuGUI(theGame);
 		mainMenuGUI = MenuGUI;
@@ -163,9 +167,11 @@ public class MainConstruct {
 		boardGUI = aBoardGUI;
 		
 		BottomBoardGUI bboardGUI = new BottomBoardGUI(theGame);
+		bboardGUI.setSize(600, 100);
 		bBoardGUI = bboardGUI;
 		
 		TopBoardGUI tboardGUI = new TopBoardGUI(theGame);
+		boardGUI.setSize(600, 100);
 		tBoardGUI = tboardGUI;		
 		
 		
@@ -195,7 +201,7 @@ public class MainConstruct {
 	public static void main(String s[])
 	{
 		MainConstruct maker  = new MainConstruct();
-        maker.gameFrame.setSize(600,600);
+        maker.gameFrame.setSize(600,700);
 		maker.gameFrame.setVisible(true);		
 	}	
 }

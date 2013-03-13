@@ -30,7 +30,10 @@ public class BottomBoardGUI extends JPanel {
 		JButton btnNewButton = new JButton("Pause");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				theGame.gameFrame.getContentPane().removeAll();
+			    theGame.gameFrame.getContentPane().repaint();
+				theGame.gameFrame.getContentPane().add(theGame.pauseMenuGUI);
+				theGame.gameFrame.setVisible(true);
 			}
 		});
 		add(btnNewButton);
