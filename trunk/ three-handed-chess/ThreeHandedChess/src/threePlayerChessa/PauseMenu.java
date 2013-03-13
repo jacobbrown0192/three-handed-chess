@@ -1,5 +1,6 @@
 package threePlayerChessa;
 
+import java.awt.BorderLayout;
 import java.util.Vector;
 
 public class PauseMenu {
@@ -47,9 +48,9 @@ public class PauseMenu {
 	public void resume() {
 		theGame.gameFrame.getContentPane().removeAll();
 	    theGame.gameFrame.getContentPane().repaint();
-		theGame.gameFrame.getContentPane().add(theGame.tBoardGUI);
+		theGame.gameFrame.getContentPane().add(theGame.tBoardGUI,BorderLayout.NORTH);
 		theGame.gameFrame.getContentPane().add(theGame.boardGUI);
-		theGame.gameFrame.getContentPane().add(theGame.bBoardGUI);
+		theGame.gameFrame.getContentPane().add(theGame.bBoardGUI,BorderLayout.SOUTH);
 		theGame.gameFrame.setVisible(true);
 	}
 }
