@@ -1,12 +1,26 @@
 package GUI_Interface;
 
+import java.awt.Point;
+
 
 public class CoordinateGUI
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public double x;
 	public double y;
 	
-    public static CoordinateGUI[] CoordinateSet(int size)
+	public CoordinateGUI() {}
+	
+    public CoordinateGUI(int x, int y)
+    {
+    	this.x = x;
+    	this.y = y;
+	}
+
+	public static CoordinateGUI[] coordinateSet(int size)
     {
         CoordinateGUI[] array = new CoordinateGUI[size];
         for(int i=0; i<size; i++)
