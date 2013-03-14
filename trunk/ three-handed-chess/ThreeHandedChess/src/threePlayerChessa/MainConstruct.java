@@ -58,7 +58,9 @@ public class MainConstruct {
 		Board temp = new Board(gameTeams);
 		this.theBoard = temp;
 		
-		Vector<Piece> teamPieces = new Vector<Piece>();
+		Vector<Piece> teamPieces1 = new Vector<Piece>();
+		Vector<Piece> teamPieces2 = new Vector<Piece>();
+		Vector<Piece> teamPieces3 = new Vector<Piece>();
 		
 		Pawn pawn11 = new Pawn(this.gameTeams.elementAt(0),"Pawn1",this.theBoard,null,PieceType.PAWN);
 		Pawn pawn21 = new Pawn(this.gameTeams.elementAt(0),"Pawn2",this.theBoard,null,PieceType.PAWN);
@@ -77,24 +79,24 @@ public class MainConstruct {
 		Knight knight21 = new Knight(this.gameTeams.elementAt(0),"Knight2",this.theBoard,null,PieceType.KNIGHT);
 		Rook rook21 = new Rook(this.gameTeams.elementAt(0),"Rook2",this.theBoard,null,PieceType.ROOK);
 		
-		teamPieces.add(pawn11);
-		teamPieces.add(pawn21);
-		teamPieces.add(pawn31);
-		teamPieces.add(pawn41);
-		teamPieces.add(pawn51);
-		teamPieces.add(pawn61);
-		teamPieces.add(pawn71);
-		teamPieces.add(pawn81);
-		teamPieces.add(rook11);
-		teamPieces.add(knight11);
-		teamPieces.add(bishop11);
-		teamPieces.add(king1);
-		teamPieces.add(queen11);
-		teamPieces.add(bishop21);
-		teamPieces.add(knight21);
-		teamPieces.add(rook21);
+		teamPieces1.add(pawn11);
+		teamPieces1.add(pawn21);
+		teamPieces1.add(pawn31);
+		teamPieces1.add(pawn41);
+		teamPieces1.add(pawn51);
+		teamPieces1.add(pawn61);
+		teamPieces1.add(pawn71);
+		teamPieces1.add(pawn81);
+		teamPieces1.add(rook11);
+		teamPieces1.add(knight11);
+		teamPieces1.add(bishop11);
+		teamPieces1.add(king1);
+		teamPieces1.add(queen11);
+		teamPieces1.add(bishop21);
+		teamPieces1.add(knight21);
+		teamPieces1.add(rook21);
 		
-		team1.addFullTeam(teamPieces);
+		team1.addFullTeam(teamPieces1);
 				
 		Pawn pawn12 = new Pawn(this.gameTeams.elementAt(1),"Pawn1",this.theBoard,null,PieceType.PAWN);
 		Pawn pawn22 = new Pawn(this.gameTeams.elementAt(1),"Pawn2",this.theBoard,null,PieceType.PAWN);
@@ -113,27 +115,27 @@ public class MainConstruct {
 		Knight knight22 = new Knight(this.gameTeams.elementAt(1),"Knight2",this.theBoard,null,PieceType.KNIGHT);
 		Rook rook22 = new Rook(this.gameTeams.elementAt(1),"Rook2",this.theBoard,null,PieceType.ROOK);
 		
-		teamPieces.clear();
+		teamPieces2.clear();
 		
-		teamPieces.add(pawn12);
-		teamPieces.add(pawn22);
-		teamPieces.add(pawn32);
-		teamPieces.add(pawn42);
-		teamPieces.add(pawn52);
-		teamPieces.add(pawn62);
-		teamPieces.add(pawn72);
-		teamPieces.add(pawn82);
-		teamPieces.add(rook12);
-		teamPieces.add(knight12);
-		teamPieces.add(bishop12);
-		teamPieces.add(king2);
-		teamPieces.add(queen12);
-		teamPieces.add(bishop22);
-		teamPieces.add(knight22);
-		teamPieces.add(rook22);
+		teamPieces2.add(pawn12);
+		teamPieces2.add(pawn22);
+		teamPieces2.add(pawn32);
+		teamPieces2.add(pawn42);
+		teamPieces2.add(pawn52);
+		teamPieces2.add(pawn62);
+		teamPieces2.add(pawn72);
+		teamPieces2.add(pawn82);
+		teamPieces2.add(rook12);
+		teamPieces2.add(knight12);
+		teamPieces2.add(bishop12);
+		teamPieces2.add(king2);
+		teamPieces2.add(queen12);
+		teamPieces2.add(bishop22);
+		teamPieces2.add(knight22);
+		teamPieces2.add(rook22);
 		
 			
-		team2.addFullTeam(teamPieces);
+		team2.addFullTeam(teamPieces2);
 
 		Pawn pawn13 = new Pawn(this.gameTeams.elementAt(2),"Pawn1",this.theBoard,null,PieceType.PAWN);
 		Pawn pawn23 = new Pawn(this.gameTeams.elementAt(2),"Pawn2",this.theBoard,null,PieceType.PAWN);
@@ -152,26 +154,26 @@ public class MainConstruct {
 		Knight knight23 = new Knight(this.gameTeams.elementAt(2),"Knight2",this.theBoard,null,PieceType.KNIGHT);
 		Rook rook23 = new Rook(this.gameTeams.elementAt(2),"Rook2",this.theBoard,null,PieceType.ROOK);
 		
-		teamPieces.clear();
+		teamPieces3.clear();
 		
-		teamPieces.add(pawn13);
-		teamPieces.add(pawn23);
-		teamPieces.add(pawn33);
-		teamPieces.add(pawn43);
-		teamPieces.add(pawn53);
-		teamPieces.add(pawn63);
-		teamPieces.add(pawn73);
-		teamPieces.add(pawn83);
-		teamPieces.add(rook13);
-		teamPieces.add(knight13);
-		teamPieces.add(bishop13);
-		teamPieces.add(king3);
-		teamPieces.add(queen13);
-		teamPieces.add(bishop23);
-		teamPieces.add(knight23);
-		teamPieces.add(rook23);
+		teamPieces3.add(pawn13);
+		teamPieces3.add(pawn23);
+		teamPieces3.add(pawn33);
+		teamPieces3.add(pawn43);
+		teamPieces3.add(pawn53);
+		teamPieces3.add(pawn63);
+		teamPieces3.add(pawn73);
+		teamPieces3.add(pawn83);
+		teamPieces3.add(rook13);
+		teamPieces3.add(knight13);
+		teamPieces3.add(bishop13);
+		teamPieces3.add(king3);
+		teamPieces3.add(queen13);
+		teamPieces3.add(bishop23);
+		teamPieces3.add(knight23);
+		teamPieces3.add(rook23);
 		
-		team3.addFullTeam(teamPieces);
+		team3.addFullTeam(teamPieces3);
 			
 		team1.addboard(theBoard);
 		team2.addboard(theBoard);
