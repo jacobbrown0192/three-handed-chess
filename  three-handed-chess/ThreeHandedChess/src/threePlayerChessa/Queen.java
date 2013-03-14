@@ -1,5 +1,7 @@
 package threePlayerChessa;
 
+
+
 public class Queen extends Piece {
 
 
@@ -9,8 +11,17 @@ public class Queen extends Piece {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void move(Tile aStartTile, Tile aMoveTile) {
-		throw new UnsupportedOperationException();
+	public void move(Tile aStartTile, Tile aMoveTile, Turn player) {
+		boolean validMove = false;
+		//check for valid move
+		if (validMove){
+			aMoveTile.setPiece(aStartTile.getPiece());
+			aStartTile.setPiece(null);
+			player.getTheGame().gameController.addToCounter();
+		}
+		else{
+			return;
+		}
 	}
 
 }

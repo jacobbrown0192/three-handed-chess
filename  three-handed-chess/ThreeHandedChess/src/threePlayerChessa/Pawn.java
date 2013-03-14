@@ -1,5 +1,7 @@
 package threePlayerChessa;
 
+import GUI_Interface.PromotePawn;
+
 public class Pawn extends Piece {
 
 	
@@ -10,8 +12,43 @@ public class Pawn extends Piece {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void move(Tile aStartTile, Tile aMoveTile) {
-		throw new UnsupportedOperationException();
+	public void move(Tile aStartTile, Tile aMoveTile, Turn player) {
+		boolean validMove = false;
+		//check for valid move
+		if (validMove){
+			aMoveTile.setPiece(aStartTile.getPiece());
+			aStartTile.setPiece(null);
+			player.getTheGame().gameController.addToCounter();
+			if(aMoveTile.getNumber() == 1 || aMoveTile.getNumber() == 8 || aMoveTile.getNumber() == 12){
+				PromotePawn selector = new PromotePawn(this,player);
+				player.getTheGame().gameFrame.getContentPane().removeAll();
+			    player.getTheGame().gameFrame.getContentPane().repaint();
+				player.getTheGame().gameFrame.getContentPane().add(selector);
+				player.getTheGame().gameFrame.setVisible(true);
+			}
+		}
+		else{
+			return;
+		}
+	}
+	
+	public void selectQueen(Tile aTile){
+		Queen temp = new Queen(aTile.getPiece().getPlayer(),"Promoted Piece",theBoard,aTile);
+		aTile.setPiece(temp);
 	}
 
+	public void selectBishop(Tile aTile){
+		Bishop temp = new Bishop(aTile.getPiece().getPlayer(),"Promoted Piece",theBoard,aTile);
+		aTile.setPiece(temp);
+	}
+	
+	public void selectKnight(Tile aTile){
+		Knight temp = new Knight(aTile.getPiece().getPlayer(),"Promoted Piece",theBoard,aTile);
+		aTile.setPiece(temp);
+	}
+	
+	public void selectRook(Tile aTile){
+		Rook temp = new Rook(aTile.getPiece().getPlayer(),"Promoted Piece",theBoard,aTile);
+		aTile.setPiece(temp);
+	}
 }

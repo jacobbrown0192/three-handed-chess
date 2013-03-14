@@ -18,4 +18,15 @@ public class Controller {
 	public void setInProgress(boolean inProgress) {
 		this.inProgress = inProgress;
 	}
+	
+	public void addToCounter(){
+		turnCount ++;
+		notifyAll();
+	}
+	
+	public boolean inCheck(){
+		
+		return false;
+		
+	}
 }
