@@ -161,7 +161,7 @@ public class Game {
 		this.player3 = player3;
 	}
 	
-	public void getClick(Click aClick){
+	public synchronized void getClick(Click aClick){
 		if(click1 == null)
 		{
 			click1 = aClick;
@@ -189,8 +189,12 @@ public class Game {
 		click1 = null;
 		click2 = null;
 		
+		if(!player1.isAlive())
 		player1.start();
+		if(!player2.isAlive())
 		player2.start();
+		if(!player2.isAlive())
 		player3.start();	
+	
 	}	
 }

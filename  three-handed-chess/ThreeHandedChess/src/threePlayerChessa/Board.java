@@ -38,22 +38,29 @@ public class Board {
 	}
 	
 	/**  
-	 * @param aSection0 - used to set sections
+	 * @param aSection1 - used to set sections
 	 */
 	public void setSection1(Section aSection1) {
 		this.sections.remove(1);
 		this.sections.add(aSection1);
 	}
 	
+	/**  
+	 * @return Section at 2
+	 */
 	public Section getSection2() {
 		return this.sections.elementAt(2);
 	}
 
-	public void setSection3(Section aSection3) {
+	/**  
+	 * @param aSection2 - used to set sections
+	 */
+	public void setSection2(Section aSection2) {
 		this.sections.remove(2);
-		this.sections.add(aSection3);
+		this.sections.add(aSection2);
 	}
 
+	//might not be necessary 
 	public void addPiece(Piece aPiece){
 		pieces.add(aPiece);
 	}
@@ -62,6 +69,10 @@ public class Board {
 		throw new UnsupportedOperationException();
 	}*/
 
+	/**  
+	 * Resets the board to blank(no pieces);
+	 * @return	null
+	 */
 	public void reset() {
 		pieces.clear();
 		for( int i = 0; i<3; i++){
@@ -73,6 +84,13 @@ public class Board {
 		}
 	}
 
+	/**  
+	 * Board constructor
+	 * @param 	gameTeams - the teams playing the game
+	 * @return	null
+	 * 
+	 * Constructs each section clockwise
+	 */
 	public Board(Vector<Team> gameTeams) {
 		this.gameTeams = gameTeams;
 		Section temp1 = new Section(4,1,4,1,8,5,gameTeams.elementAt(0),this);
