@@ -19,9 +19,8 @@ public class PauseMenu {
 
 	public void reset() {
 		theBoard.reset();
-		gameTeams.elementAt(0).addPiecesToBoard();
-		gameTeams.elementAt(1).addPiecesToBoard();
-		gameTeams.elementAt(2).addPiecesToBoard();
+		theGame.gameController.setInProgress(false);
+		theGame.startGame();
 		theGame.gameFrame.getContentPane().removeAll();
 	    theGame.gameFrame.getContentPane().repaint();
 		theGame.gameFrame.getContentPane().add(theGame.tBoardGUI);
@@ -36,6 +35,7 @@ public class PauseMenu {
 	    theGame.gameFrame.getContentPane().repaint();
 		theGame.gameFrame.getContentPane().add(theGame.mainMenuGUI);
 		theGame.gameFrame.setVisible(true);
+		theGame.gameController.setInProgress(false);
 	}
 
 	public void callForStalemate() {
