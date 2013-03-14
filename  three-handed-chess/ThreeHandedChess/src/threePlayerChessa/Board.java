@@ -9,25 +9,25 @@ public class Board {
 	public Vector<Piece> pieces = new Vector<Piece>();
 	public Vector<Team> gameTeams = new Vector<Team>();
 	
-	public Section getSection1() {
+	public Section getSection0() {
 		return this.sections.elementAt(0);
 	}
 
-	public void setSection1(Section aSection1) {
+	public void setSection0(Section aSection0) {
 		this.sections.remove(0);
-		this.sections.add(aSection1);
+		this.sections.add(aSection0);
 	}
 
-	public Section getSection2() {
+	public Section getSection1() {
 		return this.sections.elementAt(1);
 	}
 
-	public void setSection2(Section aSection2) {
+	public void setSection1(Section aSection1) {
 		this.sections.remove(1);
-		this.sections.add(aSection2);
+		this.sections.add(aSection1);
 	}
 	
-	public Section getSection3() {
+	public Section getSection2() {
 		return this.sections.elementAt(2);
 	}
 

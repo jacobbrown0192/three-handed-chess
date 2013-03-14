@@ -219,6 +219,7 @@ public class MainConstruct {
 	{
 		MainConstruct maker  = new MainConstruct();
         maker.gameFrame.setSize(500,600);
-		maker.gameFrame.setVisible(true);		
+		maker.gameFrame.setVisible(true);
+		maker.gameFrame.setResizable(false);
 	}	
 }

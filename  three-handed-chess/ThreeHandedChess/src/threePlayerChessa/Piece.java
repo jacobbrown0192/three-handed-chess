@@ -5,7 +5,13 @@ public abstract class Piece {
 	String name;
 	Board theBoard;
 	Tile currentTile;
+	PieceType type;
 
+	public enum PieceType
+	{
+		PAWN, ROOK, KNIGHT, BISHOP, QUEEN, KING
+	}
+	
 	public Team getPlayer() {
 		return player;
 	}
@@ -37,6 +43,17 @@ public abstract class Piece {
 	public void setCurrentTile(Tile currentTile) {
 		this.currentTile = currentTile;
 	}
+	
+	public PieceType getPieceType()
+	{
+		return type;
+	}
+	
+	public void setPieceType(PieceType type)
+	{
+		this.type = type;
+	}
+	
 
 	public void move(Tile aStartTile, Tile aMoveTile, Turn player){
 		
@@ -46,11 +63,12 @@ public abstract class Piece {
 		this.currentTile.setPiece(nextPiece);
 	}
 
-	public Piece(Team player, String name, Board theBoard, Tile currentTile) {
+	public Piece(Team player, String name, Board theBoard, Tile currentTile, PieceType type) {
 		this.player = player;
 		this.name = name;
 		this.theBoard = theBoard;
 		this.currentTile = currentTile;
+		this.type = type;
 	}
 
 
