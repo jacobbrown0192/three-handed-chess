@@ -4,24 +4,42 @@ import java.util.Vector;
 import threePlayerChessa.Section;
 import threePlayerChessa.Piece;
 
+
+/**  
+ *The Board is the class which contains all the sections, segments, and tiles. 
+ *It is also used to tell where everything goes
+ * 
+ */
 public class Board {
 	public Vector<Section> sections = new Vector<Section>();
 	public Vector<Piece> pieces = new Vector<Piece>();
 	public Vector<Team> gameTeams = new Vector<Team>();
 	
+	/**  
+	 * @return Section at 0
+	 */
 	public Section getSection0() {
 		return this.sections.elementAt(0);
 	}
 
+	/**  
+	 * @param aSection0 - used to set sections
+	 */
 	public void setSection0(Section aSection0) {
 		this.sections.remove(0);
 		this.sections.add(aSection0);
 	}
 
+	/**  
+	 * @return Section at 1
+	 */
 	public Section getSection1() {
 		return this.sections.elementAt(1);
 	}
-
+	
+	/**  
+	 * @param aSection0 - used to set sections
+	 */
 	public void setSection1(Section aSection1) {
 		this.sections.remove(1);
 		this.sections.add(aSection1);

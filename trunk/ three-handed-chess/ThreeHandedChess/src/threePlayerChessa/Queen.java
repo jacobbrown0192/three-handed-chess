@@ -11,15 +11,15 @@ public class Queen extends Piece {
 
 	/**  
 	 * Queen constructor
-	 * @param 	player - one of three possible teams.
+	 * @param 	player - the player who owns this piece
 	 * 			name - the name of the piece.
-	 * 			theBoard - the board being used for the game.
+	 * 			theBoard - the board which the pieces belong
 	 * 			currentTile - the tile the piece is currently occupying.
 	 * @return	null
 	 * 
 	 */
-	public Queen(Team player, String name, Board theBoard, Tile currentTile) {
-		super(player, name, theBoard, currentTile);
+	public Queen(Team player, String name, Board theBoard, Tile currentTile,PieceType type) {
+		super(player, name, theBoard, currentTile,type);
 		// TODO Auto-generated constructor stub
 	}
 

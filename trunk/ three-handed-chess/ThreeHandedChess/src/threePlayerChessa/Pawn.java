@@ -1,5 +1,6 @@
 package threePlayerChessa;
 
+
 import GUI_Interface.PromotePawn;
 
 
@@ -21,15 +22,15 @@ public class Pawn extends Piece {
 
 	/**  
 	 * Pawn constructor
-	 * @param 	player - one of three possible teams.
+	 * @param 	player - the player who owns this piece
 	 * 			name - the name of the piece.
-	 * 			theBoard - the board being used for the game.
+	 * 			theBoard - the board which the pieces belong
 	 * 			currentTile - the tile the piece is currently occupying.
 	 * @return	null
 	 * 
 	 */
-	public Pawn(Team player, String name, Board theBoard, Tile currentTile) {
-		super(player, name, theBoard, currentTile);
+	public Pawn(Team player, String name, Board theBoard, Tile currentTile,PieceType type) {
+		super(player, name, theBoard, currentTile,type);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -72,7 +73,7 @@ public class Pawn extends Piece {
 	 */
 	public void selectQueen(Tile aTile){
 		aTile.getPiece().setCurrentTile(null);
-		Queen temp = new Queen(aTile.getPiece().getPlayer(),"Promoted Piece",theBoard,aTile);
+		Queen temp = new Queen(aTile.getPiece().getPlayer(),"Promoted Piece",theBoard,aTile,aTile.getPiece().getPieceType());
 		aTile.setPiece(temp);
 	}
 
@@ -86,7 +87,7 @@ public class Pawn extends Piece {
 	 */
 	public void selectBishop(Tile aTile){
 		aTile.getPiece().setCurrentTile(null);
-		Bishop temp = new Bishop(aTile.getPiece().getPlayer(),"Promoted Piece",theBoard,aTile);
+		Bishop temp = new Bishop(aTile.getPiece().getPlayer(),"Promoted Piece",theBoard,aTile,aTile.getPiece().getPieceType());
 		aTile.setPiece(temp);
 	}
 
@@ -100,7 +101,7 @@ public class Pawn extends Piece {
 	 */
 	public void selectKnight(Tile aTile){
 		aTile.getPiece().setCurrentTile(null);
-		Knight temp = new Knight(aTile.getPiece().getPlayer(),"Promoted Piece",theBoard,aTile);
+		Knight temp = new Knight(aTile.getPiece().getPlayer(),"Promoted Piece",theBoard,aTile,aTile.getPiece().getPieceType());
 		aTile.setPiece(temp);
 	}
 	
@@ -114,7 +115,7 @@ public class Pawn extends Piece {
 	 */
 	public void selectRook(Tile aTile){
 		aTile.getPiece().setCurrentTile(null);
-		Rook temp = new Rook(aTile.getPiece().getPlayer(),"Promoted Piece",theBoard,aTile);
+		Rook temp = new Rook(aTile.getPiece().getPlayer(),"Promoted Piece",theBoard,aTile,aTile.getPiece().getPieceType());
 		aTile.setPiece(temp);
 	}
 }
