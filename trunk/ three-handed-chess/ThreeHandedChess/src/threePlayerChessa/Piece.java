@@ -18,7 +18,7 @@ public abstract class Piece {
 	 */
 	public enum PieceType
 	{
-		PAWN, ROOK, KNIGHT, BISHOP, QUEEN, KING
+		PAWN, ROOK, KNIGHT, BISHOP, QUEEN, KING, NONE
 	}
 	
 	

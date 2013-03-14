@@ -10,7 +10,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import threePlayerChessa.Click;
 import threePlayerChessa.Piece.PieceType;
-
 import javax.swing.*;
 
 
@@ -20,7 +19,6 @@ public class BoardGUI extends JPanel implements MouseListener
 {
 	private static final long serialVersionUID = 1L;
 	private JLayeredPane layeredPane;
-	//private JLabel imageContainer = new JLabel(new ImageIcon("/Users/christopherhowse/Pictures/ChessImages/Green King.png"));
 	
 	private int yOffset = 25;
 	private Dimension boardSize;
@@ -101,6 +99,9 @@ public class BoardGUI extends JPanel implements MouseListener
 		addPieceLabels(layeredPane, quadFPieces);
 		
 		this.add(layeredPane);
+		
+		//PieceType test = PieceType.ROOK;
+		//setPieceImage(test, 1, quadAPieces[1]);
 	}
 	
 	private void addPieceLabels(JLayeredPane pane, PieceGUI[] quad) 
@@ -280,35 +281,234 @@ public class BoardGUI extends JPanel implements MouseListener
 		g2.fillPolygon(poly);
 	}
 	
-	public void newGameSetup()
-	{
-		//Red Team
-		//for (int i=0; i < 8; i++)
-		{
-		//	quad
-		}
-	}
-	
 	public void setTileIcons()
 	{
+		//Section 0 Segment 0 or Red Left or Quad E
 		for (int i = 0; i<16; i++)
 		{
 			int modelBoardLetter = theGame.getTheBoard().getSection0().getSegment0().getTiles(i).getLetter();
 			int modelBoardNumber = theGame.getTheBoard().getSection0().getSegment0().getTiles(i).getNumber();
 			for (int j = 0; j < 16; j++)
 			{
+				if(quadETiles[j].getBoardLetter() == modelBoardLetter && quadETiles[j].getBoardNumber() == modelBoardNumber)
+				{
+					if(theGame.getTheBoard().getSection0().getSegment0().getTiles(i).getPiece() != null)
+					{
+						PieceType type = theGame.getTheBoard().getSection0().getSegment0().getTiles(i).getPiece().getPieceType();
+						int teamNumber = theGame.getTheBoard().getSection0().getSegment0().getTiles(i).getPiece().getPlayer().getNumber();
+						setPieceImage(type, teamNumber, quadEPieces[j]);
+					}
+					else
+					{
+						int teamNumber = 4;
+						setPieceImage(null, teamNumber, quadEPieces[j]);
+					}
+				}
+			}
+		}
+		//Section 0 Segment 1 or Red Right or Quad D
+		for (int i = 0; i<16; i++)
+		{
+			int modelBoardLetter = theGame.getTheBoard().getSection0().getSegment1().getTiles(i).getLetter();
+			int modelBoardNumber = theGame.getTheBoard().getSection0().getSegment1().getTiles(i).getNumber();
+			for (int j = 0; j < 16; j++)
+			{
+				if(quadDTiles[j].getBoardLetter() == modelBoardLetter && quadDTiles[j].getBoardNumber() == modelBoardNumber)
+				{
+					if(theGame.getTheBoard().getSection0().getSegment1().getTiles(i).getPiece() != null)
+					{
+						PieceType type = theGame.getTheBoard().getSection0().getSegment1().getTiles(i).getPiece().getPieceType();
+						int teamNumber = theGame.getTheBoard().getSection0().getSegment1().getTiles(i).getPiece().getPlayer().getNumber();
+						setPieceImage(type, teamNumber, quadDPieces[j]);
+					}
+					else
+					{
+						int teamNumber = 4;
+						setPieceImage(null, teamNumber, quadDPieces[j]);
+					}
+				}
+			}
+		}
+		//Section 1 Segment 0 or Blue Left or Quad A
+		for (int i = 0; i<16; i++)
+		{
+			int modelBoardLetter = theGame.getTheBoard().getSection1().getSegment0().getTiles(i).getLetter();
+			int modelBoardNumber = theGame.getTheBoard().getSection1().getSegment0().getTiles(i).getNumber();
+			for (int j = 0; j < 16; j++)
+			{
 				if(quadATiles[j].getBoardLetter() == modelBoardLetter && quadATiles[j].getBoardNumber() == modelBoardNumber)
 				{
-					PieceType type = theGame.getTheBoard().getSection0().getSegment0().getTiles(i).getPiece().getPieceType();
-					setPieceImage(type, quadAPieces[j]);
+					if(theGame.getTheBoard().getSection1().getSegment0().getTiles(i).getPiece() != null)
+					{
+						PieceType type = theGame.getTheBoard().getSection1().getSegment0().getTiles(i).getPiece().getPieceType();
+						int teamNumber = theGame.getTheBoard().getSection1().getSegment0().getTiles(i).getPiece().getPlayer().getNumber();
+						setPieceImage(type, teamNumber, quadAPieces[j]);
+					}
+					else
+					{
+						int teamNumber = 4;
+						setPieceImage(null, teamNumber, quadAPieces[j]);
+					}
+				}
+			}
+		}
+		//Section 1 Segment 1 or Blue Right or Quad F
+		for (int i = 0; i<16; i++)
+		{
+			int modelBoardLetter = theGame.getTheBoard().getSection1().getSegment1().getTiles(i).getLetter();
+			int modelBoardNumber = theGame.getTheBoard().getSection1().getSegment1().getTiles(i).getNumber();
+			for (int j = 0; j < 16; j++)
+			{
+				if(quadFTiles[j].getBoardLetter() == modelBoardLetter && quadFTiles[j].getBoardNumber() == modelBoardNumber)
+				{
+					if(theGame.getTheBoard().getSection1().getSegment1().getTiles(i).getPiece() != null)
+					{
+						PieceType type = theGame.getTheBoard().getSection1().getSegment1().getTiles(i).getPiece().getPieceType();
+						int teamNumber = theGame.getTheBoard().getSection1().getSegment1().getTiles(i).getPiece().getPlayer().getNumber();
+						setPieceImage(type, teamNumber, quadFPieces[j]);
+					}
+					else
+					{
+						int teamNumber = 4;
+						setPieceImage(null, teamNumber, quadFPieces[j]);
+					}
+				}
+			}
+		}
+		//Section 2 Segment 0 or Green Left or Quad C
+		for (int i = 0; i<16; i++)
+		{
+			int modelBoardLetter = theGame.getTheBoard().getSection2().getSegment0().getTiles(i).getLetter();
+			int modelBoardNumber = theGame.getTheBoard().getSection2().getSegment0().getTiles(i).getNumber();
+			for (int j = 0; j < 16; j++)
+			{
+				if(quadCTiles[j].getBoardLetter() == modelBoardLetter && quadCTiles[j].getBoardNumber() == modelBoardNumber)
+				{
+					if(theGame.getTheBoard().getSection2().getSegment0().getTiles(i).getPiece() != null)
+					{
+						PieceType type = theGame.getTheBoard().getSection2().getSegment0().getTiles(i).getPiece().getPieceType();
+						int teamNumber = theGame.getTheBoard().getSection2().getSegment0().getTiles(i).getPiece().getPlayer().getNumber();
+						setPieceImage(type, teamNumber, quadCPieces[j]);
+					}
+					else
+					{
+						int teamNumber = 4;
+						setPieceImage(null, teamNumber, quadCPieces[j]);
+					}
+				}
+			}
+		}
+		//Section 2 Segment 1 or Green Right or Quad B
+		for (int i = 0; i<16; i++)
+		{
+			int modelBoardLetter = theGame.getTheBoard().getSection2().getSegment1().getTiles(i).getLetter();
+			int modelBoardNumber = theGame.getTheBoard().getSection2().getSegment1().getTiles(i).getNumber();
+			for (int j = 0; j < 16; j++)
+			{
+				if(quadBTiles[j].getBoardLetter() == modelBoardLetter && quadBTiles[j].getBoardNumber() == modelBoardNumber)
+				{
+					if(theGame.getTheBoard().getSection2().getSegment1().getTiles(i).getPiece() != null)
+					{
+						PieceType type = theGame.getTheBoard().getSection2().getSegment1().getTiles(i).getPiece().getPieceType();
+						int teamNumber = theGame.getTheBoard().getSection2().getSegment1().getTiles(i).getPiece().getPlayer().getNumber();
+						setPieceImage(type, teamNumber, quadBPieces[j]);
+					}
+					else
+					{
+						int teamNumber = 4;
+						setPieceImage(null, teamNumber, quadBPieces[j]);
+					}
 				}
 			}
 		}
 	}
 	
-	public void setPieceImage(PieceType type, PieceGUI piece)
+	public void setPieceImage(PieceType type, int teamNumber, PieceGUI piece)
 	{
-		//piece.setIcon(icon)
+		switch (teamNumber)
+		{
+			case 1:
+				switch(type)
+				{
+					case PAWN:
+						piece.setIcon(RPawn);
+						break;
+					case ROOK:
+						piece.setIcon(RRook);
+						break;
+					case KNIGHT:
+						piece.setIcon(RKnight);
+						break;
+					case BISHOP:
+						piece.setIcon(RBishop);
+						break;
+					case QUEEN:
+						piece.setIcon(RQueen);
+						break;
+					case KING:
+						piece.setIcon(RKing);
+						break;
+					case NONE:
+						piece.setIcon(FTile);
+						break;
+				}
+				break;
+			case 2:
+				switch(type)
+				{
+					case PAWN:
+						piece.setIcon(RPawn);
+						break;
+					case ROOK:
+						piece.setIcon(RRook);
+						break;
+					case KNIGHT:
+						piece.setIcon(RKnight);
+						break;
+					case BISHOP:
+						piece.setIcon(RBishop);
+						break;
+					case QUEEN:
+						piece.setIcon(RQueen);
+						break;
+					case KING:
+						piece.setIcon(RKing);
+						break;
+					case NONE:
+						piece.setIcon(FTile);
+						break;
+				}
+				break;
+			case 3:
+				switch(type)
+				{
+					case PAWN:
+						piece.setIcon(RPawn);
+						break;
+					case ROOK:
+						piece.setIcon(RRook);
+						break;
+					case KNIGHT:
+						piece.setIcon(RKnight);
+						break;
+					case BISHOP:
+						piece.setIcon(RBishop);
+						break;
+					case QUEEN:
+						piece.setIcon(RQueen);
+						break;
+					case KING:
+						piece.setIcon(RKing);
+						break;
+					case NONE:
+						piece.setIcon(FTile);
+						break;
+				}
+				break;
+			case 4:
+				piece.setIcon(FTile);
+				break;
+		}
 	}
 	
 	private void searchForTile(MouseEvent e, TileGUI[] quad)
@@ -328,6 +528,9 @@ public class BoardGUI extends JPanel implements MouseListener
 		
 	}
 		
+	
+	
+	//Test Main
 	public static void main(String s[])
 	{
 		Dimension boardSize = new Dimension (500,500);
@@ -343,6 +546,8 @@ public class BoardGUI extends JPanel implements MouseListener
         frame.setVisible(true);
 	}
 
+	
+	//Mouse Listener
 	@Override
 	public void mouseClicked(MouseEvent e)
 	{
