@@ -1,10 +1,12 @@
 package GUI_Interface;
 
+import java.awt.*;
 import javax.swing.JLabel;
 
 public class PieceGUI extends JLabel
 {
 	private static final long serialVersionUID = 1L;
+	private Point tileCenter;
 	
 	public static PieceGUI[] pieceSet(int size)
 	{
@@ -15,4 +17,18 @@ public class PieceGUI extends JLabel
 		}
 		return array;
 	}
+	
+	public void setTileCenter(Point tileCenter)
+	{
+		this.tileCenter = tileCenter;
+	}
+	
+	@Override
+	public void paintComponent(Graphics g)
+	{
+		super.paintComponent(g);
+		g.setColor(Color.black);
+		g.drawLine(0, 50, 50, 100);
+	}
+	
 }
