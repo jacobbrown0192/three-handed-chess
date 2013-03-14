@@ -6,7 +6,8 @@ package threePlayerChessa;
  *The king holds a special purpose which is to see if it is in check or checkmate.
  *The king has a special move know as castling.
  *If the king hasn't moved and a rook has no pieces between it and the king and
- *	the rook has also not moved the king may move two spaces towards 
+ *	the rook has also not moved the king may move two spaces towards the rook and
+ *	the rook is placed to the opposite side of the king
  *
  */
 public class King extends Piece {

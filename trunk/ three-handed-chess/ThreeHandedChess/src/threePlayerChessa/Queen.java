@@ -26,7 +26,7 @@ public class Queen extends Piece {
 	/**  
 	 * moves the piece from one tile to another
 	 * @param	aStartTile - the tile initially selected 
-	 * 			aMoveTile - the tile to where the player wishes to move the piece from the inital tile
+	 * 			aMoveTile - the tile to where the player wishes to move the piece from the initial tile
 	 * 			player - the current players thread
 	 * @return null
 	 * 

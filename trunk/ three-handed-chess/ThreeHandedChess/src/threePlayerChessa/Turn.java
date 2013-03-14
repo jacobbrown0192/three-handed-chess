@@ -37,6 +37,10 @@ public class Turn extends Thread {
 					if( select1.getPiece().player == gameTeam){
 						validClick = true;
 					}
+					else
+					{
+						getTheGame().click1 =null;
+					}
 					
 					
 					//check valid click
