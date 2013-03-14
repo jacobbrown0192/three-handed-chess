@@ -14,23 +14,51 @@ import javax.swing.*;
 
 import threePlayerChessa.Game;
 
-public class BoardGUI extends JPanel implements MouseListener
+public class BoardGUI extends JLayeredPane implements MouseListener
 {
 	private static final long serialVersionUID = 1L;
 	
-	public CoordinateGUI[] a = CoordinateGUI.CoordinateSet(25);
-	public CoordinateGUI[] b = CoordinateGUI.CoordinateSet(25);
-	public CoordinateGUI[] c = CoordinateGUI.CoordinateSet(25);
-	public CoordinateGUI[] d = CoordinateGUI.CoordinateSet(25);
-	public CoordinateGUI[] e = CoordinateGUI.CoordinateSet(25);
-	public CoordinateGUI[] f = CoordinateGUI.CoordinateSet(25);
+	private CoordinateGUI[] a = CoordinateGUI.coordinateSet(25);
+	private CoordinateGUI[] b = CoordinateGUI.coordinateSet(25);
+	private CoordinateGUI[] c = CoordinateGUI.coordinateSet(25);
+	private CoordinateGUI[] d = CoordinateGUI.coordinateSet(25);
+	private CoordinateGUI[] e = CoordinateGUI.coordinateSet(25);
+	private CoordinateGUI[] f = CoordinateGUI.coordinateSet(25);
 	
-	public TileGUI[] quadA = TileGUI.TileSet(16);
-	public TileGUI[] quadB = TileGUI.TileSet(16);
-	public TileGUI[] quadC = TileGUI.TileSet(16);
-	public TileGUI[] quadD = TileGUI.TileSet(16);
-	public TileGUI[] quadE = TileGUI.TileSet(16);
-	public TileGUI[] quadF = TileGUI.TileSet(16);
+	private TileGUI[] quadATiles = TileGUI.tileSet(16);
+	private TileGUI[] quadBTiles = TileGUI.tileSet(16);
+	private TileGUI[] quadCTiles = TileGUI.tileSet(16);
+	private TileGUI[] quadDTiles = TileGUI.tileSet(16);
+	private TileGUI[] quadETiles = TileGUI.tileSet(16);
+	private TileGUI[] quadFTiles = TileGUI.tileSet(16);
+	
+	private PieceGUI[] quadAPieces = PieceGUI.pieceSet(16);
+	private PieceGUI[] quadBPieces = PieceGUI.pieceSet(16);
+	private PieceGUI[] quadCPieces = PieceGUI.pieceSet(16);
+	private PieceGUI[] quadDPieces = PieceGUI.pieceSet(16);
+	private PieceGUI[] quadEPieces = PieceGUI.pieceSet(16);
+	private PieceGUI[] quadFPieces = PieceGUI.pieceSet(16);
+	
+	private ImageIcon GKing = new ImageIcon("/Users/christopherhowse/Pictures/ChessImages/Green King.png");
+	private ImageIcon GQueen = new ImageIcon("/Users/christopherhowse/Pictures/ChessImages/Green Queen.png");
+	private ImageIcon GBishop = new ImageIcon();
+	private ImageIcon GRook = new ImageIcon();
+	private ImageIcon GKnight = new ImageIcon();
+	private ImageIcon GPawn = new ImageIcon();
+	
+	private ImageIcon BKing = new ImageIcon();
+	private ImageIcon BQueen = new ImageIcon();
+	private ImageIcon BBishop = new ImageIcon();
+	private ImageIcon BRook = new ImageIcon();
+	private ImageIcon BKnight = new ImageIcon();
+	private ImageIcon BPawn = new ImageIcon();
+	
+	private ImageIcon RKing = new ImageIcon();
+	private ImageIcon RQueen = new ImageIcon();
+	private ImageIcon RBishop = new ImageIcon();
+	private ImageIcon RRook = new ImageIcon();
+	private ImageIcon RKnight = new ImageIcon();
+	private ImageIcon RPawn = new ImageIcon();
 	
     final static Color bg = Color.white;
     final static Color fg = Color.black;
@@ -46,13 +74,22 @@ public class BoardGUI extends JPanel implements MouseListener
                                                       BasicStroke.JOIN_MITER, 
                                                       10.0f, dash1, 0.0f);
     Game theGame;
+    //JPanel chessBoard;
 	
 	public BoardGUI(Game aGame)
 	{
 		theGame = aGame;
 		addMouseListener(this);
+		
+		/*
+		chessBoard = new JPanel();
+		chessBoard.setBounds(0, 0, getWidth(), getHeight());
+		this.add(chessBoard, JLayeredPane.DEFAULT_LAYER);
+		chessBoard.add(quadAPieces[0], JLayeredPane.PALETTE_LAYER);
+		*/
 	}
 	
+	@Override
 	public void paint(Graphics g)
 	{
         Graphics2D g2 = (Graphics2D) g;
@@ -103,8 +140,6 @@ public class BoardGUI extends JPanel implements MouseListener
 		f[20].x = w/8;		f[20].y = 3*h/4;
 		f[24].x = w/2;		f[24].y = h/2;
 		f[0].setSection(f);		
-
-		// draw GeneralPath (polyline)
 		
 		paintSection(g, a, "a");
 		paintSection(g, b, "b");
@@ -129,10 +164,16 @@ public class BoardGUI extends JPanel implements MouseListener
 	{
 		Graphics2D g2 = (Graphics2D) g;
 		
-		int xPoints[] = {(int)sec[uL].x, (int)sec[uL + 1].x, (int)sec[uL + 6].x, (int)sec[uL + 5].x}; //, (int)sec[uL].x};
-		int yPoints[] = {(int)sec[uL].y, (int)sec[uL + 1].y, (int)sec[uL + 6].y, (int)sec[uL + 5].y}; //, (int)sec[uL].y};
+		int xPoints[] = {(int)sec[uL].x, (int)sec[uL + 1].x, (int)sec[uL + 6].x, (int)sec[uL + 5].x};
+		int yPoints[] = {(int)sec[uL].y, (int)sec[uL + 1].y, (int)sec[uL + 6].y, (int)sec[uL + 5].y};
 		
 		Polygon poly = new Polygon(xPoints, yPoints, xPoints.length);
+		
+		int xAvg = (int)((sec[uL].x + sec[uL + 1].x + sec[uL + 6].x + sec[uL + 5].x)/4);
+		int yAvg = (int)((sec[uL].y + sec[uL + 1].y + sec[uL + 6].y + sec[uL + 5].y)/4);
+		CoordinateGUI tileCenter = new CoordinateGUI(xAvg, yAvg);
+		Point tileCenterPoint = new Point(xAvg, yAvg);
+		
 		
 		int tileNum = 100;
 		
@@ -156,28 +197,61 @@ public class BoardGUI extends JPanel implements MouseListener
 		switch(sectionName)
 		{
 			case "a":
-				quadA[tileNum].setTile(poly, sectionName, tileNum);
+				quadATiles[tileNum].setTile(poly, sectionName, tileNum, tileCenter);
+				quadAPieces[tileNum].setLocation(tileCenterPoint);
+				if(tileNum == 0)
+				{
+					quadAPieces[0].setIcon(GKing);
+					quadAPieces[0].setBounds(xAvg, yAvg, 28, 50);
+					quadAPieces[0].setVisible(true);
+				}
 				break;
 			case "b":
-				quadB[tileNum].setTile(poly, sectionName, tileNum);
+				quadBTiles[tileNum].setTile(poly, sectionName, tileNum, tileCenter);
+				quadBPieces[tileNum].setLocation(tileCenterPoint);
 				break;
 			case "c":
-				quadC[tileNum].setTile(poly, sectionName, tileNum);
+				quadCTiles[tileNum].setTile(poly, sectionName, tileNum, tileCenter);
+				quadCPieces[tileNum].setLocation(tileCenterPoint);
 				break;
 			case "d":
-				quadD[tileNum].setTile(poly, sectionName, tileNum);
+				quadDTiles[tileNum].setTile(poly, sectionName, tileNum, tileCenter);
+				quadDPieces[tileNum].setLocation(tileCenterPoint);
 				break;
 			case "e":
-				quadE[tileNum].setTile(poly, sectionName, tileNum);
+				quadETiles[tileNum].setTile(poly, sectionName, tileNum, tileCenter);
+				quadEPieces[tileNum].setLocation(tileCenterPoint);
 				break;
 			case "f":
-				quadF[tileNum].setTile(poly, sectionName, tileNum);
+				quadFTiles[tileNum].setTile(poly, sectionName, tileNum, tileCenter);
+				quadFPieces[tileNum].setLocation(tileCenterPoint);
 				break;
 		}
 		
+		g2.setColor(Color.BLACK);
 		g2.draw(poly);
+		
+		if(sectionName == "a" || sectionName == "b" || sectionName == "c")
+		{
+			if(tileNum == 0 || tileNum == 2 || tileNum == 5 || tileNum == 7 || tileNum == 8 || tileNum == 10 || tileNum == 13 || tileNum == 15)
+			{
+				g2.setColor(new Color(0xCC, 0x99, 0x66));
+			}
+			else g2.setColor(new Color(0xFF, 0xCC, 0x99));
+		}
+		else
+		{
+			if(tileNum == 0 || tileNum == 2 || tileNum == 5 || tileNum == 7 || tileNum == 8 || tileNum == 10 || tileNum == 13 || tileNum == 15)
+			{
+				g2.setColor(new Color(0xFF, 0xCC, 0x99));
+			}
+			else g2.setColor(new Color(0xCC, 0x99, 0x66));
+		}
+		
+		g2.fillPolygon(poly);
 	}
 	
+
 	private void searchForTile(MouseEvent e, TileGUI[] quad)
 	{
 		for (int i=0; i < 16; i++)
@@ -192,8 +266,7 @@ public class BoardGUI extends JPanel implements MouseListener
 		}
 		
 	}
-	
-	
+		
 	public static void main(String s[])
 	{
 		BoardGUI board = new BoardGUI(null);
@@ -208,12 +281,12 @@ public class BoardGUI extends JPanel implements MouseListener
 	@Override
 	public void mouseClicked(MouseEvent e)
 	{
-		searchForTile(e, quadA);
-		searchForTile(e, quadB);
-		searchForTile(e, quadC);
-		searchForTile(e, quadD);
-		searchForTile(e, quadE);
-		searchForTile(e, quadF);	
+		searchForTile(e, quadATiles);
+		searchForTile(e, quadBTiles);
+		searchForTile(e, quadCTiles);
+		searchForTile(e, quadDTiles);
+		searchForTile(e, quadETiles);
+		searchForTile(e, quadFTiles);	
 	}
 
 	@Override
