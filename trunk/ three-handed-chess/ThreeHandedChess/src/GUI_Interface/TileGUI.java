@@ -36,11 +36,243 @@ public class TileGUI
 		this.section = section;
 		this.number = number;
 		this.tileCenter = tileCenter;
+		this.boardNumber = setBoardNumberThroughConversion(this.section, this.number);
+		this.boardLetter = setBoardLetterThroughConversion(this.section, this.number);
 	}
 	
-	public void convertCoordinateToGraphicSystem()
+	public int setBoardNumberThroughConversion(String section, int number)
 	{
+		int boardNumber = 100;
 		
+		switch (section)
+		{
+			case "a":				
+				if(number%4 == 0)
+				{
+					boardNumber = 8;
+				}
+				else if(number%4 == 1)
+				{
+					boardNumber = 7;
+				}
+				else if(number%4 == 2)
+				{
+					boardNumber = 6;
+				}
+				else if(number%4 == 3)
+				{
+					boardNumber = 5;
+				}
+				break;
+			case "b":
+				if(number%4 == 0)
+				{
+					boardNumber = 9;
+				}
+				else if(number%4 == 1)
+				{
+					boardNumber = 10;
+				}
+				else if(number%4 == 2)
+				{
+					boardNumber = 11;
+				}
+				else if(number%4 == 3)
+				{
+					boardNumber = 12;
+				}
+				break;
+			case "c":
+				if(number%4 == 0)
+				{
+					boardNumber = 9;
+				}
+				else if(number%4 == 1)
+				{
+					boardNumber = 10;
+				}
+				else if(number%4 == 2)
+				{
+					boardNumber = 11;
+				}
+				else if(number%4 == 3)
+				{
+					boardNumber = 12;
+				}
+				break;
+			case "d":
+				if(number < 4)
+				{
+					boardNumber = 4;
+				}
+				else if(number < 8)
+				{
+					boardNumber = 3;
+				}
+				else if(number < 12)
+				{
+					boardNumber = 2;
+				}
+				else if(number < 16)
+				{
+					boardNumber = 1;
+				}
+				break;
+			case "e":
+				if(number < 4)
+				{
+					boardNumber = 4;
+				}
+				else if(number < 8)
+				{
+					boardNumber = 3;
+				}
+				else if(number < 12)
+				{
+					boardNumber = 2;
+				}
+				else if(number < 16)
+				{
+					boardNumber = 1;
+				}
+				break;
+			case "f":
+				if(number < 4)
+				{
+					boardNumber = 8;
+				}
+				else if(number < 8)
+				{
+					boardNumber = 7;
+				}
+				else if(number < 12)
+				{
+					boardNumber = 6;
+				}
+				else if(number < 16)
+				{
+					boardNumber = 5;
+				}
+				break;
+		}
+		return boardNumber;
+	}
+	
+	public int setBoardLetterThroughConversion(String section, int number)
+	{
+		int boardLetter = 100;
+		switch (section)
+		{
+			case "a":
+				if(number < 4)
+				{
+					boardLetter = 12;
+				}
+				else if(number < 8)
+				{
+					boardLetter = 11;
+				}
+				else if(number < 12)
+				{
+					boardLetter = 10;
+				}
+				else if(number < 16)
+				{
+					boardLetter = 9;
+				}
+				break;
+			case "b":
+				if(number < 4)
+				{
+					boardLetter = 12;
+				}
+				else if(number < 8)
+				{
+					boardLetter = 11;
+				}
+				else if(number < 12)
+				{
+					boardLetter = 10;
+				}
+				else if(number < 16)
+				{
+					boardLetter = 9;
+				}
+				break;
+			case "c":
+				if(number < 4)
+				{
+					boardLetter = 5;
+				}
+				else if(number < 8)
+				{
+					boardLetter = 6;
+				}
+				else if(number < 12)
+				{
+					boardLetter = 7;
+				}
+				else if(number < 16)
+				{
+					boardLetter = 8;
+				}
+				break;
+			case "d":				
+				if(number%4 == 0)
+				{
+					boardLetter = 5;
+				}
+				else if(number%4 == 1)
+				{
+					boardLetter = 6;
+				}
+				else if(number%4 == 2)
+				{
+					boardLetter = 7;
+				}
+				else if(number%4 == 3)
+				{
+					boardLetter = 8;
+				}
+				break;
+			case "e":				
+				if(number%4 == 0)
+				{
+					boardLetter = 1;
+				}
+				else if(number%4 == 1)
+				{
+					boardLetter = 2;
+				}
+				else if(number%4 == 2)
+				{
+					boardLetter = 3;
+				}
+				else if(number%4 == 3)
+				{
+					boardLetter = 4;
+				}
+				break;
+			case "f":				
+				if(number%4 == 0)
+				{
+					boardLetter = 1;
+				}
+				else if(number%4 == 1)
+				{
+					boardLetter = 2;
+				}
+				else if(number%4 == 2)
+				{
+					boardLetter = 3;
+				}
+				else if(number%4 == 3)
+				{
+					boardLetter = 4;
+				}
+				break;
+		}
+		return boardLetter;
 	}
 	
 	public void convertCoordinateToModelSystem(TileGUI tile)

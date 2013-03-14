@@ -518,8 +518,9 @@ public class BoardGUI extends JPanel implements MouseListener
 			if (quad[i].checkIfContained(e))
 			{
 				System.out.println("Found Tile!");
-				quad[i].convertCoordinateToModelSystem(quad[i]);
+				//quad[i].convertCoordinateToModelSystem(quad[i]);
 				Click tileClicked = new Click(quad[i].getBoardNumber(), quad[i].getBoardLetter());
+				theGame.getClick(tileClicked);
 				System.out.println(quad[i].getBoardNumber());
 				System.out.println(quad[i].getBoardLetter());
 				break;
