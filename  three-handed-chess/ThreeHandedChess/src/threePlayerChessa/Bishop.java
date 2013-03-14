@@ -41,6 +41,7 @@ public class Bishop extends Piece {
 			}
 			aMoveTile.setPiece(aStartTile.getPiece());
 			aStartTile.setPiece(null);
+			player.getTheGame().boardGUI.setTileIcons();
 			player.getTheGame().gameController.addToCounter(); //adds one to turn counter and starts the next players turn
 		}
 		else{	//if not a valid move returns for player to choose new tiles
