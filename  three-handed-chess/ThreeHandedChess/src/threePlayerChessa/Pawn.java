@@ -2,6 +2,17 @@ package threePlayerChessa;
 
 import GUI_Interface.PromotePawn;
 
+
+/**  
+ *The Pawn class extends Piece. 
+ *Its movement style is to move straight one space however it takes pieces one space diagonally
+ *The Pawn has three special movements: 
+ *it can move two spaces ahead the first move
+ *it can preform en passant
+ *it can be promoted by reaching another players bench.   
+ *
+ *
+ */
 public class Pawn extends Piece {
 
 	
