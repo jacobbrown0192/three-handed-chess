@@ -24,6 +24,7 @@ public class CallForStalemateMenu {
 		
 		if(player0Yes == true && player1Yes == true && player2Yes == true){
 			theBoard.reset();
+			theGame.gameController.setInProgress(false);
 		}		
 	}
 	

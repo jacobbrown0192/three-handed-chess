@@ -22,6 +22,13 @@ public class Game {
 	public BottomBoardGUI bBoardGUI;
 	public TopBoardGUI tBoardGUI;
 	public JFrame gameFrame;
+	public Controller gameController;
+	public Click click1;
+	public Click click2;
+	public Turn player1;
+	public Turn player2;	
+	public Turn player3;
+
 	
 	public Game() {
 
@@ -126,6 +133,34 @@ public class Game {
 		this.tBoardGUI = tBoardGUI;
 	}
 
+	public Controller getGameController() {
+		return gameController;
+	}
+	public void setGameController(Controller gameController) {
+		this.gameController = gameController;
+	}
+
+	public Turn getPlayer1() {
+		return player1;
+	}
+	public void setPlayer1(Turn player1) {
+		this.player1 = player1;
+	}
+
+	public Turn getPlayer2() {
+		return player2;
+	}
+	public void setPlayer2(Turn player2) {
+		this.player2 = player2;
+	}
+
+	public Turn getPlayer3() {
+		return player3;
+	}
+	public void setPlayer3(Turn player3) {
+		this.player3 = player3;
+	}
+
 
 	public void startGame(){
 		gameFrame.getContentPane().removeAll();
@@ -135,8 +170,15 @@ public class Game {
 		gameFrame.getContentPane().add(bBoardGUI,BorderLayout.SOUTH);
 		gameFrame.setVisible(true);
 		theBoard.reset();
-		//gameTeams.elementAt(0).addPiecesToBoard();
-		//gameTeams.elementAt(1).addPiecesToBoard();
-		//gameTeams.elementAt(2).addPiecesToBoard();		
+		gameTeams.elementAt(0).addPiecesToBoard();
+		gameTeams.elementAt(1).addPiecesToBoard();
+		gameTeams.elementAt(2).addPiecesToBoard();
+		gameController.setInProgress(true);
+		click1 = null;
+		click2 = null;
+			
+		player1.start();
+		player2.start();
+		player3.start();	
 	}	
 }

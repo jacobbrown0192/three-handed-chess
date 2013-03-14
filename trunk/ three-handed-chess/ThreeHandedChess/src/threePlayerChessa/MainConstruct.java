@@ -30,8 +30,11 @@ public class MainConstruct {
 	public BoardGUI boardGUI;
 	public BottomBoardGUI bBoardGUI;
 	public TopBoardGUI tBoardGUI;
-	JFrame gameFrame;
-	
+	public JFrame gameFrame;
+	public Controller gameController;
+	public Turn player1;
+	public Turn player2;	
+	public Turn player3;
 	
 	/**
 	 * 
@@ -110,22 +113,24 @@ public class MainConstruct {
 			
 		team2.addFullTeam(teamPieces);
 
-		pawn1.setPlayer(this.gameTeams.elementAt(1));
-		pawn2.setPlayer(this.gameTeams.elementAt(1));
-		pawn3.setPlayer(this.gameTeams.elementAt(1));
-		pawn4.setPlayer(this.gameTeams.elementAt(1));
-		pawn5.setPlayer(this.gameTeams.elementAt(1));
-		pawn6.setPlayer(this.gameTeams.elementAt(1));
-		pawn7.setPlayer(this.gameTeams.elementAt(1));
-		pawn8.setPlayer(this.gameTeams.elementAt(1));
-		rook1.setPlayer(this.gameTeams.elementAt(1));
-		knight1.setPlayer(this.gameTeams.elementAt(1));
-		bishop1.setPlayer(this.gameTeams.elementAt(1));
-		king.setPlayer(this.gameTeams.elementAt(1));
-		queen1.setPlayer(this.gameTeams.elementAt(1));
-		bishop2.setPlayer(this.gameTeams.elementAt(1));
-		knight2.setPlayer(this.gameTeams.elementAt(1));
-		rook2.setPlayer(this.gameTeams.elementAt(1));
+		pawn1.setPlayer(this.gameTeams.elementAt(2));
+		pawn2.setPlayer(this.gameTeams.elementAt(2));
+		pawn3.setPlayer(this.gameTeams.elementAt(2));
+		pawn4.setPlayer(this.gameTeams.elementAt(2));
+		pawn5.setPlayer(this.gameTeams.elementAt(2));
+		pawn6.setPlayer(this.gameTeams.elementAt(2));
+		pawn7.setPlayer(this.gameTeams.elementAt(2));
+		pawn8.setPlayer(this.gameTeams.elementAt(2));
+		rook1.setPlayer(this.gameTeams.elementAt(2));
+		knight1.setPlayer(this.gameTeams.elementAt(2));
+		bishop1.setPlayer(this.gameTeams.elementAt(2));
+		king.setPlayer(this.gameTeams.elementAt(2));
+		queen1.setPlayer(this.gameTeams.elementAt(2));
+		bishop2.setPlayer(this.gameTeams.elementAt(2));
+		knight2.setPlayer(this.gameTeams.elementAt(2));
+		rook2.setPlayer(this.gameTeams.elementAt(2));
+		
+		team3.addFullTeam(teamPieces);
 			
 		team1.addboard(theBoard);
 		team2.addboard(theBoard);
@@ -143,10 +148,16 @@ public class MainConstruct {
 		CallForStalemateMenu callStale = new CallForStalemateMenu(this.theBoard, this.theGame);		
 		this.stalemate = callStale;
 	
-
-
-		
+		Controller aGameController = new Controller(theGame);
+		gameController = aGameController;		
 				
+		Turn aplayer1 = new Turn(theGame,gameTeams.elementAt(0));
+		Turn aplayer2 = new Turn(theGame,gameTeams.elementAt(1));
+		Turn aplayer3 = new Turn(theGame,gameTeams.elementAt(2));		
+		player1 = aplayer1;
+		player2 = aplayer2;
+		player3 = aplayer3;
+		
 		JFrame aGameFrame = new JFrame();		
 		gameFrame = aGameFrame;
 		gameFrame.setLayout(new BorderLayout(0, 0));
@@ -193,6 +204,10 @@ public class MainConstruct {
 		theGame.setStalemate(stalemate);
 		theGame.setbBoardGUI(bBoardGUI);
 		theGame.settBoardGUI(tBoardGUI);
+		theGame.setGameController(gameController);
+		theGame.setPlayer1(player1);
+		theGame.setPlayer2(player2);
+		theGame.setPlayer3(player3);
 		
 		
 		
