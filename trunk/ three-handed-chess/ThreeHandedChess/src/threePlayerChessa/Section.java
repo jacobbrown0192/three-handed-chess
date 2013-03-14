@@ -14,22 +14,23 @@ public class Section {
 	public Board theBoard;	
 	public Vector<Segment> segments = new Vector<Segment>();
 
-	public Segment getSection1() {
+	
+	public Segment getSegment0() {
 		return this.segments.elementAt(0);
 	}
 
-	public void setSection1(Segment aSegment1) {
+	public void setSegment0(Segment aSegment0) {
 		this.segments.remove(0);
-		this.segments.add(aSegment1);
+		this.segments.add(aSegment0);
+	}
+	
+	public Segment getSegment1() {
+		return this.segments.elementAt(0);
 	}
 
-	public Segment getSection2() {
-		return this.segments.elementAt(1);
-	}
-
-	public void setSection2(Segment aSegment2) {
+	public void setSegment1(Segment aSegment1) {
 		this.segments.remove(1);
-		this.segments.add(aSegment2);
+		this.segments.add(aSegment1);
 	}
 
 	public Team getColour() {

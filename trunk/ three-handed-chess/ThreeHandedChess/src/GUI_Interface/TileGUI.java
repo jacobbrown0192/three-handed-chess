@@ -7,13 +7,13 @@ import javax.swing.*;
 public class TileGUI
 {
 	private static final long serialVersionUID = 1L;
-	public Polygon poly;
-	public CoordinateGUI tileCenter;
-	public int number;
-	public String section;
+	private Polygon poly;
+	private CoordinateGUI tileCenter;
+	private int number;
+	private String section;
 	
-	public int boardNumber;
-	public int boardLetter;
+	private int boardNumber;
+	private int boardLetter;
 
 	public static TileGUI[] tileSet(int size)
 	{
@@ -38,7 +38,12 @@ public class TileGUI
 		this.tileCenter = tileCenter;
 	}
 	
-	public void convertCoordinateSystem(TileGUI tile)
+	public void convertCoordinateToGraphicSystem()
+	{
+		
+	}
+	
+	public void convertCoordinateToModelSystem(TileGUI tile)
 	{
 		switch (tile.section)
 		{
@@ -265,5 +270,15 @@ public class TileGUI
 		{
 			return false;
 		}
+	}
+
+	public int getBoardLetter()
+	{
+		return boardLetter;
+	}
+
+	public int getBoardNumber() 
+	{
+		return boardNumber;
 	}
 }

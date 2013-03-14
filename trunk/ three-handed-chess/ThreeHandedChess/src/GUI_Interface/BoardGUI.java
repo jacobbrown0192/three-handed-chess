@@ -8,12 +8,11 @@ package GUI_Interface;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.geom.GeneralPath;
-import java.net.URL;
+import threePlayerChessa.Click;
+import threePlayerChessa.Piece.PieceType;
 
 import javax.swing.*;
 
-import com.sun.org.apache.xml.internal.utils.URI;
 
 import threePlayerChessa.Game;
 
@@ -223,37 +222,37 @@ public class BoardGUI extends JPanel implements MouseListener
 			case "a":
 				quadATiles[tileNum].setTile(poly, sectionName, tileNum, tileCenter);
 				quadAPieces[tileNum].setTileCenter(tileCenterPoint);
-				quadAPieces[tileNum].setIcon(GQueen);
+				//quadAPieces[tileNum].setIcon(GQueen);
 				quadAPieces[tileNum].setBounds(xAvg-14, yAvg-40, 28, 40);
 				break;
 			case "b":
 				quadBTiles[tileNum].setTile(poly, sectionName, tileNum, tileCenter);
 				quadBPieces[tileNum].setTileCenter(tileCenterPoint);
-				quadBPieces[tileNum].setIcon(RQueen);
+				//quadBPieces[tileNum].setIcon(RQueen);
 				quadBPieces[tileNum].setBounds(xAvg-14, yAvg-40, 28, 40);
 				break;
 			case "c":
 				quadCTiles[tileNum].setTile(poly, sectionName, tileNum, tileCenter);
 				quadCPieces[tileNum].setTileCenter(tileCenterPoint);
-				quadCPieces[tileNum].setIcon(BQueen);
+				//quadCPieces[tileNum].setIcon(BQueen);
 				quadCPieces[tileNum].setBounds(xAvg-14, yAvg-40, 28, 40);
 				break;
 			case "d":
 				quadDTiles[tileNum].setTile(poly, sectionName, tileNum, tileCenter);
 				quadDPieces[tileNum].setTileCenter(tileCenterPoint);
-				quadDPieces[tileNum].setIcon(GKing);
+				//quadDPieces[tileNum].setIcon(GKing);
 				quadDPieces[tileNum].setBounds(xAvg-14, yAvg-40, 28, 40);
 				break;
 			case "e":
 				quadETiles[tileNum].setTile(poly, sectionName, tileNum, tileCenter);
 				quadEPieces[tileNum].setTileCenter(tileCenterPoint);
-				quadEPieces[tileNum].setIcon(RKing);
+				//quadEPieces[tileNum].setIcon(RKing);
 				quadEPieces[tileNum].setBounds(xAvg-14, yAvg-40, 28, 40);
 				break;
 			case "f":
 				quadFTiles[tileNum].setTile(poly, sectionName, tileNum, tileCenter);
 				quadFPieces[tileNum].setTileCenter(tileCenterPoint);
-				quadFPieces[tileNum].setIcon(FTile);
+				//quadFPieces[tileNum].setIcon(FTile);
 				quadFPieces[tileNum].setBounds(xAvg-14, yAvg-40, 28, 40);
 				break;
 		}
@@ -281,6 +280,37 @@ public class BoardGUI extends JPanel implements MouseListener
 		g2.fillPolygon(poly);
 	}
 	
+	public void newGameSetup()
+	{
+		//Red Team
+		//for (int i=0; i < 8; i++)
+		{
+		//	quad
+		}
+	}
+	
+	public void setTileIcons()
+	{
+		for (int i = 0; i<16; i++)
+		{
+			int modelBoardLetter = theGame.getTheBoard().getSection0().getSegment0().getTiles(i).getLetter();
+			int modelBoardNumber = theGame.getTheBoard().getSection0().getSegment0().getTiles(i).getNumber();
+			for (int j = 0; j < 16; j++)
+			{
+				if(quadATiles[j].getBoardLetter() == modelBoardLetter && quadATiles[j].getBoardNumber() == modelBoardNumber)
+				{
+					PieceType type = theGame.getTheBoard().getSection0().getSegment0().getTiles(i).getPiece().getPieceType();
+					setPieceImage(type, quadAPieces[j]);
+				}
+			}
+		}
+	}
+	
+	public void setPieceImage(PieceType type, PieceGUI piece)
+	{
+		//piece.setIcon(icon)
+	}
+	
 	private void searchForTile(MouseEvent e, TileGUI[] quad)
 	{
 		for (int i=0; i < 16; i++)
@@ -288,8 +318,10 @@ public class BoardGUI extends JPanel implements MouseListener
 			if (quad[i].checkIfContained(e))
 			{
 				System.out.println("Found Tile!");
-				System.out.println(quad[i].getSection());
-				System.out.println(i);
+				quad[i].convertCoordinateToModelSystem(quad[i]);
+				Click tileClicked = new Click(quad[i].getBoardNumber(), quad[i].getBoardLetter());
+				System.out.println(quad[i].getBoardNumber());
+				System.out.println(quad[i].getBoardLetter());
 				break;
 			}
 		}
@@ -298,23 +330,9 @@ public class BoardGUI extends JPanel implements MouseListener
 		
 	public static void main(String s[])
 	{
-		//JLayeredPane layeredPane = new JLayeredPane();
-		//layeredPane.setPreferredSize(boardSize);
 		Dimension boardSize = new Dimension (500,500);
-		
+	
 		BoardGUI board = new BoardGUI(null, boardSize);
-		//board.setSize(layeredPane.getPreferredSize());
-		//board.setLocation(0, 0);
-		
-		//ImageIcon image = new ImageIcon("/Users/christopherhowse/Pictures/ChessImages/Green King.png");
-		//Point point = new Point(50, 60);
-		//PieceGUI piece = new PieceGUI(image);
-		//JLabel piece2 = new JLabel(image);
-		//piece2.setLocation(point);
-		//piece2.setBounds(100,100,200,100);
-		
-		//layeredPane.add(board, 2);
-		//layeredPane.add(piece2, 1);
 		
 		JFrame frame = new JFrame("ThreeHandedChessBoard");
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -322,8 +340,6 @@ public class BoardGUI extends JPanel implements MouseListener
 		frame.add(board);
         frame.setSize(boardSize);
         frame.setResizable(false);
-        
-        //frame.pack();
         frame.setVisible(true);
 	}
 
