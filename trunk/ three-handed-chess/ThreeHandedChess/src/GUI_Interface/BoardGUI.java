@@ -457,22 +457,22 @@ public class BoardGUI extends JPanel implements MouseListener
 				switch(type)
 				{
 					case PAWN:
-						piece.setIcon(RPawn);
+						piece.setIcon(BPawn);
 						break;
 					case ROOK:
-						piece.setIcon(RRook);
+						piece.setIcon(BRook);
 						break;
 					case KNIGHT:
-						piece.setIcon(RKnight);
+						piece.setIcon(BKnight);
 						break;
 					case BISHOP:
-						piece.setIcon(RBishop);
+						piece.setIcon(BBishop);
 						break;
 					case QUEEN:
-						piece.setIcon(RQueen);
+						piece.setIcon(BQueen);
 						break;
 					case KING:
-						piece.setIcon(RKing);
+						piece.setIcon(BKing);
 						break;
 					case NONE:
 						piece.setIcon(FTile);
@@ -483,22 +483,22 @@ public class BoardGUI extends JPanel implements MouseListener
 				switch(type)
 				{
 					case PAWN:
-						piece.setIcon(RPawn);
+						piece.setIcon(GPawn);
 						break;
 					case ROOK:
-						piece.setIcon(RRook);
+						piece.setIcon(GRook);
 						break;
 					case KNIGHT:
-						piece.setIcon(RKnight);
+						piece.setIcon(GKnight);
 						break;
 					case BISHOP:
-						piece.setIcon(RBishop);
+						piece.setIcon(GBishop);
 						break;
 					case QUEEN:
-						piece.setIcon(RQueen);
+						piece.setIcon(GQueen);
 						break;
 					case KING:
-						piece.setIcon(RKing);
+						piece.setIcon(GKing);
 						break;
 					case NONE:
 						piece.setIcon(FTile);
