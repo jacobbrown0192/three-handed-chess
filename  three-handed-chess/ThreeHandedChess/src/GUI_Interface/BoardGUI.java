@@ -9,14 +9,22 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.GeneralPath;
+import java.net.URL;
 
 import javax.swing.*;
+
+import com.sun.org.apache.xml.internal.utils.URI;
 
 import threePlayerChessa.Game;
 
 public class BoardGUI extends JPanel implements MouseListener
 {
 	private static final long serialVersionUID = 1L;
+	private JLayeredPane layeredPane;
+	//private JLabel imageContainer = new JLabel(new ImageIcon("/Users/christopherhowse/Pictures/ChessImages/Green King.png"));
+	
+	private int yOffset = 25;
+	private Dimension boardSize;
 	
 	private CoordinateGUI[] a = CoordinateGUI.coordinateSet(25);
 	private CoordinateGUI[] b = CoordinateGUI.coordinateSet(25);
@@ -39,26 +47,28 @@ public class BoardGUI extends JPanel implements MouseListener
 	private PieceGUI[] quadEPieces = PieceGUI.pieceSet(16);
 	private PieceGUI[] quadFPieces = PieceGUI.pieceSet(16);
 	
-	private ImageIcon GKing = new ImageIcon("/Users/christopherhowse/Pictures/ChessImages/Green King.png");
-	private ImageIcon GQueen = new ImageIcon("/Users/christopherhowse/Pictures/ChessImages/Green Queen.png");
-	private ImageIcon GBishop = new ImageIcon();
-	private ImageIcon GRook = new ImageIcon();
-	private ImageIcon GKnight = new ImageIcon();
-	private ImageIcon GPawn = new ImageIcon();
+	private ImageIcon FTile = new ImageIcon(getClass().getResource("/resources/Free Tile.png"));
 	
-	private ImageIcon BKing = new ImageIcon();
-	private ImageIcon BQueen = new ImageIcon();
-	private ImageIcon BBishop = new ImageIcon();
-	private ImageIcon BRook = new ImageIcon();
-	private ImageIcon BKnight = new ImageIcon();
-	private ImageIcon BPawn = new ImageIcon();
+	private ImageIcon GKing = new ImageIcon(getClass().getResource("/resources/Green King.png"));
+	private ImageIcon GQueen  = new ImageIcon(getClass().getResource("/resources/Green Queen.png"));
+	private ImageIcon GBishop = new ImageIcon(getClass().getResource("/resources/Green Bishop.png"));
+	private ImageIcon GRook = new ImageIcon(getClass().getResource("/resources/Green Rook.png"));
+	private ImageIcon GKnight = new ImageIcon(getClass().getResource("/resources/Green Knight.png"));
+	private ImageIcon GPawn = new ImageIcon(getClass().getResource("/resources/Green Pawn.png"));
 	
-	private ImageIcon RKing = new ImageIcon();
-	private ImageIcon RQueen = new ImageIcon();
-	private ImageIcon RBishop = new ImageIcon();
-	private ImageIcon RRook = new ImageIcon();
-	private ImageIcon RKnight = new ImageIcon();
-	private ImageIcon RPawn = new ImageIcon();
+	private ImageIcon BKing = new ImageIcon(getClass().getResource("/resources/Blue King.png"));
+	private ImageIcon BQueen = new ImageIcon(getClass().getResource("/resources/Blue Queen.png"));
+	private ImageIcon BBishop = new ImageIcon(getClass().getResource("/resources/Blue Bishop.png"));
+	private ImageIcon BRook = new ImageIcon(getClass().getResource("/resources/Blue Rook.png"));
+	private ImageIcon BKnight = new ImageIcon(getClass().getResource("/resources/Blue Knight.png"));
+	private ImageIcon BPawn = new ImageIcon(getClass().getResource("/resources/Blue Pawn.png"));
+	
+	private ImageIcon RKing = new ImageIcon(getClass().getResource("/resources/Red King.png"));
+	private ImageIcon RQueen = new ImageIcon(getClass().getResource("/resources/Red Queen.png"));
+	private ImageIcon RBishop = new ImageIcon(getClass().getResource("/resources/Red Bishop.png"));
+	private ImageIcon RRook = new ImageIcon(getClass().getResource("/resources/Red Rook.png"));
+	private ImageIcon RKnight = new ImageIcon(getClass().getResource("/resources/Red Knight.png"));
+	private ImageIcon RPawn = new ImageIcon(getClass().getResource("/resources/Red Pawn.png"));
 	
     final static Color bg = Color.white;
     final static Color fg = Color.black;
@@ -75,21 +85,35 @@ public class BoardGUI extends JPanel implements MouseListener
                                                       10.0f, dash1, 0.0f);
     Game theGame;
 	
-	public BoardGUI(Game aGame)
-	{
+	public BoardGUI(Game aGame, Dimension boardSize)
+	{	
 		theGame = aGame;
 		addMouseListener(this);
 		
-		/*
-		chessBoard = new JPanel();
-		chessBoard.setBounds(0, 0, getWidth(), getHeight());
-		this.add(chessBoard, JLayeredPane.DEFAULT_LAYER);
-		chessBoard.add(quadAPieces[0], JLayeredPane.PALETTE_LAYER);
-		*/
+		this.boardSize = boardSize;
+		this.layeredPane = new JLayeredPane();
+		layeredPane.setPreferredSize(this.boardSize);
+		
+		addPieceLabels(layeredPane, quadAPieces);
+		addPieceLabels(layeredPane, quadBPieces);
+		addPieceLabels(layeredPane, quadCPieces);
+		addPieceLabels(layeredPane, quadDPieces);
+		addPieceLabels(layeredPane, quadEPieces);
+		addPieceLabels(layeredPane, quadFPieces);
+		
+		this.add(layeredPane);
 	}
 	
+	private void addPieceLabels(JLayeredPane pane, PieceGUI[] quad) 
+	{
+		for (int i=0; i<16; i++)
+		{
+			pane.add(quad[i], 50);
+		}
+	}
+
 	@Override
-	public void paint(Graphics g)
+	public void paintComponent(Graphics g)
 	{
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -99,7 +123,7 @@ public class BoardGUI extends JPanel implements MouseListener
 		
 		g2.setPaintMode();
 		
-		g2.setColor(Color.white);
+		g2.setColor(new Color(0x66, 0x66, 0x66));
 		g2.fillRect(0, 0, getWidth(), getHeight());
 		g2.setPaint(Color.black);
 		g2.setStroke(stroke);
@@ -164,12 +188,13 @@ public class BoardGUI extends JPanel implements MouseListener
 		Graphics2D g2 = (Graphics2D) g;
 		
 		int xPoints[] = {(int)sec[uL].x, (int)sec[uL + 1].x, (int)sec[uL + 6].x, (int)sec[uL + 5].x};
-		int yPoints[] = {(int)sec[uL].y, (int)sec[uL + 1].y, (int)sec[uL + 6].y, (int)sec[uL + 5].y};
+		int yPoints[] = {(int)sec[uL].y + yOffset, (int)sec[uL + 1].y + yOffset, (int)sec[uL + 6].y + yOffset, (int)sec[uL + 5].y + yOffset};
 		
 		Polygon poly = new Polygon(xPoints, yPoints, xPoints.length);
 		
 		int xAvg = (int)((sec[uL].x + sec[uL + 1].x + sec[uL + 6].x + sec[uL + 5].x)/4);
 		int yAvg = (int)((sec[uL].y + sec[uL + 1].y + sec[uL + 6].y + sec[uL + 5].y)/4);
+		yAvg += yOffset;
 		CoordinateGUI tileCenter = new CoordinateGUI(xAvg, yAvg);
 		Point tileCenterPoint = new Point(xAvg, yAvg);
 		
@@ -198,32 +223,38 @@ public class BoardGUI extends JPanel implements MouseListener
 			case "a":
 				quadATiles[tileNum].setTile(poly, sectionName, tileNum, tileCenter);
 				quadAPieces[tileNum].setTileCenter(tileCenterPoint);
-				/*if(tileNum == 0)
-				{
-					quadAPieces[0].setIcon(GKing);
-					quadAPieces[0].setBounds(xAvg, yAvg, 28, 50);
-					quadAPieces[0].setVisible(true);
-				}*/
+				quadAPieces[tileNum].setIcon(GQueen);
+				quadAPieces[tileNum].setBounds(xAvg-14, yAvg-40, 28, 40);
 				break;
 			case "b":
 				quadBTiles[tileNum].setTile(poly, sectionName, tileNum, tileCenter);
 				quadBPieces[tileNum].setTileCenter(tileCenterPoint);
+				quadBPieces[tileNum].setIcon(RQueen);
+				quadBPieces[tileNum].setBounds(xAvg-14, yAvg-40, 28, 40);
 				break;
 			case "c":
 				quadCTiles[tileNum].setTile(poly, sectionName, tileNum, tileCenter);
 				quadCPieces[tileNum].setTileCenter(tileCenterPoint);
+				quadCPieces[tileNum].setIcon(BQueen);
+				quadCPieces[tileNum].setBounds(xAvg-14, yAvg-40, 28, 40);
 				break;
 			case "d":
 				quadDTiles[tileNum].setTile(poly, sectionName, tileNum, tileCenter);
 				quadDPieces[tileNum].setTileCenter(tileCenterPoint);
+				quadDPieces[tileNum].setIcon(GKing);
+				quadDPieces[tileNum].setBounds(xAvg-14, yAvg-40, 28, 40);
 				break;
 			case "e":
 				quadETiles[tileNum].setTile(poly, sectionName, tileNum, tileCenter);
 				quadEPieces[tileNum].setTileCenter(tileCenterPoint);
+				quadEPieces[tileNum].setIcon(RKing);
+				quadEPieces[tileNum].setBounds(xAvg-14, yAvg-40, 28, 40);
 				break;
 			case "f":
 				quadFTiles[tileNum].setTile(poly, sectionName, tileNum, tileCenter);
 				quadFPieces[tileNum].setTileCenter(tileCenterPoint);
+				quadFPieces[tileNum].setIcon(FTile);
+				quadFPieces[tileNum].setBounds(xAvg-14, yAvg-40, 28, 40);
 				break;
 		}
 		
@@ -267,32 +298,32 @@ public class BoardGUI extends JPanel implements MouseListener
 		
 	public static void main(String s[])
 	{
-		Dimension boardSize = new Dimension(600,600);
-		JLayeredPane layeredPane = new JLayeredPane();
-		layeredPane.setPreferredSize(boardSize);
+		//JLayeredPane layeredPane = new JLayeredPane();
+		//layeredPane.setPreferredSize(boardSize);
+		Dimension boardSize = new Dimension (500,500);
 		
+		BoardGUI board = new BoardGUI(null, boardSize);
+		//board.setSize(layeredPane.getPreferredSize());
+		//board.setLocation(0, 0);
 		
-		BoardGUI board = new BoardGUI(null);
-		board.setSize(layeredPane.getPreferredSize());
-		board.setLocation(0, 0);
-		
-		ImageIcon image = new ImageIcon("/Users/christopherhowse/Pictures/ChessImages/Green King.png");
-		Point point = new Point(50, 60);
+		//ImageIcon image = new ImageIcon("/Users/christopherhowse/Pictures/ChessImages/Green King.png");
+		//Point point = new Point(50, 60);
 		//PieceGUI piece = new PieceGUI(image);
-		JLabel piece2 = new JLabel(image);
-		piece2.setLocation(point);
-		piece2.setBounds(100,100,200,100);
+		//JLabel piece2 = new JLabel(image);
+		//piece2.setLocation(point);
+		//piece2.setBounds(100,100,200,100);
 		
 		//layeredPane.add(board, 2);
-		layeredPane.add(piece2, 1);
+		//layeredPane.add(piece2, 1);
 		
 		JFrame frame = new JFrame("ThreeHandedChessBoard");
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
-		frame.add(layeredPane, BorderLayout.CENTER);
+		frame.add(board);
         frame.setSize(boardSize);
+        frame.setResizable(false);
         
-        frame.pack();
+        //frame.pack();
         frame.setVisible(true);
 	}
 
