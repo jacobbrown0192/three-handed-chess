@@ -3,6 +3,12 @@ package threePlayerChessa;
 import java.util.Vector;
 import threePlayerChessa.Segment;
 
+
+/**  
+ *The Section class is the class which contains all the segments, and tiles. 
+ *It is also used to help with pawn movement
+ * 
+ */
 public class Section {
 	int maxNum;
 	int minNum;
@@ -15,32 +21,64 @@ public class Section {
 	public Vector<Segment> segments = new Vector<Segment>();
 
 	
+	/**  
+	 * @return Segment at 0
+	 */
 	public Segment getSegment0() {
 		return this.segments.elementAt(0);
 	}
 
+	/**  
+	 * @param aSegment0 - used to set segments
+	 */
 	public void setSegment0(Segment aSegment0) {
 		this.segments.remove(0);
 		this.segments.add(aSegment0);
 	}
-	
+
+	/**  
+	 * @return Segment at 1
+	 */
 	public Segment getSegment1() {
 		return this.segments.elementAt(0);
 	}
-
+	
+	/**  
+	 * @param aSegment1 - used to set segments
+	 */
 	public void setSegment1(Segment aSegment1) {
 		this.segments.remove(1);
 		this.segments.add(aSegment1);
 	}
-
+	
+	/**
+	 * @return the colour
+	 */
 	public Team getColour() {
-		return this.colour;
+		return colour;
 	}
 
-	public void setColour(Team aColour) {
-		this.colour = aColour;
+	/**
+	 * @param colour - used to set colour
+	 */
+	public void setColour(Team colour) {
+		this.colour = colour;
 	}
 
+
+	
+	
+	
+	/**
+	 * @param maxNum
+	 * @param minNum
+	 * @param maxLet1
+	 * @param minLet1
+	 * @param maxLet2
+	 * @param minLet2
+	 * @param colour
+	 * @param theBoard
+	 */
 	public Section(int maxNum, int minNum, int maxLet1, int minLet1,
 			int maxLet2, int minLet2, Team colour, Board theBoard) {
 		super();
