@@ -85,6 +85,7 @@ public class Team {
 	public void addPiecesToBoard(){
 		int piece = 0;
 		Section temp = null;
+		Tile startTile = null;
 		for (int i =0; i <3; i++){
 			if(theBoard.sections.elementAt(i).getColour() == this){
 				temp = theBoard.sections.elementAt(i);
@@ -92,38 +93,54 @@ public class Team {
 		}
 		if (this.getNumber() == 1){
 			for(int i = 0; i <4; i++){
-				temp.segments.elementAt(0).tiles.elementAt(i+4).setPiece(pieces.elementAt(piece));
+				startTile =	temp.segments.elementAt(0).tiles.elementAt(i+4);
+				startTile.setPiece(pieces.elementAt(piece));
+				pieces.elementAt(piece).setCurrentTile(startTile);
 				piece++;
 			}
 			for(int i = 0; i <4; i++){
-				temp.segments.elementAt(1).tiles.elementAt(i+4).setPiece(pieces.elementAt(piece));
+				startTile =	temp.segments.elementAt(1).tiles.elementAt(i+4);
+				startTile.setPiece(pieces.elementAt(piece));
+				pieces.elementAt(piece).setCurrentTile(startTile);
 				piece++;
 			}
 			for(int i = 0; i <4; i++){
-				temp.segments.elementAt(0).tiles.elementAt(i).setPiece(pieces.elementAt(piece));
+				startTile =	temp.segments.elementAt(0).tiles.elementAt(i);
+				startTile.setPiece(pieces.elementAt(piece));
+				pieces.elementAt(piece).setCurrentTile(startTile);
 				piece++;
 			}
 			for(int i = 0; i <4; i++){
-				temp.segments.elementAt(1).tiles.elementAt(i).setPiece(pieces.elementAt(piece));
+				startTile =	temp.segments.elementAt(1).tiles.elementAt(i);
+				startTile.setPiece(pieces.elementAt(piece));
+				pieces.elementAt(piece).setCurrentTile(startTile);
 				piece++;
 			}
 			
 		}
 		if(this.getNumber() == 2){
 			for(int i = 0; i <4; i++){
-				temp.segments.elementAt(0).tiles.elementAt(11-i).setPiece(pieces.elementAt(piece));
+				startTile =	temp.segments.elementAt(0).tiles.elementAt(11-i);
+				startTile.setPiece(pieces.elementAt(piece));
+				pieces.elementAt(piece).setCurrentTile(startTile);
 				piece++;
 			}
 			for(int i = 0; i <4; i++){
-				temp.segments.elementAt(1).tiles.elementAt(11-i).setPiece(pieces.elementAt(piece));
+				startTile =	temp.segments.elementAt(1).tiles.elementAt(11-i);
+				startTile.setPiece(pieces.elementAt(piece));
+				pieces.elementAt(piece).setCurrentTile(startTile);
 				piece++;
 			}
 			for(int i = 0; i <4; i++){
-				temp.segments.elementAt(0).tiles.elementAt(15-i).setPiece(pieces.elementAt(piece));
+				startTile =	temp.segments.elementAt(0).tiles.elementAt(15-i);
+				startTile.setPiece(pieces.elementAt(piece));
+				pieces.elementAt(piece).setCurrentTile(startTile);
 				piece++;
 			}
 			for(int i = 0; i <4; i++){
-				temp.segments.elementAt(1).tiles.elementAt(15-i).setPiece(pieces.elementAt(piece));
+				startTile =	temp.segments.elementAt(1).tiles.elementAt(15-i);
+				startTile.setPiece(pieces.elementAt(piece));
+				pieces.elementAt(piece).setCurrentTile(startTile);
 				piece++;
 			}
 			
@@ -131,19 +148,27 @@ public class Team {
 		}
 		if(this.getNumber() == 3){
 			for(int i = 0; i <4; i++){
-				temp.segments.elementAt(0).tiles.elementAt(11-i).setPiece(pieces.elementAt(piece));
+				startTile =	temp.segments.elementAt(0).tiles.elementAt(11-i);
+				startTile.setPiece(pieces.elementAt(piece));
+				pieces.elementAt(piece).setCurrentTile(startTile);
 				piece++;
 			}
 			for(int i = 0; i <4; i++){
-				temp.segments.elementAt(1).tiles.elementAt(8+i).setPiece(pieces.elementAt(piece));
+				startTile =	temp.segments.elementAt(1).tiles.elementAt(8+i);
+				startTile.setPiece(pieces.elementAt(piece));
+				pieces.elementAt(piece).setCurrentTile(startTile);
 				piece++;
 			}
 			for(int i = 0; i <4; i++){
-				temp.segments.elementAt(0).tiles.elementAt(15-i).setPiece(pieces.elementAt(piece));
+				startTile =	temp.segments.elementAt(0).tiles.elementAt(15-i);
+				startTile.setPiece(pieces.elementAt(piece));
+				pieces.elementAt(piece).setCurrentTile(startTile);
 				piece++;
 			}
 			for(int i = 0; i <4; i++){
-				temp.segments.elementAt(1).tiles.elementAt(12+i).setPiece(pieces.elementAt(piece));
+				startTile =	temp.segments.elementAt(1).tiles.elementAt(12+i);
+				startTile.setPiece(pieces.elementAt(piece));
+				pieces.elementAt(piece).setCurrentTile(startTile);
 				piece++;
 			}
 		}

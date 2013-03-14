@@ -1,5 +1,7 @@
 package threePlayerChessa;
 
+
+
 /**  
  *The Knight class extends Piece. 
  *Its movement style is to move two spaces straight and one to the left or right.
@@ -10,15 +12,15 @@ public class Knight extends Piece {
 	
 	/**  
 	 * Knight constructor
-	 * @param 	player - one of three possible teams.
+	 * @param 	player - the player who owns this piece
 	 * 			name - the name of the piece.
-	 * 			theBoard - the board being used for the game.
+	 * 			theBoard - the board which the pieces belong
 	 * 			currentTile - the tile the piece is currently occupying.
 	 * @return	null
 	 * 
 	 */
-	public Knight(Team player, String name, Board theBoard, Tile currentTile) {
-		super(player, name, theBoard, currentTile);
+	public Knight(Team player, String name, Board theBoard, Tile currentTile,PieceType type) {
+		super(player, name, theBoard, currentTile,type);
 		// TODO Auto-generated constructor stub
 	}
 
