@@ -38,7 +38,7 @@ public abstract class Piece {
 		this.currentTile = currentTile;
 	}
 
-	public void move(Tile aStartTile, Tile aMoveTile){
+	public void move(Tile aStartTile, Tile aMoveTile, Turn player){
 		
 	}
 
