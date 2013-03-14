@@ -184,10 +184,11 @@ public class Game {
 		gameTeams.elementAt(0).addPiecesToBoard();
 		gameTeams.elementAt(1).addPiecesToBoard();
 		gameTeams.elementAt(2).addPiecesToBoard();
+		boardGUI.setTileIcons();
 		gameController.setInProgress(true);
 		click1 = null;
 		click2 = null;
-			
+		
 		player1.start();
 		player2.start();
 		player3.start();	

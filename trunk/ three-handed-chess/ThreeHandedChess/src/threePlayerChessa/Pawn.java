@@ -57,6 +57,8 @@ public class Pawn extends Piece {
 				player.getTheGame().gameFrame.getContentPane().add(selector);
 				player.getTheGame().gameFrame.setVisible(true);
 			}
+			player.getTheGame().boardGUI.setTileIcons();
+			player.getTheGame().gameController.addToCounter();
 		}
 		else{
 			return;
