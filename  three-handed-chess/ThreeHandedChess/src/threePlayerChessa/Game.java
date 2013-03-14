@@ -160,6 +160,17 @@ public class Game {
 	public void setPlayer3(Turn player3) {
 		this.player3 = player3;
 	}
+	
+	public void getClick(Click aClick){
+		if(click1 == null)
+		{
+			click1 = aClick;
+		}
+		else{
+			click2 = aClick;
+		}
+		notifyAll();		
+	}
 
 
 	public void startGame(){
