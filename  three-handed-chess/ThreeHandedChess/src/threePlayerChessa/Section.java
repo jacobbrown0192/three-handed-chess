@@ -40,7 +40,7 @@ public class Section {
 	 * @return Segment at 1
 	 */
 	public Segment getSegment1() {
-		return this.segments.elementAt(0);
+		return this.segments.elementAt(1);
 	}
 	
 	/**  

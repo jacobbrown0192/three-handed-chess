@@ -21,7 +21,15 @@ public class Controller {
 	
 	public void addToCounter(){
 		turnCount ++;
-		notifyAll();
+		synchronized (theGame.player1){
+			theGame.player1.notify();
+		}
+		synchronized (theGame.player2){
+			theGame.player2.notify();
+		}
+		synchronized (theGame.player3){
+			theGame.player3.notify();
+		}
 	}
 	
 	public boolean inCheck(){

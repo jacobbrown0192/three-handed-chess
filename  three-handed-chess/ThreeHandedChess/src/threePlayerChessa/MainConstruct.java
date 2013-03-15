@@ -115,7 +115,7 @@ public class MainConstruct {
 		Knight knight22 = new Knight(this.gameTeams.elementAt(1),"Knight2",this.theBoard,null,PieceType.KNIGHT);
 		Rook rook22 = new Rook(this.gameTeams.elementAt(1),"Rook2",this.theBoard,null,PieceType.ROOK);
 		
-		teamPieces2.clear();
+
 		
 		teamPieces2.add(pawn12);
 		teamPieces2.add(pawn22);
@@ -154,7 +154,7 @@ public class MainConstruct {
 		Knight knight23 = new Knight(this.gameTeams.elementAt(2),"Knight2",this.theBoard,null,PieceType.KNIGHT);
 		Rook rook23 = new Rook(this.gameTeams.elementAt(2),"Rook2",this.theBoard,null,PieceType.ROOK);
 		
-		teamPieces3.clear();
+
 		
 		teamPieces3.add(pawn13);
 		teamPieces3.add(pawn23);
