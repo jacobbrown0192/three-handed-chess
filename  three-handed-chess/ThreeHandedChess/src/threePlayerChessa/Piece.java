@@ -3,7 +3,6 @@ package threePlayerChessa;
 /**  
  *The Piece class is the super class for all the pieces going to be used in the game.
  *This class holds everything for the subclasses and the subclasses are only used for movement specification
- * 
  */
 public abstract class Piece {
 	Team player;
@@ -99,7 +98,6 @@ public abstract class Piece {
 	 * @param	aStartTile - the tile initially selected 
 	 * 			aMoveTile - the tile to where the player wishes to move the piece from the initial tile
 	 * 			player - the current players thread
-	 * @return null
 	 * 
 	 */
 	public void move(Tile aStartTile, Tile aMoveTile, Turn player){
@@ -109,7 +107,6 @@ public abstract class Piece {
 	/**  
 	 * removes the piece from the board
 	 * @param	nextPiece - replaces current piece with this piece
-	 * @return null
 	 * 
 	 */
 	public void remove(Piece nextPiece){
@@ -119,7 +116,7 @@ public abstract class Piece {
 	/**
 	 * @param player - the player who owns this piece
 	 * @param name - the name of the piece
-	 * @param theBoard - the board which the pieces belong
+	 * @param theBoard - the board which the game is played on
 	 * @param currentTile - the tile the piece is currently occupying.
 	 * @param type - the type of piece 
 	 */

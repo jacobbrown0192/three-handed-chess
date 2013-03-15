@@ -64,20 +64,18 @@ public class Section {
 	public void setColour(Team colour) {
 		this.colour = colour;
 	}
-
-
-	
 	
 	
 	/**
-	 * @param maxNum
-	 * @param minNum
-	 * @param maxLet1
-	 * @param minLet1
-	 * @param maxLet2
-	 * @param minLet2
-	 * @param colour
-	 * @param theBoard
+	 * Section constructor
+	 * @param maxNum - Maximum identifier number 
+	 * @param minNum - Minimum identifier number
+	 * @param maxLet1 - Maximum identifier number for left segment
+	 * @param minLet1 - Minimum identifier number for left segment
+	 * @param maxLet2 - Maximum identifier number for right segment
+	 * @param minLet2 - Minimum identifier number for right segment
+	 * @param colour - the team which starts off in this section. Used for pawn movement.
+	 * @param theBoard - the board which this section belongs too
 	 */
 	public Section(int maxNum, int minNum, int maxLet1, int minLet1,
 			int maxLet2, int minLet2, Team colour, Board theBoard) {

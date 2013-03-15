@@ -6,9 +6,8 @@ import threePlayerChessa.Piece;
 
 
 /**  
- *The Board is the class which contains all the sections, segments, and tiles. 
+ *The Board class is the class which contains all the sections, segments, and tiles. 
  *It is also used to tell where everything goes
- * 
  */
 public class Board {
 	public Vector<Section> sections = new Vector<Section>();
@@ -93,11 +92,11 @@ public class Board {
 	 */
 	public Board(Vector<Team> gameTeams) {
 		this.gameTeams = gameTeams;
-		Section temp1 = new Section(4,1,4,1,8,5,gameTeams.elementAt(0),this);
+		Section temp1 = new Section(4,1,4,1,8,5,gameTeams.elementAt(0),this);// bottom section
 		sections.add(0, temp1);
-		Section temp2 = new Section(8,5,12,9,4,1,gameTeams.elementAt(1),this);
+		Section temp2 = new Section(8,5,12,9,4,1,gameTeams.elementAt(1),this);// left section
 		sections.add(1, temp2);
-		Section temp3 = new Section(12,9,8,5,12,9,gameTeams.elementAt(2),this);
+		Section temp3 = new Section(12,9,8,5,12,9,gameTeams.elementAt(2),this);// right section
 		sections.add(2, temp3);
 	}
 

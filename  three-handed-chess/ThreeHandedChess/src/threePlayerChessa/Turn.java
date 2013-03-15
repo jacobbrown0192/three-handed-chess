@@ -1,28 +1,41 @@
 package threePlayerChessa;
 
+
+/**  
+ *The Turn class is used as an individual thread for each player 
+ */
 public class Turn extends Thread {
-	private Game theGame;
-	public Team gameTeam;
-	public boolean check;
+	private Game theGame; //the game its self which contains everything
+	public Team gameTeam; //the player of which this thread belongs
+	public boolean check; //tells if the player is in check
 	
+	
+	/**
+	 * Controller constructor
+	 * @param aGame - the game its self which contains everything
+	 * @param aTeam - the player of which this thread is
+	 */
 	public Turn(Game aGame,Team aTeam){
 		setTheGame(aGame);
 		gameTeam = aTeam;
 	}
 	
-	
+	/**  
+	 *runs the thread 
+	 */
 	@Override public void run(){
-		while(getTheGame().gameController.isInProgress() == true){
+		while(getTheGame().gameController.isInProgress() == true){ // checks to see if the game is in progress
 			boolean validClick = false;
 			check = getTheGame().gameController.inCheck();
-			if (check){
+			if (check){ //checks for player in check. update to come.
 				//check for checkamte
 			}
 			Tile select1 = null;
 			Tile select2 = null;
-			if((getTheGame().gameController.turnCount % 3) == (gameTeam.getNumber() - 1)){
-				if(getTheGame().click1 != null){
+			if((getTheGame().gameController.turnCount % 3) == (gameTeam.getNumber() - 1)){ //checks to see if its current players turn
+				if(getTheGame().click1 != null){ //check for first click
 					
+					//finds the tile clicked
 					for(int i =0; i < 3; i++){
 						for(int j =0; j<2;j++){
 							for(int k=0; k<16;k++){
@@ -34,6 +47,7 @@ public class Turn extends Thread {
 						}
 					}
 					
+					//see if first click is valid
 					if(select1.getPiece() != null){					
 						if( select1.getPiece().player == gameTeam){
 							validClick = true;
@@ -53,6 +67,7 @@ public class Turn extends Thread {
 						validClick = false;
 						if(getTheGame().click2 != null){
 							
+							//finds the second clicked tile
 							for(int i =0; i < 3; i++){
 								for(int j =0; j<2;j++){
 									for(int k=0; k<16;k++){
@@ -64,7 +79,7 @@ public class Turn extends Thread {
 								}
 							}
 					
-							
+							//checks if second click is valid
 							if( select2.getPiece() == null){
 								validClick = true;
 							}
@@ -83,7 +98,7 @@ public class Turn extends Thread {
 								getTheGame().click2 = null;
 							}
 							
-
+							//moves if second clikc is valid
 							if(validClick){
 								select1.getPiece().move(select1, select2,this);								
 							}							
@@ -107,7 +122,9 @@ public class Turn extends Thread {
 	}
 	
 	
-	
+	/**  
+	 *used to suspend the thread
+	 */
 	synchronized void suspendMe(){
 		try {
 			Thread.currentThread().wait();
@@ -117,17 +134,28 @@ public class Turn extends Thread {
 		}
 	}
 	
+	/**  
+	 *used to notify the thread
+	 */
 	synchronized void unsuspendMe(){
 		Thread.currentThread().notify();
 	}
 
 
+	/**
+	 * @return the theGame
+	 */
 	public Game getTheGame() {
 		return theGame;
 	}
 
 
+	/**
+	 * @param theGame - used to set theGame
+	 */
 	public void setTheGame(Game theGame) {
 		this.theGame = theGame;
 	}
+
+
 }
