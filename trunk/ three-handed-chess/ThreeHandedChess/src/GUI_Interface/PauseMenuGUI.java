@@ -12,22 +12,23 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 /** Graphics for the control of the <code>PauseMenu</code>.
- * <p>
- * 
- *
- *
+ * <p>Contains buttons for "Resume", "Call for Stalemate", "End Game", and "Reset".
+ * <p>Resume will return the flow to the game currently in progress
+ * <p>Call for Stalemate will issue a query to all players asking if they agree to
+ * a stalemate, which they will reply to in the CallForStalemateGUI page.
+ * <p>End Game will terminate the current game and bring the user to the MainMenuGUI.
+ * <p>Reset will start a new game with the current player configuration.
  */
-public class PauseMenuGUI extends JPanel {
-	/**
-	 * 
-	 */
+public class PauseMenuGUI extends JPanel 
+{
 	private static final long serialVersionUID = 1L;
-	
 	Game theGame;
+	
 	/**
 	 * Create the panel.
 	 */
-	public PauseMenuGUI( Game aGame) {
+	public PauseMenuGUI( Game aGame)
+	{
 		this.theGame = aGame;
 		setBorder(new EmptyBorder(30, 50, 30, 50));
 		setLayout(new GridLayout(0, 1, 0, 30));
@@ -37,32 +38,40 @@ public class PauseMenuGUI extends JPanel {
 		add(lblPause);
 		
 		JButton btnNewButton_3 = new JButton("Resume");
-		btnNewButton_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		btnNewButton_3.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
 				theGame.pauseMenu.resume();
 			}
 		});
 		add(btnNewButton_3);
 		
 		JButton btnNewButton_1 = new JButton("Call For Stalemate");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		btnNewButton_1.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
 				theGame.pauseMenu.callForStalemate();
 			}
 		});
 		add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("End Game");
-		btnNewButton_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		btnNewButton_2.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
 				theGame.pauseMenu.endGame();
 			}
 		});
 		add(btnNewButton_2);
 		
 		JButton btnNewButton = new JButton("Reset");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		btnNewButton.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
 				theGame.pauseMenu.reset();
 			}
 		});
