@@ -49,7 +49,6 @@ public class Turn extends Thread {
 					}
 					
 					
-					//check valid click
 					if(validClick){
 						validClick = false;
 						if(getTheGame().click2 != null){
