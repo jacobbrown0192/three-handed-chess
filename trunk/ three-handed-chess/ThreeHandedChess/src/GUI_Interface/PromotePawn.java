@@ -80,7 +80,7 @@ public class PromotePawn extends JPanel {
 		JButton RookButton = new JButton("Rook");
 		RookButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				thePawn.selectQueen(thePawn.getCurrentTile());
+				thePawn.selectRook(thePawn.getCurrentTile());
 				thePlayer.getTheGame().gameFrame.getContentPane().removeAll();
 			    thePlayer.getTheGame().gameFrame.getContentPane().repaint();
 				thePlayer.getTheGame().gameFrame.getContentPane().add(thePlayer.getTheGame().tBoardGUI,BorderLayout.NORTH);
