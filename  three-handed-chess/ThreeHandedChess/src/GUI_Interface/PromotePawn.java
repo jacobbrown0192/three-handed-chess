@@ -15,17 +15,23 @@ import threePlayerChessa.Turn;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class PromotePawn extends JPanel {
-	/**
-	 * 
-	 */
+/** Graphics for the control of the promote pawn clause of a pawn's operation.
+ * <p>If a pawn reaches the last row of an opposing teams side of the board
+ * it can promote either to a Queen, Rook, Bishop or Knight.
+ * <p>This screen will prompt the player to decide which piece they would like
+ * to promote their pawn to with four buttons: Queen, Rook, Bishop, Knight.
+ */
+public class PromotePawn extends JPanel
+{
 	private static final long serialVersionUID = 1L;
 	Pawn thePawn;
 	Turn thePlayer;
+	
 	/**
 	 * Create the panel.
 	 */
-	public PromotePawn(Pawn aPawn, Turn player) {
+	public PromotePawn(Pawn aPawn, Turn player)
+	{
 		thePawn = aPawn;
 		thePlayer = player;
 		setBorder(new EmptyBorder(0, 50, 30, 50));
@@ -36,8 +42,10 @@ public class PromotePawn extends JPanel {
 		add(lblNewLabel);
 		
 		JButton QueenButton = new JButton("Queen");
-		QueenButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		QueenButton.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
 				thePawn.selectQueen(thePawn.getCurrentTile());
 				thePlayer.getTheGame().gameFrame.getContentPane().removeAll();
 			    thePlayer.getTheGame().gameFrame.getContentPane().repaint();
@@ -50,8 +58,10 @@ public class PromotePawn extends JPanel {
 		add(QueenButton);
 		
 		JButton BishopButton = new JButton("Bishop");
-		BishopButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		BishopButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
 				thePawn.selectBishop(thePawn.getCurrentTile());
 				thePlayer.getTheGame().gameFrame.getContentPane().removeAll();
 			    thePlayer.getTheGame().gameFrame.getContentPane().repaint();
@@ -64,8 +74,10 @@ public class PromotePawn extends JPanel {
 		add(BishopButton);
 		
 		JButton KnightButton = new JButton("Knight");
-		KnightButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		KnightButton.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
 				thePawn.selectKnight(thePawn.getCurrentTile());
 				thePlayer.getTheGame().gameFrame.getContentPane().removeAll();
 			    thePlayer.getTheGame().gameFrame.getContentPane().repaint();
@@ -78,8 +90,10 @@ public class PromotePawn extends JPanel {
 		add(KnightButton);
 		
 		JButton RookButton = new JButton("Rook");
-		RookButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		RookButton.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
 				thePawn.selectRook(thePawn.getCurrentTile());
 				thePlayer.getTheGame().gameFrame.getContentPane().removeAll();
 			    thePlayer.getTheGame().gameFrame.getContentPane().repaint();
@@ -90,7 +104,5 @@ public class PromotePawn extends JPanel {
 			}
 		});
 		add(RookButton);
-
 	}
-
 }

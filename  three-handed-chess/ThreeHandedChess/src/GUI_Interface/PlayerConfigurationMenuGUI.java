@@ -18,10 +18,18 @@ import threePlayerChessa.Game;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class PlayerConfigurationMenuGUI extends JPanel {
-	/**
-	 * 
-	 */
+/** Graphics for the control of the <code>PlayerConfigurationMenu</code>.
+ * <p>Contains three text boxes for setting the name of each player. These
+ * names are reflected in the labels above each text box.
+ * <p>Contains buttons for selecting the colour of each player's pieces.
+ * (To be implemented).
+ * <p>Contains buttons to select if each player will be a Computer player
+ * or a Human player. (To be implemented).
+ * <p>Contains sliders to select the difficulty of each Computer player's AI
+ * (To be implemented).
+ */
+public class PlayerConfigurationMenuGUI extends JPanel 
+{
 	private static final long serialVersionUID = 1L;
 	private JTextField txtPlayer;
 	private JTextField txtPlayer_1;
@@ -35,7 +43,8 @@ public class PlayerConfigurationMenuGUI extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public PlayerConfigurationMenuGUI(Game aGame) {
+	public PlayerConfigurationMenuGUI(Game aGame)
+	{
 		theGame = aGame;
 		setBorder(new EmptyBorder(20, 20, 20, 20));
 		setLayout(new GridLayout(7, 3, 0, 20));
@@ -63,8 +72,10 @@ public class PlayerConfigurationMenuGUI extends JPanel {
 		add(labelPlayer3);
 		
 		txtPlayer = new JTextField();
-		txtPlayer.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		txtPlayer.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
 				String input = txtPlayer.getText();
 				labelPlayer1.setText(input);
 				theGame.plyerConfig.player0SetName(input);
@@ -77,8 +88,10 @@ public class PlayerConfigurationMenuGUI extends JPanel {
 		txtPlayer.setColumns(30);
 		
 		txtPlayer_1 = new JTextField();
-		txtPlayer_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		txtPlayer_1.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
 				String input = txtPlayer_1.getText();
 				labelPlayer2.setText(input);
 				theGame.plyerConfig.player1SetName(input);
@@ -89,8 +102,10 @@ public class PlayerConfigurationMenuGUI extends JPanel {
 		txtPlayer_1.setColumns(30);
 		
 		txtPlayer_2 = new JTextField();
-		txtPlayer_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		txtPlayer_2.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
 				String input = txtPlayer_2.getText();
 				labelPlayer3.setText(input);
 				theGame.plyerConfig.player2SetName(input);
@@ -137,8 +152,10 @@ public class PlayerConfigurationMenuGUI extends JPanel {
 		add(label_2);
 		
 		JButton btnNewButton_3 = new JButton("Close");
-		btnNewButton_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		btnNewButton_3.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
 				theGame.plyerConfig.close();
 			}
 		});
@@ -146,6 +163,5 @@ public class PlayerConfigurationMenuGUI extends JPanel {
 		
 		JLabel lblNewLabel = new JLabel("");
 		add(lblNewLabel);
-
 	}
 }
