@@ -33,7 +33,9 @@ public class Bishop extends Piece {
 	 * 
 	 */
 	public void move(Tile aStartTile, Tile aMoveTile, Turn player) {
-		boolean validMove = false;
+		boolean validMove = true;
+		player.getTheGame().click1 = null;
+		player.getTheGame().click2 = null;
 		//check for valid move
 		if (validMove){	//moves piece
 			if(aMoveTile.getPiece() != null){	// sets pieces current tile on aMoveTile to null
