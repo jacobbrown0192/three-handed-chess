@@ -4,21 +4,38 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-/** 
- * 
- * 
- *
+/** Class for the containment of the polygon, and indexing systems
+ * (Graphical and Model) a tile
  */
 public class TileGUI
 {
 	private static final long serialVersionUID = 1L;
 	private Polygon poly;
 	private int number;
-	private String section;
-	
+	private String hexarant;
 	private int boardNumber;
 	private int boardLetter;
+	
+	public String getHexarant()
+	{
+		return hexarant;
+	}
+	
+	public int getBoardLetter()
+	{
+		return boardLetter;
+	}
 
+	public int getBoardNumber() 
+	{
+		return boardNumber;
+	}
+	
+    /** Method to expedite the initialization of an array of TileGUIs
+     * 
+     * @param size The number of elements of the array.
+     * @return The initialized array of TileGUIs.
+     */
 	public static TileGUI[] tileSet(int size)
 	{
 		TileGUI[] array = new TileGUI[size];
@@ -28,26 +45,41 @@ public class TileGUI
 		}
 		return array;
 	}
-	
-	public String getSection()
-	{
-		return section;
-	}
 
-	public void setTile(Polygon poly, String section, int number)
+	/** Method to set the polygon, hexarant, number, boardNumber, and boardLetter of the tile.
+	 * 
+	 * <p>boardNumber is the number file of the tile as referenced by the model.
+	 * <p>boardLetter is an int from 1 to 12 used to represent A to L respectively
+	 * which gives the letter file of the tile as referenced by the model.
+	 * <p>The difference of indexing systems is due to the simplicity of breaking
+	 * the board into 6 4x4 "Hexarants" for graphical purposes, but the convention
+	 * of number and letter files being used to call and record game moves in chess.
+	 * 
+	 * @param poly The polygon which defines the limits of the tile.
+	 * @param hexarant A string which indicates which 4x4 tile grid the tile belongs to.
+	 * Named for the hexagonal equivalent of a quadrilaterals "quadrants".
+	 * @param number An integer whose value is the index of the tile inside it's hexarant.
+	 */
+	public void setTile(Polygon poly, String hexarant, int number)
 	{
 		this.poly = poly;
-		this.section = section;
+		this.hexarant = hexarant;
 		this.number = number;
-		this.boardNumber = setBoardNumberThroughConversion(this.section, this.number);
-		this.boardLetter = setBoardLetterThroughConversion(this.section, this.number);
+		this.boardNumber = setBoardNumberThroughConversion(this.hexarant, this.number);
+		this.boardLetter = setBoardLetterThroughConversion(this.hexarant, this.number);
 	}
 	
-	public int setBoardNumberThroughConversion(String section, int number)
+	/** Method to convert the graphical tile indexing system into the model tile indexing system.
+	 * 
+	 * @param hexarant A string which indicates which 4x4 tile grid the tile belongs to.
+	 * @param number An integer whose value is the index of the tile inside it's hexarant.
+	 * @return The number file of the tile.
+	 */
+	public int setBoardNumberThroughConversion(String hexarant, int number)
 	{
 		int boardNumber = 100;
 		
-		switch (section)
+		switch (hexarant)
 		{
 			case "a":				
 				if(number%4 == 0)
@@ -161,10 +193,16 @@ public class TileGUI
 		return boardNumber;
 	}
 	
-	public int setBoardLetterThroughConversion(String section, int number)
+	/** Method to convert the graphical tile indexing system into the model tile indexing system.
+	 * 
+	 * @param hexarant A string which indicates which 4x4 tile grid the tile belongs to.
+	 * @param number An integer whose value is the index of the tile inside it's hexarant.
+	 * @return The letter file of the tile.
+	 */
+	public int setBoardLetterThroughConversion(String hexarant, int number)
 	{
 		int boardLetter = 100;
-		switch (section)
+		switch (hexarant)
 		{
 			case "a":
 				if(number < 4)
@@ -277,224 +315,13 @@ public class TileGUI
 		}
 		return boardLetter;
 	}
-	
-	public void convertCoordinateToModelSystem(TileGUI tile)
-	{
-		switch (tile.section)
-		{
-			case "a":
-				if(tile.number < 4)
-				{
-					tile.boardLetter = 12;
-				}
-				else if(tile.number < 8)
-				{
-					tile.boardLetter = 11;
-				}
-				else if(tile.number < 12)
-				{
-					tile.boardLetter = 10;
-				}
-				else if(tile.number < 16)
-				{
-					tile.boardLetter = 9;
-				}
-				
-				if(tile.number%4 == 0)
-				{
-					tile.boardNumber = 8;
-				}
-				else if(tile.number%4 == 1)
-				{
-					tile.boardNumber = 7;
-				}
-				else if(tile.number%4 == 2)
-				{
-					tile.boardNumber = 6;
-				}
-				else if(tile.number%4 == 3)
-				{
-					tile.boardNumber = 5;
-				}
-				break;
-			case "b":
-				if(tile.number < 4)
-				{
-					tile.boardLetter = 12;
-				}
-				else if(tile.number < 8)
-				{
-					tile.boardLetter = 11;
-				}
-				else if(tile.number < 12)
-				{
-					tile.boardLetter = 10;
-				}
-				else if(tile.number < 16)
-				{
-					tile.boardLetter = 9;
-				}
-				
-				if(tile.number%4 == 0)
-				{
-					tile.boardNumber = 9;
-				}
-				else if(tile.number%4 == 1)
-				{
-					tile.boardNumber = 10;
-				}
-				else if(tile.number%4 == 2)
-				{
-					tile.boardNumber = 11;
-				}
-				else if(tile.number%4 == 3)
-				{
-					tile.boardNumber = 12;
-				}
-				break;
-			case "c":
-				if(tile.number < 4)
-				{
-					tile.boardLetter = 5;
-				}
-				else if(tile.number < 8)
-				{
-					tile.boardLetter = 6;
-				}
-				else if(tile.number < 12)
-				{
-					tile.boardLetter = 7;
-				}
-				else if(tile.number < 16)
-				{
-					tile.boardLetter = 8;
-				}
-				
-				if(tile.number%4 == 0)
-				{
-					tile.boardNumber = 9;
-				}
-				else if(tile.number%4 == 1)
-				{
-					tile.boardNumber = 10;
-				}
-				else if(tile.number%4 == 2)
-				{
-					tile.boardNumber = 11;
-				}
-				else if(tile.number%4 == 3)
-				{
-					tile.boardNumber = 12;
-				}
-				break;
-			case "d":
-				if(tile.number < 4)
-				{
-					tile.boardNumber = 4;
-				}
-				else if(tile.number < 8)
-				{
-					tile.boardNumber = 3;
-				}
-				else if(tile.number < 12)
-				{
-					tile.boardNumber = 2;
-				}
-				else if(tile.number < 16)
-				{
-					tile.boardNumber = 1;
-				}
-				
-				if(tile.number%4 == 0)
-				{
-					tile.boardLetter = 5;
-				}
-				else if(tile.number%4 == 1)
-				{
-					tile.boardLetter = 6;
-				}
-				else if(tile.number%4 == 2)
-				{
-					tile.boardLetter = 7;
-				}
-				else if(tile.number%4 == 3)
-				{
-					tile.boardLetter = 8;
-				}
-				break;
-			case "e":
-				if(tile.number < 4)
-				{
-					tile.boardNumber = 4;
-				}
-				else if(tile.number < 8)
-				{
-					tile.boardNumber = 3;
-				}
-				else if(tile.number < 12)
-				{
-					tile.boardNumber = 2;
-				}
-				else if(tile.number < 16)
-				{
-					tile.boardNumber = 1;
-				}
-				
-				if(tile.number%4 == 0)
-				{
-					tile.boardLetter = 1;
-				}
-				else if(tile.number%4 == 1)
-				{
-					tile.boardLetter = 2;
-				}
-				else if(tile.number%4 == 2)
-				{
-					tile.boardLetter = 3;
-				}
-				else if(tile.number%4 == 3)
-				{
-					tile.boardLetter = 4;
-				}
-				break;
-			case "f":
-				if(tile.number < 4)
-				{
-					tile.boardNumber = 8;
-				}
-				else if(tile.number < 8)
-				{
-					tile.boardNumber = 7;
-				}
-				else if(tile.number < 12)
-				{
-					tile.boardNumber = 6;
-				}
-				else if(tile.number < 16)
-				{
-					tile.boardNumber = 5;
-				}
-				
-				if(tile.number%4 == 0)
-				{
-					tile.boardLetter = 1;
-				}
-				else if(tile.number%4 == 1)
-				{
-					tile.boardLetter = 2;
-				}
-				else if(tile.number%4 == 2)
-				{
-					tile.boardLetter = 3;
-				}
-				else if(tile.number%4 == 3)
-				{
-					tile.boardLetter = 4;
-				}
-				break;
-		}
-	}
 
+	/** Checks if the click was inside the polygon whose boundaries define this tile.
+	 * 
+	 * @param e Mouse event for the click.
+	 * @return <code>true</code> if inside polygon,
+	 * <code>false</code> otherwise.
+	 */
 	public boolean checkIfContained(MouseEvent e) 
 	{
 		if(poly.contains(e.getPoint()))
@@ -505,15 +332,5 @@ public class TileGUI
 		{
 			return false;
 		}
-	}
-
-	public int getBoardLetter()
-	{
-		return boardLetter;
-	}
-
-	public int getBoardNumber() 
-	{
-		return boardNumber;
 	}
 }

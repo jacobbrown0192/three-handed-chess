@@ -43,29 +43,6 @@ public class BoardGUI extends JPanel implements MouseListener
 	private PieceGUI[] hexarantDPieces = PieceGUI.pieceSet(16);
 	private PieceGUI[] hexarantEPieces = PieceGUI.pieceSet(16);
 	private PieceGUI[] hexarantFPieces = PieceGUI.pieceSet(16);
-	
-	private ImageIcon FTile = new ImageIcon(getClass().getResource("/resources/Free Tile.png"));
-	
-	private ImageIcon GKing = new ImageIcon(getClass().getResource("/resources/Green King.png"));
-	private ImageIcon GQueen  = new ImageIcon(getClass().getResource("/resources/Green Queen.png"));
-	private ImageIcon GBishop = new ImageIcon(getClass().getResource("/resources/Green Bishop.png"));
-	private ImageIcon GRook = new ImageIcon(getClass().getResource("/resources/Green Rook.png"));
-	private ImageIcon GKnight = new ImageIcon(getClass().getResource("/resources/Green Knight.png"));
-	private ImageIcon GPawn = new ImageIcon(getClass().getResource("/resources/Green Pawn.png"));
-	
-	private ImageIcon BKing = new ImageIcon(getClass().getResource("/resources/Blue King.png"));
-	private ImageIcon BQueen = new ImageIcon(getClass().getResource("/resources/Blue Queen.png"));
-	private ImageIcon BBishop = new ImageIcon(getClass().getResource("/resources/Blue Bishop.png"));
-	private ImageIcon BRook = new ImageIcon(getClass().getResource("/resources/Blue Rook.png"));
-	private ImageIcon BKnight = new ImageIcon(getClass().getResource("/resources/Blue Knight.png"));
-	private ImageIcon BPawn = new ImageIcon(getClass().getResource("/resources/Blue Pawn.png"));
-	
-	private ImageIcon RKing = new ImageIcon(getClass().getResource("/resources/Red King.png"));
-	private ImageIcon RQueen = new ImageIcon(getClass().getResource("/resources/Red Queen.png"));
-	private ImageIcon RBishop = new ImageIcon(getClass().getResource("/resources/Red Bishop.png"));
-	private ImageIcon RRook = new ImageIcon(getClass().getResource("/resources/Red Rook.png"));
-	private ImageIcon RKnight = new ImageIcon(getClass().getResource("/resources/Red Knight.png"));
-	private ImageIcon RPawn = new ImageIcon(getClass().getResource("/resources/Red Pawn.png"));
 
     final static BasicStroke stroke = new BasicStroke(2.0f);
 
@@ -245,38 +222,26 @@ public class BoardGUI extends JPanel implements MouseListener
 		{
 			case "a":
 				hexarantATiles[tileNum].setTile(poly, hexarantName, tileNum);
-				hexarantAPieces[tileNum].setTileCenter(tileCenterPoint);
-				//hexarantAPieces[tileNum].setIcon(GQueen);
 				hexarantAPieces[tileNum].setBounds(xAvg-14, yAvg-40, 28, 40);
 				break;
 			case "b":
 				hexarantBTiles[tileNum].setTile(poly, hexarantName, tileNum);
-				hexarantBPieces[tileNum].setTileCenter(tileCenterPoint);
-				//hexarantBPieces[tileNum].setIcon(RQueen);
 				hexarantBPieces[tileNum].setBounds(xAvg-14, yAvg-40, 28, 40);
 				break;
 			case "c":
 				hexarantCTiles[tileNum].setTile(poly, hexarantName, tileNum);
-				hexarantCPieces[tileNum].setTileCenter(tileCenterPoint);
-				//hexarantCPieces[tileNum].setIcon(BQueen);
 				hexarantCPieces[tileNum].setBounds(xAvg-14, yAvg-40, 28, 40);
 				break;
 			case "d":
 				hexarantDTiles[tileNum].setTile(poly, hexarantName, tileNum);
-				hexarantDPieces[tileNum].setTileCenter(tileCenterPoint);
-				//hexarantDPieces[tileNum].setIcon(GKing);
 				hexarantDPieces[tileNum].setBounds(xAvg-14, yAvg-40, 28, 40);
 				break;
 			case "e":
 				hexarantETiles[tileNum].setTile(poly, hexarantName, tileNum);
-				hexarantEPieces[tileNum].setTileCenter(tileCenterPoint);
-				//hexarantEPieces[tileNum].setIcon(RKing);
 				hexarantEPieces[tileNum].setBounds(xAvg-14, yAvg-40, 28, 40);
 				break;
 			case "f":
 				hexarantFTiles[tileNum].setTile(poly, hexarantName, tileNum);
-				hexarantFPieces[tileNum].setTileCenter(tileCenterPoint);
-				//hexarantFPieces[tileNum].setIcon(FTile);
 				hexarantFPieces[tileNum].setBounds(xAvg-14, yAvg-40, 28, 40);
 				break;
 		}
@@ -310,7 +275,6 @@ public class BoardGUI extends JPanel implements MouseListener
 	/** Method called by the model to set the icons of each tile.
 	 * 
 	 * <p>Called upon start, reset, and after a move.
-	 * <p>To be improved...
 	 */
 	public void setTileIcons()
 	{
@@ -327,12 +291,12 @@ public class BoardGUI extends JPanel implements MouseListener
 					{
 						PieceType type = theGame.getTheBoard().getSection0().getSegment0().getTiles(i).getPiece().getPieceType();
 						int teamNumber = theGame.getTheBoard().getSection0().getSegment0().getTiles(i).getPiece().getPlayer().getNumber();
-						setPieceImage(type, teamNumber, hexarantEPieces[j]);
+						hexarantEPieces[j].setPieceImage(type, teamNumber);
 					}
 					else
 					{
 						int teamNumber = 4;
-						setPieceImage(null, teamNumber, hexarantEPieces[j]);
+						hexarantEPieces[j].setPieceImage(null, teamNumber);
 					}
 					break;
 				}
@@ -351,12 +315,12 @@ public class BoardGUI extends JPanel implements MouseListener
 					{
 						PieceType type = theGame.getTheBoard().getSection0().getSegment1().getTiles(i).getPiece().getPieceType();
 						int teamNumber = theGame.getTheBoard().getSection0().getSegment1().getTiles(i).getPiece().getPlayer().getNumber();
-						setPieceImage(type, teamNumber, hexarantDPieces[j]);
+						hexarantDPieces[j].setPieceImage(type, teamNumber);
 					}
 					else
 					{
 						int teamNumber = 4;
-						setPieceImage(null, teamNumber, hexarantDPieces[j]);
+						hexarantDPieces[j].setPieceImage(null, teamNumber);
 					}
 					break;
 				}
@@ -375,12 +339,12 @@ public class BoardGUI extends JPanel implements MouseListener
 					{
 						PieceType type = theGame.getTheBoard().getSection1().getSegment0().getTiles(i).getPiece().getPieceType();
 						int teamNumber = theGame.getTheBoard().getSection1().getSegment0().getTiles(i).getPiece().getPlayer().getNumber();
-						setPieceImage(type, teamNumber, hexarantAPieces[j]);
+						hexarantAPieces[j].setPieceImage(type, teamNumber);
 					}
 					else
 					{
 						int teamNumber = 4;
-						setPieceImage(null, teamNumber, hexarantAPieces[j]);
+						hexarantAPieces[j].setPieceImage(null, teamNumber);
 					}
 					break;
 				}
@@ -399,12 +363,12 @@ public class BoardGUI extends JPanel implements MouseListener
 					{
 						PieceType type = theGame.getTheBoard().getSection1().getSegment1().getTiles(i).getPiece().getPieceType();
 						int teamNumber = theGame.getTheBoard().getSection1().getSegment1().getTiles(i).getPiece().getPlayer().getNumber();
-						setPieceImage(type, teamNumber, hexarantFPieces[j]);
+						hexarantFPieces[j].setPieceImage(type, teamNumber);
 					}
 					else
 					{
 						int teamNumber = 4;
-						setPieceImage(null, teamNumber, hexarantFPieces[j]);
+						hexarantFPieces[j].setPieceImage(null, teamNumber);
 					}
 					break;
 				}
@@ -423,12 +387,12 @@ public class BoardGUI extends JPanel implements MouseListener
 					{
 						PieceType type = theGame.getTheBoard().getSection2().getSegment0().getTiles(i).getPiece().getPieceType();
 						int teamNumber = theGame.getTheBoard().getSection2().getSegment0().getTiles(i).getPiece().getPlayer().getNumber();
-						setPieceImage(type, teamNumber, hexarantCPieces[j]);
+						hexarantCPieces[j].setPieceImage(type, teamNumber);
 					}
 					else
 					{
 						int teamNumber = 4;
-						setPieceImage(null, teamNumber, hexarantCPieces[j]);
+						hexarantCPieces[j].setPieceImage(null, teamNumber);
 					}
 					break;
 				}
@@ -447,12 +411,12 @@ public class BoardGUI extends JPanel implements MouseListener
 					{
 						PieceType type = theGame.getTheBoard().getSection2().getSegment1().getTiles(i).getPiece().getPieceType();
 						int teamNumber = theGame.getTheBoard().getSection2().getSegment1().getTiles(i).getPiece().getPlayer().getNumber();
-						setPieceImage(type, teamNumber, hexarantBPieces[j]);
+						hexarantBPieces[j].setPieceImage(type, teamNumber);
 					}
 					else
 					{
 						int teamNumber = 4;
-						setPieceImage(null, teamNumber, hexarantBPieces[j]);
+						hexarantBPieces[j].setPieceImage(null, teamNumber);
 					}
 					break;
 				}
@@ -460,101 +424,6 @@ public class BoardGUI extends JPanel implements MouseListener
 		}
 	}
 	
-	/** Method to change the icon of a specific tile.
-	 * 
-	 * <p>Called in loop by <code>setTileIcons()</code>
-	 * 
-	 * @param type Type of piece being set to the PieceGUI
-	 * @param teamNumber Owner of the piece.
-	 * @param piece PieceGUI whose icon is being set.
-	 */
-	public void setPieceImage(PieceType type, int teamNumber, PieceGUI piece)
-	{
-		switch (teamNumber)
-		{
-			case 1:
-				switch(type)
-				{
-					case PAWN:
-						piece.setIcon(RPawn);
-						break;
-					case ROOK:
-						piece.setIcon(RRook);
-						break;
-					case KNIGHT:
-						piece.setIcon(RKnight);
-						break;
-					case BISHOP:
-						piece.setIcon(RBishop);
-						break;
-					case QUEEN:
-						piece.setIcon(RQueen);
-						break;
-					case KING:
-						piece.setIcon(RKing);
-						break;
-					case NONE:
-						piece.setIcon(FTile);
-						break;
-				}
-				break;
-			case 2:
-				switch(type)
-				{
-					case PAWN:
-						piece.setIcon(BPawn);
-						break;
-					case ROOK:
-						piece.setIcon(BRook);
-						break;
-					case KNIGHT:
-						piece.setIcon(BKnight);
-						break;
-					case BISHOP:
-						piece.setIcon(BBishop);
-						break;
-					case QUEEN:
-						piece.setIcon(BQueen);
-						break;
-					case KING:
-						piece.setIcon(BKing);
-						break;
-					case NONE:
-						piece.setIcon(FTile);
-						break;
-				}
-				break;
-			case 3:
-				switch(type)
-				{
-					case PAWN:
-						piece.setIcon(GPawn);
-						break;
-					case ROOK:
-						piece.setIcon(GRook);
-						break;
-					case KNIGHT:
-						piece.setIcon(GKnight);
-						break;
-					case BISHOP:
-						piece.setIcon(GBishop);
-						break;
-					case QUEEN:
-						piece.setIcon(GQueen);
-						break;
-					case KING:
-						piece.setIcon(GKing);
-						break;
-					case NONE:
-						piece.setIcon(FTile);
-						break;
-				}
-				break;
-			case 4:
-				piece.setIcon(FTile);
-				break;
-		}
-	}
 	
 	/** Checks if the click was inside a tile of the hexarant.
 	 * 
@@ -580,27 +449,14 @@ public class BoardGUI extends JPanel implements MouseListener
 		return false;
 		
 	}
-		
-	
-	
-	//Test Main
-	public static void main(String s[])
-	{
-		Dimension boardSize = new Dimension (500,500);
-	
-		BoardGUI board = new BoardGUI(null, boardSize);
-		
-		JFrame frame = new JFrame("ThreeHandedChessBoard");
-		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		frame.setLayout(new BorderLayout());
-		frame.add(board);
-        frame.setSize(boardSize);
-        frame.setResizable(false);
-        frame.setVisible(true);
-	}
 
 	
 	//Mouse Listener
+	/** Mouse clicks are checked against the polygons of every hexarant
+	 * until a match is found.
+	 * 
+	 * <p>Checks for containment are carried out by <code>searchForTile</code>
+	 */
 	@Override
 	public void mouseClicked(MouseEvent e)
 	{
