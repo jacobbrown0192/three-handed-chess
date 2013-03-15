@@ -40,7 +40,7 @@ public class Turn extends Thread {
 						}
 						else
 						{
-							
+							getTheGame().click1 = null;
 						}
 					}
 					else
