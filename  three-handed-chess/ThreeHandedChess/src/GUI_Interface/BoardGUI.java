@@ -302,6 +302,8 @@ public class BoardGUI extends JPanel implements MouseListener
 		}
 		
 		g2.fillPolygon(poly);
+		
+		setTileIcons();
 	}
 	
 	
@@ -561,21 +563,21 @@ public class BoardGUI extends JPanel implements MouseListener
 	 * @param e Mouse Event
 	 * @param hexarant
 	 */
-	private void searchForTile(MouseEvent e, TileGUI[] hexarant)
+	private boolean searchForTile(MouseEvent e, TileGUI[] hexarant)
 	{
 		for (int i=0; i < 16; i++)
 		{
 			if (hexarant[i].checkIfContained(e))
 			{
-				System.out.println("Found Tile!");
-				//hexarant[i].convertCoordinateToModelSystem(hexarant[i]);
+				//System.out.println("Found Tile!");
 				Click tileClicked = new Click(hexarant[i].getBoardNumber(), hexarant[i].getBoardLetter());
 				theGame.getClick(tileClicked);
-				System.out.println(hexarant[i].getBoardNumber());
-				System.out.println(hexarant[i].getBoardLetter());
-				break;
+				//System.out.println(hexarant[i].getBoardNumber());
+				//System.out.println(hexarant[i].getBoardLetter());
+				return true;
 			}
 		}
+		return false;
 		
 	}
 		
@@ -602,12 +604,22 @@ public class BoardGUI extends JPanel implements MouseListener
 	@Override
 	public void mouseClicked(MouseEvent e)
 	{
-		searchForTile(e, hexarantATiles);
-		searchForTile(e, hexarantBTiles);
-		searchForTile(e, hexarantCTiles);
-		searchForTile(e, hexarantDTiles);
-		searchForTile(e, hexarantETiles);
-		searchForTile(e, hexarantFTiles);	
+		if(!searchForTile(e, hexarantATiles))
+		{
+			if(!searchForTile(e, hexarantBTiles))
+			{
+				if(!searchForTile(e, hexarantCTiles))
+				{
+					if(!searchForTile(e, hexarantDTiles))
+					{
+						if(!searchForTile(e, hexarantETiles))
+						{
+							searchForTile(e, hexarantFTiles);
+						}
+					}
+				}
+			}
+		}
 	}
 
 	@Override
