@@ -254,7 +254,7 @@ public class MainConstruct {
 		theGame.setMainMenuGUI(mainMenuGUI);
 		theGame.setPauseMenuGUI(pauseMenuGUI);
 		theGame.setPlayerConfigGUI(playerConfigGUI);
-		theGame.setStalmateGUI(stalemateGUI);
+		theGame.setStalemateGUI(stalemateGUI);
 		theGame.setTheBoard(theBoard);
 		theGame.setGameTeams(gameTeams);
 		theGame.setMainMenu(mainMenu);
