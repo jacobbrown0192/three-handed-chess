@@ -7,10 +7,13 @@ import javax.swing.SwingConstants;
 
 import threePlayerChessa.Game;
 
-public class TopBoardGUI extends JPanel {
-	/**
-	 * 
-	 */
+/** Graphics for the control panel above the hexagonal game board.
+ * <p>An extension of <code>JPanel</code> containing a label.
+ * <p>This panel will be updated to include game timers, and possibly a previous
+ * move list.
+ */
+public class TopBoardGUI extends JPanel 
+{
 	private static final long serialVersionUID = 1L;
 	Game theGame;
 	
@@ -18,7 +21,8 @@ public class TopBoardGUI extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public TopBoardGUI(Game aGame) {
+	public TopBoardGUI(Game aGame)
+	{
 		theGame = aGame;
 		
 		setLayout(new GridLayout(1, 0, 0, 0));
@@ -27,5 +31,4 @@ public class TopBoardGUI extends JPanel {
 		lblGameAndStuff.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lblGameAndStuff);
 	}
-
 }

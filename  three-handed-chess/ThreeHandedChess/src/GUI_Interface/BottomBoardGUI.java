@@ -11,31 +11,38 @@ import threePlayerChessa.Game;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class BottomBoardGUI extends JPanel {
-	/**
-	 * 
-	 */
+/** Graphics for the control panel underneath the hexagonal game board.
+ * <p>An extension of <code>JPanel</code> containing a pause button.
+ * <p>This panel may be updated to include a chat window.
+ */
+public class BottomBoardGUI extends JPanel
+{
 	private static final long serialVersionUID = 1L;
 	Game theGame;
 	
 	/**
 	 * Create the panel.
 	 */
-	public BottomBoardGUI(Game aGame) {
+	public BottomBoardGUI(Game aGame)
+	{
 		theGame = aGame;
 		
 		setBorder(new EmptyBorder(30, 30, 30, 30));
 		setLayout(new GridLayout(1, 0, 30, 30));
 		
 		JButton btnNewButton = new JButton("Pause");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		
+		btnNewButton.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
 				theGame.gameFrame.getContentPane().removeAll();
 			    theGame.gameFrame.getContentPane().repaint();
 				theGame.gameFrame.getContentPane().add(theGame.pauseMenuGUI);
 				theGame.gameFrame.setVisible(true);
 			}
 		});
+		
 		add(btnNewButton);
 		
 		JLabel label = new JLabel("");
@@ -43,7 +50,5 @@ public class BottomBoardGUI extends JPanel {
 		
 		JLabel label_1 = new JLabel("");
 		add(label_1);
-
 	}
-
 }

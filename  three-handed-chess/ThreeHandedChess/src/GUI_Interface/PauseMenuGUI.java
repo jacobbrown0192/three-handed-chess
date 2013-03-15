@@ -11,6 +11,12 @@ import threePlayerChessa.Game;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/** Graphics for the control of the <code>PauseMenu</code>.
+ * <p>
+ * 
+ *
+ *
+ */
 public class PauseMenuGUI extends JPanel {
 	/**
 	 * 
