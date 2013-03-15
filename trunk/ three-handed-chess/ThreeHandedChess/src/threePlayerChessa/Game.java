@@ -188,12 +188,13 @@ public class Game {
 		gameFrame.getContentPane().add(tBoardGUI,BorderLayout.NORTH);
 		gameFrame.getContentPane().add(boardGUI);
 		gameFrame.getContentPane().add(bBoardGUI,BorderLayout.SOUTH);
-		gameFrame.setVisible(true);
+		
 		theBoard.reset();
 		gameTeams.elementAt(0).addPiecesToBoard();
 		gameTeams.elementAt(1).addPiecesToBoard();
 		gameTeams.elementAt(2).addPiecesToBoard();
 		boardGUI.setTileIcons();
+		gameFrame.setVisible(true);
 		gameController.setInProgress(true);
 		gameController.turnCount = 0;
 		click1 = null;

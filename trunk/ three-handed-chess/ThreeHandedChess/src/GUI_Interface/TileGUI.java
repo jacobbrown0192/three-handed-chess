@@ -4,11 +4,15 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+/** 
+ * 
+ * 
+ *
+ */
 public class TileGUI
 {
 	private static final long serialVersionUID = 1L;
 	private Polygon poly;
-	private CoordinateGUI tileCenter;
 	private int number;
 	private String section;
 	
@@ -30,12 +34,11 @@ public class TileGUI
 		return section;
 	}
 
-	public void setTile(Polygon poly, String section, int number, CoordinateGUI tileCenter)
+	public void setTile(Polygon poly, String section, int number)
 	{
 		this.poly = poly;
 		this.section = section;
 		this.number = number;
-		this.tileCenter = tileCenter;
 		this.boardNumber = setBoardNumberThroughConversion(this.section, this.number);
 		this.boardLetter = setBoardLetterThroughConversion(this.section, this.number);
 	}

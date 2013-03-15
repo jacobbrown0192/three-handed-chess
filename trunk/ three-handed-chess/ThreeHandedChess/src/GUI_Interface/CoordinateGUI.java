@@ -1,8 +1,5 @@
 package GUI_Interface;
 
-import java.awt.Point;
-
-
 public class CoordinateGUI
 {
 	/**
@@ -35,7 +32,7 @@ public class CoordinateGUI
     	array[index].y = (array[indexA].y + array[indexB].y)/2;
     }
     
-    public void setSection (CoordinateGUI[] section)
+    public void setHexarant (CoordinateGUI[] section)
     {
 		section[0].setLocation(section, 0, 20);
 		section[0].setLocation(section, 0, 10);
