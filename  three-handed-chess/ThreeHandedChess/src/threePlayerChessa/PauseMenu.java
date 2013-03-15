@@ -21,12 +21,6 @@ public class PauseMenu {
 		theBoard.reset();
 		theGame.gameController.setInProgress(false);
 		theGame.startGame();
-		theGame.gameFrame.getContentPane().removeAll();
-	    theGame.gameFrame.getContentPane().repaint();
-		theGame.gameFrame.getContentPane().add(theGame.tBoardGUI);
-		theGame.gameFrame.getContentPane().add(theGame.boardGUI);
-		theGame.gameFrame.getContentPane().add(theGame.bBoardGUI);
-		theGame.gameFrame.setVisible(true);
 	}
 
 	public void endGame() {

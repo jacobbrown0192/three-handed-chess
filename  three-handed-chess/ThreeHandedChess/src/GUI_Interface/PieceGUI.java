@@ -27,8 +27,6 @@ public class PieceGUI extends JLabel
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
-		g.setColor(Color.black);
-		g.drawLine(0, 50, 50, 100);
 	}
 	
 }
