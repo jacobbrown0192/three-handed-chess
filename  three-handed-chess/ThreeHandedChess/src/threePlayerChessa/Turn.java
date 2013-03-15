@@ -20,7 +20,7 @@ public class Turn extends Thread {
 			}
 			Tile select1 = null;
 			Tile select2 = null;
-			if(((getTheGame().gameController.turnCount%3) + 1) == gameTeam.getNumber()){
+			if((getTheGame().gameController.turnCount % 3) == (gameTeam.getNumber() - 1)){
 				if(getTheGame().click1 != null){
 					
 					for(int i =0; i < 3; i++){
@@ -34,9 +34,14 @@ public class Turn extends Thread {
 						}
 					}
 					
-					if()
-					if( select1.getPiece().player == gameTeam){
-						validClick = true;
+					if(select1.getPiece() != null){					
+						if( select1.getPiece().player == gameTeam){
+							validClick = true;
+						}
+						else
+						{
+							
+						}
 					}
 					else
 					{

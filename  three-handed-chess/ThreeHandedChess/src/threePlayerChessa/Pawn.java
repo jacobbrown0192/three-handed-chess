@@ -44,12 +44,13 @@ public class Pawn extends Piece {
 	 * 
 	 */
 	public void move(Tile aStartTile, Tile aMoveTile, Turn player) {
-		boolean validMove = false;
+		boolean validMove = true;
+		player.getTheGame().click1 = null;
+		player.getTheGame().click2 = null;
 		//check for valid move
 		if (validMove){
 			aMoveTile.setPiece(aStartTile.getPiece());
 			aStartTile.setPiece(null);
-			player.getTheGame().gameController.addToCounter();
 			if(aMoveTile.getNumber() == 1 || aMoveTile.getNumber() == 8 || aMoveTile.getNumber() == 12){
 				PromotePawn selector = new PromotePawn(this,player);
 				player.getTheGame().gameFrame.getContentPane().removeAll();
@@ -74,7 +75,7 @@ public class Pawn extends Piece {
 	 * 
 	 */
 	public void selectQueen(Tile aTile){
-		aTile.getPiece().setCurrentTile(null);
+		//aTile.getPiece().setCurrentTile(null);
 		Queen temp = new Queen(aTile.getPiece().getPlayer(),"Promoted Piece",theBoard,aTile,aTile.getPiece().getPieceType());
 		aTile.setPiece(temp);
 	}
@@ -88,7 +89,7 @@ public class Pawn extends Piece {
 	 * 
 	 */
 	public void selectBishop(Tile aTile){
-		aTile.getPiece().setCurrentTile(null);
+		//aTile.getPiece().setCurrentTile(null);
 		Bishop temp = new Bishop(aTile.getPiece().getPlayer(),"Promoted Piece",theBoard,aTile,aTile.getPiece().getPieceType());
 		aTile.setPiece(temp);
 	}
@@ -102,7 +103,7 @@ public class Pawn extends Piece {
 	 * 
 	 */
 	public void selectKnight(Tile aTile){
-		aTile.getPiece().setCurrentTile(null);
+		//aTile.getPiece().setCurrentTile(null);
 		Knight temp = new Knight(aTile.getPiece().getPlayer(),"Promoted Piece",theBoard,aTile,aTile.getPiece().getPieceType());
 		aTile.setPiece(temp);
 	}
@@ -116,7 +117,7 @@ public class Pawn extends Piece {
 	 * 
 	 */
 	public void selectRook(Tile aTile){
-		aTile.getPiece().setCurrentTile(null);
+		//aTile.getPiece().setCurrentTile(null);
 		Rook temp = new Rook(aTile.getPiece().getPlayer(),"Promoted Piece",theBoard,aTile,aTile.getPiece().getPieceType());
 		aTile.setPiece(temp);
 	}

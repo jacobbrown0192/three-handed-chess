@@ -19,7 +19,7 @@ public class Controller {
 		this.inProgress = inProgress;
 	}
 	
-	public void addToCounter(){
+	public synchronized void addToCounter(){
 		turnCount ++;
 		synchronized (theGame.player1){
 			theGame.player1.notify();
