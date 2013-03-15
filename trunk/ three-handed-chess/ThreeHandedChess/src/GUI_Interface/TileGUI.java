@@ -5,7 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 /** Class for the containment of the polygon, and indexing systems
- * (Graphical and Model) a tile
+ * (View and Model) a tile
  */
 public class TileGUI
 {

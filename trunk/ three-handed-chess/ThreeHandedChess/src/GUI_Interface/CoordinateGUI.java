@@ -1,10 +1,10 @@
 package GUI_Interface;
 
+/** Simple two integer class for handling points of the hexagonal board.
+ * <p>Used by BoardGUI to set and access the points of the tile vertices.
+ */
 public class CoordinateGUI
 {
-	/** Simple two integer class for handling points of the hexagonal board.
-	 * <p>Used by BoardGUI to set and access the points of the tile vertices.
-	 */
 	private static final long serialVersionUID = 1L;
 	public double x;
 	public double y;

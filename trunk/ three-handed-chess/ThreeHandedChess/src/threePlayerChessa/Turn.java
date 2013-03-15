@@ -2,7 +2,7 @@ package threePlayerChessa;
 
 
 /**  
- *The Turn class is used as an individual thread for each player 
+ *The turn class is an extension of thread implemented for each player.
  */
 public class Turn extends Thread {
 	private Game theGame; //the game its self which contains everything
@@ -12,8 +12,8 @@ public class Turn extends Thread {
 	
 	/**
 	 * Controller constructor
-	 * @param aGame - the game its self which contains everything
-	 * @param aTeam - the player of which this thread is
+	 * @param aGame - the game itself which contains everything.
+	 * @param aTeam - the player of which this thread belongs to.
 	 */
 	public Turn(Game aGame,Team aTeam){
 		setTheGame(aGame);

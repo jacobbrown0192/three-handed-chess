@@ -1,9 +1,8 @@
 package threePlayerChessa;
 
-/**  
- *The Controller class which controls things like the turn counter 
- *whether the game is in progress, wither someone is in check
- *This class will be updated to allow for this
+/** 
+ *The Controller class controls the turn counter, whether the game is in progress
+ *and whether someone is in check. Checking for check has yet to be implemented.
  */
 public class Controller {
 	Game theGame; //the game its self which contains everything
