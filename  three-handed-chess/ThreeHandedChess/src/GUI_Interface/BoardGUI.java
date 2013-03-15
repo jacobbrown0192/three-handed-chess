@@ -197,7 +197,6 @@ public class BoardGUI extends JPanel implements MouseListener
 		int xAvg = (int)((hexarant[uL].x + hexarant[uL + 1].x + hexarant[uL + 6].x + hexarant[uL + 5].x)/4);
 		int yAvg = (int)((hexarant[uL].y + hexarant[uL + 1].y + hexarant[uL + 6].y + hexarant[uL + 5].y)/4);
 		yAvg += yOffset;
-		Point tileCenterPoint = new Point(xAvg, yAvg);
 		
 		int tileNum = 100;
 		
@@ -447,7 +446,6 @@ public class BoardGUI extends JPanel implements MouseListener
 			}
 		}
 		return false;
-		
 	}
 
 	

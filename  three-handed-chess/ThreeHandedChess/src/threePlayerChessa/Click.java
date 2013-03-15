@@ -1,8 +1,8 @@
 package threePlayerChessa;
 
 /**  
- *The Click class is the class which contains all the sections, segments, and tiles. 
- *It is also used to tell where everything goes
+ *The Click class is used to transmit the information about which tile the user
+ *has clicked from the view to the model.
  */
 public class Click {
 	int num; //the number coordinate of the click

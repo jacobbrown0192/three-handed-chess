@@ -16,7 +16,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 /** Graphics for the control of the promote pawn clause of a pawn's operation.
- * <p>If a pawn reaches the last row of an opposing teams side of the board
+ * <p>If a pawn reaches the last row of an opposing team's side of the board
  * it can promote either to a Queen, Rook, Bishop or Knight.
  * <p>This screen will prompt the player to decide which piece they would like
  * to promote their pawn to with four buttons: Queen, Rook, Bishop, Knight.

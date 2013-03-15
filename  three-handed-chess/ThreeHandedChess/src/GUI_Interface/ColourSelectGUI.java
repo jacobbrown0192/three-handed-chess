@@ -8,6 +8,9 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+/** Graphics to control the selection of a team's piece colours.
+ * <p>To be implemented.
+ */
 public class ColourSelectGUI extends JDialog {
 
 	/**
