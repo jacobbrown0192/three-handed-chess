@@ -3,6 +3,10 @@ package threePlayerChessa;
 import java.util.Vector;
 import threePlayerChessa.Tile;
 
+/**  
+ *The Segment class is the class which contains all the tiles. 
+ *Splitting up the board makes it more manageable 
+ */
 public class Segment {
 	int maxNum;
 	int minNum;
@@ -11,6 +15,15 @@ public class Segment {
 	Section section;
 	public Vector<Tile> tiles = new Vector<Tile>();
 
+	
+	/**
+	 * Segment constructor
+	 * @param maxNum - Maximum identifier number 
+	 * @param minNum - Minimum identifier number
+	 * @param maxLet - Maximum identifier number
+	 * @param minLet - Minimum identifier number
+	 * @param section - the board which this section belongs too
+	 */
 	public Segment(int maxNum, int minNum, int maxLet, int minLet,
 			Section section) {
 		super();
@@ -20,6 +33,9 @@ public class Segment {
 		this.minLet = minLet;
 		this.section = section;
 		boolean colour = true;
+		//all segments are created by starting at the lowest number and letter 
+		//and increasing letters then numbers
+		//for one segment it is set up differently and starts on a white space
 		if(maxNum == 12 && maxLet == 12){
 		colour = !colour;
 			for( int i = minNum; i<=maxNum; i++){
@@ -31,6 +47,7 @@ public class Segment {
 				}
 			}
 		}
+		//all other segments start on a black space
 		else{
 			for( int i = minNum; i<=maxNum; i++){
 				colour = !colour;
@@ -43,12 +60,10 @@ public class Segment {
 		}
 	}
 
+	/**
+	 * @return the tile chosen
+	 */
 	public Tile getTiles(int num) {
 		return this.tiles.elementAt(num);
-	}
-
-	public void setSegment(Tile aTile) {
-		//this.tiles.remove(aTile);
-		this.tiles.add(aTile);
 	}
 }

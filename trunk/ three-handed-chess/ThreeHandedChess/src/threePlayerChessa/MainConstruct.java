@@ -17,36 +17,41 @@ import threePlayerChessa.Piece.PieceType;
 import threePlayerChessa.Team;
 import threePlayerChessa.PauseMenu;
 
+/**  
+ *The MainConstruct class is used to either directly or indirectly construct everything to be used in the game
+ */
 public class MainConstruct {
-	public Board theBoard;
-	public Vector<Team> gameTeams = new Vector<Team>();
-	public Game theGame;
-	public Menu mainMenu;
-	public PauseMenu pauseMenu;
-	public PlayerConfigurationMenu plyerConfig;
-	public CallForStalemateMenu stalemate;
-	public MainMenuGUI mainMenuGUI;
-	public PauseMenuGUI pauseMenuGUI;
-	public PlayerConfigurationMenuGUI playerConfigGUI;
-	public CallForStalemateGUI stalemateGUI;
-	public BoardGUI boardGUI;
-	public BottomBoardGUI bBoardGUI;
-	public TopBoardGUI tBoardGUI;
-	public JFrame gameFrame;
-	public Controller gameController;
-	public Turn player1;
-	public Turn player2;	
-	public Turn player3;
+	public Board theBoard; //the board of the game
+	public Vector<Team> gameTeams = new Vector<Team>(); //teams playing the game
+	public Game theGame; //the game its self which contains everything
+	public Menu mainMenu; //the model of main menu 
+	public PauseMenu pauseMenu; //the model of the pause menu 
+	public PlayerConfigurationMenu plyerConfig; //the model of the player configuration menu 
+	public CallForStalemateMenu stalemate; //the model of the call for stalemate menu 
+	public MainMenuGUI mainMenuGUI; //the GUI of the main menu 
+	public PauseMenuGUI pauseMenuGUI; //the GUI of the pause menu 
+	public PlayerConfigurationMenuGUI playerConfigGUI; //the GUI of the player configuration menu 
+	public CallForStalemateGUI stalemateGUI; //the GUI of the call for stalemate menu 
+	public BoardGUI boardGUI;  //the GUI of the board 
+	public BottomBoardGUI bBoardGUI;  //the GUI of the bottom panel of the board 
+	public TopBoardGUI tBoardGUI; //the GUI of the top panel of the board 
+	public JFrame gameFrame; //the frame which all panels are put 
+	public Controller gameController; //the game controller
+	public Turn player1; //the player one's thread
+	public Turn player2; //the player two's thread
+	public Turn player3; //the player three's thread
 	
 	/**
-	 * 
+	 * MainConstruct constructor
 	 */
 	public MainConstruct() {
 		super();
 		
+		//game construction
 		Game mainGame = new Game();
 		this.theGame = mainGame;		
 		
+		//team construction
 		Human team1 = new Human(1,"Player 1",1,null,null);
 		Human team2 = new Human(2,"Player 2",2,null,null);
 		Human team3 = new Human(3,"Player 3",3,null,null);
@@ -55,9 +60,11 @@ public class MainConstruct {
 		this.gameTeams.add(team2);
 		this.gameTeams.add(team3);
 		
+		//board being constructed
 		Board temp = new Board(gameTeams);
 		this.theBoard = temp;
 		
+		//adding pieces to teams
 		Vector<Piece> teamPieces1 = new Vector<Piece>();
 		Vector<Piece> teamPieces2 = new Vector<Piece>();
 		Vector<Piece> teamPieces3 = new Vector<Piece>();
@@ -179,21 +186,27 @@ public class MainConstruct {
 		team2.addboard(theBoard);
 		team3.addboard(theBoard);
 		
+		//main menu construction
 		Menu tempMenu = new Menu(this.theBoard,this.gameTeams,this.theGame);
 		this.mainMenu = tempMenu;
 		
+		//pause menu construction
 		PauseMenu tempPause = new PauseMenu(this.theBoard ,this.gameTeams, this.theGame);
 		this.pauseMenu = tempPause;
 		
+		//palyer configuration menu construction
 		PlayerConfigurationMenu config = new PlayerConfigurationMenu(this.theBoard, this.gameTeams,this.theGame);
 		this.plyerConfig = config;
 		
+		//call for stalemate menu construction
 		CallForStalemateMenu callStale = new CallForStalemateMenu(this.theBoard, this.theGame);		
 		this.stalemate = callStale;
 	
+		//controller construction
 		Controller aGameController = new Controller(theGame);
 		gameController = aGameController;		
 				
+		//player thread construction
 		Turn aplayer1 = new Turn(theGame,gameTeams.elementAt(0));
 		Turn aplayer2 = new Turn(theGame,gameTeams.elementAt(1));
 		Turn aplayer3 = new Turn(theGame,gameTeams.elementAt(2));		
@@ -201,10 +214,12 @@ public class MainConstruct {
 		player2 = aplayer2;
 		player3 = aplayer3;
 		
+		//frame construction
 		JFrame aGameFrame = new JFrame();		
 		gameFrame = aGameFrame;
 		gameFrame.setLayout(new BorderLayout(0, 0));
 		
+		//GUI construction
 		MainMenuGUI MenuGUI = new MainMenuGUI(theGame);
 		mainMenuGUI = MenuGUI;
 		
@@ -230,10 +245,10 @@ public class MainConstruct {
 		tBoardGUI = tboardGUI;		
 		
 		
-		
+		//adding menuGUI to frame
 		gameFrame.add(MenuGUI);			
 			
-		
+		//add everything to a game
 		theGame.setBoardGUI(boardGUI);
 		theGame.setGameFrame(gameFrame);
 		theGame.setMainMenuGUI(mainMenuGUI);
@@ -257,6 +272,7 @@ public class MainConstruct {
 		
 	}
 	
+	//makes the game frame and makes the main menu visible
 	public static void main(String s[])
 	{
 		MainConstruct maker  = new MainConstruct();
