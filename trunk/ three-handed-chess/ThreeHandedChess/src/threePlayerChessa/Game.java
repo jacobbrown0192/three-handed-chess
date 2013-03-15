@@ -169,7 +169,16 @@ public class Game {
 		else{
 			click2 = aClick;
 		}
-		notifyAll();		
+		notifyAll();
+		synchronized (player1){
+			player1.notify();
+		}
+		synchronized (player2){
+			player2.notify();
+		}
+		synchronized (player3){
+			player3.notify();
+		}
 	}
 
 
@@ -195,6 +204,6 @@ public class Game {
 		player2.start();
 		if(!player2.isAlive())
 		player3.start();	
-	
+		boardGUI.setTileIcons();
 	}	
 }
