@@ -28,12 +28,14 @@ public class Turn extends Thread {
 			boolean validClick = false;
 			check = getTheGame().gameController.inCheck();
 			if (check){ //checks for player in check. update to come.
-				//check for checkamte
+				//check for checkmate
 			}
 			Tile select1 = null;
 			Tile select2 = null;
-			if((getTheGame().gameController.turnCount % 3) == (gameTeam.getNumber() - 1)){ //checks to see if its current players turn
-				if(getTheGame().click1 != null){ //check for first click
+			if((getTheGame().gameController.turnCount % 3) == (gameTeam.getNumber() - 1))//checks to see if its current players turn
+			{ 
+				if(getTheGame().click1 != null)//check for first click
+				{ 
 					
 					//finds the tile clicked
 					for(int i =0; i < 3; i++){
@@ -48,9 +50,13 @@ public class Turn extends Thread {
 					}
 					
 					//see if first click is valid
-					if(select1.getPiece() != null){					
-						if( select1.getPiece().player == gameTeam){
+					if(select1.getPiece() != null)
+					{					
+						if( select1.getPiece().player == gameTeam)
+						{
 							validClick = true;
+							select1.setSelected(true);
+							theGame.boardGUI.setTileIcons();
 						}
 						else
 						{
@@ -87,6 +93,9 @@ public class Turn extends Thread {
 								if(select2.getPiece().player != gameTeam)
 									validClick = true;
 								else{
+								select1.setSelected(false);
+								select2.setSelected(true);
+								theGame.boardGUI.setTileIcons();
 								getTheGame().click1 = getTheGame().click2;
 								getTheGame().click2 = null;
 								}
@@ -94,12 +103,17 @@ public class Turn extends Thread {
 								
 							
 							if(getTheGame().click1 == getTheGame().click2){
+								select1.setSelected(false);
+								select2.setSelected(false);
+								theGame.boardGUI.setTileIcons();
 								getTheGame().click1 = null;
 								getTheGame().click2 = null;
 							}
 							
 							//moves if second clikc is valid
 							if(validClick){
+								select1.setSelected(false);
+								select2.setSelected(false);
 								select1.getPiece().move(select1, select2,this);								
 							}							
 						}

@@ -12,11 +12,12 @@ public class TileGUI
 	private static final long serialVersionUID = 1L;
 	private Polygon poly;
 	private int number;
-	private String hexarant;
+	private boolean selected;
+	private int hexarant;
 	private int boardNumber;
 	private int boardLetter;
 	
-	public String getHexarant()
+	public int getHexarant()
 	{
 		return hexarant;
 	}
@@ -31,17 +32,30 @@ public class TileGUI
 		return boardNumber;
 	}
 	
+	public boolean getSelected()
+	{
+		return selected;
+	}
+	
+	public void setSelected(boolean selected)
+	{
+		this.selected = selected;
+	}
+	
     /** Method to expedite the initialization of an array of TileGUIs
      * 
      * @param size The number of elements of the array.
      * @return The initialized array of TileGUIs.
      */
-	public static TileGUI[] tileSet(int size)
+	public static TileGUI[][] tileSet(int widthSize, int depthSize)
 	{
-		TileGUI[] array = new TileGUI[size];
-		for(int i=0; i < size; i++)
+		TileGUI[][] array = new TileGUI[widthSize][depthSize];
+		for(int i=0; i < widthSize; i++)
 		{
-			array[i] = new TileGUI();
+			for(int j=0; j < depthSize; j++)
+			{
+				array[i][j] = new TileGUI();
+			}
 		}
 		return array;
 	}
@@ -56,14 +70,14 @@ public class TileGUI
 	 * of number and letter files being used to call and record game moves in chess.
 	 * 
 	 * @param poly The polygon which defines the limits of the tile.
-	 * @param hexarant A string which indicates which 4x4 tile grid the tile belongs to.
+	 * @param i A string which indicates which 4x4 tile grid the tile belongs to.
 	 * Named for the hexagonal equivalent of a quadrilaterals "quadrants".
 	 * @param number An integer whose value is the index of the tile inside it's hexarant.
 	 */
-	public void setTile(Polygon poly, String hexarant, int number)
+	public void setTile(Polygon poly, int i, int number)
 	{
 		this.poly = poly;
-		this.hexarant = hexarant;
+		this.hexarant = i;
 		this.number = number;
 		this.boardNumber = setBoardNumberThroughConversion(this.hexarant, this.number);
 		this.boardLetter = setBoardLetterThroughConversion(this.hexarant, this.number);
@@ -75,13 +89,13 @@ public class TileGUI
 	 * @param number An integer whose value is the index of the tile inside it's hexarant.
 	 * @return The number file of the tile.
 	 */
-	public int setBoardNumberThroughConversion(String hexarant, int number)
+	public int setBoardNumberThroughConversion(int hexarant, int number)
 	{
 		int boardNumber = 100;
 		
 		switch (hexarant)
 		{
-			case "a":				
+			case 0:				
 				if(number%4 == 0)
 				{
 					boardNumber = 8;
@@ -99,7 +113,7 @@ public class TileGUI
 					boardNumber = 5;
 				}
 				break;
-			case "b":
+			case 1:
 				if(number%4 == 0)
 				{
 					boardNumber = 9;
@@ -117,7 +131,7 @@ public class TileGUI
 					boardNumber = 12;
 				}
 				break;
-			case "c":
+			case 2:
 				if(number%4 == 0)
 				{
 					boardNumber = 9;
@@ -135,7 +149,7 @@ public class TileGUI
 					boardNumber = 12;
 				}
 				break;
-			case "d":
+			case 3:
 				if(number < 4)
 				{
 					boardNumber = 4;
@@ -153,7 +167,7 @@ public class TileGUI
 					boardNumber = 1;
 				}
 				break;
-			case "e":
+			case 4:
 				if(number < 4)
 				{
 					boardNumber = 4;
@@ -171,7 +185,7 @@ public class TileGUI
 					boardNumber = 1;
 				}
 				break;
-			case "f":
+			case 5:
 				if(number < 4)
 				{
 					boardNumber = 8;
@@ -199,12 +213,12 @@ public class TileGUI
 	 * @param number An integer whose value is the index of the tile inside it's hexarant.
 	 * @return The letter file of the tile.
 	 */
-	public int setBoardLetterThroughConversion(String hexarant, int number)
+	public int setBoardLetterThroughConversion(int hexarant, int number)
 	{
 		int boardLetter = 100;
 		switch (hexarant)
 		{
-			case "a":
+			case 0:
 				if(number < 4)
 				{
 					boardLetter = 12;
@@ -222,7 +236,7 @@ public class TileGUI
 					boardLetter = 9;
 				}
 				break;
-			case "b":
+			case 1:
 				if(number < 4)
 				{
 					boardLetter = 12;
@@ -240,7 +254,7 @@ public class TileGUI
 					boardLetter = 9;
 				}
 				break;
-			case "c":
+			case 2:
 				if(number < 4)
 				{
 					boardLetter = 5;
@@ -258,7 +272,7 @@ public class TileGUI
 					boardLetter = 8;
 				}
 				break;
-			case "d":				
+			case 3:				
 				if(number%4 == 0)
 				{
 					boardLetter = 5;
@@ -276,7 +290,7 @@ public class TileGUI
 					boardLetter = 8;
 				}
 				break;
-			case "e":				
+			case 4:				
 				if(number%4 == 0)
 				{
 					boardLetter = 1;
@@ -294,7 +308,7 @@ public class TileGUI
 					boardLetter = 4;
 				}
 				break;
-			case "f":				
+			case 5:				
 				if(number%4 == 0)
 				{
 					boardLetter = 1;

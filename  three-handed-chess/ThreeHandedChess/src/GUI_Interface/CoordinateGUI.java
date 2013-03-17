@@ -1,5 +1,12 @@
 package GUI_Interface;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Polygon;
+
+import threePlayerChessa.Piece.PieceType;
+
 /** Simple two integer class for handling points of the hexagonal board.
  * <p>Used by BoardGUI to set and access the points of the tile vertices.
  */
@@ -29,13 +36,18 @@ public class CoordinateGUI
      * @param size The number of elements of the array.
      * @return The initialized array of CoordinateGUIs.
      */
-	public static CoordinateGUI[] coordinateSet(int size)
-    {
-        CoordinateGUI[] array = new CoordinateGUI[size];
-        for(int i=0; i<size; i++)
-            array[i] = new CoordinateGUI();
-        return array;
-    }
+	public static CoordinateGUI[][] coordinateSet(int widthSize, int depthSize)
+	{
+		CoordinateGUI[][] array = new CoordinateGUI[widthSize][depthSize];
+		for(int i=0; i < widthSize; i++)
+		{
+			for(int j=0; j < depthSize; j++)
+			{
+				array[i][j] = new CoordinateGUI();
+			}
+		}
+		return array;
+	}
     
 	/** Method to set the x and y value of the coordinate at the center of
 	 * two other coordinates.
@@ -49,12 +61,12 @@ public class CoordinateGUI
 	 * @param indexA Index of the first coordinate being used to set the new index coordinate.
 	 * @param indexB Index of the second coordinate being used to set the new index coordinate.
 	 */
-    public void setLocation (CoordinateGUI[] array, int indexA, int indexB)
-    {
-    	int index = (indexA + indexB)/2;
-    	array[index].x = (array[indexA].x + array[indexB].x)/2;
-    	array[index].y = (array[indexA].y + array[indexB].y)/2;
-    }
+	private void setLocationNew(CoordinateGUI[][] array, int i, int indexA, int indexB)
+	{
+		int index = (indexA + indexB)/2;
+		array[i][index].x = (array[i][indexA].x + array[i][indexB].x)/2;
+		array[i][index].y = (array[i][indexA].y + array[i][indexB].y)/2;
+	}
     
     /** Sets the coordinates of every tile vertex in a hexarant having previously
      * calculated the coordinates of the four corners of the hexarant.
@@ -64,34 +76,37 @@ public class CoordinateGUI
      * 
      * @param hexarant Segment of the board whose coordinates are being calculated.
      */
-    public void setHexarant (CoordinateGUI[] hexarant)
-    {
-		hexarant[0].setLocation(hexarant, 0, 20);
-		hexarant[0].setLocation(hexarant, 0, 10);
-		hexarant[0].setLocation(hexarant, 10, 20);
-		
-		hexarant[0].setLocation(hexarant, 4, 24);
-		hexarant[0].setLocation(hexarant, 4, 14);
-		hexarant[0].setLocation(hexarant, 14, 24);
-		
-		hexarant[0].setLocation(hexarant, 0, 4);
-		hexarant[0].setLocation(hexarant, 0, 2);
-		hexarant[0].setLocation(hexarant, 2, 4);
-		
-		hexarant[0].setLocation(hexarant, 5, 9);
-		hexarant[0].setLocation(hexarant, 5, 7);
-		hexarant[0].setLocation(hexarant, 7, 9);
-		
-		hexarant[0].setLocation(hexarant, 10, 14);
-		hexarant[0].setLocation(hexarant, 10, 12);
-		hexarant[0].setLocation(hexarant, 12, 14);
-		
-		hexarant[0].setLocation(hexarant, 15, 19);
-		hexarant[0].setLocation(hexarant, 15, 17);
-		hexarant[0].setLocation(hexarant, 17, 19);
-		
-		hexarant[0].setLocation(hexarant, 20, 24);
-		hexarant[0].setLocation(hexarant, 20, 22);
-		hexarant[0].setLocation(hexarant, 22, 24);
-    }
+	public void setPoints(CoordinateGUI[][] boardPoints) 
+	{
+		for (int i=0; i<6; i++)
+		{
+			boardPoints[0][0].setLocationNew(boardPoints, i, 0, 20);
+			boardPoints[0][0].setLocationNew(boardPoints, i, 0, 10);
+			boardPoints[0][0].setLocationNew(boardPoints, i, 10, 20);
+			
+			boardPoints[0][0].setLocationNew(boardPoints, i, 4, 24);
+			boardPoints[0][0].setLocationNew(boardPoints, i, 4, 14);
+			boardPoints[0][0].setLocationNew(boardPoints, i, 14, 24);
+			
+			boardPoints[0][0].setLocationNew(boardPoints, i, 0, 4);
+			boardPoints[0][0].setLocationNew(boardPoints, i, 0, 2);
+			boardPoints[0][0].setLocationNew(boardPoints, i, 2, 4);
+			
+			boardPoints[0][0].setLocationNew(boardPoints, i, 5, 9);
+			boardPoints[0][0].setLocationNew(boardPoints, i, 5, 7);
+			boardPoints[0][0].setLocationNew(boardPoints, i, 7, 9);
+			
+			boardPoints[0][0].setLocationNew(boardPoints, i, 10, 14);
+			boardPoints[0][0].setLocationNew(boardPoints, i, 10, 12);
+			boardPoints[0][0].setLocationNew(boardPoints, i, 12, 14);
+			
+			boardPoints[0][0].setLocationNew(boardPoints, i, 15, 19);
+			boardPoints[0][0].setLocationNew(boardPoints, i, 15, 17);
+			boardPoints[0][0].setLocationNew(boardPoints, i, 17, 19);
+			
+			boardPoints[0][0].setLocationNew(boardPoints, i, 20, 24);
+			boardPoints[0][0].setLocationNew(boardPoints, i, 20, 22);
+			boardPoints[0][0].setLocationNew(boardPoints, i, 22, 24);
+		}
+	}	
 }
