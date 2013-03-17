@@ -41,7 +41,7 @@ public class Segment {
 			for( int i = minNum; i<=maxNum; i++){
 				colour = !colour;
 				for(int j = minLet; j<=maxLet; j++){
-					Tile temp = new Tile(colour,i,j,null);
+					Tile temp = new Tile(colour,i,j,null, false);
 					this.tiles.add(temp);
 					colour = !colour;
 				}
@@ -52,7 +52,7 @@ public class Segment {
 			for( int i = minNum; i<=maxNum; i++){
 				colour = !colour;
 				for(int j = minLet; j<=maxLet; j++){
-					Tile temp = new Tile(colour,i,j,null);
+					Tile temp = new Tile(colour,i,j,null, false);
 					this.tiles.add(temp);
 					colour = !colour;
 				}

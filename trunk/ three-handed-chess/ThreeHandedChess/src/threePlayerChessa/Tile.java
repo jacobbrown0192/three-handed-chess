@@ -6,6 +6,7 @@ public class Tile {
 	private int letter;
 	private Piece piece;
 	public Segment segment;
+	private boolean selected;
 
 	public boolean getColour() {
 		return this.colour;
@@ -38,11 +39,22 @@ public class Tile {
 	public void setPiece(Piece aPiece) {
 		this.piece = aPiece;
 	}
+	
+	public boolean getSelected()
+	{
+		return this.selected;
+	}
+	
+	public void setSelected(boolean selected)
+	{
+		this.selected = selected;
+	}
 
-	public Tile(boolean aColour, int aNum, int aLet, Piece aPiece) {
+	public Tile(boolean aColour, int aNum, int aLet, Piece aPiece, boolean selected) {
 		setColour(aColour);
 		setNumber(aNum);
 		setLetter(aLet);
 		setPiece(aPiece);
+		setSelected(selected);
 	}
 }
