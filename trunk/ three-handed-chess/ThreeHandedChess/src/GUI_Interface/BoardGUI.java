@@ -27,7 +27,7 @@ public class BoardGUI extends JPanel implements MouseListener
 	private TileGUI[][] boardTiles = TileGUI.tileSet(6, 16);
 	private PieceGUI[][] boardPieces = PieceGUI.pieceSet(6, 16);
 
-    final static BasicStroke stroke = new BasicStroke(2.0f);
+    final static BasicStroke stroke = new BasicStroke(1.0f);
 
     Game theGame;
 	
@@ -62,12 +62,61 @@ public class BoardGUI extends JPanel implements MouseListener
 	 */	
 	private void addPieceLabels(JLayeredPane pane, PieceGUI[][] pieces)
 	{
-		for (int i=0; i<6; i++)
+		for (int j=15; j>=0; j--)
 		{
-			for (int j=0; j < 16; j++)
-			{
-				pane.add(pieces[i][j], 50);
-			}
+			pane.add(pieces[3][j]);
+		}
+		
+		for (int j=15; j>=0; j--)
+		{
+			pane.add(pieces[4][j]);
+		}
+		
+		//Add 2
+		pane.add(pieces[2][12]);
+		pane.add(pieces[2][8]);
+		pane.add(pieces[2][13]);
+		pane.add(pieces[2][4]);
+		pane.add(pieces[2][9]);
+		pane.add(pieces[2][14]);
+		pane.add(pieces[2][0]);
+		pane.add(pieces[2][5]);
+		pane.add(pieces[2][10]);
+		pane.add(pieces[2][15]);
+		pane.add(pieces[2][1]);
+		pane.add(pieces[2][6]);
+		pane.add(pieces[2][11]);
+		pane.add(pieces[2][2]);
+		pane.add(pieces[2][7]);
+		pane.add(pieces[2][3]);
+		
+		//Add 5
+		pane.add(pieces[5][12]);
+		pane.add(pieces[5][8]);
+		pane.add(pieces[5][13]);
+		pane.add(pieces[5][4]);
+		pane.add(pieces[5][9]);
+		pane.add(pieces[5][14]);
+		pane.add(pieces[5][0]);
+		pane.add(pieces[5][5]);
+		pane.add(pieces[5][10]);
+		pane.add(pieces[5][15]);
+		pane.add(pieces[5][1]);
+		pane.add(pieces[5][6]);
+		pane.add(pieces[5][11]);
+		pane.add(pieces[5][2]);
+		pane.add(pieces[5][7]);
+		pane.add(pieces[5][3]);
+
+		
+		for (int j=15; j>=0; j--)
+		{
+			pane.add(pieces[0][j]);
+		}
+		
+		for (int j=15; j>=0; j--)
+		{
+			pane.add(pieces[1][j]);
 		}
 	}
 
@@ -196,9 +245,6 @@ public class BoardGUI extends JPanel implements MouseListener
 		boardTiles[i][tileNum].setTile(poly, i, tileNum);
 		boardPieces[i][tileNum].setBounds(xAvg - 16, yAvg - 45, 32, 45);
 		
-		g2.setColor(Color.BLACK);
-		g2.draw(poly);
-		
 		if(i == 0 || i == 1 || i == 2)
 		{
 			if(tileNum == 0 || tileNum == 2 || tileNum == 5 || tileNum == 7 || tileNum == 8 || tileNum == 10 || tileNum == 13 || tileNum == 15)
@@ -217,6 +263,8 @@ public class BoardGUI extends JPanel implements MouseListener
 		}
 		
 		g2.fillPolygon(poly);
+		g2.setColor(Color.BLACK);
+		g2.draw(poly);
 	}
 	
 	
