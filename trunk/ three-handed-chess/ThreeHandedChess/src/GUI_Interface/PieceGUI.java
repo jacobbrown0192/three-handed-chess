@@ -16,6 +16,7 @@ public class PieceGUI extends JLabel
 	private static final long serialVersionUID = 1L;
 	
 	private ImageIcon FTile = new ImageIcon(getClass().getResource("/resources/Free Tile.png"));
+	private ImageIcon ATile = new ImageIcon(getClass().getResource("/resources/Accessed Tile.png"));
 	
 	private ImageIcon GKing = new ImageIcon(getClass().getResource("/resources/Green King.png"));
 	private ImageIcon GQueen  = new ImageIcon(getClass().getResource("/resources/Green Queen.png"));
@@ -29,6 +30,12 @@ public class PieceGUI extends JLabel
 	private ImageIcon GRookSel = new ImageIcon(getClass().getResource("/resources/Green Rook Selected.png"));
 	private ImageIcon GKnightSel = new ImageIcon(getClass().getResource("/resources/Green Knight Selected.png"));
 	private ImageIcon GPawnSel = new ImageIcon(getClass().getResource("/resources/Green Pawn Selected.png"));
+	private ImageIcon GKingAtt = new ImageIcon(getClass().getResource("/resources/Green King Attacked.png"));
+	private ImageIcon GQueenAtt  = new ImageIcon(getClass().getResource("/resources/Green Queen Attacked.png"));
+	private ImageIcon GBishopAtt = new ImageIcon(getClass().getResource("/resources/Green Bishop Attacked.png"));
+	private ImageIcon GRookAtt = new ImageIcon(getClass().getResource("/resources/Green Rook Attacked.png"));
+	private ImageIcon GKnightAtt = new ImageIcon(getClass().getResource("/resources/Green Knight Attacked.png"));
+	private ImageIcon GPawnAtt = new ImageIcon(getClass().getResource("/resources/Green Pawn Attacked.png"));
 	
 	private ImageIcon BKing = new ImageIcon(getClass().getResource("/resources/Blue King.png"));
 	private ImageIcon BQueen = new ImageIcon(getClass().getResource("/resources/Blue Queen.png"));
@@ -42,6 +49,12 @@ public class PieceGUI extends JLabel
 	private ImageIcon BRookSel = new ImageIcon(getClass().getResource("/resources/Blue Rook Selected.png"));
 	private ImageIcon BKnightSel = new ImageIcon(getClass().getResource("/resources/Blue Knight Selected.png"));
 	private ImageIcon BPawnSel = new ImageIcon(getClass().getResource("/resources/Blue Pawn Selected.png"));
+	private ImageIcon BKingAtt = new ImageIcon(getClass().getResource("/resources/Blue King Attacked.png"));
+	private ImageIcon BQueenAtt = new ImageIcon(getClass().getResource("/resources/Blue Queen Attacked.png"));
+	private ImageIcon BBishopAtt = new ImageIcon(getClass().getResource("/resources/Blue Bishop Attacked.png"));
+	private ImageIcon BRookAtt = new ImageIcon(getClass().getResource("/resources/Blue Rook Attacked.png"));
+	private ImageIcon BKnightAtt = new ImageIcon(getClass().getResource("/resources/Blue Knight Attacked.png"));
+	private ImageIcon BPawnAtt = new ImageIcon(getClass().getResource("/resources/Blue Pawn Attacked.png"));
 	
 	private ImageIcon RKing = new ImageIcon(getClass().getResource("/resources/Red King.png"));
 	private ImageIcon RQueen = new ImageIcon(getClass().getResource("/resources/Red Queen.png"));
@@ -55,6 +68,12 @@ public class PieceGUI extends JLabel
 	private ImageIcon RRookSel = new ImageIcon(getClass().getResource("/resources/Red Rook Selected.png"));
 	private ImageIcon RKnightSel = new ImageIcon(getClass().getResource("/resources/Red Knight Selected.png"));
 	private ImageIcon RPawnSel = new ImageIcon(getClass().getResource("/resources/Red Pawn Selected.png"));
+	private ImageIcon RKingAtt = new ImageIcon(getClass().getResource("/resources/Red King Attacked.png"));
+	private ImageIcon RQueenAtt = new ImageIcon(getClass().getResource("/resources/Red Queen Attacked.png"));
+	private ImageIcon RBishopAtt = new ImageIcon(getClass().getResource("/resources/Red Bishop Attacked.png"));
+	private ImageIcon RRookAtt = new ImageIcon(getClass().getResource("/resources/Red Rook Attacked.png"));
+	private ImageIcon RKnightAtt = new ImageIcon(getClass().getResource("/resources/Red Knight Attacked.png"));
+	private ImageIcon RPawnAtt = new ImageIcon(getClass().getResource("/resources/Red Pawn Attacked.png"));
 	
     /** Method to expedite the initialization of an array of PieceGUIs
      * 
@@ -82,7 +101,7 @@ public class PieceGUI extends JLabel
 	 * @param teamNumber Owner of the piece.
 	 * @param selected 
 	 */
-	public void setPieceImage(PieceType type, int teamNumber, boolean selected)
+	public void setPieceImage(PieceType type, int teamNumber, boolean selected, boolean attacked, boolean accessed)
 	{
 		switch (teamNumber)
 		{
@@ -93,8 +112,10 @@ public class PieceGUI extends JLabel
 						if(selected)
 						{
 							this.setIcon(RPawnSel);
-						}
-						else
+						} else if(attacked)
+						{
+							this.setIcon(RPawnAtt);
+						} else
 						{
 							this.setIcon(RPawn);
 						}
@@ -103,8 +124,10 @@ public class PieceGUI extends JLabel
 						if(selected)
 						{
 							this.setIcon(RRookSel);
-						}
-						else
+						} else if(attacked)
+						{
+							this.setIcon(RRookAtt);
+						} else
 						{
 							this.setIcon(RRook);
 						}
@@ -113,8 +136,10 @@ public class PieceGUI extends JLabel
 						if(selected)
 						{
 							this.setIcon(RKnightSel);
-						}
-						else
+						} else if(attacked)
+						{
+							this.setIcon(RKnightAtt);
+						} else
 						{
 							this.setIcon(RKnight);
 						}
@@ -123,8 +148,10 @@ public class PieceGUI extends JLabel
 						if(selected)
 						{
 							this.setIcon(RBishopSel);
-						}
-						else
+						} else if(attacked)
+						{
+							this.setIcon(RBishopAtt);
+						} else
 						{
 							this.setIcon(RBishop);
 						}
@@ -133,8 +160,10 @@ public class PieceGUI extends JLabel
 						if(selected)
 						{
 							this.setIcon(RQueenSel);
-						}
-						else
+						} else if(attacked)
+						{
+							this.setIcon(RQueenAtt);
+						} else
 						{
 							this.setIcon(RQueen);
 						}
@@ -143,7 +172,10 @@ public class PieceGUI extends JLabel
 						if(selected)
 						{
 							this.setIcon(RKingSel);
-						}
+						} else if(attacked)
+						{
+							this.setIcon(RKingAtt);
+						} 
 						else
 						{
 							this.setIcon(RKing);
@@ -161,8 +193,10 @@ public class PieceGUI extends JLabel
 					if(selected)
 					{
 						this.setIcon(BPawnSel);
-					}
-					else
+					} else if(attacked)
+					{
+						this.setIcon(BPawnAtt);
+					} else
 					{
 						this.setIcon(BPawn);
 					}
@@ -171,8 +205,10 @@ public class PieceGUI extends JLabel
 					if(selected)
 					{
 						this.setIcon(BRookSel);
-					}
-					else
+					} else if(attacked)
+					{
+						this.setIcon(BRookAtt);
+					} else
 					{
 						this.setIcon(BRook);
 					}
@@ -181,8 +217,10 @@ public class PieceGUI extends JLabel
 					if(selected)
 					{
 						this.setIcon(BKnightSel);
-					}
-					else
+					} else if(attacked)
+					{
+						this.setIcon(BKnightAtt);
+					} else
 					{
 						this.setIcon(BKnight);
 					}
@@ -191,8 +229,10 @@ public class PieceGUI extends JLabel
 					if(selected)
 					{
 						this.setIcon(BBishopSel);
-					}
-					else
+					} else if(attacked)
+					{
+						this.setIcon(BBishopAtt);
+					} else
 					{
 						this.setIcon(BBishop);
 					}
@@ -201,8 +241,10 @@ public class PieceGUI extends JLabel
 					if(selected)
 					{
 						this.setIcon(BQueenSel);
-					}
-					else
+					} else if(attacked)
+					{
+						this.setIcon(BQueenAtt);
+					} else
 					{
 						this.setIcon(BQueen);
 					}
@@ -211,8 +253,10 @@ public class PieceGUI extends JLabel
 					if(selected)
 					{
 						this.setIcon(BKingSel);
-					}
-					else
+					} else if(attacked)
+					{
+						this.setIcon(BKingAtt);
+					} else
 					{
 						this.setIcon(BKing);
 					}
@@ -229,8 +273,10 @@ public class PieceGUI extends JLabel
 					if(selected)
 					{
 						this.setIcon(GPawnSel);
-					}
-					else
+					} else if(attacked)
+					{
+						this.setIcon(GPawnAtt);
+					} else
 					{
 						this.setIcon(GPawn);
 					}
@@ -239,8 +285,10 @@ public class PieceGUI extends JLabel
 					if(selected)
 					{
 						this.setIcon(GRookSel);
-					}
-					else
+					} else if(attacked)
+					{
+						this.setIcon(GRookAtt);
+					} else
 					{
 						this.setIcon(GRook);
 					}
@@ -249,8 +297,10 @@ public class PieceGUI extends JLabel
 					if(selected)
 					{
 						this.setIcon(GKnightSel);
-					}
-					else
+					} else if(attacked)
+					{
+						this.setIcon(GKnightAtt);
+					} else
 					{
 						this.setIcon(GKnight);
 					}
@@ -259,8 +309,10 @@ public class PieceGUI extends JLabel
 					if(selected)
 					{
 						this.setIcon(GBishopSel);
-					}
-					else
+					} else if(attacked)
+					{
+						this.setIcon(GBishopAtt);
+					} else
 					{
 						this.setIcon(GBishop);
 					}
@@ -269,8 +321,10 @@ public class PieceGUI extends JLabel
 					if(selected)
 					{
 						this.setIcon(GQueenSel);
-					}
-					else
+					} else if(attacked)
+					{
+						this.setIcon(GQueenAtt);
+					} else
 					{
 						this.setIcon(GQueen);
 					}
@@ -279,8 +333,10 @@ public class PieceGUI extends JLabel
 					if(selected)
 					{
 						this.setIcon(GKingSel);
-					}
-					else
+					} else if(attacked)
+					{
+						this.setIcon(GKingAtt);
+					} else
 					{
 						this.setIcon(GKing);
 					}
@@ -291,7 +347,13 @@ public class PieceGUI extends JLabel
 				}
 				break;
 			case 4:
-				this.setIcon(FTile);
+				if (accessed)
+				{
+					this.setIcon(ATile);
+				} else
+				{
+					this.setIcon(FTile);
+				}
 				break;
 		}
 	}

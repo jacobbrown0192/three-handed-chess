@@ -283,20 +283,22 @@ public class BoardGUI extends JPanel implements MouseListener
 			{
 				if(boardTiles[4][j].getBoardLetter() == modelBoardLetter && boardTiles[4][j].getBoardNumber() == modelBoardNumber)
 				{
-					//Check if tile is selected
+					//Check if tile is selected or attacked or accessed
 					boolean selected = theGame.getTheBoard().getSection0().getSegment0().getTiles(i).getSelected();
+					boolean attacked = theGame.getTheBoard().getSection0().getSegment0().getTiles(i).getAttacked();
+					boolean accessed = theGame.getTheBoard().getSection0().getSegment0().getTiles(i).getAccessed();
 					
 					if(theGame.getTheBoard().getSection0().getSegment0().getTiles(i).getPiece() != null)
 					{
 						PieceType type = theGame.getTheBoard().getSection0().getSegment0().getTiles(i).getPiece().getPieceType();
 						int teamNumber = theGame.getTheBoard().getSection0().getSegment0().getTiles(i).getPiece().getPlayer().getNumber();
-						boardPieces[4][j].setPieceImage(type, teamNumber, selected);
+						boardPieces[4][j].setPieceImage(type, teamNumber, selected, attacked, accessed);
 
 					}
 					else
 					{
 						int teamNumber = 4;
-						boardPieces[4][j].setPieceImage(null, teamNumber, selected);
+						boardPieces[4][j].setPieceImage(null, teamNumber, selected, attacked, accessed);
 					}
 					break;
 				}
@@ -311,19 +313,21 @@ public class BoardGUI extends JPanel implements MouseListener
 			{
 				if(boardTiles[3][j].getBoardLetter() == modelBoardLetter && boardTiles[3][j].getBoardNumber() == modelBoardNumber)
 				{
-					//Check if tile is selected
+					//Check if tile is selected or attacked or accessed
 					boolean selected = theGame.getTheBoard().getSection0().getSegment1().getTiles(i).getSelected();
+					boolean attacked = theGame.getTheBoard().getSection0().getSegment1().getTiles(i).getAttacked();
+					boolean accessed = theGame.getTheBoard().getSection0().getSegment1().getTiles(i).getAccessed();
 					
 					if(theGame.getTheBoard().getSection0().getSegment1().getTiles(i).getPiece() != null)
 					{
 						PieceType type = theGame.getTheBoard().getSection0().getSegment1().getTiles(i).getPiece().getPieceType();
 						int teamNumber = theGame.getTheBoard().getSection0().getSegment1().getTiles(i).getPiece().getPlayer().getNumber();
-						boardPieces[3][j].setPieceImage(type, teamNumber, selected);
+						boardPieces[3][j].setPieceImage(type, teamNumber, selected, attacked, accessed);
 					}
 					else
 					{
 						int teamNumber = 4;
-						boardPieces[3][j].setPieceImage(null, teamNumber, selected);
+						boardPieces[3][j].setPieceImage(null, teamNumber, selected, attacked, accessed);
 					}
 					break;
 				}
@@ -338,19 +342,21 @@ public class BoardGUI extends JPanel implements MouseListener
 			{
 				if(boardTiles[0][j].getBoardLetter() == modelBoardLetter && boardTiles[0][j].getBoardNumber() == modelBoardNumber)
 				{
-					//Check if tile is selected
+					//Check if tile is selected or attacked or accessed
 					boolean selected = theGame.getTheBoard().getSection1().getSegment0().getTiles(i).getSelected();
+					boolean attacked = theGame.getTheBoard().getSection1().getSegment0().getTiles(i).getAttacked();
+					boolean accessed = theGame.getTheBoard().getSection1().getSegment0().getTiles(i).getAccessed();
 					
 					if(theGame.getTheBoard().getSection1().getSegment0().getTiles(i).getPiece() != null)
 					{
 						PieceType type = theGame.getTheBoard().getSection1().getSegment0().getTiles(i).getPiece().getPieceType();
 						int teamNumber = theGame.getTheBoard().getSection1().getSegment0().getTiles(i).getPiece().getPlayer().getNumber();
-						boardPieces[0][j].setPieceImage(type, teamNumber, selected);
+						boardPieces[0][j].setPieceImage(type, teamNumber, selected, attacked, accessed);
 					}
 					else
 					{
 						int teamNumber = 4;
-						boardPieces[0][j].setPieceImage(null, teamNumber, selected);
+						boardPieces[0][j].setPieceImage(null, teamNumber, selected, attacked, accessed);
 					}
 					break;
 				}
@@ -365,19 +371,21 @@ public class BoardGUI extends JPanel implements MouseListener
 			{
 				if(boardTiles[5][j].getBoardLetter() == modelBoardLetter && boardTiles[5][j].getBoardNumber() == modelBoardNumber)
 				{
-					//Check if tile is selected
+					//Check if tile is selected or attacked or accessed
 					boolean selected = theGame.getTheBoard().getSection1().getSegment1().getTiles(i).getSelected();
+					boolean attacked = theGame.getTheBoard().getSection1().getSegment1().getTiles(i).getAttacked();
+					boolean accessed = theGame.getTheBoard().getSection1().getSegment1().getTiles(i).getAccessed();
 					
 					if(theGame.getTheBoard().getSection1().getSegment1().getTiles(i).getPiece() != null)
 					{
 						PieceType type = theGame.getTheBoard().getSection1().getSegment1().getTiles(i).getPiece().getPieceType();
 						int teamNumber = theGame.getTheBoard().getSection1().getSegment1().getTiles(i).getPiece().getPlayer().getNumber();
-						boardPieces[5][j].setPieceImage(type, teamNumber, selected);
+						boardPieces[5][j].setPieceImage(type, teamNumber, selected, attacked, accessed);
 					}
 					else
 					{
 						int teamNumber = 4;
-						boardPieces[5][j].setPieceImage(null, teamNumber, selected);
+						boardPieces[5][j].setPieceImage(null, teamNumber, selected, attacked, accessed);
 					}
 					break;
 				}
@@ -392,19 +400,21 @@ public class BoardGUI extends JPanel implements MouseListener
 			{
 				if(boardTiles[2][j].getBoardLetter() == modelBoardLetter && boardTiles[2][j].getBoardNumber() == modelBoardNumber)
 				{
-					//Check if tile is selected
+					//Check if tile is selected or attacked or accessed
 					boolean selected = theGame.getTheBoard().getSection2().getSegment0().getTiles(i).getSelected();
+					boolean attacked = theGame.getTheBoard().getSection2().getSegment0().getTiles(i).getAttacked();
+					boolean accessed = theGame.getTheBoard().getSection2().getSegment0().getTiles(i).getAccessed();
 					
 					if(theGame.getTheBoard().getSection2().getSegment0().getTiles(i).getPiece() != null)
 					{
 						PieceType type = theGame.getTheBoard().getSection2().getSegment0().getTiles(i).getPiece().getPieceType();
 						int teamNumber = theGame.getTheBoard().getSection2().getSegment0().getTiles(i).getPiece().getPlayer().getNumber();
-						boardPieces[2][j].setPieceImage(type, teamNumber, selected);
+						boardPieces[2][j].setPieceImage(type, teamNumber, selected, attacked, accessed);
 					}
 					else
 					{
 						int teamNumber = 4;
-						boardPieces[2][j].setPieceImage(null, teamNumber, selected);
+						boardPieces[2][j].setPieceImage(null, teamNumber, selected, attacked, accessed);
 					}
 					break;
 				}
@@ -419,19 +429,21 @@ public class BoardGUI extends JPanel implements MouseListener
 			{
 				if(boardTiles[1][j].getBoardLetter() == modelBoardLetter && boardTiles[1][j].getBoardNumber() == modelBoardNumber)
 				{
-					//Check if the tile is selected
+					//Check if the tile is selected of attacked or accessed
 					boolean selected = theGame.getTheBoard().getSection2().getSegment1().getTiles(i).getSelected();
+					boolean attacked = theGame.getTheBoard().getSection2().getSegment1().getTiles(i).getAttacked();
+					boolean accessed = theGame.getTheBoard().getSection2().getSegment1().getTiles(i).getAccessed();
 					
 					if(theGame.getTheBoard().getSection2().getSegment1().getTiles(i).getPiece() != null)
 					{
 						PieceType type = theGame.getTheBoard().getSection2().getSegment1().getTiles(i).getPiece().getPieceType();
 						int teamNumber = theGame.getTheBoard().getSection2().getSegment1().getTiles(i).getPiece().getPlayer().getNumber();
-						boardPieces[1][j].setPieceImage(type, teamNumber, selected);
+						boardPieces[1][j].setPieceImage(type, teamNumber, selected, attacked, accessed);
 					}
 					else
 					{
 						int teamNumber = 4;
-						boardPieces[1][j].setPieceImage(null, teamNumber, selected);
+						boardPieces[1][j].setPieceImage(null, teamNumber, selected, attacked, accessed);
 					}
 					break;
 				}
