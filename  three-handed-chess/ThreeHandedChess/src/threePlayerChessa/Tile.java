@@ -7,6 +7,8 @@ public class Tile {
 	private Piece piece;
 	public Segment segment;
 	private boolean selected;
+	private boolean attacked;
+	private boolean accessed;
 
 	public boolean getColour() {
 		return this.colour;
@@ -49,12 +51,35 @@ public class Tile {
 	{
 		this.selected = selected;
 	}
+	
+	public boolean getAttacked()
+	{
+		return this.attacked;
+	}
+	
+	public void setAttacked(boolean attacked)
+	{
+		this.attacked = attacked;
+	}
+	
+	public boolean getAccessed()
+	{
+		return this.accessed;
+	}
+	
+	public void setAccessed(boolean accessed)
+	{
+		this.accessed = accessed;
+	}
+	
 
-	public Tile(boolean aColour, int aNum, int aLet, Piece aPiece, boolean selected) {
+	public Tile(boolean aColour, int aNum, int aLet, Piece aPiece, boolean selected, boolean attacked, boolean accessed) {
 		setColour(aColour);
 		setNumber(aNum);
 		setLetter(aLet);
 		setPiece(aPiece);
 		setSelected(selected);
+		setAttacked(attacked);
+		setAccessed(accessed);
 	}
 }
