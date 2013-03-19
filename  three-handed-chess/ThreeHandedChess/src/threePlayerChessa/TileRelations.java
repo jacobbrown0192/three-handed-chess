@@ -1,7 +1,7 @@
 package threePlayerChessa;
 
 public class TileRelations {
-	public int relations[][][] = new int[96][13][2]; //number then letter
+	public int relations[][][] = new int[97][14][3]; //number then letter
 	
 	
 	
@@ -33,8 +33,8 @@ public class TileRelations {
 		relations[1][10][2] = 0;
 		relations[1][11][1] = 0;
 		relations[1][11][2] = 0;
-		relations[1][16][1] = 0;
-		relations[1][16][2] = 0;
+		relations[1][12][1] = 0;
+		relations[1][12][2] = 0;
 		relations[1][13][1] = 0;
 		relations[1][13][2] = 0;	
 		//b1
@@ -60,8 +60,8 @@ public class TileRelations {
 		relations[2][10][2] = 0;
 		relations[2][11][1] = 0;
 		relations[2][11][2] = 0;
-		relations[2][16][1] = 0;
-		relations[2][16][2] = 0;
+		relations[2][12][1] = 0;
+		relations[2][12][2] = 0;
 		relations[2][13][1] = 0;
 		relations[2][13][2] = 0;
 		//c1
@@ -87,8 +87,8 @@ public class TileRelations {
 		relations[3][10][2] = 0;
 		relations[3][11][1] = 0;
 		relations[3][11][2] = 0;
-		relations[3][16][1] = 0;
-		relations[3][16][2] = 0;
+		relations[3][12][1] = 0;
+		relations[3][12][2] = 0;
 		relations[3][13][1] = 0;
 		relations[3][13][2] = 0;
 		//d1
@@ -114,8 +114,8 @@ public class TileRelations {
 		relations[4][10][2] = 0;
 		relations[4][11][1] = 0;
 		relations[4][11][2] = 0;
-		relations[4][16][1] = 0;
-		relations[4][16][2] = 0;
+		relations[4][12][1] = 0;
+		relations[4][12][2] = 0;
 		relations[4][13][1] = 0;
 		relations[4][13][2] = 0;
 		//a2
@@ -141,8 +141,8 @@ public class TileRelations {
 		relations[5][10][2] = 0;
 		relations[5][11][1] = 0;
 		relations[5][11][2] = 0;
-		relations[5][16][1] = 0;
-		relations[5][16][2] = 0;
+		relations[5][12][1] = 0;
+		relations[5][12][2] = 0;
 		relations[5][13][1] = 0;
 		relations[5][13][2] = 0;
 		//b2
@@ -168,8 +168,8 @@ public class TileRelations {
 		relations[6][10][2] = 0;
 		relations[6][11][1] = 0;
 		relations[6][11][2] = 0;
-		relations[6][16][1] = 0;
-		relations[6][16][2] = 0;
+		relations[6][12][1] = 0;
+		relations[6][12][2] = 0;
 		relations[6][13][1] = 0;
 		relations[6][13][2] = 0;
 		//c2
@@ -195,8 +195,8 @@ public class TileRelations {
 		relations[7][10][2] = 0;
 		relations[7][11][1] = 0;
 		relations[7][11][2] = 0;
-		relations[7][16][1] = 0;
-		relations[7][16][2] = 0;
+		relations[7][12][1] = 0;
+		relations[7][12][2] = 0;
 		relations[7][13][1] = 0;
 		relations[7][13][2] = 0;
 		//d2
@@ -222,8 +222,8 @@ public class TileRelations {
 		relations[8][10][2] = 0;
 		relations[8][11][1] = 0;
 		relations[8][11][2] = 0;
-		relations[8][16][1] = 0;
-		relations[8][16][2] = 0;
+		relations[8][12][1] = 0;
+		relations[8][12][2] = 0;
 		relations[8][13][1] = 0;
 		relations[8][13][2] = 0;
 		//a3
@@ -249,8 +249,8 @@ public class TileRelations {
 		relations[9][10][2] = 0;
 		relations[9][11][1] = 0;
 		relations[9][11][2] = 0;
-		relations[9][16][1] = 0;
-		relations[9][16][2] = 0;
+		relations[9][12][1] = 0;
+		relations[9][12][2] = 0;
 		relations[9][13][1] = 0;
 		relations[9][13][2] = 0;
 		//b3
@@ -276,8 +276,8 @@ public class TileRelations {
 		relations[10][10][2] = 0;
 		relations[10][11][1] = 0;
 		relations[10][11][2] = 0;
-		relations[10][16][1] = 0;
-		relations[10][16][2] = 0;
+		relations[10][12][1] = 0;
+		relations[10][12][2] = 0;
 		relations[10][13][1] = 0;
 		relations[10][13][2] = 0;
 		//c3
@@ -303,37 +303,37 @@ public class TileRelations {
 		relations[11][10][2] = 0;
 		relations[11][11][1] = 0;
 		relations[11][11][2] = 0;
-		relations[11][16][1] = 0;
-		relations[11][16][2] = 0;
+		relations[11][12][1] = 0;
+		relations[11][12][2] = 0;
 		relations[11][13][1] = 0;
 		relations[11][13][2] = 0;
 		//d3
-		relations[16][1][1] = 4;
-		relations[16][1][2] = 4;
-		relations[16][2][1] = 2;
-		relations[16][2][2] = 4;
-		relations[16][3][1] = 3;
-		relations[16][3][2] = 3;
-		relations[16][4][1] = 3;
-		relations[16][4][2] = 5;
-		relations[16][5][1] = 2;
-		relations[16][5][2] = 3;
-		relations[16][6][1] = 2;
-		relations[16][6][2] = 5;
-		relations[16][7][1] = 4;
-		relations[16][7][2] = 3;
-		relations[16][8][1] = 4;
-		relations[16][8][2] = 5;
-		relations[16][9][1] = 0;
-		relations[16][9][2] = 0;
-		relations[16][10][1] = 0;
-		relations[16][10][2] = 0;
-		relations[16][11][1] = 0;
-		relations[16][11][2] = 0;
-		relations[16][16][1] = 0;
-		relations[16][16][2] = 0;
-		relations[16][13][1] = 0;
-		relations[16][13][2] = 0;
+		relations[12][1][1] = 4;
+		relations[12][1][2] = 4;
+		relations[12][2][1] = 2;
+		relations[12][2][2] = 4;
+		relations[12][3][1] = 3;
+		relations[12][3][2] = 3;
+		relations[12][4][1] = 3;
+		relations[12][4][2] = 5;
+		relations[12][5][1] = 2;
+		relations[12][5][2] = 3;
+		relations[12][6][1] = 2;
+		relations[12][6][2] = 5;
+		relations[12][7][1] = 4;
+		relations[12][7][2] = 3;
+		relations[12][8][1] = 4;
+		relations[12][8][2] = 5;
+		relations[12][9][1] = 0;
+		relations[12][9][2] = 0;
+		relations[12][10][1] = 0;
+		relations[12][10][2] = 0;
+		relations[12][11][1] = 0;
+		relations[12][11][2] = 0;
+		relations[12][12][1] = 0;
+		relations[12][12][2] = 0;
+		relations[12][13][1] = 0;
+		relations[12][13][2] = 0;
 		//a4
 		relations[13][1][1] = 5;
 		relations[13][1][2] = 1;
@@ -357,8 +357,8 @@ public class TileRelations {
 		relations[13][10][2] = 0;
 		relations[13][11][1] = 0;
 		relations[13][11][2] = 0;
-		relations[13][16][1] = 0;
-		relations[13][16][2] = 0;
+		relations[13][12][1] = 0;
+		relations[13][12][2] = 0;
 		relations[13][13][1] = 0;
 		relations[13][13][2] = 0;
 		//b4
@@ -384,8 +384,8 @@ public class TileRelations {
 		relations[14][10][2] = 0;
 		relations[14][11][1] = 0;
 		relations[14][11][2] = 0;
-		relations[14][16][1] = 0;
-		relations[14][16][2] = 0;
+		relations[14][12][1] = 0;
+		relations[14][12][2] = 0;
 		relations[14][13][1] = 0;
 		relations[14][13][2] = 0;
 		//c4
@@ -411,8 +411,8 @@ public class TileRelations {
 		relations[15][10][2] = 0; 
 		relations[15][11][1] = 0;
 		relations[15][11][2] = 0;
-		relations[15][16][1] = 0;
-		relations[15][16][2] = 0;
+		relations[15][12][1] = 0;
+		relations[15][12][2] = 0;
 		relations[15][13][1] = 0;
 		relations[15][13][2] = 0;
 		//d4
@@ -1306,7 +1306,6 @@ public class TileRelations {
 		relations[48][12][2] = 0;
 		relations[48][13][1] = 0;
 		relations[48][13][2] = 0;
-		Tile up,down,left,right,downleft,downright,upleft,upright,hop,specialup,specialdown,specialleft,specialright;
 		
 		
 		

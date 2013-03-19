@@ -91,8 +91,7 @@ public class Board {
 	 * Constructs each section clockwise
 	 */
 	public Board(Vector<Team> gameTeams) {
-		int tilerelate = 0;
-		Tile temp;
+		Tile temp = null;
 		this.gameTeams = gameTeams;
 		Section temp1 = new Section(4,1,4,1,8,5,gameTeams.elementAt(0),this);// bottom section
 		sections.add(0, temp1);
@@ -106,27 +105,62 @@ public class Board {
 		for( int i = 0; i<3; i++){
 			for(int j = 0; j<2; j++){
 				for(int k =0; k<16; k++){
-					for(int l =1; l<17; l++){
+					for(int l =1; l<14; l++){
 												
-						this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).setPiece(null);
+
 						for(int x =0; x < 3; x++){
 							for(int y =0; y<2;y++){
 								for(int z=0; z<16;z++){
-									if(this.sections.elementAt(x).segments.elementAt(y).tiles.elementAt(z).getLetter() == getTheGame().click1.getLet() &&
-										this.sections.elementAt(x).segments.elementAt(y).tiles.elementAt(z).getNumber() == getTheGame().click1.getNum()){
+									if(this.sections.elementAt(x).segments.elementAt(y).tiles.elementAt(z).getLetter() == tileRelations.relations[k][l][2] &&
+										this.sections.elementAt(x).segments.elementAt(y).tiles.elementAt(z).getNumber() == tileRelations.relations[k][l][2]){
 										temp = this.sections.elementAt(x).segments.elementAt(y).tiles.elementAt(z);
 									}
 								}
 							}
 						}
-						
-
-					}
-					 
+						if(l==1){
+							this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).up = temp;
+						}
+						if(l==2){
+							this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).down = temp;
+						}
+						if(l==3){
+							this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).left = temp;
+						}
+						if(l==4){
+							this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).right = temp;
+						}
+						if(l==5){
+							this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).downleft = temp;
+						}
+						if(l==6){
+							this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).downright = temp;
+						}
+						if(l==7){
+							this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).upleft = temp;
+						}
+						if(l==8){
+							this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).upright = temp;
+						}
+						if(l==9){
+							this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).hop = temp;
+						}
+						if(l==10){
+							this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).specialup = temp;
+						}
+						if(l==11){
+							this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).specialdown = temp;
+						}
+						if(l==12){
+							this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).specialleft = temp;
+						}
+						if(l==13){
+							this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).specialright = temp;
+						}
+					}					 
 				}
 			}
-		}	
-		
+		}
 	}
 
 
