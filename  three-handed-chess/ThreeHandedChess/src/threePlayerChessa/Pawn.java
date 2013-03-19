@@ -17,7 +17,9 @@ import GUI_Interface.PromotePawn;
  *
  */
 public class Pawn extends Piece {
-
+	Section section1;
+	Section section2;
+	boolean initialMove;
 	
 
 	/**  
@@ -32,6 +34,8 @@ public class Pawn extends Piece {
 	public Pawn(Team player, String name, Board theBoard, Tile currentTile,PieceType type) {
 		super(player, name, theBoard, currentTile,type);
 		// TODO Auto-generated constructor stub
+		section2 = null;
+		initialMove = false;
 	}
 
 	
@@ -47,11 +51,24 @@ public class Pawn extends Piece {
 		boolean validMove = true;
 		player.getTheGame().click1 = null;
 		player.getTheGame().click2 = null;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		//check for valid move
 		if (validMove){
 			aMoveTile.setPiece(aStartTile.getPiece());
 			aStartTile.setPiece(null);
 			aMoveTile.getPiece().setCurrentTile(aMoveTile);
+			if (initialMove = false){
+				initialMove = true;
+			}
 			if(aMoveTile.getNumber() == 1 || aMoveTile.getNumber() == 8 || aMoveTile.getNumber() == 12){
 				PromotePawn selector = new PromotePawn(this,player);
 				player.getTheGame().gameFrame.getContentPane().removeAll();
@@ -122,4 +139,5 @@ public class Pawn extends Piece {
 		Rook temp = new Rook(aTile.getPiece().getPlayer(),"Promoted Piece",theBoard,aTile,PieceType.ROOK);
 		aTile.setPiece(temp);
 	}
+
 }

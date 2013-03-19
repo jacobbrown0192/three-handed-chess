@@ -4,11 +4,19 @@ public class Tile {
 	private boolean colour;
 	private int number;
 	private int letter;
+	private int num2;
+	private int let2;
 	private Piece piece;
 	public Segment segment;
 	private boolean selected;
+
+	Tile up,down,left,right,downleft,downright,upleft,upright,hop,specialup,specialdown,specialleft,specialright;
+	
+	
+
 	private boolean attacked;
 	private boolean accessed;
+
 
 	public boolean getColour() {
 		return this.colour;
@@ -28,7 +36,7 @@ public class Tile {
 
 	public int getLetter() {
 		return this.letter;
-	}
+	} 
 
 	public void setLetter(int aLetter) {
 		this.letter = aLetter;
@@ -51,6 +59,35 @@ public class Tile {
 	{
 		this.selected = selected;
 	}
+
+	/**
+	 * @return the num2
+	 */
+	public int getNum2() {
+		return num2;
+	}
+
+	/**
+	 * @param num2 - used to set num2
+	 */
+	public void setNum2(int num2) {
+		this.num2 = num2;
+	}
+
+	/**
+	 * @return the let2
+	 */
+	public int getLet2() {
+		return let2;
+	}
+
+	/**
+	 * @param let2 - used to set let2
+	 */
+	public void setLet2(int let2) {
+		this.let2 = let2;
+	}
+
 	
 	public boolean getAttacked()
 	{
@@ -72,6 +109,7 @@ public class Tile {
 		this.accessed = accessed;
 	}
 	
+
 
 	public Tile(boolean aColour, int aNum, int aLet, Piece aPiece, boolean selected, boolean attacked, boolean accessed) {
 		setColour(aColour);

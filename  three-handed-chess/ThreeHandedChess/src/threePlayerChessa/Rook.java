@@ -9,7 +9,6 @@ package threePlayerChessa;
  */
 public class Rook extends Piece {
 
-
 	/**  
 	 * Rook constructor
 	 * @param 	player - the player who owns this piece
@@ -22,6 +21,7 @@ public class Rook extends Piece {
 	public Rook(Team player, String name, Board theBoard, Tile currentTile,PieceType type) {
 		super(player, name, theBoard, currentTile,type);
 		// TODO Auto-generated constructor stub
+		initialMove = false;
 	}
 
 	/**  
@@ -40,6 +40,9 @@ public class Rook extends Piece {
 		if (validMove){	//moves piece
 			if(aMoveTile.getPiece() != null){	// sets pieces current tile on aMoveTile to null
 				aMoveTile.getPiece().setCurrentTile(null);
+			}
+			if (initialMove = false){
+				initialMove = true;
 			}
 			aMoveTile.setPiece(aStartTile.getPiece());
 			aStartTile.setPiece(null);

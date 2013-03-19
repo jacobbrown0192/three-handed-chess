@@ -10,6 +10,9 @@ public abstract class Piece {
 	Board theBoard;
 	Tile currentTile;
 	PieceType type;
+	Section section1;
+	Section section2;
+	boolean initialMove;
 
 	/**  
 	 *enumerated type used to tell what kind of piece is
@@ -90,8 +93,48 @@ public abstract class Piece {
 	public void setPieceType(PieceType type) {
 		this.type = type;
 	}
-
 	
+	/**
+	 * @return the section1
+	 */
+	public Section getSection1() {
+		return section1;
+	}
+
+	/**
+	 * @param section1 - used to set section1
+	 */
+	public void setSection1(Section section1) {
+		this.section1 = section1;
+	}
+
+	/**
+	 * @return the section2
+	 */
+	public Section getSection2() {
+		return section2;
+	}
+
+	/**
+	 * @param section2 - used to set section2
+	 */
+	public void setSection2(Section section2) {
+		this.section2 = section2;
+	}
+
+	/**
+	 * @return the initialMove
+	 */
+	public boolean isInitialMove() {
+		return initialMove;
+	}
+
+	/**
+	 * @param initialMove - used to set initialMove
+	 */
+	public void setInitialMove(boolean initialMove) {
+		this.initialMove = initialMove;
+	}
 
 	/**  
 	 * moves the piece from one tile to another
