@@ -91,6 +91,8 @@ public class Board {
 	 * Constructs each section clockwise
 	 */
 	public Board(Vector<Team> gameTeams) {
+		int tilerelate = 0;
+		Tile temp;
 		this.gameTeams = gameTeams;
 		Section temp1 = new Section(4,1,4,1,8,5,gameTeams.elementAt(0),this);// bottom section
 		sections.add(0, temp1);
@@ -98,6 +100,33 @@ public class Board {
 		sections.add(1, temp2);
 		Section temp3 = new Section(12,9,8,5,12,9,gameTeams.elementAt(2),this);// right section
 		sections.add(2, temp3);
+		
+		TileRelations tileRelations = new TileRelations();
+		
+		for( int i = 0; i<3; i++){
+			for(int j = 0; j<2; j++){
+				for(int k =0; k<16; k++){
+					for(int l =1; l<17; l++){
+												
+						this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).setPiece(null);
+						for(int x =0; x < 3; x++){
+							for(int y =0; y<2;y++){
+								for(int z=0; z<16;z++){
+									if(this.sections.elementAt(x).segments.elementAt(y).tiles.elementAt(z).getLetter() == getTheGame().click1.getLet() &&
+										this.sections.elementAt(x).segments.elementAt(y).tiles.elementAt(z).getNumber() == getTheGame().click1.getNum()){
+										temp = this.sections.elementAt(x).segments.elementAt(y).tiles.elementAt(z);
+									}
+								}
+							}
+						}
+						
+
+					}
+					 
+				}
+			}
+		}	
+		
 	}
 
 
