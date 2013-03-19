@@ -8,6 +8,8 @@ public class Turn extends Thread {
 	private Game theGame; //the game its self which contains everything
 	public Team gameTeam; //the player of which this thread belongs
 	public boolean check; //tells if the player is in check
+	boolean validClick1;
+	boolean validClick2;
 	
 	
 	/**
@@ -25,7 +27,8 @@ public class Turn extends Thread {
 	 */
 	@Override public void run(){
 		while(getTheGame().gameController.isInProgress() == true){ // checks to see if the game is in progress
-			boolean validClick = false;
+			validClick1 = false;
+			validClick2 = false;
 			check = getTheGame().gameController.inCheck();
 			if (check){ //checks for player in check. update to come.
 				//check for checkmate
@@ -54,7 +57,7 @@ public class Turn extends Thread {
 					{					
 						if( select1.getPiece().player == gameTeam)
 						{
-							validClick = true;
+							validClick1 = true;
 							select1.setSelected(true);
 							theGame.boardGUI.setTileIcons();
 						}
@@ -69,8 +72,7 @@ public class Turn extends Thread {
 					}
 					
 					
-					if(validClick){
-						validClick = false;
+					if(validClick1){
 						if(getTheGame().click2 != null){
 							
 							//finds the second clicked tile
@@ -87,11 +89,11 @@ public class Turn extends Thread {
 					
 							//checks if second click is valid
 							if( select2.getPiece() == null){
-								validClick = true;
+								validClick2 = true;
 							}
 							else{
 								if(select2.getPiece().player != gameTeam)
-									validClick = true;
+									validClick2 = true;
 								else{
 								select1.setSelected(false);
 								select2.setSelected(true);
@@ -111,7 +113,7 @@ public class Turn extends Thread {
 							}
 							
 							//moves if second clikc is valid
-							if(validClick){
+							if(validClick2){
 								select1.setSelected(false);
 								select2.setSelected(false);
 								select1.getPiece().move(select1, select2,this);								

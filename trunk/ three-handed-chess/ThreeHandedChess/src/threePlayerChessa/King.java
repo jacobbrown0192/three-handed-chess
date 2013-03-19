@@ -12,7 +12,8 @@ package threePlayerChessa;
  *
  */
 public class King extends Piece {
-
+	boolean initialMove;
+	
 	/**  
 	 * Knight constructor
 	 * @param 	player - the player who owns this piece
@@ -25,6 +26,7 @@ public class King extends Piece {
 	public King(Team player, String name, Board theBoard, Tile currentTile,PieceType type) {
 		super(player, name, theBoard, currentTile,type);
 		// TODO Auto-generated constructor stub
+		initialMove = false;
 	}
 
 	/**  
@@ -36,13 +38,70 @@ public class King extends Piece {
 	 * 
 	 */
 	public void move(Tile aStartTile, Tile aMoveTile, Turn player) {
-		boolean validMove = true;
+		boolean validMove = false;
 		player.getTheGame().click1 = null;
 		player.getTheGame().click2 = null;
 		//check for valid move
+		int snum = aStartTile.getNumber();
+		int slet = aStartTile.getLetter();
+		int fnum = aMoveTile.getNumber();
+		int flet = aMoveTile.getLetter();
+		
+		if(flet == slet){
+			if(fnum == (snum-1)){
+				if(!player.check)
+					validMove = true;
+			}
+			if(fnum == (snum +1)){
+				if(!player.check)
+					validMove = true;
+			}
+		}
+		if(fnum == snum){
+			if(flet == (slet-1)){
+				if(!player.check)
+					validMove = true;
+			}
+			if(flet == (slet +1)){
+				if(!player.check)
+					validMove = true;
+			}
+		}
+		if(flet == (slet+1)){
+			if(fnum == (snum-1)){
+				if(!player.check)
+					validMove = true;
+			}
+			if(fnum == (snum +1)){
+				if(!player.check)
+					validMove = true;
+			}
+		}
+		if(flet == (slet-1)){
+			if(fnum == (snum-1)){
+				if(!player.check)
+					validMove = true;
+			}
+			if(fnum == (snum +1)){
+				if(!player.check)
+					validMove = true;
+			}
+		}
+		
+		if(aStartTile.segment != aMoveTile.segment){
+			
+		}
+		
+		
+		
+		
+		
 		if (validMove){	//moves piece
 			if(aMoveTile.getPiece() != null){	// sets pieces current tile on aMoveTile to null
 				aMoveTile.getPiece().setCurrentTile(null);
+			}
+			if (initialMove = false){
+				initialMove = true;
 			}
 			aMoveTile.setPiece(aStartTile.getPiece());
 			aStartTile.setPiece(null);
@@ -54,6 +113,5 @@ public class King extends Piece {
 			return;
 		}
 	}
-
 
 }

@@ -42,6 +42,8 @@ public class Segment {
 				colour = !colour;
 				for(int j = minLet; j<=maxLet; j++){
 					Tile temp = new Tile(colour,i,j,null, false, false, false);
+					temp.setNum2(i-4);
+					temp.setLet2(j-4);
 					this.tiles.add(temp);
 					colour = !colour;
 				}
@@ -53,6 +55,16 @@ public class Segment {
 				colour = !colour;
 				for(int j = minLet; j<=maxLet; j++){
 					Tile temp = new Tile(colour,i,j,null, false, false, false);
+					if(maxNum == 12 && maxLet == 8){
+						temp.setNum2(i-4);
+						temp.setLet2(j);
+					}
+					if(maxNum == 8 && maxLet == 12){
+						temp.setNum2(i);
+						temp.setLet2(j-4);						
+					}
+					temp.setNum2(i);
+					temp.setLet2(j);
 					this.tiles.add(temp);
 					colour = !colour;
 				}

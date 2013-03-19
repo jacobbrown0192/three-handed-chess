@@ -37,6 +37,13 @@ public class Knight extends Piece {
 		player.getTheGame().click1 = null;
 		player.getTheGame().click2 = null;
 		//check for valid move
+	
+		
+		
+		
+		
+		
+		
 		if (validMove){	//moves piece
 			if(aMoveTile.getPiece() != null){	// sets pieces current tile on aMoveTile to null
 				aMoveTile.getPiece().setCurrentTile(null);
