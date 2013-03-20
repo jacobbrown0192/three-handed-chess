@@ -91,6 +91,7 @@ public class Board {
 	 * Constructs each section clockwise
 	 */
 	public Board(Vector<Team> gameTeams) {
+		int relate = 0;
 		Tile temp = null;
 		this.gameTeams = gameTeams;
 		Section temp1 = new Section(4,1,4,1,8,5,gameTeams.elementAt(0),this);// bottom section
@@ -105,14 +106,15 @@ public class Board {
 		for( int i = 0; i<3; i++){
 			for(int j = 0; j<2; j++){
 				for(int k =0; k<16; k++){
+					relate++;
 					for(int l =1; l<14; l++){
-												
+						temp = null;						
 
 						for(int x =0; x < 3; x++){
 							for(int y =0; y<2;y++){
 								for(int z=0; z<16;z++){
-									if(this.sections.elementAt(x).segments.elementAt(y).tiles.elementAt(z).getLetter() == tileRelations.relations[k][l][2] &&
-										this.sections.elementAt(x).segments.elementAt(y).tiles.elementAt(z).getNumber() == tileRelations.relations[k][l][2]){
+									if(this.sections.elementAt(x).segments.elementAt(y).tiles.elementAt(z).getLetter() == tileRelations.relations[relate][l][2] &&
+										this.sections.elementAt(x).segments.elementAt(y).tiles.elementAt(z).getNumber() == tileRelations.relations[relate][l][1]){
 										temp = this.sections.elementAt(x).segments.elementAt(y).tiles.elementAt(z);
 									}
 								}

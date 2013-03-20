@@ -4,11 +4,6 @@ public class TileRelations {
 	public int relations[][][] = new int[97][14][3]; //number then letter
 	
 	
-	
-
-	
-	
-	
 	public TileRelations(){
 		//a1
 		relations[1][1][1] = 2;
@@ -1308,22 +1303,21 @@ public class TileRelations {
 		relations[48][13][2] = 0;
 		
 		
-		
 		//i5 - Segment 4
 		//Special Tile
-		relations[49][1][1] = ;	relations[49][1][2] = ;
-		relations[49][2][1] = ;	relations[49][2][2] = ;
-		relations[49][3][1] = ;	relations[49][3][2] = ;
-		relations[49][4][1] = ;	relations[49][4][2] = ;
-		relations[49][5][1] = ;	relations[49][5][2] = ;
-		relations[49][6][1] = ;	relations[49][6][2] = ;
-		relations[49][7][1] = ;	relations[49][7][2] = ;
-		relations[49][8][1] = ;	relations[49][8][2] = ;
-		relations[49][9][1] = ;	relations[49][9][2] = ;
-		relations[49][10][1] = ;	relations[49][10][2] = ;
-		relations[49][11][1] = ;	relations[49][11][2] = ;
-		relations[49][12][1] = ;	relations[49][12][2] = ;
-		relations[49][13][1] = ;	relations[49][13][2] = ;
+		relations[49][1][1] = 6;	relations[49][1][2] = 9;
+		relations[49][2][1] = 9;	relations[49][2][2] = 9;
+		relations[49][3][1] = 5;	relations[49][3][2] = 4;
+		relations[49][4][1] = 5;	relations[49][4][2] = 10;
+		relations[49][5][1] = 0;	relations[49][5][2] = 0;
+		relations[49][6][1] = 9;	relations[49][6][2] = 10;
+		relations[49][7][1] = 6;	relations[49][7][2] = 4;
+		relations[49][8][1] = 6;	relations[49][8][2] = 10;
+		relations[49][9][1] = 4;	relations[49][9][2] = 5;
+		relations[49][10][1] = 0;	relations[49][10][2] = 0;
+		relations[49][11][1] = 9;	relations[49][11][2] = 5;
+		relations[49][12][1] = 4;	relations[49][12][2] = 4;
+		relations[49][13][1] = 0;	relations[49][13][2] = 0;
 		
 		relations[50][1][1] = 6;	relations[50][1][2] = 10;
 		relations[50][2][1] = 9;	relations[50][2][2] = 10;
@@ -1537,19 +1531,20 @@ public class TileRelations {
 		
 		//i9 - Segment 5
 		//Special Tile
-		relations[65][1][1] = 10;	relations[65][1][2] = ;
-		relations[65][2][1] = 5;	relations[65][2][2] = ;
-		relations[65][3][1] = 9;	relations[65][3][2] = ;
-		relations[65][4][1] = 9;	relations[65][4][2] = ;
-		relations[65][5][1] = ;	relations[65][5][2] = ;
-		relations[65][6][1] = ;	relations[65][6][2] = ;
-		relations[65][7][1] = ;	relations[65][7][2] = ;
-		relations[65][8][1] = ;	relations[65][8][2] = ;
-		relations[65][9][1] = ;	relations[65][9][2] = ;
-		relations[65][10][1] = ;	relations[65][10][2] = ;
-		relations[65][11][1] = ;	relations[65][11][2] = ;
-		relations[65][12][1] = ;	relations[65][12][2] = ;
-		relations[65][13][1] = ;	relations[65][13][2] = ;
+
+		relations[65][1][1] = 10;	relations[65][1][2] = 9;
+		relations[65][2][1] = 5;	relations[65][2][2] = 9;
+		relations[65][3][1] = 9;	relations[65][3][2] = 10;
+		relations[65][4][1] = 9;	relations[65][4][2] = 5;
+		relations[65][5][1] = 5;	relations[65][5][2] = 10;
+		relations[65][6][1] = 0;	relations[65][6][2] = 0;
+		relations[65][7][1] = 10;	relations[65][7][2] = 10;
+		relations[65][8][1] = 10;	relations[65][8][2] = 5;
+		relations[65][9][1] = 4;	relations[65][9][2] = 4;
+		relations[65][10][1] = 0;	relations[65][10][2] = 0;
+		relations[65][11][1] = 5;	relations[65][11][2] = 4;
+		relations[65][12][1] = 0;	relations[65][12][2] = 0;
+		relations[65][13][1] = 4;	relations[65][13][2] = 5;
 
 		relations[66][1][1] = 10;	relations[66][1][2] = 10;
 		relations[66][2][1] = 5;	relations[66][2][2] = 10;
@@ -1762,19 +1757,19 @@ public class TileRelations {
 		relations[80][13][1] = 0;	relations[80][13][2] = 0;
 		
 		//e9 - Segment 6
-		relations[81][1][1] = ;	relations[81][1][2] = ;
-		relations[81][2][1] = ;	relations[81][2][2] = ;
-		relations[81][3][1] = ;	relations[81][3][2] = ;
-		relations[81][4][1] = ;	relations[81][4][2] = ;
-		relations[81][5][1] = ;	relations[81][5][2] = ;
-		relations[81][6][1] = ;	relations[81][6][2] = ;
-		relations[81][7][1] = ;	relations[81][7][2] = ;
-		relations[81][8][1] = ;	relations[81][8][2] = ;
-		relations[81][9][1] = ;	relations[81][9][2] = ;
-		relations[81][10][1] = ;	relations[81][10][2] = ;
-		relations[81][11][1] = ;	relations[81][11][2] = ;
-		relations[81][12][1] = ;	relations[81][12][2] = ;
-		relations[81][13][1] = ;	relations[81][13][2] = ;
+		relations[81][1][1] = 9;	relations[81][1][2] = 10;
+		relations[81][2][1] = 9;	relations[81][2][2] = 5;
+		relations[81][3][1] = 5;	relations[81][3][2] = 9;
+		relations[81][4][1] = 10;	relations[81][4][2] = 9;
+		relations[81][5][1] = 0;	relations[81][5][2] = 0;
+		relations[81][6][1] = 10;	relations[81][6][2] = 5;
+		relations[81][7][1] = 5;	relations[81][7][2] = 10;
+		relations[81][8][1] = 10;	relations[81][8][2] = 10;
+		relations[81][9][1] = 4;	relations[81][9][2] = 4;
+		relations[81][10][1] = 0;	relations[81][10][2] = 0;
+		relations[81][11][1] = 4;	relations[81][11][2] = 5;
+		relations[81][12][1] = 5;	relations[81][12][2] = 4;
+		relations[81][13][1] = 0;	relations[81][13][2] = 0;
 		
 		relations[82][1][1] = 10;	relations[82][1][2] = 6;
 		relations[82][2][1] = 4;	relations[82][2][2] = 6;
