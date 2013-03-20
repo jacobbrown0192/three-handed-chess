@@ -1,5 +1,7 @@
 package threePlayerChessa;
 
+import java.util.Vector;
+
 /**  
  *The Piece class is the super class for all the pieces going to be used in the game.
  *This class holds everything for the subclasses and the subclasses are only used for movement specification
@@ -13,7 +15,8 @@ public abstract class Piece {
 	Section section1;
 	Section section2;
 	boolean initialMove;
-
+	public Vector<Tile> validTileMoves = new Vector<Tile>();
+	
 	/**  
 	 *enumerated type used to tell what kind of piece is
 	 * 
@@ -147,6 +150,10 @@ public abstract class Piece {
 		
 	}
 
+	
+	public void possibleMoves(){
+		
+	}
 	/**  
 	 * removes the piece from the board
 	 * @param	nextPiece - replaces current piece with this piece
