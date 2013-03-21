@@ -73,6 +73,7 @@ public class Turn extends Thread {
 					
 					
 					if(validClick1){
+						select1.getPiece().possibleMoves();
 						if(getTheGame().click2 != null){
 							
 							//finds the second clicked tile

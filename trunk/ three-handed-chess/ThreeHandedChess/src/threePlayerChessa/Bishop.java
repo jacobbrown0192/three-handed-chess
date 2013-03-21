@@ -34,10 +34,16 @@ public class Bishop extends Piece {
 	 */
 	public void move(Tile aStartTile, Tile aMoveTile, Turn player) 
 	{
-		boolean validMove = true;
+		boolean validMove = false;
 		player.getTheGame().click1 = null;
 		player.getTheGame().click2 = null;
-		//check for valid move
+
+		for(int i=0; i<validTileMoves.size();i++){
+			if(aMoveTile == validTileMoves.elementAt(i)){
+				validMove = true;
+			}
+		}
+		
 		if (validMove){	//moves piece
 			if(aMoveTile.getPiece() != null){	// sets pieces current tile on aMoveTile to null
 				aMoveTile.getPiece().setCurrentTile(null);
@@ -57,16 +63,22 @@ public class Bishop extends Piece {
 	{
 		this.validTileMoves.clear(); //Flush previously held possible moves
 		Tile temp = this.currentTile;
+		Tile tempPrevious = this.currentTile;
 		
 		//Upper Left Check
 		while (temp.upleft != null)
 		{
 			//Check that you're looking in the right direction
-			if(this.validTileMoves.get(this.validTileMoves.size() - 2) == temp.upleft)
+			if(tempPrevious == temp.upleft)
 			{
 				//Wrong direction
 				//If piece belonging to you is there
-				if(temp.downright.getPiece() != null && temp.downright.getPiece().getPlayer() == this.getPlayer())
+				//If piece belonging to you is there
+				if(temp.up.getPiece() == null )
+				{
+
+				}
+				else if(temp.up.getPiece().getPlayer() == this.getPlayer())
 				{
 					//Can't go any further in this direction: don't add and break
 					break;
@@ -74,17 +86,20 @@ public class Bishop extends Piece {
 			}
 			else
 			{
-				//Right direction
-				//If piece belonging to you is there
-				if(temp.upleft.getPiece() != null && temp.upleft.getPiece().getPlayer() == this.getPlayer())
+				if(temp.up.getPiece() == null )
+				{
+
+				}
+				else if(temp.up.getPiece().getPlayer() == this.getPlayer())
 				{
 					//Can't go any further in this direction: don't add and break
 					break;
 				}
+				
 			}
 			
 			//Check that the tile you're adding in this direction isn't the tile you added last
-			if(this.validTileMoves.get(this.validTileMoves.size() - 2) == temp.upleft)
+			if(tempPrevious == temp.upleft)
 			{
 				//Wrong direction
 				this.validTileMoves.add(temp.downright);
@@ -107,15 +122,21 @@ public class Bishop extends Piece {
 		}
 		
 		temp = this.currentTile;
+		tempPrevious = this.currentTile;
 		//Upper Right Check
 		while (temp.upright != null)
 		{
 			//Check that you're looking in the right direction
-			if(this.validTileMoves.get(this.validTileMoves.size() - 2) == temp.upright)
+			if(tempPrevious == temp.upright)
 			{
 				//Wrong direction
 				//If piece belonging to you is there
-				if(temp.downright.getPiece() != null && temp.downright.getPiece().getPlayer() == this.getPlayer())
+				//If piece belonging to you is there
+				if(temp.up.getPiece() == null )
+				{
+
+				}
+				else if(temp.up.getPiece().getPlayer() == this.getPlayer())
 				{
 					//Can't go any further in this direction: don't add and break
 					break;
@@ -123,17 +144,20 @@ public class Bishop extends Piece {
 			}
 			else
 			{
-				//Right direction
-				//If piece belonging to you is there
-				if(temp.upright.getPiece() != null && temp.upright.getPiece().getPlayer() == this.getPlayer())
+				if(temp.up.getPiece() == null )
+				{
+
+				}
+				else if(temp.up.getPiece().getPlayer() == this.getPlayer())
 				{
 					//Can't go any further in this direction: don't add and break
 					break;
 				}
+				
 			}
 			
 			//Check that the tile you're adding in this direction isn't the tile you added last
-			if(this.validTileMoves.get(this.validTileMoves.size() - 2) == temp.upright)
+			if(tempPrevious == temp.upright)
 			{
 				//Wrong direction
 				this.validTileMoves.add(temp.downright);
@@ -156,15 +180,21 @@ public class Bishop extends Piece {
 		}
 		
 		temp = this.currentTile;
+		tempPrevious = this.currentTile;
 		//Lower Left Check
 		while (temp.downleft != null)
 		{
 			//Check that you're looking in the right direction
-			if(this.validTileMoves.get(this.validTileMoves.size() - 2) == temp.downleft)
+			if(tempPrevious == temp.downleft)
 			{
 				//Wrong direction
 				//If piece belonging to you is there
-				if(temp.upright.getPiece() != null && temp.upright.getPiece().getPlayer() == this.getPlayer())
+				//If piece belonging to you is there
+				if(temp.up.getPiece() == null )
+				{
+
+				}
+				else if(temp.up.getPiece().getPlayer() == this.getPlayer())
 				{
 					//Can't go any further in this direction: don't add and break
 					break;
@@ -172,17 +202,20 @@ public class Bishop extends Piece {
 			}
 			else
 			{
-				//Right direction
-				//If piece belonging to you is there
-				if(temp.downleft.getPiece() != null && temp.downleft.getPiece().getPlayer() == this.getPlayer())
+				if(temp.up.getPiece() == null )
+				{
+
+				}
+				else if(temp.up.getPiece().getPlayer() == this.getPlayer())
 				{
 					//Can't go any further in this direction: don't add and break
 					break;
 				}
+				
 			}
 			
 			//Check that the tile you're adding in this direction isn't the tile you added last
-			if(this.validTileMoves.get(this.validTileMoves.size() - 2) == temp.downleft)
+			if(tempPrevious == temp.downleft)
 			{
 				//Wrong direction
 				this.validTileMoves.add(temp.upright);
@@ -205,15 +238,21 @@ public class Bishop extends Piece {
 		}
 		
 		temp = this.currentTile;
+		tempPrevious = this.currentTile;
 		//Lower Right Check
 		while (temp.downright != null)
 		{
 			//Check that you're looking in the right direction
-			if(this.validTileMoves.get(this.validTileMoves.size() - 2) == temp.downright)
+			if(tempPrevious == temp.downright)
 			{
 				//Wrong direction
 				//If piece belonging to you is there
-				if(temp.upleft.getPiece() != null && temp.upleft.getPiece().getPlayer() == this.getPlayer())
+				//If piece belonging to you is there
+				if(temp.up.getPiece() == null )
+				{
+
+				}
+				else if(temp.up.getPiece().getPlayer() == this.getPlayer())
 				{
 					//Can't go any further in this direction: don't add and break
 					break;
@@ -221,17 +260,20 @@ public class Bishop extends Piece {
 			}
 			else
 			{
-				//Right direction
-				//If piece belonging to you is there
-				if(temp.downright.getPiece() != null && temp.downright.getPiece().getPlayer() == this.getPlayer())
+				if(temp.up.getPiece() == null )
+				{
+
+				}
+				else if(temp.up.getPiece().getPlayer() == this.getPlayer())
 				{
 					//Can't go any further in this direction: don't add and break
 					break;
 				}
+				
 			}
 			
 			//Check that the tile you're adding in this direction isn't the tile you added last
-			if(this.validTileMoves.get(this.validTileMoves.size() - 2) == temp.downright)
+			if(tempPrevious == temp.downright)
 			{
 				//Wrong direction
 				this.validTileMoves.add(temp.upleft);
