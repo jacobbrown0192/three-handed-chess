@@ -163,6 +163,38 @@ public abstract class Piece {
 		this.currentTile.setPiece(nextPiece);
 	}
 	
+	public void possibleMovesHighlight(){
+		for(int i=0; i<validTileMoves.size();i++){
+			if(validTileMoves.elementAt(i) != null){
+				if(validTileMoves.elementAt(i).getPiece() == null){
+					validTileMoves.elementAt(i).setAccessed(true);
+				}
+				else if(validTileMoves.elementAt(i).getPiece().player != this.player)
+				{
+					validTileMoves.elementAt(i).setAttacked(true);
+				}
+			}
+			
+		}
+	}
+	
+	public void possibleMovesUnhighlight(){
+		for(int i=0; i<validTileMoves.size();i++){
+			if(validTileMoves.elementAt(i) != null){
+				if(validTileMoves.elementAt(i).getPiece() == null){
+					validTileMoves.elementAt(i).setAccessed(false);
+				}
+				else if(validTileMoves.elementAt(i).getPiece().player != this.player)
+				{
+					validTileMoves.elementAt(i).setAttacked(false);
+				}
+			}
+		}
+	}
+		
+
+	
+	
 	/**
 	 * @param player - the player who owns this piece
 	 * @param name - the name of the piece
