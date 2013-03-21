@@ -32,7 +32,8 @@ public class Knight extends Piece {
 	 * @return null
 	 * 
 	 */
-	public void move(Tile aStartTile, Tile aMoveTile, Turn player) {
+	public void move(Tile aStartTile, Tile aMoveTile, Turn player)
+	{
 		boolean validMove = false;
 		player.getTheGame().click1 = null;
 		player.getTheGame().click2 = null;
@@ -90,12 +91,12 @@ public class Knight extends Piece {
 							}
 						}
 					}
-					else if(temp.up.up.left != null)
+				}
+				else if(temp.up.up.left != null)
+				{
+					if(temp.up.up.left.getPiece() == null || temp.up.up.left.getPiece().getPlayer() != this.getPlayer())
 					{
-						if(temp.up.up.left.getPiece() == null || temp.up.up.left.getPiece().getPlayer() != this.getPlayer())
-						{
-							this.validTileMoves.add(temp.up.up.left);
-						}
+						this.validTileMoves.add(temp.up.up.left);
 					}
 				}
 			}
@@ -120,12 +121,12 @@ public class Knight extends Piece {
 							this.validTileMoves.add(temp.up.down.left);
 						}
 					}
-					else if(temp.up.up.right != null)
+				}
+				else if(temp.up.up.right != null)
+				{
+					if(temp.up.up.right.getPiece() == null || temp.up.up.right.getPiece().getPlayer() != this.getPlayer())
 					{
-						if(temp.up.up.right.getPiece() == null || temp.up.up.right.getPiece().getPlayer() != this.getPlayer())
-						{
-							this.validTileMoves.add(temp.up.up.right);
-						}
+						this.validTileMoves.add(temp.up.up.right);
 					}
 				}
 			}
@@ -180,12 +181,12 @@ public class Knight extends Piece {
 							this.validTileMoves.add(temp.down.up.right);
 						}
 					}
-					else if(temp.down.down.left != null)
+				}
+				else if(temp.down.down.left != null)
+				{
+					if(temp.down.down.left.getPiece() == null || temp.down.down.left.getPiece().getPlayer() != this.getPlayer())
 					{
-						if(temp.down.down.left.getPiece() == null || temp.down.down.left.getPiece().getPlayer() != this.getPlayer())
-						{
-							this.validTileMoves.add(temp.down.down.left);
-						}
+						this.validTileMoves.add(temp.down.down.left);
 					}
 				}
 			}
@@ -210,12 +211,12 @@ public class Knight extends Piece {
 							this.validTileMoves.add(temp.down.up.left);
 						}
 					}
-					else if(temp.down.down.right != null)
+				}
+				else if(temp.down.down.right != null)
+				{
+					if(temp.down.down.right.getPiece() == null || temp.down.down.right.getPiece().getPlayer() != this.getPlayer())
 					{
-						if(temp.down.down.right.getPiece() == null || temp.down.down.right.getPiece().getPlayer() != this.getPlayer())
-						{
-							this.validTileMoves.add(temp.down.down.right);
-						}
+						this.validTileMoves.add(temp.down.down.right);
 					}
 				}
 			}
