@@ -49,7 +49,7 @@ public class Rook extends Piece {
 			if(aMoveTile.getPiece() != null){	// sets pieces current tile on aMoveTile to null
 				aMoveTile.getPiece().setCurrentTile(null);
 			}
-			if (initialMove = false){
+			if (initialMove == false){
 				initialMove = true;
 			}
 			aMoveTile.setPiece(aStartTile.getPiece());
