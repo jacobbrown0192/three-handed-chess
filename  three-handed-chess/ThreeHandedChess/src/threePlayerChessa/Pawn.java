@@ -64,7 +64,8 @@ public class Pawn extends Piece {
 		//check for valid move
 		if (validMove){
 			aMoveTile.setPiece(aStartTile.getPiece());
-			aStartTile.setPiece(null);
+			aStartTile.setPiece(null); 
+			
 			aMoveTile.getPiece().setCurrentTile(aMoveTile);
 			if (initialMove = false){
 				initialMove = true;

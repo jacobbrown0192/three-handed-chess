@@ -6,6 +6,8 @@ public class TileRelations {
 	
 	public TileRelations(){
 		//a1
+		relations[1][0][1] = 1;
+		relations[1][0][2] = 1;
 		relations[1][1][1] = 2;
 		relations[1][1][2] = 1;
 		relations[1][2][1] = 0;
@@ -33,6 +35,8 @@ public class TileRelations {
 		relations[1][13][1] = 0;
 		relations[1][13][2] = 0;	
 		//b1
+		relations[2][0][1] = 1;
+		relations[2][0][2] = 2;
 		relations[2][1][1] = 2;
 		relations[2][1][2] = 2;
 		relations[2][2][1] = 0;
@@ -60,6 +64,8 @@ public class TileRelations {
 		relations[2][13][1] = 0;
 		relations[2][13][2] = 0;
 		//c1
+		relations[3][0][1] = 1;
+		relations[3][0][2] = 3;
 		relations[3][1][1] = 2;
 		relations[3][1][2] = 3;
 		relations[3][2][1] = 0;
@@ -87,6 +93,8 @@ public class TileRelations {
 		relations[3][13][1] = 0;
 		relations[3][13][2] = 0;
 		//d1
+		relations[4][0][1] = 1;
+		relations[4][0][2] = 4;
 		relations[4][1][1] = 2;
 		relations[4][1][2] = 4;
 		relations[4][2][1] = 0;
@@ -114,6 +122,8 @@ public class TileRelations {
 		relations[4][13][1] = 0;
 		relations[4][13][2] = 0;
 		//a2
+		relations[5][0][1] = 2;
+		relations[5][0][2] = 1;
 		relations[5][1][1] = 3;
 		relations[5][1][2] = 1;
 		relations[5][2][1] = 1;
@@ -141,6 +151,8 @@ public class TileRelations {
 		relations[5][13][1] = 0;
 		relations[5][13][2] = 0;
 		//b2
+		relations[6][0][1] = 2;
+		relations[6][0][2] = 2;
 		relations[6][1][1] = 3;
 		relations[6][1][2] = 2;
 		relations[6][2][1] = 1;
@@ -168,6 +180,8 @@ public class TileRelations {
 		relations[6][13][1] = 0;
 		relations[6][13][2] = 0;
 		//c2
+		relations[7][0][1] = 2;
+		relations[7][0][2] = 3;
 		relations[7][1][1] = 3;
 		relations[7][1][2] = 3;
 		relations[7][2][1] = 1;
@@ -195,6 +209,8 @@ public class TileRelations {
 		relations[7][13][1] = 0;
 		relations[7][13][2] = 0;
 		//d2
+		relations[8][0][1] = 2;
+		relations[8][0][2] = 4;
 		relations[8][1][1] = 3;
 		relations[8][1][2] = 4;
 		relations[8][2][1] = 1;
@@ -222,6 +238,8 @@ public class TileRelations {
 		relations[8][13][1] = 0;
 		relations[8][13][2] = 0;
 		//a3
+		relations[9][0][1] = 3;
+		relations[9][0][2] = 1;
 		relations[9][1][1] = 4;
 		relations[9][1][2] = 1;
 		relations[9][2][1] = 2;
@@ -249,6 +267,8 @@ public class TileRelations {
 		relations[9][13][1] = 0;
 		relations[9][13][2] = 0;
 		//b3
+		relations[10][0][1] = 3;
+		relations[10][0][2] = 2;
 		relations[10][1][1] = 4;
 		relations[10][1][2] = 2;
 		relations[10][2][1] = 2;
@@ -276,6 +296,8 @@ public class TileRelations {
 		relations[10][13][1] = 0;
 		relations[10][13][2] = 0;
 		//c3
+		relations[11][0][1] = 3;
+		relations[11][0][2] = 3;
 		relations[11][1][1] = 4;
 		relations[11][1][2] = 3;
 		relations[11][2][1] = 2;
@@ -303,6 +325,8 @@ public class TileRelations {
 		relations[11][13][1] = 0;
 		relations[11][13][2] = 0;
 		//d3
+		relations[12][0][1] = 3;
+		relations[12][0][2] = 4;
 		relations[12][1][1] = 4;
 		relations[12][1][2] = 4;
 		relations[12][2][1] = 2;
@@ -330,6 +354,8 @@ public class TileRelations {
 		relations[12][13][1] = 0;
 		relations[12][13][2] = 0;
 		//a4
+		relations[13][0][1] = 4;
+		relations[13][0][2] = 1;
 		relations[13][1][1] = 5;
 		relations[13][1][2] = 1;
 		relations[13][2][1] = 3;
@@ -357,6 +383,8 @@ public class TileRelations {
 		relations[13][13][1] = 0;
 		relations[13][13][2] = 0;
 		//b4
+		relations[14][0][1] = 4;
+		relations[14][0][2] = 2;
 		relations[14][1][1] = 5;
 		relations[14][1][2] = 2;
 		relations[14][2][1] = 3;
@@ -384,6 +412,8 @@ public class TileRelations {
 		relations[14][13][1] = 0;
 		relations[14][13][2] = 0;
 		//c4
+		relations[15][0][1] = 4;
+		relations[15][0][2] = 3;
 		relations[15][1][1] = 5;
 		relations[15][1][2] = 3;
 		relations[15][2][1] = 3;
@@ -411,6 +441,8 @@ public class TileRelations {
 		relations[15][13][1] = 0;
 		relations[15][13][2] = 0;
 		//d4
+		relations[16][0][1] = 4;
+		relations[16][0][2] = 4;
 		relations[16][1][1] = 5;
 		relations[16][1][2] = 4;
 		relations[16][2][1] = 3;
@@ -438,6 +470,8 @@ public class TileRelations {
 		relations[16][13][1] = 9;
 		relations[16][13][2] = 5;
 		//e1
+		relations[17][0][1] = 1;
+		relations[17][0][2] = 5;
 		relations[17][1][1] = 2;
 		relations[17][1][2] = 5;
 		relations[17][2][1] = 0;
@@ -465,6 +499,8 @@ public class TileRelations {
 		relations[17][13][1] = 0;
 		relations[17][13][2] = 0;
 		//f1
+		relations[18][0][1] = 1;
+		relations[18][0][2] = 6;
 		relations[18][1][1] = 2;
 		relations[18][1][2] = 6;
 		relations[18][2][1] = 0;
@@ -492,33 +528,37 @@ public class TileRelations {
 		relations[18][13][1] = 0;
 		relations[18][13][2] = 0;
 		//g1
-		relations[20][1][1] = 2;
-		relations[20][1][2] = 7;
-		relations[20][2][1] = 0;
-		relations[20][2][2] = 0;
-		relations[20][3][1] = 1;
-		relations[20][3][2] = 6;
-		relations[20][4][1] = 1;
-		relations[20][4][2] = 8;
-		relations[20][5][1] = 0;
-		relations[20][5][2] = 0;
-		relations[20][6][1] = 0;
-		relations[20][6][2] = 0;
-		relations[20][7][1] = 2;
-		relations[20][7][2] = 6;
-		relations[20][8][1] = 2;
-		relations[20][8][2] = 8;
-		relations[20][9][1] = 0;
-		relations[20][9][2] = 0;
-		relations[20][10][1] = 0;
-		relations[20][10][2] = 0;
-		relations[20][11][1] = 0;
-		relations[20][11][2] = 0;
-		relations[20][12][1] = 0;
-		relations[20][12][2] = 0;
-		relations[20][13][1] = 0;
-		relations[20][13][2] = 0;
+		relations[19][0][1] = 1;
+		relations[19][0][2] = 7;
+		relations[19][1][1] = 2;
+		relations[19][1][2] = 7;
+		relations[19][2][1] = 0;
+		relations[19][2][2] = 0;
+		relations[19][3][1] = 1;
+		relations[19][3][2] = 6;
+		relations[19][4][1] = 1;
+		relations[19][4][2] = 8;
+		relations[19][5][1] = 0;
+		relations[19][5][2] = 0;
+		relations[19][6][1] = 0;
+		relations[19][6][2] = 0;
+		relations[19][7][1] = 2;
+		relations[19][7][2] = 6;
+		relations[19][8][1] = 2;
+		relations[19][8][2] = 8;
+		relations[19][9][1] = 0;
+		relations[19][9][2] = 0;
+		relations[19][10][1] = 0;
+		relations[19][10][2] = 0;
+		relations[19][11][1] = 0;
+		relations[19][11][2] = 0;
+		relations[19][12][1] = 0;
+		relations[19][12][2] = 0;
+		relations[19][13][1] = 0;
+		relations[19][13][2] = 0;
 		//h1
+		relations[20][0][1] = 1;
+		relations[20][0][2] = 8;
 		relations[20][1][1] = 2;
 		relations[20][1][2] = 8;
 		relations[20][2][1] = 0;
@@ -546,6 +586,8 @@ public class TileRelations {
 		relations[20][13][1] = 0;
 		relations[20][13][2] = 0;
 		//e2
+		relations[21][0][1] = 2;
+		relations[21][0][2] = 5;
 		relations[21][1][1] = 3;
 		relations[21][1][2] = 5;
 		relations[21][2][1] = 1;
@@ -573,6 +615,8 @@ public class TileRelations {
 		relations[21][13][1] = 0;
 		relations[21][13][2] = 0;
 		//f2
+		relations[22][0][1] = 2;
+		relations[22][0][2] = 6;
 		relations[22][1][1] = 3;
 		relations[22][1][2] = 6;
 		relations[22][2][1] = 1;
@@ -600,6 +644,8 @@ public class TileRelations {
 		relations[22][13][1] = 0;
 		relations[22][13][2] = 0;
 		//g2
+		relations[22][0][1] = 2;
+		relations[22][0][2] = 7;
 		relations[23][1][1] = 3;
 		relations[23][1][2] = 7;
 		relations[23][2][1] = 1;
@@ -627,6 +673,8 @@ public class TileRelations {
 		relations[23][13][1] = 0;
 		relations[23][13][2] = 0;
 		//h2
+		relations[24][0][1] = 2;
+		relations[24][0][2] = 8;
 		relations[24][1][1] = 3;
 		relations[24][1][2] = 8;
 		relations[24][2][1] = 1;
@@ -654,6 +702,8 @@ public class TileRelations {
 		relations[24][13][1] = 0;
 		relations[24][13][2] = 0;
 		//e3
+		relations[25][0][1] = 3;
+		relations[25][0][2] = 5;
 		relations[25][1][1] = 4;
 		relations[25][1][2] = 5;
 		relations[25][2][1] = 2;
@@ -681,6 +731,8 @@ public class TileRelations {
 		relations[25][13][1] = 0;
 		relations[25][13][2] = 0;
 		//f3
+		relations[26][0][1] = 3;
+		relations[26][0][2] = 6;
 		relations[26][1][1] = 4;
 		relations[26][1][2] = 6;
 		relations[26][2][1] = 2;
@@ -708,6 +760,8 @@ public class TileRelations {
 		relations[26][13][1] = 0;
 		relations[26][13][2] = 0;
 		//g3
+		relations[27][0][1] = 3;
+		relations[27][0][2] = 7;
 		relations[27][1][1] = 4;
 		relations[27][1][2] = 7;
 		relations[27][2][1] = 2;
@@ -735,6 +789,8 @@ public class TileRelations {
 		relations[27][13][1] = 0;
 		relations[27][13][2] = 0;
 		//h3
+		relations[28][0][1] = 3;
+		relations[28][0][2] = 8;
 		relations[28][1][1] = 4;
 		relations[28][1][2] = 8;
 		relations[28][2][1] = 2;
@@ -762,6 +818,8 @@ public class TileRelations {
 		relations[28][13][1] = 0;
 		relations[28][13][2] = 0;
 		//e4
+		relations[29][0][1] = 4;
+		relations[29][0][2] = 5;
 		relations[29][1][1] = 9;
 		relations[29][1][2] = 5;
 		relations[29][2][1] = 3;
@@ -789,6 +847,8 @@ public class TileRelations {
 		relations[29][13][1] = 0;
 		relations[29][13][2] = 0;
 		//f4
+		relations[30][0][1] = 4;
+		relations[30][0][2] = 6;
 		relations[30][1][1] = 9;
 		relations[30][1][2] = 6;
 		relations[30][2][1] = 3;
@@ -816,6 +876,8 @@ public class TileRelations {
 		relations[30][13][1] = 0;
 		relations[30][13][2] = 0;
 		//g4
+		relations[31][0][1] = 4;
+		relations[31][0][2] = 7;
 		relations[31][1][1] = 9;
 		relations[31][1][2] = 7;
 		relations[31][2][1] = 3;
@@ -843,6 +905,8 @@ public class TileRelations {
 		relations[31][13][1] = 0;
 		relations[31][13][2] = 0;
 		//h4
+		relations[32][0][1] = 4;
+		relations[32][0][2] = 8;
 		relations[32][1][1] = 9;
 		relations[32][1][2] = 8;
 		relations[32][2][1] = 3;
@@ -870,6 +934,8 @@ public class TileRelations {
 		relations[32][13][1] = 0;
 		relations[32][13][2] = 0;
 		//a5
+		relations[33][0][1] = 5;
+		relations[33][0][2] = 1;
 		relations[33][1][1] = 6;
 		relations[33][1][2] = 1;
 		relations[33][2][1] = 4;
@@ -897,6 +963,8 @@ public class TileRelations {
 		relations[33][13][1] = 0;
 		relations[33][13][2] = 0;
 		//b5
+		relations[34][0][1] = 5;
+		relations[34][0][2] = 2;
 		relations[34][1][1] = 6;
 		relations[34][1][2] = 2;
 		relations[34][2][1] = 4;
@@ -924,6 +992,8 @@ public class TileRelations {
 		relations[34][13][1] = 0;
 		relations[34][13][2] = 0;
 		//c5
+		relations[35][0][1] = 5;
+		relations[35][0][2] = 3;
 		relations[35][1][1] = 6;
 		relations[35][1][2] = 3;
 		relations[35][2][1] = 4;
@@ -951,6 +1021,8 @@ public class TileRelations {
 		relations[35][13][1] = 0;
 		relations[35][13][2] = 0;
 		//d5
+		relations[36][0][1] = 5;
+		relations[36][0][2] = 4;
 		relations[36][1][1] = 6;
 		relations[36][1][2] = 4;
 		relations[36][2][1] = 4;
@@ -978,6 +1050,8 @@ public class TileRelations {
 		relations[36][13][1] = 9;
 		relations[36][13][2] = 9;
 		//a6
+		relations[37][0][1] = 6;
+		relations[37][0][2] = 1;
 		relations[37][1][1] = 7;
 		relations[37][1][2] = 1;
 		relations[37][2][1] = 5;
@@ -1005,6 +1079,8 @@ public class TileRelations {
 		relations[37][13][1] = 0;
 		relations[37][13][2] = 0;
 		//b6
+		relations[38][0][1] = 6;
+		relations[38][0][2] = 2;
 		relations[38][1][1] = 7;
 		relations[38][1][2] = 2;
 		relations[38][2][1] = 5;
@@ -1032,6 +1108,8 @@ public class TileRelations {
 		relations[38][13][1] = 0;
 		relations[38][13][2] = 0;
 		//c6
+		relations[39][0][1] = 6;
+		relations[39][0][2] = 3;
 		relations[39][1][1] = 7;
 		relations[39][1][2] = 3;
 		relations[39][2][1] = 5;
@@ -1059,6 +1137,8 @@ public class TileRelations {
 		relations[39][13][1] = 0;
 		relations[39][13][2] = 0;
 		//d6
+		relations[40][0][1] = 6;
+		relations[40][0][2] = 4;
 		relations[40][1][1] = 7;
 		relations[40][1][2] = 4;
 		relations[40][2][1] = 5;
@@ -1086,6 +1166,8 @@ public class TileRelations {
 		relations[40][13][1] = 0;
 		relations[40][13][2] = 0;
 		//a7
+		relations[41][0][1] = 7;
+		relations[41][0][2] = 1;
 		relations[41][1][1] = 8;
 		relations[41][1][2] = 1;
 		relations[41][2][1] = 6;
@@ -1113,6 +1195,8 @@ public class TileRelations {
 		relations[41][13][1] = 0;
 		relations[41][13][2] = 0;
 		//b7
+		relations[42][0][1] = 7;
+		relations[42][0][2] = 2;
 		relations[42][1][1] = 8;
 		relations[42][1][2] = 2;
 		relations[42][2][1] = 6;
@@ -1140,6 +1224,8 @@ public class TileRelations {
 		relations[42][13][1] = 0;
 		relations[42][13][2] = 0;
 		//c7
+		relations[43][0][1] = 7;
+		relations[43][0][2] = 3;
 		relations[43][1][1] = 8;
 		relations[43][1][2] = 3;
 		relations[43][2][1] = 6;
@@ -1167,6 +1253,8 @@ public class TileRelations {
 		relations[43][13][1] = 0;
 		relations[43][13][2] = 0;
 		//d7
+		relations[44][0][1] = 7;
+		relations[44][0][2] = 4;
 		relations[44][1][1] = 8;
 		relations[44][1][2] = 4;
 		relations[44][2][1] = 6;
@@ -1194,6 +1282,8 @@ public class TileRelations {
 		relations[44][13][1] = 0;
 		relations[44][13][2] = 0;
 		//a8
+		relations[45][0][1] = 8;
+		relations[45][0][2] = 1;
 		relations[45][1][1] = 0;
 		relations[45][1][2] = 0;
 		relations[45][2][1] = 7;
@@ -1221,6 +1311,8 @@ public class TileRelations {
 		relations[45][13][1] = 0;
 		relations[45][13][2] = 0;
 		//b8
+		relations[46][0][1] = 8;
+		relations[46][0][2] = 2;
 		relations[46][1][1] = 0;
 		relations[46][1][2] = 0;
 		relations[46][2][1] = 7;
@@ -1248,6 +1340,8 @@ public class TileRelations {
 		relations[46][13][1] = 0;
 		relations[46][13][2] = 0;
 		//c8
+		relations[47][0][1] = 8;
+		relations[47][0][2] = 3;
 		relations[47][1][1] = 0;
 		relations[47][1][2] = 0;
 		relations[47][2][1] = 7;
@@ -1275,6 +1369,8 @@ public class TileRelations {
 		relations[47][13][1] = 0;
 		relations[47][13][2] = 0;
 		//d8
+		relations[48][0][1] = 8;
+		relations[48][0][2] = 4;
 		relations[48][1][1] = 0;
 		relations[48][1][2] = 0;
 		relations[48][2][1] = 7;
@@ -1305,6 +1401,7 @@ public class TileRelations {
 		
 		//i5 - Segment 4
 		//Special Tile
+		relations[49][0][1] = 5;	relations[49][0][2] = 9;
 		relations[49][1][1] = 6;	relations[49][1][2] = 9;
 		relations[49][2][1] = 9;	relations[49][2][2] = 9;
 		relations[49][3][1] = 5;	relations[49][3][2] = 4;
@@ -1319,6 +1416,8 @@ public class TileRelations {
 		relations[49][12][1] = 4;	relations[49][12][2] = 4;
 		relations[49][13][1] = 0;	relations[49][13][2] = 0;
 		
+		//j5
+		relations[50][0][1] = 5;	relations[50][0][2] = 10;
 		relations[50][1][1] = 6;	relations[50][1][2] = 10;
 		relations[50][2][1] = 9;	relations[50][2][2] = 10;
 		relations[50][3][1] = 5;	relations[50][3][2] = 9;
@@ -1333,6 +1432,8 @@ public class TileRelations {
 		relations[50][12][1] = 0;	relations[50][12][2] = 0;
 		relations[50][13][1] = 0;	relations[50][13][2] = 0;
 		
+		//k5
+		relations[51][0][1] = 5;	relations[51][0][2] = 11;
 		relations[51][1][1] = 6;	relations[51][1][2] = 11;
 		relations[51][2][1] = 9;	relations[51][2][2] = 11;
 		relations[51][3][1] = 5;	relations[51][3][2] = 10;
@@ -1347,6 +1448,8 @@ public class TileRelations {
 		relations[51][12][1] = 0;	relations[51][12][2] = 0;
 		relations[51][13][1] = 0;	relations[51][13][2] = 0;
 		
+		//l5
+		relations[52][0][1] = 5;	relations[52][0][2] = 12;
 		relations[52][1][1] = 6;	relations[52][1][2] = 12;
 		relations[52][2][1] = 9;	relations[52][2][2] = 12;
 		relations[52][3][1] = 5;	relations[52][3][2] = 11;
@@ -1361,6 +1464,8 @@ public class TileRelations {
 		relations[52][12][1] = 0;	relations[52][12][2] = 0;
 		relations[52][13][1] = 0;	relations[52][13][2] = 0;
 		
+		//i6
+		relations[53][0][1] = 6;	relations[53][0][2] = 9;
 		relations[53][1][1] = 7;	relations[53][1][2] = 9;
 		relations[53][2][1] = 5;	relations[53][2][2] = 9;
 		relations[53][3][1] = 6;	relations[53][3][2] = 10;
@@ -1375,6 +1480,8 @@ public class TileRelations {
 		relations[53][12][1] = 0;	relations[53][12][2] = 0;
 		relations[53][13][1] = 0;	relations[53][13][2] = 0;
 		
+		//j6
+		relations[54][0][1] = 6;	relations[54][0][2] = 10;
 		relations[54][1][1] = 7;	relations[54][1][2] = 10;
 		relations[54][2][1] = 5;	relations[54][2][2] = 10;
 		relations[54][3][1] = 6;	relations[54][3][2] = 9;
@@ -1389,6 +1496,8 @@ public class TileRelations {
 		relations[54][12][1] = 0;	relations[54][12][2] = 0;
 		relations[54][13][1] = 0;	relations[54][13][2] = 0;
 		
+		//k6
+		relations[55][0][1] = 6;	relations[55][0][2] = 11;
 		relations[55][1][1] = 7;	relations[55][1][2] = 11;
 		relations[55][2][1] = 5;	relations[55][2][2] = 11;
 		relations[55][3][1] = 6;	relations[55][3][2] = 10;
@@ -1403,6 +1512,8 @@ public class TileRelations {
 		relations[55][12][1] = 0;	relations[55][12][2] = 0;
 		relations[55][13][1] = 0;	relations[55][13][2] = 0;
 		
+		//l6
+		relations[56][0][1] = 6;	relations[56][0][2] = 12;
 		relations[56][1][1] = 7;	relations[56][1][2] = 12;
 		relations[56][2][1] = 5;	relations[56][2][2] = 12;
 		relations[56][3][1] = 6;	relations[56][3][2] = 11;
@@ -1417,6 +1528,8 @@ public class TileRelations {
 		relations[56][12][1] = 0;	relations[56][12][2] = 0;
 		relations[56][13][1] = 0;	relations[56][13][2] = 0;
 		
+		//i7
+		relations[57][0][1] = 7;	relations[57][0][2] = 9;
 		relations[57][1][1] = 8;	relations[57][1][2] = 9;
 		relations[57][2][1] = 6;	relations[57][2][2] = 9;
 		relations[57][3][1] = 7;	relations[57][3][2] = 4;
@@ -1431,6 +1544,8 @@ public class TileRelations {
 		relations[57][12][1] = 0;	relations[57][12][2] = 0;
 		relations[57][13][1] = 0;	relations[57][13][2] = 0;
 		
+		//j7
+		relations[58][0][1] = 7;	relations[58][0][2] = 10;
 		relations[58][1][1] = 8;	relations[58][1][2] = 10;
 		relations[58][2][1] = 6;	relations[58][2][2] = 10;
 		relations[58][3][1] = 7;	relations[58][3][2] = 9;
@@ -1445,6 +1560,8 @@ public class TileRelations {
 		relations[58][12][1] = 0;	relations[58][12][2] = 0;
 		relations[58][13][1] = 0;	relations[58][13][2] = 0;
 		
+		//k7
+		relations[59][0][1] = 7;	relations[59][0][2] = 11;
 		relations[59][1][1] = 8;	relations[59][1][2] = 11;
 		relations[59][2][1] = 6;	relations[59][2][2] = 11;
 		relations[59][3][1] = 7;	relations[59][3][2] = 10;
@@ -1459,6 +1576,8 @@ public class TileRelations {
 		relations[59][12][1] = 0;	relations[59][12][2] = 0;
 		relations[59][13][1] = 0;	relations[59][13][2] = 0;
 		
+		//l7
+		relations[60][0][1] = 7;	relations[60][0][2] = 12;
 		relations[60][1][1] = 8;	relations[60][1][2] = 12;
 		relations[60][2][1] = 6;	relations[60][2][2] = 12;
 		relations[60][3][1] = 7;	relations[60][3][2] = 11;
@@ -1473,6 +1592,8 @@ public class TileRelations {
 		relations[60][12][1] = 0;	relations[60][12][2] = 0;
 		relations[60][13][1] = 0;	relations[60][13][2] = 0;
 		
+		//i8
+		relations[61][0][1] = 8;	relations[61][0][2] = 9;
 		relations[61][1][1] = 0;	relations[61][1][2] = 0;
 		relations[61][2][1] = 7;	relations[61][2][2] = 9;
 		relations[61][3][1] = 8;	relations[61][3][2] = 4;
@@ -1487,6 +1608,8 @@ public class TileRelations {
 		relations[61][12][1] = 0;	relations[61][12][2] = 0;
 		relations[61][13][1] = 0;	relations[61][13][2] = 0;
 		
+		//j8
+		relations[62][0][1] = 8;	relations[62][0][2] = 10;
 		relations[62][1][1] = 0;	relations[62][1][2] = 0;
 		relations[62][2][1] = 7;	relations[62][2][2] = 10;
 		relations[62][3][1] = 8;	relations[62][3][2] = 9;
@@ -1501,6 +1624,8 @@ public class TileRelations {
 		relations[62][12][1] = 0;	relations[62][12][2] = 0;
 		relations[62][13][1] = 0;	relations[62][13][2] = 0;
 		
+		//k8
+		relations[63][0][1] = 8;	relations[63][0][2] = 11;
 		relations[63][1][1] = 0;	relations[63][1][2] = 0;
 		relations[63][2][1] = 7;	relations[63][2][2] = 11;
 		relations[63][3][1] = 8;	relations[63][3][2] = 10;
@@ -1515,6 +1640,8 @@ public class TileRelations {
 		relations[63][12][1] = 0;	relations[63][12][2] = 0;
 		relations[63][13][1] = 0;	relations[63][13][2] = 0;
 		
+		//l8
+		relations[64][0][1] = 8;	relations[64][0][2] = 12;
 		relations[64][1][1] = 0;	relations[64][1][2] = 0;
 		relations[64][2][1] = 7;	relations[64][2][2] = 12;
 		relations[64][3][1] = 8;	relations[64][3][2] = 11;
@@ -1531,7 +1658,7 @@ public class TileRelations {
 		
 		//i9 - Segment 5
 		//Special Tile
-
+		relations[65][0][1] = 9;	relations[65][0][2] = 9;
 		relations[65][1][1] = 10;	relations[65][1][2] = 9;
 		relations[65][2][1] = 5;	relations[65][2][2] = 9;
 		relations[65][3][1] = 9;	relations[65][3][2] = 10;
@@ -1545,7 +1672,9 @@ public class TileRelations {
 		relations[65][11][1] = 5;	relations[65][11][2] = 4;
 		relations[65][12][1] = 0;	relations[65][12][2] = 0;
 		relations[65][13][1] = 4;	relations[65][13][2] = 5;
-
+		
+		//j9
+		relations[66][0][1] = 9;	relations[66][0][2] = 10;
 		relations[66][1][1] = 10;	relations[66][1][2] = 10;
 		relations[66][2][1] = 5;	relations[66][2][2] = 10;
 		relations[66][3][1] = 9;	relations[66][3][2] = 11;
@@ -1560,6 +1689,8 @@ public class TileRelations {
 		relations[66][12][1] = 0;	relations[66][12][2] = 0;
 		relations[66][13][1] = 0;	relations[66][13][2] = 0;
 		
+		//k9
+		relations[67][0][1] = 9;	relations[67][0][2] = 11;
 		relations[67][1][1] = 10;	relations[67][1][2] = 11;
 		relations[67][2][1] = 5;	relations[67][2][2] = 11;
 		relations[67][3][1] = 9;	relations[67][3][2] = 12;
@@ -1574,6 +1705,8 @@ public class TileRelations {
 		relations[67][12][1] = 0;	relations[67][12][2] = 0;
 		relations[67][13][1] = 0;	relations[67][13][2] = 0;
 		
+		//l9
+		relations[68][0][1] = 9;	relations[68][0][2] = 12;
 		relations[68][1][1] = 10;	relations[68][1][2] = 12;
 		relations[68][2][1] = 5;	relations[68][2][2] = 12;
 		relations[68][3][1] = 0;	relations[68][3][2] = 0;
@@ -1588,6 +1721,8 @@ public class TileRelations {
 		relations[68][12][1] = 0;	relations[68][12][2] = 0;
 		relations[68][13][1] = 0;	relations[68][13][2] = 0;
 		
+		//i10
+		relations[69][0][1] = 10;	relations[69][0][2] = 9;
 		relations[69][1][1] = 11;	relations[69][1][2] = 9;
 		relations[69][2][1] = 9;	relations[69][2][2] = 9;
 		relations[69][3][1] = 10;	relations[69][3][2] = 10;
@@ -1602,6 +1737,8 @@ public class TileRelations {
 		relations[69][12][1] = 0;	relations[69][12][2] = 0;
 		relations[69][13][1] = 0;	relations[69][13][2] = 0;
 		
+		//j10
+		relations[70][0][1] = 10;	relations[70][0][2] = 10;
 		relations[70][1][1] = 11;	relations[70][1][2] = 10;
 		relations[70][2][1] = 9;	relations[70][2][2] = 10;
 		relations[70][3][1] = 10;	relations[70][3][2] = 11;
@@ -1616,6 +1753,8 @@ public class TileRelations {
 		relations[70][12][1] = 0;	relations[70][12][2] = 0;
 		relations[70][13][1] = 0;	relations[70][13][2] = 0;
 		
+		//k10
+		relations[71][0][1] = 10;	relations[71][0][2] = 11;
 		relations[71][1][1] = 11;	relations[71][1][2] = 11;
 		relations[71][2][1] = 9;	relations[71][2][2] = 11;
 		relations[71][3][1] = 10;	relations[71][3][2] = 12;
@@ -1630,6 +1769,8 @@ public class TileRelations {
 		relations[71][12][1] = 0;	relations[71][12][2] = 0;
 		relations[71][13][1] = 0;	relations[71][13][2] = 0;
 		
+		//l10
+		relations[72][0][1] = 10;	relations[72][0][2] = 12;
 		relations[72][1][1] = 11;	relations[72][1][2] = 12;
 		relations[72][2][1] = 9;	relations[72][2][2] = 12;
 		relations[72][3][1] = 0;	relations[72][3][2] = 0;
@@ -1644,6 +1785,8 @@ public class TileRelations {
 		relations[72][12][1] = 0;	relations[72][12][2] = 0;
 		relations[72][13][1] = 0;	relations[72][13][2] = 0;
 		
+		//i11
+		relations[73][0][1] = 11;	relations[73][0][2] = 9;
 		relations[73][1][1] = 12;	relations[73][1][2] = 9;
 		relations[73][2][1] = 10;	relations[73][2][2] = 9;
 		relations[73][3][1] = 11;	relations[73][3][2] = 10;
@@ -1658,6 +1801,8 @@ public class TileRelations {
 		relations[73][12][1] = 0;	relations[73][12][2] = 0;
 		relations[73][13][1] = 0;	relations[73][13][2] = 0;
 		
+		//j11
+		relations[74][0][1] = 11;	relations[74][0][2] = 10;
 		relations[74][1][1] = 12;	relations[74][1][2] = 10;
 		relations[74][2][1] = 10;	relations[74][2][2] = 10;
 		relations[74][3][1] = 11;	relations[74][3][2] = 11;
@@ -1672,6 +1817,8 @@ public class TileRelations {
 		relations[74][12][1] = 0;	relations[74][12][2] = 0;
 		relations[74][13][1] = 0;	relations[74][13][2] = 0;
 		
+		//k11
+		relations[75][0][1] = 11;	relations[75][0][2] = 11;
 		relations[75][1][1] = 12;	relations[75][1][2] = 11;
 		relations[75][2][1] = 10;	relations[75][2][2] = 11;
 		relations[75][3][1] = 11;	relations[75][3][2] = 12;
@@ -1686,6 +1833,8 @@ public class TileRelations {
 		relations[75][12][1] = 0;	relations[75][12][2] = 0;
 		relations[75][13][1] = 0;	relations[75][13][2] = 0;
 		
+		//l11
+		relations[76][0][1] = 11;	relations[76][0][2] = 12;
 		relations[76][1][1] = 12;	relations[76][1][2] = 12;
 		relations[76][2][1] = 10;	relations[76][2][2] = 12;
 		relations[76][3][1] = 0;	relations[76][3][2] = 0;
@@ -1700,6 +1849,8 @@ public class TileRelations {
 		relations[76][12][1] = 0;	relations[76][12][2] = 0;
 		relations[76][13][1] = 0;	relations[76][13][2] = 0;
 		
+		//i12
+		relations[77][0][1] = 12;	relations[77][0][2] = 9;
 		relations[77][1][1] = 0;	relations[77][1][2] = 0;
 		relations[77][2][1] = 11;	relations[77][2][2] = 9;
 		relations[77][3][1] = 12;	relations[77][3][2] = 10;
@@ -1714,6 +1865,8 @@ public class TileRelations {
 		relations[77][12][1] = 0;	relations[77][12][2] = 0;
 		relations[77][13][1] = 0;	relations[77][13][2] = 0;
 		
+		//j12
+		relations[78][0][1] = 12;	relations[78][0][2] = 10;
 		relations[78][1][1] = 0;	relations[78][1][2] = 0;
 		relations[78][2][1] = 11;	relations[78][2][2] = 10;
 		relations[78][3][1] = 12;	relations[78][3][2] = 11;
@@ -1728,6 +1881,8 @@ public class TileRelations {
 		relations[78][12][1] = 0;	relations[78][12][2] = 0;
 		relations[78][13][1] = 0;	relations[78][13][2] = 0;
 		
+		//k12
+		relations[79][0][1] = 12;	relations[79][0][2] = 11;
 		relations[79][1][1] = 0;	relations[79][1][2] = 0;
 		relations[79][2][1] = 11;	relations[79][2][2] = 11;
 		relations[79][3][1] = 12;	relations[79][3][2] = 12;
@@ -1742,6 +1897,8 @@ public class TileRelations {
 		relations[79][12][1] = 0;	relations[79][12][2] = 0;
 		relations[79][13][1] = 0;	relations[79][13][2] = 0;
 		
+		//l12
+		relations[80][0][1] = 12;	relations[80][0][2] = 12;
 		relations[80][1][1] = 0;	relations[80][1][2] = 0;
 		relations[80][2][1] = 11;	relations[80][2][2] = 12;
 		relations[80][3][1] = 0;	relations[80][3][2] = 0;
@@ -1757,6 +1914,7 @@ public class TileRelations {
 		relations[80][13][1] = 0;	relations[80][13][2] = 0;
 		
 		//e9 - Segment 6
+		relations[81][0][1] = 9;	relations[81][0][2] = 5;
 		relations[81][1][1] = 9;	relations[81][1][2] = 10;
 		relations[81][2][1] = 9;	relations[81][2][2] = 5;
 		relations[81][3][1] = 5;	relations[81][3][2] = 9;
@@ -1770,7 +1928,9 @@ public class TileRelations {
 		relations[81][11][1] = 4;	relations[81][11][2] = 5;
 		relations[81][12][1] = 5;	relations[81][12][2] = 4;
 		relations[81][13][1] = 0;	relations[81][13][2] = 0;
-		
+
+		//f9
+		relations[82][0][1] = 9;	relations[82][0][2] = 6;
 		relations[82][1][1] = 10;	relations[82][1][2] = 6;
 		relations[82][2][1] = 4;	relations[82][2][2] = 6;
 		relations[82][3][1] = 9;	relations[82][3][2] = 5;
@@ -1784,7 +1944,9 @@ public class TileRelations {
 		relations[82][11][1] = 0;	relations[82][11][2] = 0;
 		relations[82][12][1] = 0;	relations[82][12][2] = 0;
 		relations[82][13][1] = 0;	relations[82][13][2] = 0;
-		
+
+		//g9
+		relations[83][0][1] = 9;	relations[83][0][2] = 7;
 		relations[83][1][1] = 10;	relations[83][1][2] = 7;
 		relations[83][2][1] = 4;	relations[83][2][2] = 7;
 		relations[83][3][1] = 9;	relations[83][3][2] = 6;
@@ -1798,7 +1960,9 @@ public class TileRelations {
 		relations[83][11][1] = 0;	relations[83][11][2] = 0;
 		relations[83][12][1] = 0;	relations[83][12][2] = 0;
 		relations[83][13][1] = 0;	relations[83][13][2] = 0;
-		
+
+		//h9
+		relations[84][0][1] = 9;	relations[84][0][2] = 8;
 		relations[84][1][1] = 10;	relations[84][1][2] = 8;
 		relations[84][2][1] = 4;	relations[84][2][2] = 8;
 		relations[84][3][1] = 9;	relations[84][3][2] = 7;
@@ -1812,7 +1976,9 @@ public class TileRelations {
 		relations[84][11][1] = 0;	relations[84][11][2] = 0;
 		relations[84][12][1] = 0;	relations[84][12][2] = 0;
 		relations[84][13][1] = 0;	relations[84][13][2] = 0;
-		
+
+		//e10
+		relations[85][0][1] = 10;	relations[85][0][2] = 5;
 		relations[85][1][1] = 11;	relations[85][1][2] = 5;
 		relations[85][2][1] = 9;	relations[85][2][2] = 5;
 		relations[85][3][1] = 10;	relations[85][3][2] = 9;
@@ -1826,7 +1992,9 @@ public class TileRelations {
 		relations[85][11][1] = 0;	relations[85][11][2] = 0;
 		relations[85][12][1] = 0;	relations[85][12][2] = 0;
 		relations[85][13][1] = 0;	relations[85][13][2] = 0;
-		
+
+		//f10
+		relations[86][0][1] = 10;	relations[86][0][2] = 6;
 		relations[86][1][1] = 11;	relations[86][1][2] = 6;
 		relations[86][2][1] = 9;	relations[86][2][2] = 6;
 		relations[86][3][1] = 10;	relations[86][3][2] = 5;
@@ -1840,7 +2008,9 @@ public class TileRelations {
 		relations[86][11][1] = 0;	relations[86][11][2] = 0;
 		relations[86][12][1] = 0;	relations[86][12][2] = 0;
 		relations[86][13][1] = 0;	relations[86][13][2] = 0;
-		
+
+		//g10
+		relations[87][0][1] = 10;	relations[87][0][2] = 7;
 		relations[87][1][1] = 11;	relations[87][1][2] = 7;
 		relations[87][2][1] = 9;	relations[87][2][2] = 7;
 		relations[87][3][1] = 10;	relations[87][3][2] = 6;
@@ -1854,7 +2024,9 @@ public class TileRelations {
 		relations[87][11][1] = 0;	relations[87][11][2] = 0;
 		relations[87][12][1] = 0;	relations[87][12][2] = 0;
 		relations[87][13][1] = 0;	relations[87][13][2] = 0;
-		
+
+		//h10
+		relations[88][0][1] = 10;	relations[88][0][2] = 8;
 		relations[88][1][1] = 11;	relations[88][1][2] = 8;
 		relations[88][2][1] = 9;	relations[88][2][2] = 8;
 		relations[88][3][1] = 10;	relations[88][3][2] = 7;
@@ -1868,7 +2040,9 @@ public class TileRelations {
 		relations[88][11][1] = 0;	relations[88][11][2] = 0;
 		relations[88][12][1] = 0;	relations[88][12][2] = 0;
 		relations[88][13][1] = 0;	relations[88][13][2] = 0;
-		
+
+		//e11
+		relations[89][0][1] = 11;	relations[85][0][2] = 5;
 		relations[89][1][1] = 12;	relations[89][1][2] = 5;
 		relations[89][2][1] = 10;	relations[89][2][2] = 5;
 		relations[89][3][1] = 11;	relations[89][3][2] = 9;
@@ -1882,7 +2056,9 @@ public class TileRelations {
 		relations[89][11][1] = 0;	relations[89][11][2] = 0;
 		relations[89][12][1] = 0;	relations[89][12][2] = 0;
 		relations[89][13][1] = 0;	relations[89][13][2] = 0;
-		
+
+		//f11
+		relations[90][0][1] = 11;	relations[90][0][2] = 6;
 		relations[90][1][1] = 12;	relations[90][1][2] = 6;
 		relations[90][2][1] = 10;	relations[90][2][2] = 6;
 		relations[90][3][1] = 11;	relations[90][3][2] = 5;
@@ -1896,7 +2072,9 @@ public class TileRelations {
 		relations[90][11][1] = 0;	relations[90][11][2] = 0;
 		relations[90][12][1] = 0;	relations[90][12][2] = 0;
 		relations[90][13][1] = 0;	relations[90][13][2] = 0;
-		
+
+		//g11
+		relations[91][0][1] = 11;	relations[91][0][2] = 7;
 		relations[91][1][1] = 12;	relations[91][1][2] = 7;
 		relations[91][2][1] = 10;	relations[91][2][2] = 7;
 		relations[91][3][1] = 11;	relations[91][3][2] = 6;
@@ -1910,7 +2088,9 @@ public class TileRelations {
 		relations[91][11][1] = 0;	relations[91][11][2] = 0;
 		relations[91][12][1] = 0;	relations[91][12][2] = 0;
 		relations[91][13][1] = 0;	relations[91][13][2] = 0;
-		
+
+		//h11
+		relations[92][0][1] = 11;	relations[92][0][2] = 8;
 		relations[92][1][1] = 12;	relations[92][1][2] = 8;
 		relations[92][2][1] = 10;	relations[92][2][2] = 8;
 		relations[92][3][1] = 11;	relations[92][3][2] = 7;
@@ -1924,7 +2104,9 @@ public class TileRelations {
 		relations[92][11][1] = 0;	relations[92][11][2] = 0;
 		relations[92][12][1] = 0;	relations[92][12][2] = 0;
 		relations[92][13][1] = 0;	relations[92][13][2] = 0;
-		
+
+		//e12
+		relations[93][0][1] = 12;	relations[93][0][2] = 5;
 		relations[93][1][1] = 0;	relations[93][1][2] = 0;
 		relations[93][2][1] = 11;	relations[93][2][2] = 5;
 		relations[93][3][1] = 12;	relations[93][3][2] = 9;
@@ -1938,7 +2120,9 @@ public class TileRelations {
 		relations[93][11][1] = 0;	relations[93][11][2] = 0;
 		relations[93][12][1] = 0;	relations[93][12][2] = 0;
 		relations[93][13][1] = 0;	relations[93][13][2] = 0;
-		
+
+		//f12
+		relations[94][0][1] = 12;	relations[94][0][2] = 6;
 		relations[94][1][1] = 0;	relations[94][1][2] = 0;
 		relations[94][2][1] = 11;	relations[94][2][2] = 6;
 		relations[94][3][1] = 12;	relations[94][3][2] = 5;
@@ -1952,7 +2136,9 @@ public class TileRelations {
 		relations[94][11][1] = 0;	relations[94][11][2] = 0;
 		relations[94][12][1] = 0;	relations[94][12][2] = 0;
 		relations[94][13][1] = 0;	relations[94][13][2] = 0;
-		
+
+		//g12
+		relations[95][0][1] = 12;	relations[95][0][2] = 7;
 		relations[95][1][1] = 0;	relations[95][1][2] = 0;
 		relations[95][2][1] = 11;	relations[95][2][2] = 7;
 		relations[95][3][1] = 12;	relations[95][3][2] = 6;
@@ -1966,7 +2152,9 @@ public class TileRelations {
 		relations[95][11][1] = 0;	relations[95][11][2] = 0;
 		relations[95][12][1] = 0;	relations[95][12][2] = 0;
 		relations[95][13][1] = 0;	relations[95][13][2] = 0;
-		
+
+		//h12
+		relations[96][0][1] = 12;	relations[96][0][2] = 8;
 		relations[96][1][1] = 0;	relations[96][1][2] = 0;
 		relations[96][2][1] = 11;	relations[96][2][2] = 8;
 		relations[96][3][1] = 12;	relations[96][3][2] = 7;
