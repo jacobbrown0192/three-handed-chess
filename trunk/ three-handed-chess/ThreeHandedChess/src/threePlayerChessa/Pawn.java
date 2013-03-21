@@ -21,6 +21,7 @@ public class Pawn extends Piece {
 	Section section2;
 	boolean initialMove;
 	int tilesMoved;
+	int twoTileIndex;
 	
 
 	/**  
@@ -37,6 +38,8 @@ public class Pawn extends Piece {
 		// TODO Auto-generated constructor stub
 		section2 = null;
 		initialMove = false;
+		tilesMoved = 0;
+		twoTileIndex = -1;
 	}
 
 	
@@ -58,6 +61,12 @@ public class Pawn extends Piece {
 			if(aMoveTile == validTileMoves.elementAt(i))
 			{
 				validMove = true;
+				if(i == twoTileIndex)
+				{
+					tilesMoved += 2;
+					twoTileIndex = -1;
+				}
+				else tilesMoved++;
 			}
 		}	
 		
@@ -96,20 +105,18 @@ public class Pawn extends Piece {
 			//Player 1: you can only go up
 			case 1:
 				//Can you move forward one?
-				if(temp.up != null)
+				if(temp.up != null && temp.up.getPiece() == null)
 				{
-					if(temp.up.getPiece() == null)
-					{
-						this.validTileMoves.add(temp.up);
-					}
+					this.validTileMoves.add(temp.up);
 				}
 				//Can you move forward two?
 				if(this.initialMove == false && temp.up.getPiece() == null && temp.up.up.getPiece() == null)
 				{
 					this.validTileMoves.add(temp.up.up);
+					twoTileIndex = this.validTileMoves.size() - 1; 
 				}
 				//Can you hop?
-				if(temp.hop != null && temp.hop.getPiece() == null)
+				if(this.tilesMoved < 3 && temp.hop != null && (temp.hop.getPiece() == null || temp.hop.getPiece().getPlayer() != this.getPlayer()))
 				{
 					this.validTileMoves.add(temp.hop);
 				}
@@ -141,9 +148,98 @@ public class Pawn extends Piece {
 				break;
 			//Player 2: you can go down 2 then up for segment 0 and down for segment 1
 			case 2:
-				break;
-			//Player 3: you can go down 2 then up for segment 0 and down for segment 1
 			case 3:
+				//Have you moved this pawn three tiles?
+				if(tilesMoved >= 3)
+				{
+					//In another player's section
+					//Check which segment were're in to set our new forward
+					int segNumId = this.currentTile.getSegment().getMaxNum();
+					int segLetId = this.currentTile.getSegment().getMaxLet();
+					
+					if((segNumId == 4 && segLetId == 4) || (segNumId == 4 && segLetId == 8))
+					{
+						//We're in section 0: new forward is down
+						//Can you move forward one?
+						if(temp.down != null && temp.down.getPiece() == null)
+						{
+							this.validTileMoves.add(temp.down);
+						}
+						//Can you take left?
+						if(temp.downleft != null && temp.downleft.getPiece() != null && temp.downleft.getPiece().getPlayer() != this.getPlayer())
+						{
+							this.validTileMoves.add(temp.downleft);
+						}
+						//Can you take right?
+						if(temp.downright != null && temp.downright.getPiece() != null && temp.downright.getPiece().getPlayer() != this.getPlayer())
+						{
+							this.validTileMoves.add(temp.downright);
+						}
+					}
+					else if ((segNumId == 8 && segLetId == 4) || (segNumId == 8 && segLetId == 12) || (segNumId == 12 && segLetId == 12) || (segNumId == 12 && segLetId == 8))
+					{
+						//We're in section 1 or 2: new forward is up
+						//Can you move forward one?
+						if(temp.up != null && temp.up.getPiece() == null)
+						{
+							this.validTileMoves.add(temp.up);
+						}
+						//Can you take left?
+						if(temp.upleft != null && temp.upleft.getPiece() != null && temp.upleft.getPiece().getPlayer() != this.getPlayer())
+						{
+							this.validTileMoves.add(temp.upleft);
+						}
+						//Can you take left?
+						if(temp.upright != null && temp.upright.getPiece() != null && temp.upright.getPiece().getPlayer() != this.getPlayer())
+						{
+							this.validTileMoves.add(temp.upright);
+						}
+					}
+				}
+				else //Still in our own section
+				{
+					//Can you move forward one?
+					if(temp.down != null && temp.down.getPiece() == null)
+					{
+						this.validTileMoves.add(temp.down);
+					}
+					//Can you move forward two?
+					if(this.initialMove == false && temp.down.getPiece() == null && temp.down.down.getPiece() == null)
+					{
+						this.validTileMoves.add(temp.down.down);
+						twoTileIndex = this.validTileMoves.size() - 1; 
+					}
+					//Can you hop?
+					if(temp.hop != null && (temp.hop.getPiece() == null || temp.hop.getPiece().getPlayer() != this.getPlayer()))
+					{
+						this.validTileMoves.add(temp.hop);
+					}
+					//Can you take left?
+					if(temp.downleft != null && temp.downleft.getPiece() != null && temp.downleft.getPiece().getPlayer() != this.getPlayer())
+					{
+						this.validTileMoves.add(temp.downleft);
+					}
+					//Can you take right?
+					if(temp.downright != null && temp.downright.getPiece() != null && temp.downright.getPiece().getPlayer() != this.getPlayer())
+					{
+						this.validTileMoves.add(temp.downright);
+					}
+					//Can you take special down?
+					if(temp.specialdown != null && temp.specialdown.getPiece() != null && temp.specialdown.getPiece().getPlayer() != this.getPlayer())
+					{
+						this.validTileMoves.add(temp.specialdown);
+					}
+					//Can you take special right?
+					if(temp.specialright != null && temp.specialright.getPiece() != null && temp.specialright.getPiece().getPlayer() != this.getPlayer())
+					{
+						this.validTileMoves.add(temp.specialright);
+					}
+					//Can you take special left?
+					if(temp.specialleft != null && temp.specialleft.getPiece() != null && temp.specialleft.getPiece().getPlayer() != this.getPlayer())
+					{
+						this.validTileMoves.add(temp.specialleft);
+					}
+				}
 				break;
 		}
 	}
