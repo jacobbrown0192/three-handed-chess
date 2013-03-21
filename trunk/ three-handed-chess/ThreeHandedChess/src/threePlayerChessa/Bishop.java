@@ -73,29 +73,25 @@ public class Bishop extends Piece {
 			{
 				//Wrong direction
 				//If piece belonging to you is there
-				//If piece belonging to you is there
-				if(temp.up.getPiece() == null )
+				if(temp.downright.getPiece() != null )
 				{
-
-				}
-				else if(temp.up.getPiece().getPlayer() == this.getPlayer())
-				{
-					//Can't go any further in this direction: don't add and break
-					break;
+					if(temp.downright.getPiece().getPlayer() == this.getPlayer())
+					{
+						//Can't go any further in this direction: don't add and break
+						break;
+					}
 				}
 			}
 			else
 			{
-				if(temp.up.getPiece() == null )
+				if(temp.upleft.getPiece() != null )
 				{
-
+					if(temp.upleft.getPiece().getPlayer() == this.getPlayer())
+					{
+						//Can't go any further in this direction: don't add and break
+						break;
+					}
 				}
-				else if(temp.up.getPiece().getPlayer() == this.getPlayer())
-				{
-					//Can't go any further in this direction: don't add and break
-					break;
-				}
-				
 			}
 			
 			//Check that the tile you're adding in this direction isn't the tile you added last
@@ -103,13 +99,14 @@ public class Bishop extends Piece {
 			{
 				//Wrong direction
 				this.validTileMoves.add(temp.downright);
-				temp = temp.downright;
-				
+				tempPrevious = temp;
+				temp = temp.downright;			
 			}
 			else
 			{
 				//Right direction
 				this.validTileMoves.add(temp.upleft);
+				tempPrevious = temp;
 				temp = temp.upleft;
 			}
 			
@@ -131,27 +128,24 @@ public class Bishop extends Piece {
 			{
 				//Wrong direction
 				//If piece belonging to you is there
-				//If piece belonging to you is there
-				if(temp.up.getPiece() == null )
+				if(temp.downleft.getPiece() != null )
 				{
-
-				}
-				else if(temp.up.getPiece().getPlayer() == this.getPlayer())
-				{
-					//Can't go any further in this direction: don't add and break
-					break;
+					if(temp.downleft.getPiece().getPlayer() == this.getPlayer())
+					{
+						//Can't go any further in this direction: don't add and break
+						break;
+					}
 				}
 			}
 			else
 			{
-				if(temp.up.getPiece() == null )
+				if(temp.upright.getPiece() != null )
 				{
-
-				}
-				else if(temp.up.getPiece().getPlayer() == this.getPlayer())
-				{
-					//Can't go any further in this direction: don't add and break
-					break;
+					if(temp.upright.getPiece().getPlayer() == this.getPlayer())
+					{
+						//Can't go any further in this direction: don't add and break
+						break;
+					}
 				}
 				
 			}
@@ -161,13 +155,14 @@ public class Bishop extends Piece {
 			{
 				//Wrong direction
 				this.validTileMoves.add(temp.downright);
+				tempPrevious = temp;
 				temp = temp.downright;
-				
 			}
 			else
 			{
 				//Right direction
 				this.validTileMoves.add(temp.upright);
+				tempPrevious = temp;
 				temp = temp.upright;
 			}
 			
@@ -189,29 +184,25 @@ public class Bishop extends Piece {
 			{
 				//Wrong direction
 				//If piece belonging to you is there
-				//If piece belonging to you is there
-				if(temp.up.getPiece() == null )
+				if(temp.upright != null && temp.upright.getPiece() != null )
 				{
-
-				}
-				else if(temp.up.getPiece().getPlayer() == this.getPlayer())
-				{
-					//Can't go any further in this direction: don't add and break
-					break;
+					if(temp.upright.getPiece().getPlayer() == this.getPlayer())
+					{
+						//Can't go any further in this direction: don't add and break
+						break;
+					}
 				}
 			}
 			else
 			{
-				if(temp.up.getPiece() == null )
+				if(temp.downleft.getPiece() != null )
 				{
-
-				}
-				else if(temp.up.getPiece().getPlayer() == this.getPlayer())
-				{
-					//Can't go any further in this direction: don't add and break
-					break;
-				}
-				
+					if(temp.downleft.getPiece().getPlayer() == this.getPlayer())
+					{
+						//Can't go any further in this direction: don't add and break
+						break;
+					}
+				}				
 			}
 			
 			//Check that the tile you're adding in this direction isn't the tile you added last
@@ -219,6 +210,11 @@ public class Bishop extends Piece {
 			{
 				//Wrong direction
 				this.validTileMoves.add(temp.upright);
+				tempPrevious = temp;
+				if(temp.upright == null)
+				{
+					break;
+				}
 				temp = temp.upright;
 				
 			}
@@ -226,6 +222,7 @@ public class Bishop extends Piece {
 			{
 				//Right direction
 				this.validTileMoves.add(temp.downleft);
+				tempPrevious = temp;
 				temp = temp.downleft;
 			}
 			
@@ -247,29 +244,25 @@ public class Bishop extends Piece {
 			{
 				//Wrong direction
 				//If piece belonging to you is there
-				//If piece belonging to you is there
-				if(temp.up.getPiece() == null )
+				if(temp.upleft != null && temp.upleft.getPiece() != null)
 				{
-
-				}
-				else if(temp.up.getPiece().getPlayer() == this.getPlayer())
-				{
-					//Can't go any further in this direction: don't add and break
-					break;
+					if(temp.upleft.getPiece().getPlayer() == this.getPlayer())
+					{
+						//Can't go any further in this direction: don't add and break
+						break;
+					}
 				}
 			}
 			else
 			{
-				if(temp.up.getPiece() == null )
+				if(temp.downright.getPiece() != null )
 				{
-
+					if(temp.downright.getPiece().getPlayer() == this.getPlayer())
+					{
+						//Can't go any further in this direction: don't add and break
+						break;
+					}
 				}
-				else if(temp.up.getPiece().getPlayer() == this.getPlayer())
-				{
-					//Can't go any further in this direction: don't add and break
-					break;
-				}
-				
 			}
 			
 			//Check that the tile you're adding in this direction isn't the tile you added last
@@ -277,13 +270,18 @@ public class Bishop extends Piece {
 			{
 				//Wrong direction
 				this.validTileMoves.add(temp.upleft);
+				tempPrevious = temp;
+				if(temp.upleft == null)
+				{
+					break;
+				}
 				temp = temp.upleft;
-				
 			}
 			else
 			{
 				//Right direction
 				this.validTileMoves.add(temp.downright);
+				tempPrevious = temp;
 				temp = temp.downright;
 			}
 			
