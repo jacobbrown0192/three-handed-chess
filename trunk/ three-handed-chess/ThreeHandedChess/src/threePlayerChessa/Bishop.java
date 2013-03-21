@@ -65,7 +65,7 @@ public class Bishop extends Piece {
 		Tile temp = this.currentTile;
 		Tile tempPrevious = this.currentTile;
 		
-		//Upper Left Check
+		//UPLEFT CHECK
 		while (temp.upleft != null)
 		{
 			//Check that you're looking in the right direction
@@ -84,6 +84,7 @@ public class Bishop extends Piece {
 			}
 			else
 			{
+				//If piece belonging to you is there
 				if(temp.upleft.getPiece() != null )
 				{
 					if(temp.upleft.getPiece().getPlayer() == this.getPlayer())
@@ -118,9 +119,9 @@ public class Bishop extends Piece {
 			}
 		}
 		
+		//UPRIGHT CHECK
 		temp = this.currentTile;
 		tempPrevious = this.currentTile;
-		//Upper Right Check
 		while (temp.upright != null)
 		{
 			//Check that you're looking in the right direction
@@ -154,9 +155,9 @@ public class Bishop extends Piece {
 			if(tempPrevious == temp.upright)
 			{
 				//Wrong direction
-				this.validTileMoves.add(temp.downright);
+				this.validTileMoves.add(temp.downleft);
 				tempPrevious = temp;
-				temp = temp.downright;
+				temp = temp.downleft;
 			}
 			else
 			{
@@ -174,9 +175,9 @@ public class Bishop extends Piece {
 			}
 		}
 		
+		//DOWNLEFT CHECK
 		temp = this.currentTile;
 		tempPrevious = this.currentTile;
-		//Lower Left Check
 		while (temp.downleft != null)
 		{
 			//Check that you're looking in the right direction
@@ -234,9 +235,9 @@ public class Bishop extends Piece {
 			}
 		}
 		
+		//DOWNRIGHT CHECK
 		temp = this.currentTile;
 		tempPrevious = this.currentTile;
-		//Lower Right Check
 		while (temp.downright != null)
 		{
 			//Check that you're looking in the right direction
@@ -292,6 +293,8 @@ public class Bishop extends Piece {
 				break;
 			}
 		}
+		
+		//SPECIAL UP CHECK (From tile 
 	}
 }
 

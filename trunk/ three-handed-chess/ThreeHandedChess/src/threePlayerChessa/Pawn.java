@@ -48,18 +48,17 @@ public class Pawn extends Piece {
 	 * 
 	 */
 	public void move(Tile aStartTile, Tile aMoveTile, Turn player) {
-		boolean validMove = true;
+		boolean validMove = false;
 		player.getTheGame().click1 = null;
 		player.getTheGame().click2 = null;
 		
-		
-		
-		
-		
-		
-		
-		
-		
+		for(int i=0; i<validTileMoves.size();i++)
+		{
+			if(aMoveTile == validTileMoves.elementAt(i))
+			{
+				validMove = true;
+			}
+		}	
 		
 		//check for valid move
 		if (validMove){
@@ -67,8 +66,8 @@ public class Pawn extends Piece {
 			aStartTile.setPiece(null); 
 			
 			aMoveTile.getPiece().setCurrentTile(aMoveTile);
-			if (initialMove = false){
-				initialMove = true;
+			if (this.initialMove == false){
+				this.initialMove = true;
 			}
 			if(aMoveTile.getNumber() == 1 || aMoveTile.getNumber() == 8 || aMoveTile.getNumber() == 12){
 				PromotePawn selector = new PromotePawn(this,player);
@@ -84,6 +83,70 @@ public class Pawn extends Piece {
 			return;
 		}
 	}
+	
+	public void possibleMoves()
+	{
+		this.validTileMoves.clear(); //Flush previously held possible moves
+		Tile temp = this.currentTile;
+		int team = this.player.getNumber();
+		
+		switch(team)
+		{
+			//Player 1: you can only go up
+			case 1:
+				//Can you move forward one?
+				if(temp.up != null)
+				{
+					if(temp.up.getPiece() == null)
+					{
+						this.validTileMoves.add(temp.up);
+					}
+				}
+				//Can you move forward two?
+				if(this.initialMove == false && temp.up.getPiece() == null && temp.up.up.getPiece() == null)
+				{
+					this.validTileMoves.add(temp.up.up);
+				}
+				//Can you hop?
+				if(temp.hop != null && temp.hop.getPiece() == null)
+				{
+					this.validTileMoves.add(temp.hop);
+				}
+				//Can you take upleft?
+				if(temp.upleft != null && temp.upleft.getPiece() != null && temp.upleft.getPiece().getPlayer() != this.getPlayer())
+				{
+					this.validTileMoves.add(temp.upleft);
+				}
+				//Can you take upright?
+				if(temp.upright != null && temp.upright.getPiece() != null && temp.upright.getPiece().getPlayer() != this.getPlayer())
+				{
+					this.validTileMoves.add(temp.upright);
+				}
+				//Can you take special up?
+				if(temp.specialup != null && temp.specialup.getPiece() != null && temp.specialup.getPiece().getPlayer() != this.getPlayer())
+				{
+					this.validTileMoves.add(temp.specialup);
+				}
+				//Can you take special right?
+				if(temp.specialright != null && temp.specialright.getPiece() != null && temp.specialright.getPiece().getPlayer() != this.getPlayer())
+				{
+					this.validTileMoves.add(temp.specialright);
+				}
+				//Can you take special left?
+				if(temp.specialleft != null && temp.specialleft.getPiece() != null && temp.specialleft.getPiece().getPlayer() != this.getPlayer())
+				{
+					this.validTileMoves.add(temp.specialleft);
+				}
+				break;
+			//Player 2: you can go down 2 then up for segment 0 and down for segment 1
+			case 2:
+				break;
+			//Player 3: you can go down 2 then up for segment 0 and down for segment 1
+			case 3:
+				break;
+		}
+	}
+	
 		
 	/**  
 	 * When a pawn reaches an opponents bench it is promoted to 
