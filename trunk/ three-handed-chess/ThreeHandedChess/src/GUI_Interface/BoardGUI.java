@@ -469,6 +469,8 @@ public class BoardGUI extends JPanel implements MouseListener
 				{
 					Click tileClicked = new Click(boardTiles[i][j].getBoardNumber(), boardTiles[i][j].getBoardLetter());
 					theGame.getClick(tileClicked);
+					System.out.println(boardTiles[i][j].getBoardNumber());
+					System.out.println(boardTiles[i][j].getBoardLetter());
 				}
 			}
 		}
