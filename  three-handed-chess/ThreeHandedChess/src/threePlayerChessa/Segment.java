@@ -78,4 +78,19 @@ public class Segment {
 	public Tile getTiles(int num) {
 		return this.tiles.elementAt(num);
 	}
+	
+	public Section getSection()
+	{
+		return this.section;
+	}
+	
+	public int getMaxNum()
+	{
+		return this.maxNum;
+	}
+	
+	public int getMaxLet()
+	{
+		return this.maxLet;
+	}
 }
