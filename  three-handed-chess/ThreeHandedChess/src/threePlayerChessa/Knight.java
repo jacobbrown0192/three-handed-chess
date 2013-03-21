@@ -251,6 +251,246 @@ public class Knight extends Piece {
 				}
 			}
 		}
-	}
+		
+		//If hop exists from initial state
+		if(temp.hop != null)
+		{
+			//Hop to 65 (i9) or num 9, let 9
+			if(temp.hop.getNumber() == 9 && temp.hop.getLetter() == 9)
+			{
+				//Hop Left Up
+				if(temp.hop.left.up.getPiece() == null || temp.hop.left.up.getPiece().getPlayer() != this.getPlayer())
+				{
+					this.validTileMoves.add(temp.hop.left.up);
+				}
+				//Hop Left Down
+				if(temp.hop.left.down.getPiece() == null || temp.hop.left.down.getPiece().getPlayer() != this.getPlayer())
+				{
+					this.validTileMoves.add(temp.hop.left.down);
+				}
+				//Hop Up Right
+				if(temp.hop.up.right.getPiece() == null || temp.hop.up.right.getPiece().getPlayer() != this.getPlayer())
+				{
+					this.validTileMoves.add(temp.hop.up.right);
+				}
+			}
+			
+			//Hop to 49 (i5) or num 5, let 9
+			else if(temp.hop.getNumber() == 5 && temp.hop.getLetter() == 9)
+			{
+				//Hop Left Up
+				if(temp.hop.left.up.getPiece() == null || temp.hop.left.up.getPiece().getPlayer() != this.getPlayer())
+				{
+					this.validTileMoves.add(temp.hop.left.up);
+				}
+				//Hop Up Right
+				if(temp.hop.up.right.getPiece() == null || temp.hop.up.right.getPiece().getPlayer() != this.getPlayer())
+				{
+					this.validTileMoves.add(temp.hop.up.right);
+				}
+				//Hop Right Down
+				if(temp.hop.right.down.getPiece() == null || temp.hop.right.down.getPiece().getPlayer() != this.getPlayer())
+				{
+					this.validTileMoves.add(temp.hop.right.down);
+				}
+			}
 
+			
+			//Hop to 36 (d5) or num 5, let 4
+			else if(temp.hop.getNumber() == 5 && temp.hop.getLetter() == 4)
+			{
+				//Hop Up Right
+				if(temp.hop.up.right.getPiece() == null || temp.hop.up.right.getPiece().getPlayer() != this.getPlayer())
+				{
+					this.validTileMoves.add(temp.hop.up.right);
+				}
+				//Hop Left Up
+				if(temp.hop.left.up.getPiece() == null || temp.hop.left.up.getPiece().getPlayer() != this.getPlayer())
+				{
+					this.validTileMoves.add(temp.hop.left.up);
+				}
+				//Hop Left Down
+				if(temp.hop.left.down.getPiece() == null || temp.hop.left.down.getPiece().getPlayer() != this.getPlayer())
+				{
+					this.validTileMoves.add(temp.hop.left.down);
+				}
+			}
+			
+			//Hop to 16 (d4) or num 4, let 4
+			else if(temp.hop.getNumber() == 4 && temp.hop.getLetter() == 4)
+			{
+				//Hop Left Down
+				if(temp.hop.left.down.getPiece() == null || temp.hop.left.down.getPiece().getPlayer() != this.getPlayer())
+				{
+					this.validTileMoves.add(temp.hop.left.down);
+				}
+				//Hop Left Up
+				if(temp.hop.left.up.getPiece() == null || temp.hop.left.up.getPiece().getPlayer() != this.getPlayer())
+				{
+					this.validTileMoves.add(temp.hop.left.up);
+				}
+				//Hop Right Down
+				if(temp.hop.right.down.getPiece() == null || temp.hop.right.down.getPiece().getPlayer() != this.getPlayer())
+				{
+					this.validTileMoves.add(temp.hop.right.down);
+				}
+			}
+			
+			//Hop to 29 (e4) or num 4, let 5
+			else if(temp.hop.getNumber() == 4 && temp.hop.getLetter() == 5)
+			{
+				//Hop Right Down
+				if(temp.hop.right.down.getPiece() == null || temp.hop.right.down.getPiece().getPlayer() != this.getPlayer())
+				{
+					this.validTileMoves.add(temp.hop.right.down);
+				}
+				//Hop Left Down
+				if(temp.hop.left.down.getPiece() == null || temp.hop.left.down.getPiece().getPlayer() != this.getPlayer())
+				{
+					this.validTileMoves.add(temp.hop.left.down);
+				}
+				//Hop Up Right
+				if(temp.hop.up.right.getPiece() == null || temp.hop.up.right.getPiece().getPlayer() != this.getPlayer())
+				{
+					this.validTileMoves.add(temp.hop.up.right);
+				}
+			}
+			
+			//Hop to 81 (e9) or num 9, let 5
+			else if(temp.hop.getNumber() == 9 && temp.hop.getLetter() == 5)
+			{
+				//Hop Right Down
+				if(temp.hop.right.down.getPiece() == null || temp.hop.right.down.getPiece().getPlayer() != this.getPlayer())
+				{
+					this.validTileMoves.add(temp.hop.right.down);
+				}
+				//Hop Up Right
+				if(temp.hop.up.right.getPiece() == null || temp.hop.up.right.getPiece().getPlayer() != this.getPlayer())
+				{
+					this.validTileMoves.add(temp.hop.up.right);
+				}
+				
+				//Hop Left Up
+				if(temp.hop.left.up.getPiece() == null || temp.hop.left.up.getPiece().getPlayer() != this.getPlayer())
+				{
+					this.validTileMoves.add(temp.hop.left.up);
+				}
+			}
+		}
+		
+		//If one away from an inner 6 tile
+		//
+		if(temp.getNumber() == 3 && temp.getLetter() == 4)
+		{
+			//Check if up up hop is available
+			if(temp.up.up.hop.getPiece() == null || temp.up.up.hop.getPiece().getPlayer() != this.getPlayer())
+			{
+				this.validTileMoves.add(temp.up.up.hop);
+			}
+		}
+		else if(temp.getNumber() == 4 && temp.getLetter() == 3)
+		{
+			//Check if right right hop is available
+			if(temp.right.right.hop.getPiece() == null || temp.right.right.hop.getPiece().getPlayer() != this.getPlayer())
+			{
+				this.validTileMoves.add(temp.right.right.hop);
+			}
+		}
+		else if(temp.getNumber() == 5 && temp.getLetter() == 3)
+		{
+			//Check if right right hop is available
+			if(temp.right.right.hop.getPiece() == null || temp.right.right.hop.getPiece().getPlayer() != this.getPlayer())
+			{
+				this.validTileMoves.add(temp.right.right.hop);
+			}
+		}
+		else if(temp.getNumber() == 6 && temp.getLetter() == 4)
+		{
+			//Check if down down hop is available
+			if(temp.down.down.hop.getPiece() == null || temp.down.down.hop.getPiece().getPlayer() != this.getPlayer())
+			{
+				this.validTileMoves.add(temp.down.down.hop);
+			}			
+		}
+		else if(temp.getNumber() == 6 && temp.getLetter() == 9)
+		{
+			//Check if down down hop is available
+			if(temp.down.down.hop.getPiece() == null || temp.down.down.hop.getPiece().getPlayer() != this.getPlayer())
+			{
+				this.validTileMoves.add(temp.down.down.hop);
+			}				
+		}
+		else if(temp.getNumber() == 5 && temp.getLetter() == 10)
+		{
+			//Check if left left hop is available
+			if(temp.left.left.hop.getPiece() == null || temp.left.left.hop.getPiece().getPlayer() != this.getPlayer())
+			{
+				this.validTileMoves.add(temp.left.left.hop);
+			}	
+		}
+		else if(temp.getNumber() == 9 && temp.getLetter() == 10)
+		{
+			//Check if right right hop is available
+			if(temp.right.right.hop.getPiece() == null || temp.right.right.hop.getPiece().getPlayer() != this.getPlayer())
+			{
+				this.validTileMoves.add(temp.right.right.hop);
+			}
+		}
+		else if(temp.getNumber() == 10 && temp.getLetter() == 9)
+		{
+			//Check if down down hop is available
+			if(temp.down.down.hop.getPiece() == null || temp.down.down.hop.getPiece().getPlayer() != this.getPlayer())
+			{
+				this.validTileMoves.add(temp.down.down.hop);
+			}
+		}
+		else if(temp.getNumber() == 10 && temp.getLetter() == 5)
+		{
+			//Check if down down hop is available
+			if(temp.down.down.hop.getPiece() == null || temp.down.down.hop.getPiece().getPlayer() != this.getPlayer())
+			{
+				this.validTileMoves.add(temp.down.down.hop);
+			}			
+		}
+		else if(temp.getNumber() == 9 && temp.getLetter() == 6)
+		{
+			//Check if left left hop is available
+			if(temp.left.left.hop.getPiece() == null || temp.left.left.hop.getPiece().getPlayer() != this.getPlayer())
+			{
+				this.validTileMoves.add(temp.left.left.hop);
+			}			
+		}
+		else if(temp.getNumber() == 4 && temp.getLetter() == 6)
+		{
+			//Check if left left hop is available
+			if(temp.left.left.hop.getPiece() == null || temp.left.left.hop.getPiece().getPlayer() != this.getPlayer())
+			{
+				this.validTileMoves.add(temp.left.left.hop);
+			}
+		}
+		else if(temp.getNumber() == 3 && temp.getLetter() == 5)
+		{
+			//Check if up up hop is available
+			if(temp.up.up.hop.getPiece() == null || temp.up.up.hop.getPiece().getPlayer() != this.getPlayer())
+			{
+				this.validTileMoves.add(temp.up.up.hop);
+			}
+		}
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
