@@ -120,97 +120,148 @@ public class King extends Piece {
 		Tile temp = this.currentTile;
 		
 		//Up Check
-		//Check if there's nobody there or if the piece there belongs to the enemy
-		if(temp.up.getPiece() == null || (temp.up.getPiece() != null && temp.up.getPiece().getPlayer() != this.getPlayer()))
+		//Check if there's a tile up
+		if(temp.up != null)
 		{
-			this.validTileMoves.add(temp.up);
+			//Check if there's nobody there or if the piece there belongs to the enemy
+			if(temp.up.getPiece() == null || temp.up.getPiece().getPlayer() != this.getPlayer())
+			{
+				this.validTileMoves.add(temp.up);
+			}
 		}
 		
 		//Down Check
-		//Check if there's nobody there or if the piece there belongs to the enemy
-		if(temp.down.getPiece() == null || (temp.down.getPiece() != null && temp.down.getPiece().getPlayer() != this.getPlayer()))
+		//Check if there's a tile down
+		if(temp.down != null)
 		{
-			this.validTileMoves.add(temp.down);
+			//Check if there's nobody there or if the piece there belongs to the enemy
+			if(temp.down.getPiece() == null || temp.down.getPiece().getPlayer() != this.getPlayer())
+			{
+				this.validTileMoves.add(temp.down);
+			}
 		}
 		
 		//Left Check
-		//Check if there's nobody there or if the piece there belongs to the enemy
-		if(temp.left.getPiece() == null || (temp.left.getPiece() != null && temp.left.getPiece().getPlayer() != this.getPlayer()))
+		//Check if there's a tile left
+		if(temp.left != null)
 		{
-			this.validTileMoves.add(temp.left);
+			//Check if there's nobody there or if the piece there belongs to the enemy
+			if(temp.left.getPiece() == null || temp.left.getPiece().getPlayer() != this.getPlayer())
+			{
+				this.validTileMoves.add(temp.left);
+			}
 		}
 		
 		//Right Check
-		//Check if there's nobody there or if the piece there belongs to the enemy
-		if(temp.right.getPiece() == null || (temp.right.getPiece() != null && temp.right.getPiece().getPlayer() != this.getPlayer()))
+		//Check if there's a tile right
+		if(temp.right != null)
 		{
-			this.validTileMoves.add(temp.right);
+			//Check if there's nobody there or if the piece there belongs to the enemy
+			if(temp.right.getPiece() == null || temp.right.getPiece().getPlayer() != this.getPlayer())
+			{
+				this.validTileMoves.add(temp.right);
+			}
 		}
 		
 		//Downleft Check
-		//Check if there's nobody there or if the piece there belongs to the enemy
-		if(temp.downleft.getPiece() == null || (temp.downleft.getPiece() != null && temp.downleft.getPiece().getPlayer() != this.getPlayer()))
+		//Check if there's a tile down left
+		if(temp.downleft != null)
 		{
-			this.validTileMoves.add(temp.downleft);
+			//Check if there's nobody there or if the piece there belongs to the enemy
+			if(temp.downleft.getPiece() == null || temp.downleft.getPiece().getPlayer() != this.getPlayer())
+			{
+				this.validTileMoves.add(temp.downleft);
+			}
 		}
 		
 		//Downright Check
-		//Check if there's nobody there or if the piece there belongs to the enemy
-		if(temp.downright.getPiece() == null || (temp.downright.getPiece() != null && temp.downright.getPiece().getPlayer() != this.getPlayer()))
+		//Check if there's a tile down right
+		if(temp.downright != null)
 		{
-			this.validTileMoves.add(temp.downright);
+			//Check if there's nobody there or if the piece there belongs to the enemy
+			if(temp.downright.getPiece() == null || temp.downright.getPiece().getPlayer() != this.getPlayer())
+			{
+				this.validTileMoves.add(temp.downright);
+			}
 		}
 		
 		//Upleft Check
-		//Check if there's nobody there or if the piece there belongs to the enemy
-		if(temp.upleft.getPiece() == null || (temp.upleft.getPiece() != null && temp.upleft.getPiece().getPlayer() != this.getPlayer()))
+		//Check if there's a tile up left
+		if(temp.upleft != null)
 		{
-			this.validTileMoves.add(temp.upleft);
+			//Check if there's nobody there or if the piece there belongs to the enemy
+			if(temp.upleft.getPiece() == null || temp.upleft.getPiece().getPlayer() != this.getPlayer())
+			{
+				this.validTileMoves.add(temp.upleft);
+			}
 		}
 		
 		//Upright Check
-		//Check if there's nobody there or if the piece there belongs to the enemy
-		if(temp.upright.getPiece() == null || (temp.upright.getPiece() != null && temp.upright.getPiece().getPlayer() != this.getPlayer()))
+		//Check if there's a tile up right
+		if(temp.upright != null)
 		{
-			this.validTileMoves.add(temp.upright);
+			//Check if there's nobody there or if the piece there belongs to the enemy
+			if(temp.upright.getPiece() == null || temp.upright.getPiece().getPlayer() != this.getPlayer())
+			{
+				this.validTileMoves.add(temp.upright);
+			}
 		}
 		
 		//Hop Check
-		//Check if there's nobody there or if the piece there belongs to the enemy
-		if(temp.hop.getPiece() == null || (temp.hop.getPiece() != null && temp.hop.getPiece().getPlayer() != this.getPlayer()))
+		//Check if there's a tile hop
+		if(temp.hop != null)
 		{
-			this.validTileMoves.add(temp.hop);
+			//Check if there's nobody there or if the piece there belongs to the enemy
+			if(temp.hop.getPiece() == null || temp.hop.getPiece().getPlayer() != this.getPlayer())
+			{
+				this.validTileMoves.add(temp.hop);
+			}
 		}
 		
 		//Special Up Check
-		//Check if there's nobody there or if the piece there belongs to the enemy
-		if(temp.specialup.getPiece() == null || (temp.specialup.getPiece() != null && temp.specialup.getPiece().getPlayer() != this.getPlayer()))
+		//Check if there's a tile special up
+		if(temp.specialup != null)
 		{
-			this.validTileMoves.add(temp.specialup);
+			//Check if there's nobody there or if the piece there belongs to the enemy
+			if(temp.specialup.getPiece() == null || temp.specialup.getPiece().getPlayer() != this.getPlayer())
+			{
+				this.validTileMoves.add(temp.specialup);
+			}
 		}
 		
 		//Special Down Check
-		//Check if there's nobody there or if the piece there belongs to the enemy
-		if(temp.specialdown.getPiece() == null || (temp.specialdown.getPiece() != null && temp.specialdown.getPiece().getPlayer() != this.getPlayer()))
+		//Check if there's a tile special down
+		if(temp.specialdown != null)
 		{
-			this.validTileMoves.add(temp.specialdown);
+			//Check if there's nobody there or if the piece there belongs to the enemy
+			if(temp.specialdown.getPiece() == null || temp.specialdown.getPiece().getPlayer() != this.getPlayer())
+			{
+				this.validTileMoves.add(temp.specialdown);
+			}
 		}
 		
 		//Special Left Check
-		//Check if there's nobody there or if the piece there belongs to the enemy
-		if(temp.specialleft.getPiece() == null || (temp.specialleft.getPiece() != null && temp.specialleft.getPiece().getPlayer() != this.getPlayer()))
+		//Check if there's a tile special left
+		if(temp.specialleft != null)
 		{
-			this.validTileMoves.add(temp.specialleft);
+			//Check if there's nobody there or if the piece there belongs to the enemy
+			if(temp.specialleft.getPiece() == null || temp.specialleft.getPiece().getPlayer() != this.getPlayer())
+			{
+				this.validTileMoves.add(temp.specialleft);
+			}
 		}
 		
 		//Special Right Check
-		//Check if there's nobody there or if the piece there belongs to the enemy
-		if(temp.specialright.getPiece() == null || (temp.specialright.getPiece() != null && temp.specialright.getPiece().getPlayer() != this.getPlayer()))
+		//Check if there's a tile special right
+		if(temp.specialright != null)
 		{
-			this.validTileMoves.add(temp.specialright);
+			//Check if there's nobody there or if the piece there belongs to the enemy
+			if(temp.specialright.getPiece() == null || temp.specialright.getPiece().getPlayer() != this.getPlayer())
+			{
+				this.validTileMoves.add(temp.specialright);
+			}
 		}
 	}
-
 }
 
 
