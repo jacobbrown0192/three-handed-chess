@@ -20,6 +20,7 @@ public class Pawn extends Piece {
 	Section section1;
 	Section section2;
 	boolean initialMove;
+	int tilesMoved;
 	
 
 	/**  
