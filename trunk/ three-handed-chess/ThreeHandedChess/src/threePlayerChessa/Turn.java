@@ -74,6 +74,8 @@ public class Turn extends Thread {
 					
 					if(validClick1){
 						select1.getPiece().possibleMoves();
+						select1.getPiece().possibleMovesHighlight();
+						theGame.boardGUI.setTileIcons();
 						if(getTheGame().click2 != null){
 							
 							//finds the second clicked tile
@@ -98,6 +100,7 @@ public class Turn extends Thread {
 								else{
 								select1.setSelected(false);
 								select2.setSelected(true);
+								select1.getPiece().possibleMovesUnhighlight();
 								theGame.boardGUI.setTileIcons();
 								getTheGame().click1 = getTheGame().click2;
 								getTheGame().click2 = null;
@@ -108,6 +111,7 @@ public class Turn extends Thread {
 							if(getTheGame().click1 == getTheGame().click2){
 								select1.setSelected(false);
 								select2.setSelected(false);
+								select1.getPiece().possibleMovesUnhighlight();
 								theGame.boardGUI.setTileIcons();
 								getTheGame().click1 = null;
 								getTheGame().click2 = null;
@@ -115,6 +119,7 @@ public class Turn extends Thread {
 							
 							//moves if second clikc is valid
 							if(validClick2){
+								select1.getPiece().possibleMovesUnhighlight();
 								select1.setSelected(false);
 								select2.setSelected(false);
 								select1.getPiece().move(select1, select2,this);								

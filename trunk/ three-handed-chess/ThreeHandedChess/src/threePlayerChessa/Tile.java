@@ -109,9 +109,20 @@ public class Tile {
 		this.accessed = accessed;
 	}
 	
+	/**
+	 * @return the segment
+	 */
+	public Segment getSegment() {
+		return segment;
+	}
+	/**
+	 * @param segment - used to set segment
+	 */
+	public void setSegment(Segment segment) {
+		this.segment = segment;
+	}
 
-
-	public Tile(boolean aColour, int aNum, int aLet, Piece aPiece, boolean selected, boolean attacked, boolean accessed) {
+	public Tile(boolean aColour, int aNum, int aLet, Piece aPiece, Segment seg, boolean selected, boolean attacked, boolean accessed) {
 		setColour(aColour);
 		setNumber(aNum);
 		setLetter(aLet);
@@ -119,5 +130,6 @@ public class Tile {
 		setSelected(selected);
 		setAttacked(attacked);
 		setAccessed(accessed);
+		setSegment(seg);
 	}
 }

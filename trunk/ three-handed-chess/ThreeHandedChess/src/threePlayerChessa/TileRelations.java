@@ -1912,21 +1912,22 @@ public class TileRelations {
 		relations[80][11][1] = 0;	relations[80][11][2] = 0;
 		relations[80][12][1] = 0;	relations[80][12][2] = 0;
 		relations[80][13][1] = 0;	relations[80][13][2] = 0;
+
 		
 		//e9 - Segment 6
 		relations[81][0][1] = 9;	relations[81][0][2] = 5;
-		relations[81][1][1] = 9;	relations[81][1][2] = 10;
-		relations[81][2][1] = 9;	relations[81][2][2] = 5;
-		relations[81][3][1] = 5;	relations[81][3][2] = 9;
-		relations[81][4][1] = 10;	relations[81][4][2] = 9;
+		relations[81][1][1] = 10;	relations[81][1][2] = 5;
+		relations[81][2][1] = 4;	relations[81][2][2] = 5;
+		relations[81][3][1] = 9;	relations[81][3][2] = 9;
+		relations[81][4][1] = 9;	relations[81][4][2] = 6;
 		relations[81][5][1] = 0;	relations[81][5][2] = 0;
-		relations[81][6][1] = 10;	relations[81][6][2] = 5;
-		relations[81][7][1] = 5;	relations[81][7][2] = 10;
-		relations[81][8][1] = 10;	relations[81][8][2] = 10;
-		relations[81][9][1] = 4;	relations[81][9][2] = 4;
+		relations[81][6][1] = 4;	relations[81][6][2] = 6;
+		relations[81][7][1] = 10;	relations[81][7][2] = 9;
+		relations[81][8][1] = 10;	relations[81][8][2] = 6;
+		relations[81][9][1] = 5;	relations[81][9][2] = 4;
 		relations[81][10][1] = 0;	relations[81][10][2] = 0;
-		relations[81][11][1] = 4;	relations[81][11][2] = 5;
-		relations[81][12][1] = 5;	relations[81][12][2] = 4;
+		relations[81][11][1] = 4;	relations[81][11][2] = 4;
+		relations[81][12][1] = 5;	relations[81][12][2] = 9;
 		relations[81][13][1] = 0;	relations[81][13][2] = 0;
 
 		//f9
@@ -1961,6 +1962,7 @@ public class TileRelations {
 		relations[83][12][1] = 0;	relations[83][12][2] = 0;
 		relations[83][13][1] = 0;	relations[83][13][2] = 0;
 
+		
 		//h9
 		relations[84][0][1] = 9;	relations[84][0][2] = 8;
 		relations[84][1][1] = 10;	relations[84][1][2] = 8;
@@ -2025,6 +2027,7 @@ public class TileRelations {
 		relations[87][12][1] = 0;	relations[87][12][2] = 0;
 		relations[87][13][1] = 0;	relations[87][13][2] = 0;
 
+
 		//h10
 		relations[88][0][1] = 10;	relations[88][0][2] = 8;
 		relations[88][1][1] = 11;	relations[88][1][2] = 8;
@@ -2042,7 +2045,7 @@ public class TileRelations {
 		relations[88][13][1] = 0;	relations[88][13][2] = 0;
 
 		//e11
-		relations[89][0][1] = 11;	relations[85][0][2] = 5;
+		relations[89][0][1] = 11;	relations[89][0][2] = 5;
 		relations[89][1][1] = 12;	relations[89][1][2] = 5;
 		relations[89][2][1] = 10;	relations[89][2][2] = 5;
 		relations[89][3][1] = 11;	relations[89][3][2] = 9;
