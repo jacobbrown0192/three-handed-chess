@@ -15,6 +15,8 @@ public abstract class Piece {
 	Section section1;
 	Section section2;
 	boolean initialMove;
+	int twoTileIndex;
+	int tilesMoved;
 	public Vector<Tile> validTileMoves = new Vector<Tile>();
 	
 	/**  
@@ -137,6 +139,16 @@ public abstract class Piece {
 	 */
 	public void setInitialMove(boolean initialMove) {
 		this.initialMove = initialMove;
+	}
+	
+	public void setTilesMoved(int tilesMoved)
+	{
+		this.tilesMoved = tilesMoved;
+	}
+	
+	public void setTwoTileIndex(int twoTileIndex)
+	{
+		this.twoTileIndex = twoTileIndex;
 	}
 
 	/**  

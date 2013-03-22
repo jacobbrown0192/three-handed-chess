@@ -1,6 +1,8 @@
 package threePlayerChessa;
 
 import java.util.Vector;
+
+import threePlayerChessa.Piece.PieceType;
 import threePlayerChessa.Section;
 import threePlayerChessa.Piece;
 

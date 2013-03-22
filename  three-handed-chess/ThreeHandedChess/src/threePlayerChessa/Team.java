@@ -154,6 +154,8 @@ public class Team {
 				startTile.setPiece(pieces.elementAt(piece));
 				pieces.elementAt(piece).setCurrentTile(startTile);
 				startTile.getPiece().setInitialMove(false);
+				startTile.getPiece().setTilesMoved(0);
+				startTile.getPiece().setTwoTileIndex(-1);
 				startTile.getPiece().setSection2(null);
 				startTile.getPiece().setSection2(temp);
 				piece++;
@@ -163,6 +165,8 @@ public class Team {
 				startTile.setPiece(pieces.elementAt(piece));
 				pieces.elementAt(piece).setCurrentTile(startTile);
 				startTile.getPiece().setInitialMove(false);
+				startTile.getPiece().setTilesMoved(0);
+				startTile.getPiece().setTwoTileIndex(-1);
 				startTile.getPiece().setSection2(null);
 				startTile.getPiece().setSection2(temp);
 				piece++;
@@ -172,6 +176,8 @@ public class Team {
 				startTile.setPiece(pieces.elementAt(piece));
 				pieces.elementAt(piece).setCurrentTile(startTile);
 				startTile.getPiece().setInitialMove(false);
+				startTile.getPiece().setTilesMoved(0);
+				startTile.getPiece().setTwoTileIndex(-1);
 				startTile.getPiece().setSection2(null);
 				startTile.getPiece().setSection2(temp);
 				piece++;
@@ -181,6 +187,8 @@ public class Team {
 				startTile.setPiece(pieces.elementAt(piece));
 				pieces.elementAt(piece).setCurrentTile(startTile);
 				startTile.getPiece().setInitialMove(false);
+				startTile.getPiece().setTilesMoved(0);
+				startTile.getPiece().setTwoTileIndex(-1);
 				startTile.getPiece().setSection2(null);
 				startTile.getPiece().setSection2(temp);
 				piece++;
@@ -194,6 +202,8 @@ public class Team {
 				startTile.setPiece(pieces.elementAt(piece));
 				pieces.elementAt(piece).setCurrentTile(startTile);
 				startTile.getPiece().setInitialMove(false);
+				startTile.getPiece().setTilesMoved(0);
+				startTile.getPiece().setTwoTileIndex(-1);
 				startTile.getPiece().setSection2(null);
 				startTile.getPiece().setSection2(temp);
 				piece++;
@@ -203,6 +213,8 @@ public class Team {
 				startTile.setPiece(pieces.elementAt(piece));
 				pieces.elementAt(piece).setCurrentTile(startTile);
 				startTile.getPiece().setInitialMove(false);
+				startTile.getPiece().setTilesMoved(0);
+				startTile.getPiece().setTwoTileIndex(-1);
 				startTile.getPiece().setSection2(null);
 				startTile.getPiece().setSection2(temp);
 				piece++;
@@ -212,6 +224,8 @@ public class Team {
 				startTile.setPiece(pieces.elementAt(piece));
 				pieces.elementAt(piece).setCurrentTile(startTile);
 				startTile.getPiece().setInitialMove(false);
+				startTile.getPiece().setTilesMoved(0);
+				startTile.getPiece().setTwoTileIndex(-1);
 				startTile.getPiece().setSection2(null);
 				startTile.getPiece().setSection2(temp);
 				piece++;
@@ -221,6 +235,8 @@ public class Team {
 				startTile.setPiece(pieces.elementAt(piece));
 				pieces.elementAt(piece).setCurrentTile(startTile);
 				startTile.getPiece().setInitialMove(false);
+				startTile.getPiece().setTilesMoved(0);
+				startTile.getPiece().setTwoTileIndex(-1);
 				startTile.getPiece().setSection2(null);
 				startTile.getPiece().setSection2(temp);
 				piece++;
@@ -235,6 +251,8 @@ public class Team {
 				startTile.setPiece(pieces.elementAt(piece));
 				pieces.elementAt(piece).setCurrentTile(startTile);
 				startTile.getPiece().setInitialMove(false);
+				startTile.getPiece().setTilesMoved(0);
+				startTile.getPiece().setTwoTileIndex(-1);
 				startTile.getPiece().setSection2(null);
 				startTile.getPiece().setSection2(temp);
 				piece++;
@@ -244,6 +262,8 @@ public class Team {
 				startTile.setPiece(pieces.elementAt(piece));
 				pieces.elementAt(piece).setCurrentTile(startTile);
 				startTile.getPiece().setInitialMove(false);
+				startTile.getPiece().setTilesMoved(0);
+				startTile.getPiece().setTwoTileIndex(-1);
 				startTile.getPiece().setSection2(null);
 				startTile.getPiece().setSection2(temp);
 				piece++;
@@ -253,6 +273,8 @@ public class Team {
 				startTile.setPiece(pieces.elementAt(piece));
 				pieces.elementAt(piece).setCurrentTile(startTile);
 				startTile.getPiece().setInitialMove(false);
+				startTile.getPiece().setTilesMoved(0);
+				startTile.getPiece().setTwoTileIndex(-1);
 				startTile.getPiece().setSection2(null);
 				startTile.getPiece().setSection2(temp);
 				piece++;
@@ -262,6 +284,8 @@ public class Team {
 				startTile.setPiece(pieces.elementAt(piece));
 				pieces.elementAt(piece).setCurrentTile(startTile);
 				startTile.getPiece().setInitialMove(false);
+				startTile.getPiece().setTilesMoved(0);
+				startTile.getPiece().setTwoTileIndex(-1);
 				startTile.getPiece().setSection2(null);
 				startTile.getPiece().setSection2(temp);
 				piece++;

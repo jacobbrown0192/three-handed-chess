@@ -16,13 +16,7 @@ import GUI_Interface.PromotePawn;
  *Once a pawn enters a second segment it is unable to move into the third
  *
  */
-public class Pawn extends Piece {
-	Section section1;
-	Section section2;
-	boolean initialMove;
-	int tilesMoved;
-	int twoTileIndex;
-	
+public class Pawn extends Piece {	
 
 	/**  
 	 * Pawn constructor
@@ -36,12 +30,11 @@ public class Pawn extends Piece {
 	public Pawn(Team player, String name, Board theBoard, Tile currentTile,PieceType type) {
 		super(player, name, theBoard, currentTile,type);
 		// TODO Auto-generated constructor stub
-		section2 = null;
-		initialMove = false;
-		tilesMoved = 0;
-		twoTileIndex = -1;
+		this.section2 = null;
+		this.initialMove = false;
+		this.tilesMoved = 0;
+		this.twoTileIndex = -1;
 	}
-
 	
 	/**  
 	 * moves the piece from one tile to another
@@ -60,12 +53,12 @@ public class Pawn extends Piece {
 			if(aMoveTile == validTileMoves.elementAt(i))
 			{
 				validMove = true;
-				if(i == twoTileIndex)
+				if(i == this.twoTileIndex)
 				{
-					tilesMoved += 2;
-					twoTileIndex = -1;
+					this.tilesMoved += 2;
+					this.twoTileIndex = -1;
 				}
-				else tilesMoved++;
+				else this.tilesMoved++;
 				player.getTheGame().click1 = null;
 			}
 		}	
