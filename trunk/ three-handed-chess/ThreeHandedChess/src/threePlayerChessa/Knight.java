@@ -35,7 +35,7 @@ public class Knight extends Piece {
 	public void move(Tile aStartTile, Tile aMoveTile, Turn player)
 	{
 		boolean validMove = false;
-		player.getTheGame().click1 = null;
+
 		player.getTheGame().click2 = null;
 		
 		//check for valid move
