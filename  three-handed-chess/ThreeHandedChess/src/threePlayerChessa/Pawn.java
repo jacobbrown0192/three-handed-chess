@@ -53,7 +53,6 @@ public class Pawn extends Piece {
 	 */
 	public void move(Tile aStartTile, Tile aMoveTile, Turn player) {
 		boolean validMove = false;
-		player.getTheGame().click1 = null;
 		player.getTheGame().click2 = null;
 		
 		for(int i=0; i<validTileMoves.size();i++)
@@ -67,6 +66,7 @@ public class Pawn extends Piece {
 					twoTileIndex = -1;
 				}
 				else tilesMoved++;
+				player.getTheGame().click1 = null;
 			}
 		}	
 		

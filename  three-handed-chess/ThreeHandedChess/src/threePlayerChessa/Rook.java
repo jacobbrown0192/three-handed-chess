@@ -38,7 +38,7 @@ public class Rook extends Piece {
 		player.getTheGame().click2 = null;
 		
 		
-		for(int i=0; i<validTileMoves.size();i++){
+		for( int i=0; i<validTileMoves.size();i++){
 			if(aMoveTile == validTileMoves.elementAt(i)){
 				validMove = true;
 				player.getTheGame().click1 = null;
@@ -297,7 +297,7 @@ public class Rook extends Piece {
 						return;
 					}
 					
-					while (temp.up != null && temp.getSegment() == this.currentTile.getSegment())
+					while (temp.up != null && temp.up.getSegment() == temp.getSegment())
 					{
 
 
@@ -328,7 +328,7 @@ public class Rook extends Piece {
 					
 					temp = this.currentTile.hop;
 					//Upper Left Check
-					while (temp.down != null && temp.getSegment() == this.currentTile.getSegment())
+					while (temp.down != null && temp.down.getSegment() == temp.getSegment())
 					{
 
 							if(temp.down.getPiece() == null )
@@ -358,7 +358,7 @@ public class Rook extends Piece {
 						
 					temp = this.currentTile.hop;
 					//Upper Left Check
-					while (temp.left != null && temp.getSegment() == this.currentTile.getSegment())
+					while (temp.left != null && temp.left.getSegment() == temp.getSegment())
 					{
 							if(temp.left.getPiece() == null )
 							{
@@ -386,7 +386,7 @@ public class Rook extends Piece {
 					
 					temp = this.currentTile.hop;
 					//Upper Left Check
-					while (temp.right != null && temp.getSegment() == this.currentTile.getSegment())
+					while (temp.right != null && temp.right.getSegment() == temp.getSegment())
 					{
 
 							if(temp.right.getPiece() == null )
