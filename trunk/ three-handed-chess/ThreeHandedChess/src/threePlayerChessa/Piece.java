@@ -141,6 +141,11 @@ public abstract class Piece {
 		this.initialMove = initialMove;
 	}
 	
+	public int getTilesMoved()
+	{
+		return tilesMoved;
+	}
+	
 	public void setTilesMoved(int tilesMoved)
 	{
 		this.tilesMoved = tilesMoved;
