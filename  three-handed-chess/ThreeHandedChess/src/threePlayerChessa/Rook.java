@@ -160,13 +160,13 @@ public class Rook extends Piece {
 						if(temp.up == null){
 							break;
 						}
-						temp = temp.up;
-
-						
+						tempPrevious = temp;
+						temp = temp.up;					
 					}
 					else
 					{
 						this.validTileMoves.add(temp.down);
+						tempPrevious = temp;
 						temp = temp.down;
 					}
 					
@@ -213,12 +213,14 @@ public class Rook extends Piece {
 					if(tempPrevious == temp.left)
 					{
 						this.validTileMoves.add(temp.right);
+						tempPrevious = temp;
 						temp = temp.right;
 						
 					}
 					else
 					{
 						this.validTileMoves.add(temp.left);
+						tempPrevious = temp;
 						temp = temp.left;
 					}
 					
@@ -265,12 +267,14 @@ public class Rook extends Piece {
 					if(tempPrevious == temp.right)
 					{
 						this.validTileMoves.add(temp.left);
+						tempPrevious = temp;
 						temp = temp.left;
 						
 					}
 					else
 					{
 						this.validTileMoves.add(temp.right);
+						tempPrevious = temp;
 						temp = temp.right;
 					}
 					
