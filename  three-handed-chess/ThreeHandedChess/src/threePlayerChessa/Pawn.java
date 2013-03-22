@@ -9,7 +9,7 @@ import GUI_Interface.PromotePawn;
  *Its movement style is to move straight one space however it takes pieces one space diagonally
  *The Pawn has three special movements: 
  *It can move two spaces ahead the first move
- *It can preform en passant
+ *It can perform en passant
  *It can be promoted by reaching another players bench.   
  *
  *Pawns are also restricted to two segments. 

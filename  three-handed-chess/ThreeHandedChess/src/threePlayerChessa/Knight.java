@@ -379,7 +379,6 @@ public class Knight extends Piece {
 		}
 		
 		//If one away from an inner 6 tile
-		//
 		if(temp.getNumber() == 3 && temp.getLetter() == 4)
 		{
 			//Check if up up hop is available
