@@ -78,6 +78,9 @@ public class Board {
 			for(int j = 0; j<2; j++){
 				for(int k =0; k<16; k++){
 					this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).setPiece(null);
+					this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).setAccessed(false);
+					this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).setAttacked(false);
+					this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).setSelected(false);
 				}
 			}
 		}
