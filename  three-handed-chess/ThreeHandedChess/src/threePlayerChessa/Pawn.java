@@ -55,10 +55,10 @@ public class Pawn extends Piece {
 				validMove = true;
 				if(i == this.twoTileIndex)
 				{
-					this.tilesMoved += 2;
-					this.twoTileIndex = -1;
+					this.setTilesMoved(this.getTilesMoved() + 2);
+					this.setTwoTileIndex(-1);
 				}
-				else this.tilesMoved++;
+				else this.setTilesMoved(this.getTilesMoved() + 1);
 				player.getTheGame().click1 = null;
 			}
 		}	
@@ -97,46 +97,67 @@ public class Pawn extends Piece {
 		{
 			//Player 1: you can only go up
 			case 1:
-				//Can you move forward one?
-				if(temp.up != null && temp.up.getPiece() == null)
+				if(tilesMoved >= 3)
 				{
-					this.validTileMoves.add(temp.up);
+					//Can you move forward one?
+					if(temp.up != null && temp.up.getPiece() == null)
+					{
+						this.validTileMoves.add(temp.up);
+					}
+					//Can you take upleft?
+					if(temp.upleft != null && temp.upleft.getPiece() != null && temp.upleft.getPiece().getPlayer() != this.getPlayer())
+					{
+						this.validTileMoves.add(temp.upleft);
+					}
+					//Can you take upright?
+					if(temp.upright != null && temp.upright.getPiece() != null && temp.upright.getPiece().getPlayer() != this.getPlayer())
+					{
+						this.validTileMoves.add(temp.upright);
+					}
 				}
-				//Can you move forward two?
-				if(this.initialMove == false && temp.up.getPiece() == null && temp.up.up.getPiece() == null)
+				else
 				{
-					this.validTileMoves.add(temp.up.up);
-					twoTileIndex = this.validTileMoves.size() - 1; 
-				}
-				//Can you hop?
-				if(this.tilesMoved < 3 && temp.hop != null && (temp.hop.getPiece() == null || temp.hop.getPiece().getPlayer() != this.getPlayer()))
-				{
-					this.validTileMoves.add(temp.hop);
-				}
-				//Can you take upleft?
-				if(temp.upleft != null && temp.upleft.getPiece() != null && temp.upleft.getPiece().getPlayer() != this.getPlayer())
-				{
-					this.validTileMoves.add(temp.upleft);
-				}
-				//Can you take upright?
-				if(temp.upright != null && temp.upright.getPiece() != null && temp.upright.getPiece().getPlayer() != this.getPlayer())
-				{
-					this.validTileMoves.add(temp.upright);
-				}
-				//Can you take special up?
-				if(temp.specialup != null && temp.specialup.getPiece() != null && temp.specialup.getPiece().getPlayer() != this.getPlayer())
-				{
-					this.validTileMoves.add(temp.specialup);
-				}
-				//Can you take special right?
-				if(temp.specialright != null && temp.specialright.getPiece() != null && temp.specialright.getPiece().getPlayer() != this.getPlayer())
-				{
-					this.validTileMoves.add(temp.specialright);
-				}
-				//Can you take special left?
-				if(temp.specialleft != null && temp.specialleft.getPiece() != null && temp.specialleft.getPiece().getPlayer() != this.getPlayer())
-				{
-					this.validTileMoves.add(temp.specialleft);
+					//Can you move forward one?
+					if(temp.up != null && temp.up.getPiece() == null)
+					{
+						this.validTileMoves.add(temp.up);
+					}
+					//Can you move forward two?
+					if(this.initialMove == false && temp.up.getPiece() == null && temp.up.up.getPiece() == null)
+					{
+						this.validTileMoves.add(temp.up.up);
+						twoTileIndex = this.validTileMoves.size() - 1; 
+					}
+					//Can you hop?
+					if(this.tilesMoved < 3 && temp.hop != null && (temp.hop.getPiece() == null || temp.hop.getPiece().getPlayer() != this.getPlayer()))
+					{
+						this.validTileMoves.add(temp.hop);
+					}
+					//Can you take upleft?
+					if(temp.upleft != null && temp.upleft.getPiece() != null && temp.upleft.getPiece().getPlayer() != this.getPlayer())
+					{
+						this.validTileMoves.add(temp.upleft);
+					}
+					//Can you take upright?
+					if(temp.upright != null && temp.upright.getPiece() != null && temp.upright.getPiece().getPlayer() != this.getPlayer())
+					{
+						this.validTileMoves.add(temp.upright);
+					}
+					//Can you take special up?
+					if(temp.specialup != null && temp.specialup.getPiece() != null && temp.specialup.getPiece().getPlayer() != this.getPlayer())
+					{
+						this.validTileMoves.add(temp.specialup);
+					}
+					//Can you take special right?
+					if(temp.specialright != null && temp.specialright.getPiece() != null && temp.specialright.getPiece().getPlayer() != this.getPlayer())
+					{
+						this.validTileMoves.add(temp.specialright);
+					}
+					//Can you take special left?
+					if(temp.specialleft != null && temp.specialleft.getPiece() != null && temp.specialleft.getPiece().getPlayer() != this.getPlayer())
+					{
+						this.validTileMoves.add(temp.specialleft);
+					}
 				}
 				break;
 			//Player 2: you can go down 2 then up for segment 0 and down for segment 1
@@ -200,7 +221,7 @@ public class Pawn extends Piece {
 					if(this.initialMove == false && temp.down.getPiece() == null && temp.down.down.getPiece() == null)
 					{
 						this.validTileMoves.add(temp.down.down);
-						twoTileIndex = this.validTileMoves.size() - 1; 
+						this.setTwoTileIndex(this.validTileMoves.size() - 1);
 					}
 					//Can you hop?
 					if(temp.hop != null && (temp.hop.getPiece() == null || temp.hop.getPiece().getPlayer() != this.getPlayer()))
