@@ -4,8 +4,6 @@ public class Tile {
 	private boolean colour;
 	private int number;
 	private int letter;
-	private int num2;
-	private int let2;
 	private Piece piece;
 	public Segment segment;
 	private boolean selected;
@@ -59,35 +57,6 @@ public class Tile {
 	{
 		this.selected = selected;
 	}
-
-	/**
-	 * @return the num2
-	 */
-	public int getNum2() {
-		return num2;
-	}
-
-	/**
-	 * @param num2 - used to set num2
-	 */
-	public void setNum2(int num2) {
-		this.num2 = num2;
-	}
-
-	/**
-	 * @return the let2
-	 */
-	public int getLet2() {
-		return let2;
-	}
-
-	/**
-	 * @param let2 - used to set let2
-	 */
-	public void setLet2(int let2) {
-		this.let2 = let2;
-	}
-
 	
 	public boolean getAttacked()
 	{

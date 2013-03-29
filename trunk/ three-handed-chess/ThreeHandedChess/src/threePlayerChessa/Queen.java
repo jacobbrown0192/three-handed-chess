@@ -64,7 +64,6 @@ public class Queen extends Piece {
 		Tile temp = this.currentTile;
 		Tile tempPrevious = this.currentTile;
 		
-		//UPLEFT CHECK
 		while (temp.upleft != null)
 		{
 			//Check that you're looking in the right direction
@@ -297,9 +296,9 @@ public class Queen extends Piece {
 			{
 				//Wrong direction
 				//If piece belonging to you is there
-				if(temp.upleft != null && temp.upleft.getPiece() != null )
+				if(temp.upright != null && temp.upright.getPiece() != null )
 				{
-					if(temp.upleft.getPiece().getPlayer() == this.getPlayer())
+					if(temp.upright.getPiece().getPlayer() == this.getPlayer())
 					{
 						//Can't go any further in this direction: don't add and break
 						break;
@@ -322,13 +321,13 @@ public class Queen extends Piece {
 			if(tempPrevious == temp.downleft)
 			{
 				//Wrong direction
-				this.validTileMoves.add(temp.upleft);
+				this.validTileMoves.add(temp.upright);
 				tempPrevious = temp;
-				if(temp.upleft == null)
+				if(temp.upright == null)
 				{
 					break;
 				}
-				temp = temp.upleft;
+				temp = temp.upright;
 				
 			}
 			else
@@ -629,359 +628,367 @@ public class Queen extends Piece {
 			
 		}
 		
-		//SPECIAL UP CHECK (From tile 		
 
-	 temp = this.currentTile;
-	 tempPrevious = this.currentTile;
-	
-	
-			while (temp.up != null)
+		temp = this.currentTile;
+		tempPrevious = this.currentTile;
+		while (temp.up != null)
+		{
+
+			if(tempPrevious == temp.up)
 			{
-
-				if(tempPrevious == temp.up)
-				{
-					//If piece belonging to you is there
-					if(temp.down.getPiece() == null )
-					{
-
-					}
-					else if(temp.down.getPiece().getPlayer() == this.getPlayer()){
-						//Can't go any further in this direction: don't add and break
-						break;
-					}
-				}
-				else
-				{
-					if(temp.up.getPiece() == null )
-					{
-
-					}
-					else if(temp.up.getPiece().getPlayer() == this.getPlayer()){
-						//Can't go any further in this direction: don't add and break
-						break;
-					}
-					
-				}
-				
-				//Check that the tile you're adding in this direction isn't the tile you added last
-				if(tempPrevious == temp.up)
-				{
-					this.validTileMoves.add(temp.down);
-					tempPrevious = temp;
-					temp = temp.down;
-
-					
-				}
-				else
-				{
-					this.validTileMoves.add(temp.up);
-					tempPrevious = temp;
-					temp = temp.up;
-				}
-				
-				//If piece belonging to enemy is there
-				if(temp.getPiece() != null)
-				{
-					//We've added the tile, now break
-					break;
-				}
-			}
-			
-			
-			temp = this.currentTile;
-			tempPrevious = this.currentTile;
-			//Upper Left Check
-			while (temp.down != null)
-			{
-				if(tempPrevious == temp.down)
-				{
-					//If piece belonging to you is there
-					if(temp.up.getPiece() == null )
-					{
-
-					}
-					else if(temp.up.getPiece().getPlayer() == this.getPlayer()){
-						//Can't go any further in this direction: don't add and break
-						break;
-					}
-				}
-				else
-				{
-					if(temp.down.getPiece() == null )
-					{
-
-					}
-					else if(temp.down.getPiece().getPlayer() == this.getPlayer()){
-						//Can't go any further in this direction: don't add and break
-						break;
-					}
-				}
-					
-				
-				//Check that the tile you're adding in this direction isn't the tile you added last
-				if(tempPrevious == temp.down)
-				{
-					this.validTileMoves.add(temp.up);
-					if(temp.up == null){
-						break;
-					}
-					temp = temp.up;
-
-					
-				}
-				else
-				{
-					this.validTileMoves.add(temp.down);
-					temp = temp.down;
-				}
-				
-				//If piece belonging to enemy is there
-				if(temp.getPiece() != null)
-				{
-					//We've added the tile, now break
-					break;
-				}
-			}
-				
-				
-			temp = this.currentTile;
-			tempPrevious = this.currentTile;
-			//Upper Left Check
-			while (temp.left != null)
-			{
-				if(tempPrevious == temp.left)
-				{
-					//If piece belonging to you is there
-					if(temp.right.getPiece() == null )
-					{
-
-					}
-					else if(temp.right.getPiece().getPlayer() == this.getPlayer()){
-						//Can't go any further in this direction: don't add and break
-						break;
-					}
-				}
-				else
-				{
-					if(temp.left.getPiece() == null )
-					{
-
-					}
-					else if(temp.left.getPiece().getPlayer() == this.getPlayer()){
-						//Can't go any further in this direction: don't add and break
-						break;
-					}
-				}
-					
-				
-				//Check that the tile you're adding in this direction isn't the tile you added last
-				if(tempPrevious == temp.left)
-				{
-					this.validTileMoves.add(temp.right);
-					temp = temp.right;
-					
-				}
-				else
-				{
-					this.validTileMoves.add(temp.left);
-					temp = temp.left;
-				}
-				
-				//If piece belonging to enemy is there
-				if(temp.getPiece() != null)
-				{
-					//We've added the tile, now break
-					break;
-				}
-			}
-			
-			
-			temp = this.currentTile;
-			tempPrevious = this.currentTile;
-			//Upper Left Check
-			while (temp.right != null)
-			{
-				if(tempPrevious == temp.right)
-				{
-					//If piece belonging to you is there
-					if(temp.left.getPiece() == null )
-					{
-
-					}
-					else if(temp.left.getPiece().getPlayer() == this.getPlayer()){
-						//Can't go any further in this direction: don't add and break
-						break;
-					}
-				}
-				else
-				{
-					if(temp.right.getPiece() == null )
-					{
-
-					}
-					else if(temp.right.getPiece().getPlayer() == this.getPlayer()){
-						//Can't go any further in this direction: don't add and break
-						break;
-					}
-					
-				}
-				
-				//Check that the tile you're adding in this direction isn't the tile you added last
-				if(tempPrevious == temp.right)
-				{
-					this.validTileMoves.add(temp.left);
-					temp = temp.left;
-					
-				}
-				else
-				{
-					this.validTileMoves.add(temp.right);
-					temp = temp.right;
-				}
-				
-				//If piece belonging to enemy is there
-				if(temp.getPiece() != null)
-				{
-					//We've added the tile, now break
-					break;
-				}
-			}
-		
-			temp = this.currentTile;
-			tempPrevious = this.currentTile;
-			if(temp.hop != null){
-				this.validTileMoves.add(temp.hop);
-				temp = temp.hop;
-				
-				if(temp.getPiece() == null )
+				//If piece belonging to you is there
+				if(temp.down.getPiece() == null )
 				{
 
 				}
-				else if(temp.getPiece().getPlayer() == this.getPlayer()){
+				else if(temp.down.getPiece().getPlayer() == this.getPlayer()){
 					//Can't go any further in this direction: don't add and break
-					return;
+					break;
 				}
-				
-				while (temp.up != null && temp.up.getSegment() == temp.getSegment())
+			}
+			else
+			{
+				if(temp.up.getPiece() == null )
 				{
 
-
-						if(temp.up.getPiece() == null )
-						{
-
-						}
-						else if(temp.up.getPiece().getPlayer() == this.getPlayer()){
-							//Can't go any further in this direction: don't add and break
-							break;
-						}
-
-					
-					//Check that the tile you're adding in this direction isn't the tile you added last
-
-						this.validTileMoves.add(temp.up);
-						tempPrevious = temp;
-						temp = temp.up;
-					
-					//If piece belonging to enemy is there
-					if(temp.getPiece() != null)
-					{
-						//We've added the tile, now break
-						break;
-					}
 				}
-				
-				
-				temp = this.currentTile.hop;
-				//Upper Left Check
-				while (temp.down != null && temp.down.getSegment() == temp.getSegment())
-				{
-
-						if(temp.down.getPiece() == null )
-						{
-
-						}
-						else if(temp.down.getPiece().getPlayer() == this.getPlayer()){
-							//Can't go any further in this direction: don't add and break
-							break;
-						}
-	
-					
-					//Check that the tile you're adding in this direction isn't the tile you added last
-
-						this.validTileMoves.add(temp.down);
-						temp = temp.down;
-
-					
-					//If piece belonging to enemy is there
-					if(temp.getPiece() != null)
-					{
-						//We've added the tile, now break
-						break;
-					}
-				}
-					
-					
-				temp = this.currentTile.hop;
-				//Upper Left Check
-				while (temp.left != null && temp.left.getSegment() == temp.getSegment())
-				{
-						if(temp.left.getPiece() == null )
-						{
-
-						}
-						else if(temp.left.getPiece().getPlayer() == this.getPlayer()){
-							//Can't go any further in this direction: don't add and break
-							break;
-						}
-
-						
-					
-					//Check that the tile you're adding in this direction isn't the tile you added last
-
-						this.validTileMoves.add(temp.left);
-						temp = temp.left;
-					
-					//If piece belonging to enemy is there
-					if(temp.getPiece() != null)
-					{
-						//We've added the tile, now break
-						break;
-					}
-				}
-				
-				temp = this.currentTile.hop;
-				//Upper Left Check
-				while (temp.right != null && temp.right.getSegment() == temp.getSegment())
-				{
-
-						if(temp.right.getPiece() == null )
-						{
-
-						}
-						else if(temp.right.getPiece().getPlayer() == this.getPlayer()){
-							//Can't go any further in this direction: don't add and break
-							break;
-						}
-
-					
-					//Check that the tile you're adding in this direction isn't the tile you added last
-
-						this.validTileMoves.add(temp.right);
-						temp = temp.right;
-
-					//If piece belonging to enemy is there
-					if(temp.getPiece() != null)
-					{
-						//We've added the tile, now break
-						break;
-					}
+				else if(temp.up.getPiece().getPlayer() == this.getPlayer()){
+					//Can't go any further in this direction: don't add and break
+					break;
 				}
 				
 			}
 			
+			//Check that the tile you're adding in this direction isn't the tile you added last
+			if(tempPrevious == temp.up)
+			{
+				this.validTileMoves.add(temp.down);
+				tempPrevious = temp;
+				temp = temp.down;
+
+				
+			}
+			else
+			{
+				this.validTileMoves.add(temp.up);
+				tempPrevious = temp;
+				temp = temp.up;
+			}
 			
+			//If piece belonging to enemy is there
+			if(temp.getPiece() != null)
+			{
+				//We've added the tile, now break
+				break;
+			}
+		}
+		
+		
+		temp = this.currentTile;
+		tempPrevious = this.currentTile;
+		//Upper Left Check
+		while (temp.down != null)
+		{
+			if(tempPrevious == temp.down)
+			{
+				if(temp.up != null){
+					//If piece belonging to you is there
+					if(temp.up.getPiece() == null )
+					{
+
+					}
+					else if(temp.up.getPiece().getPlayer() == this.getPlayer()){
+						//Can't go any further in this direction: don't add and break
+						break;
+					}
+				}
+				else
+				{
+					break;
+				}
+			}
+			else
+			{
+				if(temp.down.getPiece() == null )
+				{
+
+				}
+				else if(temp.down.getPiece().getPlayer() == this.getPlayer()){
+					//Can't go any further in this direction: don't add and break
+					break;
+				}
+			}
+				
+			
+			//Check that the tile you're adding in this direction isn't the tile you added last
+			if(tempPrevious == temp.down)
+			{
+				this.validTileMoves.add(temp.up);
+				if(temp.up == null){
+					break;
+				}
+				tempPrevious = temp;
+				temp = temp.up;					
+			}
+			else
+			{
+				this.validTileMoves.add(temp.down);
+				tempPrevious = temp;
+				temp = temp.down;
+			}
+			
+			//If piece belonging to enemy is there
+			if(temp.getPiece() != null)
+			{
+				//We've added the tile, now break
+				break;
+			}
+		}
+			
+			
+		temp = this.currentTile;
+		tempPrevious = this.currentTile;
+		//Upper Left Check
+		while (temp.left != null)
+		{
+			if(tempPrevious == temp.left)
+			{
+				//If piece belonging to you is there
+				if(temp.right.getPiece() == null )
+				{
+
+				}
+				else if(temp.right.getPiece().getPlayer() == this.getPlayer()){
+					//Can't go any further in this direction: don't add and break
+					break;
+				}
+			}
+			else
+			{
+				if(temp.left.getPiece() == null )
+				{
+
+				}
+				else if(temp.left.getPiece().getPlayer() == this.getPlayer()){
+					//Can't go any further in this direction: don't add and break
+					break;
+				}
+			}
+				
+			
+			//Check that the tile you're adding in this direction isn't the tile you added last
+			if(tempPrevious == temp.left)
+			{
+				this.validTileMoves.add(temp.right);
+				tempPrevious = temp;
+				temp = temp.right;
+				
+			}
+			else
+			{
+				this.validTileMoves.add(temp.left);
+				tempPrevious = temp;
+				temp = temp.left;
+			}
+			
+			//If piece belonging to enemy is there
+			if(temp.getPiece() != null)
+			{
+				//We've added the tile, now break
+				break;
+			}
+		}
+		
+		
+		temp = this.currentTile;
+		tempPrevious = this.currentTile;
+		//Upper Left Check
+		while (temp.right != null)
+		{
+			if(tempPrevious == temp.right)
+			{
+				//If piece belonging to you is there
+				if(temp.left.getPiece() == null )
+				{
+
+				}
+				else if(temp.left.getPiece().getPlayer() == this.getPlayer()){
+					//Can't go any further in this direction: don't add and break
+					break;
+				}
+			}
+			else
+			{
+				if(temp.right.getPiece() == null )
+				{
+
+				}
+				else if(temp.right.getPiece().getPlayer() == this.getPlayer()){
+					//Can't go any further in this direction: don't add and break
+					break;
+				}
+				
+			}
+			
+			//Check that the tile you're adding in this direction isn't the tile you added last
+			if(tempPrevious == temp.right)
+			{
+				this.validTileMoves.add(temp.left);
+				tempPrevious = temp;
+				temp = temp.left;
+				
+			}
+			else
+			{
+				this.validTileMoves.add(temp.right);
+				tempPrevious = temp;
+				temp = temp.right;
+			}
+			
+			//If piece belonging to enemy is there
+			if(temp.getPiece() != null)
+			{
+				//We've added the tile, now break
+				break;
+			}
 		}
 	
+		temp = this.currentTile;
+		tempPrevious = this.currentTile;
+		if(temp.hop != null){
+			this.validTileMoves.add(temp.hop);
+			temp = temp.hop;
+			
+			if(temp.getPiece() == null )
+			{
+
+			}
+			else if(temp.getPiece().getPlayer() == this.getPlayer()){
+				//Can't go any further in this direction: don't add and break
+				return;
+			}
+			
+			while (temp.up != null && temp.up.getSegment() == temp.getSegment())
+			{
+
+
+					if(temp.up.getPiece() == null )
+					{
+
+					}
+					else if(temp.up.getPiece().getPlayer() == this.getPlayer()){
+						//Can't go any further in this direction: don't add and break
+						break;
+					}
+
+				
+				//Check that the tile you're adding in this direction isn't the tile you added last
+
+					this.validTileMoves.add(temp.up);
+					tempPrevious = temp;
+					temp = temp.up;
+				
+				//If piece belonging to enemy is there
+				if(temp.getPiece() != null)
+				{
+					//We've added the tile, now break
+					break;
+				}
+			}
+			
+			
+			temp = this.currentTile.hop;
+			//Upper Left Check
+			while (temp.down != null && temp.down.getSegment() == temp.getSegment())
+			{
+
+					if(temp.down.getPiece() == null )
+					{
+
+					}
+					else if(temp.down.getPiece().getPlayer() == this.getPlayer()){
+						//Can't go any further in this direction: don't add and break
+						break;
+					}
+
+				
+				//Check that the tile you're adding in this direction isn't the tile you added last
+
+					this.validTileMoves.add(temp.down);
+					temp = temp.down;
+
+				
+				//If piece belonging to enemy is there
+				if(temp.getPiece() != null)
+				{
+					//We've added the tile, now break
+					break;
+				}
+			}
+				
+				
+			temp = this.currentTile.hop;
+			//Upper Left Check
+			while (temp.left != null && temp.left.getSegment() == temp.getSegment())
+			{
+					if(temp.left.getPiece() == null )
+					{
+
+					}
+					else if(temp.left.getPiece().getPlayer() == this.getPlayer()){
+						//Can't go any further in this direction: don't add and break
+						break;
+					}
+
+					
+				
+				//Check that the tile you're adding in this direction isn't the tile you added last
+
+					this.validTileMoves.add(temp.left);
+					temp = temp.left;
+				
+				//If piece belonging to enemy is there
+				if(temp.getPiece() != null)
+				{
+					//We've added the tile, now break
+					break;
+				}
+			}
+			
+			temp = this.currentTile.hop;
+			//Upper Left Check
+			while (temp.right != null && temp.right.getSegment() == temp.getSegment())
+			{
+
+					if(temp.right.getPiece() == null )
+					{
+
+					}
+					else if(temp.right.getPiece().getPlayer() == this.getPlayer()){
+						//Can't go any further in this direction: don't add and break
+						break;
+					}
+
+				
+				//Check that the tile you're adding in this direction isn't the tile you added last
+
+					this.validTileMoves.add(temp.right);
+					temp = temp.right;
+
+				//If piece belonging to enemy is there
+				if(temp.getPiece() != null)
+				{
+					//We've added the tile, now break
+					break;
+				}
+			}
+			
+		}
+		
+		
+}
+
+
 	
 	
 

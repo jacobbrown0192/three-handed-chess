@@ -298,9 +298,9 @@ public class Bishop extends Piece {
 			{
 				//Wrong direction
 				//If piece belonging to you is there
-				if(temp.upleft != null && temp.upleft.getPiece() != null )
+				if(temp.upright != null && temp.upright.getPiece() != null )
 				{
-					if(temp.upleft.getPiece().getPlayer() == this.getPlayer())
+					if(temp.upright.getPiece().getPlayer() == this.getPlayer())
 					{
 						//Can't go any further in this direction: don't add and break
 						break;
@@ -323,13 +323,13 @@ public class Bishop extends Piece {
 			if(tempPrevious == temp.downleft)
 			{
 				//Wrong direction
-				this.validTileMoves.add(temp.upleft);
+				this.validTileMoves.add(temp.upright);
 				tempPrevious = temp;
-				if(temp.upleft == null)
+				if(temp.upright == null)
 				{
 					break;
 				}
-				temp = temp.upleft;
+				temp = temp.upright;
 				
 			}
 			else
