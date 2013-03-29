@@ -130,13 +130,19 @@ public class Rook extends Piece {
 				{
 					if(tempPrevious == temp.down)
 					{
-						//If piece belonging to you is there
-						if(temp.up.getPiece() == null )
-						{
-
+						if(temp.up != null){
+							//If piece belonging to you is there
+							if(temp.up.getPiece() == null )
+							{
+	
+							}
+							else if(temp.up.getPiece().getPlayer() == this.getPlayer()){
+								//Can't go any further in this direction: don't add and break
+								break;
+							}
 						}
-						else if(temp.up.getPiece().getPlayer() == this.getPlayer()){
-							//Can't go any further in this direction: don't add and break
+						else
+						{
 							break;
 						}
 					}

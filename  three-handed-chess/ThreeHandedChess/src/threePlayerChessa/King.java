@@ -214,6 +214,17 @@ public class King extends Piece {
 				this.validTileMoves.add(temp.specialright);
 			}
 		}
+		//castling
+		if(isInitialMove() == false){
+			temp = this.currentTile;
+			while(temp.left != null){
+				
+			}
+			temp = this.currentTile;
+			while(temp.right != null){
+				
+			}			
+		}		
 	}
 }
 
