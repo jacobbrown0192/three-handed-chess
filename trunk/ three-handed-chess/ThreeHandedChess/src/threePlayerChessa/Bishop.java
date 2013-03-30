@@ -122,33 +122,14 @@ public class Bishop extends Piece {
 		if(temp.getLetter() == 5 && temp.getNumber() == 4)
 		{
 			tempPrevious = temp;
-			this.validTileMoves.add(temp.specialleft);
-			temp = temp.specialleft;
-			while (temp.upleft != null)
-			{
-				//If piece belonging to you is there
-				if(temp.upleft.getPiece() != null )
-				{
-					if(temp.upleft.getPiece().getPlayer() == this.getPlayer())
-					{
-						//Can't go any further in this direction: don't add and break
-						break;
-					}
-				}
-				
-				this.validTileMoves.add(temp.upleft);
-				temp = temp.upleft;
-				//If piece belonging to enemy is there
-				if(temp.getPiece() != null)
-				{
-					//We've added the tile, now break
-					break;
-				}
+			if(temp.specialleft.getPiece() != null){
+				if(temp.specialleft.getPiece().getPlayer() != this.getPlayer()){
+					this.validTileMoves.add(temp.specialleft);
+				}				
 			}
-				
-				temp = tempPrevious;
-				this.validTileMoves.add(temp.specialup);
-				temp = temp.specialup;
+			else{
+				this.validTileMoves.add(temp.specialleft);
+				temp = temp.specialleft;
 				while (temp.upleft != null)
 				{
 					//If piece belonging to you is there
@@ -169,9 +150,40 @@ public class Bishop extends Piece {
 						//We've added the tile, now break
 						break;
 					}
-				
+				}
 			}
-			
+				
+				temp = tempPrevious;
+				if(temp.specialup.getPiece() != null){
+					if(temp.specialup.getPiece().getPlayer() != this.getPlayer()){
+						this.validTileMoves.add(temp.specialup);
+					}				
+				}
+				else{
+					this.validTileMoves.add(temp.specialup);
+					temp = temp.specialup;
+					while (temp.upleft != null)
+					{
+						//If piece belonging to you is there
+						if(temp.upleft.getPiece() != null )
+						{
+							if(temp.upleft.getPiece().getPlayer() == this.getPlayer())
+							{
+								//Can't go any further in this direction: don't add and break
+								break;
+							}
+						}
+						
+						this.validTileMoves.add(temp.upleft);
+						temp = temp.upleft;
+						//If piece belonging to enemy is there
+						if(temp.getPiece() != null)
+						{
+							//We've added the tile, now break
+							break;
+						}
+					}
+				}			
 		}
 		
 		//upleft CHECK
@@ -233,33 +245,14 @@ public class Bishop extends Piece {
 		if(temp.getLetter() == 4 && temp.getNumber() == 4)
 		{
 			tempPrevious = temp;
-			this.validTileMoves.add(temp.specialright);
-			temp = temp.specialright;
-			while (temp.upright != null)
-			{
-				//If piece belonging to you is there
-				if(temp.upright.getPiece() != null )
-				{
-					if(temp.upright.getPiece().getPlayer() == this.getPlayer())
-					{
-						//Can't go any further in this direction: don't add and break
-						break;
-					}
-				}
-				
-				this.validTileMoves.add(temp.upright);
-				temp = temp.upright;
-				//If piece belonging to enemy is there
-				if(temp.getPiece() != null)
-				{
-					//We've added the tile, now break
-					break;
-				}
+			if(temp.specialright.getPiece() != null){
+				if(temp.specialright.getPiece().getPlayer() != this.getPlayer()){
+					this.validTileMoves.add(temp.specialright);
+				}				
 			}
-				
-				temp = tempPrevious;
-				this.validTileMoves.add(temp.specialup);
-				temp = temp.specialup;
+			else{
+				this.validTileMoves.add(temp.specialright);
+				temp = temp.specialright;
 				while (temp.upright != null)
 				{
 					//If piece belonging to you is there
@@ -280,7 +273,39 @@ public class Bishop extends Piece {
 						//We've added the tile, now break
 						break;
 					}
-			
+				}
+			}
+				
+				temp = tempPrevious;
+				if(temp.specialup.getPiece() != null){
+					if(temp.specialup.getPiece().getPlayer() != this.getPlayer()){
+						this.validTileMoves.add(temp.specialup);
+					}				
+				}
+				else{
+					this.validTileMoves.add(temp.specialup);
+					temp = temp.specialup;
+					while (temp.upright != null)
+					{
+						//If piece belonging to you is there
+						if(temp.upright.getPiece() != null )
+						{
+							if(temp.upright.getPiece().getPlayer() == this.getPlayer())
+							{
+								//Can't go any further in this direction: don't add and break
+								break;
+							}
+						}
+						
+						this.validTileMoves.add(temp.upright);
+						temp = temp.upright;
+						//If piece belonging to enemy is there
+						if(temp.getPiece() != null)
+						{
+							//We've added the tile, now break
+							break;
+						}
+					}
 				}
 			
 		}
@@ -352,88 +377,14 @@ public class Bishop extends Piece {
 		if(temp.getLetter() == 5 && temp.getNumber() == 9)
 		{
 			tempPrevious = temp;
-			this.validTileMoves.add(temp.specialdown);
-			temp = temp.specialdown;
-			while (temp.downleft != null)
-			{
-				//If piece belonging to you is there
-				if(temp.downleft.getPiece() != null )
-				{
-					if(temp.downleft.getPiece().getPlayer() == this.getPlayer())
-					{
-						//Can't go any further in this direction: don't add and break
-						break;
-					}
-				}
-				
-				this.validTileMoves.add(temp.downleft);
-				temp = temp.downleft;
-				//If piece belonging to enemy is there
-				if(temp.getPiece() != null)
-				{
-					//We've added the tile, now break
-					break;
-				}
+			if(temp.specialdown.getPiece() != null){
+				if(temp.specialdown.getPiece().getPlayer() != this.getPlayer()){
+					this.validTileMoves.add(temp.specialdown);
+				}				
 			}
-				
-				temp = tempPrevious;
-				this.validTileMoves.add(temp.specialleft);
-				temp = temp.specialleft;
-				while (temp.upright != null)
-				{
-					//If piece belonging to you is there
-					if(temp.upright.getPiece() != null )
-					{
-						if(temp.upright.getPiece().getPlayer() == this.getPlayer())
-						{
-							//Can't go any further in this direction: don't add and break
-							break;
-						}
-					}
-					
-					this.validTileMoves.add(temp.upright);
-					temp = temp.upright;
-					//If piece belonging to enemy is there
-					if(temp.getPiece() != null)
-					{
-						//We've added the tile, now break
-						break;
-					}
-			
-				}
-			
-		}
-		
-		if(temp.getLetter() == 9 && temp.getNumber() == 5)
-		{
-			tempPrevious = temp;
-			this.validTileMoves.add(temp.specialdown);
-			temp = temp.specialdown;
-			while (temp.upright != null)
-			{
-				//If piece belonging to you is there
-				if(temp.upright.getPiece() != null )
-				{
-					if(temp.upright.getPiece().getPlayer() == this.getPlayer())
-					{
-						//Can't go any further in this direction: don't add and break
-						break;
-					}
-				}
-				
-				this.validTileMoves.add(temp.upright);
-				temp = temp.upright;
-				//If piece belonging to enemy is there
-				if(temp.getPiece() != null)
-				{
-					//We've added the tile, now break
-					break;
-				}
-			}
-				
-				temp = tempPrevious;
-				this.validTileMoves.add(temp.specialleft);
-				temp = temp.specialleft;
+			else{
+				this.validTileMoves.add(temp.specialdown);
+				temp = temp.specialdown;
 				while (temp.downleft != null)
 				{
 					//If piece belonging to you is there
@@ -454,7 +405,106 @@ public class Bishop extends Piece {
 						//We've added the tile, now break
 						break;
 					}
-			
+				}
+			}
+				
+				temp = tempPrevious;
+				if(temp.specialleft.getPiece() != null){
+					if(temp.specialleft.getPiece().getPlayer() != this.getPlayer()){
+						this.validTileMoves.add(temp.specialleft);
+					}				
+				}
+				else{
+					this.validTileMoves.add(temp.specialleft);
+					temp = temp.specialleft;
+					while (temp.upright != null)
+					{
+						//If piece belonging to you is there
+						if(temp.upright.getPiece() != null )
+						{
+							if(temp.upright.getPiece().getPlayer() == this.getPlayer())
+							{
+								//Can't go any further in this direction: don't add and break
+								break;
+							}
+						}
+						
+						this.validTileMoves.add(temp.upright);
+						temp = temp.upright;
+						//If piece belonging to enemy is there
+						if(temp.getPiece() != null)
+						{
+							//We've added the tile, now break
+							break;
+						}
+					}
+				}
+		}
+		
+		if(temp.getLetter() == 9 && temp.getNumber() == 5)
+		{
+			tempPrevious = temp;
+			if(temp.specialdown.getPiece() != null){
+				if(temp.specialdown.getPiece().getPlayer() != this.getPlayer()){
+					this.validTileMoves.add(temp.specialdown);
+				}				
+			}
+			else{
+				this.validTileMoves.add(temp.specialdown);
+				temp = temp.specialdown;
+				while (temp.upright != null)
+				{
+					//If piece belonging to you is there
+					if(temp.upright.getPiece() != null )
+					{
+						if(temp.upright.getPiece().getPlayer() == this.getPlayer())
+						{
+							//Can't go any further in this direction: don't add and break
+							break;
+						}
+					}
+					
+					this.validTileMoves.add(temp.upright);
+					temp = temp.upright;
+					//If piece belonging to enemy is there
+					if(temp.getPiece() != null)
+					{
+						//We've added the tile, now break
+						break;
+					}
+				}
+			}
+				
+				temp = tempPrevious;
+				if(temp.specialleft.getPiece() != null){
+					if(temp.specialleft.getPiece().getPlayer() != this.getPlayer()){
+						this.validTileMoves.add(temp.specialleft);
+					}				
+				}
+				else{
+					this.validTileMoves.add(temp.specialleft);
+					temp = temp.specialleft;
+					while (temp.downleft != null)
+					{
+						//If piece belonging to you is there
+						if(temp.downleft.getPiece() != null )
+						{
+							if(temp.downleft.getPiece().getPlayer() == this.getPlayer())
+							{
+								//Can't go any further in this direction: don't add and break
+								break;
+							}
+						}
+						
+						this.validTileMoves.add(temp.downleft);
+						temp = temp.downleft;
+						//If piece belonging to enemy is there
+						if(temp.getPiece() != null)
+						{
+							//We've added the tile, now break
+							break;
+						}
+					}
 				}
 			
 		}
@@ -523,54 +573,67 @@ public class Bishop extends Piece {
 		if(temp.getLetter() == 4 && temp.getNumber() == 5)
 		{
 			tempPrevious = temp;
-			this.validTileMoves.add(temp.specialdown);
-			temp = temp.specialdown;
-			while (temp.downright != null)
-			{
-				//If piece belonging to you is there
-				if(temp.downright.getPiece() != null )
-				{
-					if(temp.downright.getPiece().getPlayer() == this.getPlayer())
-					{
-						//Can't go any further in this direction: don't add and break
-						break;
-					}
-				}
-				
-				this.validTileMoves.add(temp.downright);
-				temp = temp.downright;
-				//If piece belonging to enemy is there
-				if(temp.getPiece() != null)
-				{
-					//We've added the tile, now break
-					break;
-				}
+			if(temp.specialdown.getPiece() != null){
+				if(temp.specialdown.getPiece().getPlayer() != this.getPlayer()){
+					this.validTileMoves.add(temp.specialdown);
+				}				
 			}
-				
-				temp = tempPrevious;
-				this.validTileMoves.add(temp.specialright);
-				temp = temp.specialright;
-				while (temp.upleft != null)
+			else{
+				this.validTileMoves.add(temp.specialdown);
+				temp = temp.specialdown;
+				while (temp.downright != null)
 				{
 					//If piece belonging to you is there
-					if(temp.upleft.getPiece() != null )
+					if(temp.downright.getPiece() != null )
 					{
-						if(temp.upleft.getPiece().getPlayer() == this.getPlayer())
+						if(temp.downright.getPiece().getPlayer() == this.getPlayer())
 						{
 							//Can't go any further in this direction: don't add and break
 							break;
 						}
 					}
 					
-					this.validTileMoves.add(temp.upleft);
-					temp = temp.upleft;
+					this.validTileMoves.add(temp.downright);
+					temp = temp.downright;
 					//If piece belonging to enemy is there
 					if(temp.getPiece() != null)
 					{
 						//We've added the tile, now break
 						break;
 					}
-			
+				}
+			}
+				
+				temp = tempPrevious;
+				if(temp.specialright.getPiece() != null){
+					if(temp.specialright.getPiece().getPlayer() != this.getPlayer()){
+						this.validTileMoves.add(temp.specialright);
+					}				
+				}
+				else{
+					this.validTileMoves.add(temp.specialright);
+					temp = temp.specialright;
+					while (temp.upleft != null)
+					{
+						//If piece belonging to you is there
+						if(temp.upleft.getPiece() != null )
+						{
+							if(temp.upleft.getPiece().getPlayer() == this.getPlayer())
+							{
+								//Can't go any further in this direction: don't add and break
+								break;
+							}
+						}
+						
+						this.validTileMoves.add(temp.upleft);
+						temp = temp.upleft;
+						//If piece belonging to enemy is there
+						if(temp.getPiece() != null)
+						{
+							//We've added the tile, now break
+							break;
+						}
+					}
 				}
 			
 		}
@@ -578,54 +641,67 @@ public class Bishop extends Piece {
 		if(temp.getLetter() == 9 && temp.getNumber() == 9)
 		{
 			tempPrevious = temp;
-			this.validTileMoves.add(temp.specialright);
-			temp = temp.specialright;
-			while (temp.downright != null)
-			{
-				//If piece belonging to you is there
-				if(temp.downright.getPiece() != null )
-				{
-					if(temp.downright.getPiece().getPlayer() == this.getPlayer())
-					{
-						//Can't go any further in this direction: don't add and break
-						break;
-					}
-				}
-				
-				this.validTileMoves.add(temp.downright);
-				temp = temp.downright;
-				//If piece belonging to enemy is there
-				if(temp.getPiece() != null)
-				{
-					//We've added the tile, now break
-					break;
-				}
+			if(temp.specialright.getPiece() != null){
+				if(temp.specialright.getPiece().getPlayer() != this.getPlayer()){
+					this.validTileMoves.add(temp.specialright);
+				}				
 			}
-				
-				temp = tempPrevious;
-				this.validTileMoves.add(temp.specialdown);
-				temp = temp.specialdown;
-				while (temp.upleft != null)
+			else{
+				this.validTileMoves.add(temp.specialright);
+				temp = temp.specialright;
+				while (temp.downright != null)
 				{
 					//If piece belonging to you is there
-					if(temp.upleft.getPiece() != null )
+					if(temp.downright.getPiece() != null )
 					{
-						if(temp.upleft.getPiece().getPlayer() == this.getPlayer())
+						if(temp.downright.getPiece().getPlayer() == this.getPlayer())
 						{
 							//Can't go any further in this direction: don't add and break
 							break;
 						}
 					}
 					
-					this.validTileMoves.add(temp.upleft);
-					temp = temp.upleft;
+					this.validTileMoves.add(temp.downright);
+					temp = temp.downright;
 					//If piece belonging to enemy is there
 					if(temp.getPiece() != null)
 					{
 						//We've added the tile, now break
 						break;
 					}
-			
+				}
+			}
+				
+				temp = tempPrevious;
+				if(temp.specialdown.getPiece() != null){
+					if(temp.specialdown.getPiece().getPlayer() != this.getPlayer()){
+						this.validTileMoves.add(temp.specialdown);
+					}				
+				}
+				else{
+					this.validTileMoves.add(temp.specialdown);
+					temp = temp.specialdown;
+					while (temp.upleft != null)
+					{
+						//If piece belonging to you is there
+						if(temp.upleft.getPiece() != null )
+						{
+							if(temp.upleft.getPiece().getPlayer() == this.getPlayer())
+							{
+								//Can't go any further in this direction: don't add and break
+								break;
+							}
+						}
+						
+						this.validTileMoves.add(temp.upleft);
+						temp = temp.upleft;
+						//If piece belonging to enemy is there
+						if(temp.getPiece() != null)
+						{
+							//We've added the tile, now break
+							break;
+						}
+					}
 				}
 			
 		}
