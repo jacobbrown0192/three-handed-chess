@@ -60,34 +60,40 @@ public class King extends Piece {
 			//castling move check so the rook is also moved
 			if(aStartTile.right.right == aMoveTile){
 				Piece temp = null;
-				if(aMoveTile.left.getPiece().getPieceType() == PieceType.ROOK){
-					temp = aMoveTile.left.getPiece();
-					temp.currentTile.setPiece(null);
-					temp.setCurrentTile(aMoveTile.right);
-					aMoveTile.right.setPiece(temp);
+				if(aMoveTile.right.getPiece() != null){
+					if(aMoveTile.right.getPiece().getPieceType() == PieceType.ROOK){
+						temp = aMoveTile.right.getPiece();
+						temp.currentTile.setPiece(null);
+						temp.setCurrentTile(aMoveTile.left);
+						aMoveTile.left.setPiece(temp);
+					}
 				}
-
-				if(aMoveTile.left.left.getPiece().getPieceType() == PieceType.ROOK){
-					temp = aMoveTile.left.left.getPiece();
-					temp.currentTile.setPiece(null);
-					temp.setCurrentTile(aMoveTile.right);
-					aMoveTile.right.setPiece(temp);
+				if(aMoveTile.right.right != null &&	aMoveTile.right.right.getPiece() != null){
+					if(aMoveTile.right.right.getPiece().getPieceType() == PieceType.ROOK){
+						temp = aMoveTile.right.right.getPiece();
+						temp.currentTile.setPiece(null);
+						temp.setCurrentTile(aMoveTile.left);
+						aMoveTile.left.setPiece(temp);
+					}
 				}
 			}
 			if(aStartTile.left.left == aMoveTile){
 				Piece temp = null;
-				if(aMoveTile.right.getPiece().getPieceType() == PieceType.ROOK){
-					temp = aMoveTile.right.getPiece();
-					temp.currentTile.setPiece(null);
-					temp.setCurrentTile(aMoveTile.left);
-					aMoveTile.left.setPiece(temp);
+				if(aMoveTile.left.getPiece() != null){
+					if(aMoveTile.left.getPiece().getPieceType() == PieceType.ROOK){
+						temp = aMoveTile.left.getPiece();
+						temp.currentTile.setPiece(null);
+						temp.setCurrentTile(aMoveTile.right);
+						aMoveTile.right.setPiece(temp);
+					}
 				}
-
-				if(aMoveTile.right.right.getPiece().getPieceType() == PieceType.ROOK){
-					temp = aMoveTile.right.right.getPiece();
-					temp.currentTile.setPiece(null);
-					temp.setCurrentTile(aMoveTile.left);
-					aMoveTile.left.setPiece(temp);
+				if(aMoveTile.left.left != null && aMoveTile.left.left.getPiece() != null){
+					if(aMoveTile.left.left.getPiece().getPieceType() == PieceType.ROOK){
+						temp = aMoveTile.left.left.getPiece();
+						temp.currentTile.setPiece(null);
+						temp.setCurrentTile(aMoveTile.right);
+						aMoveTile.right.setPiece(temp);
+					}
 				}
 			}
 			aMoveTile.setPiece(aStartTile.getPiece());
@@ -252,33 +258,21 @@ public class King extends Piece {
 		if(isInitialMove() == false){
 			temp = this.currentTile;
 			while(temp.left != null){
-				if(temp.left.getPiece() == null )
-				{
-
-				}
-				else if(temp.left.getPiece() != null){
-					//Can't go any further in this direction: don't add and break
-					break;
-				}
 				temp = temp.left;
-				if(temp.getPiece().getPieceType() == PieceType.ROOK && temp.getPiece().isInitialMove() == false){
-					this.validTileMoves.add(this.currentTile.left.left);
-				}				
+				if(temp.getPiece() != null){
+					if(temp.getPiece().getPieceType() == PieceType.ROOK && temp.getPiece().isInitialMove() == false){
+						this.validTileMoves.add(this.currentTile.left.left);
+					}
+				}
 			}
 			temp = this.currentTile;
 			while(temp.right != null){
-				if(temp.right.getPiece() == null )
-				{
-
-				}
-				else if(temp.right.getPiece() != null){
-					//Can't go any further in this direction: don't add and break
-					break;
-				}
 				temp = temp.right;
-				if(temp.getPiece().getPieceType() == PieceType.ROOK && temp.getPiece().isInitialMove() == false){
-					this.validTileMoves.add(this.currentTile.right.right);
-				}	
+				if(temp.getPiece() != null){
+					if(temp.getPiece().getPieceType() == PieceType.ROOK && temp.getPiece().isInitialMove() == false){
+						this.validTileMoves.add(this.currentTile.right.right);
+					}
+				}
 			}			
 		}		
 	}
