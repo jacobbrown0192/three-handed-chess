@@ -16,7 +16,7 @@ public class TopBoardGUI extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 	Game theGame;
-	
+	private JLabel lblGameAndStuff;
 	
 	/**
 	 * Create the panel.
@@ -27,8 +27,16 @@ public class TopBoardGUI extends JPanel
 		
 		setLayout(new GridLayout(1, 0, 0, 0));
 		
-		JLabel lblGameAndStuff = new JLabel("Game N' Stuff");
+		lblGameAndStuff = new JLabel("Game N' Stuff");
 		lblGameAndStuff.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lblGameAndStuff);
+	}
+
+	public JLabel getLblGameAndStuff() {
+		return lblGameAndStuff;
+	}
+
+	public void setLblGameAndStuff(JLabel lblGameAndStuff) {
+		this.lblGameAndStuff = lblGameAndStuff;
 	}
 }
