@@ -155,6 +155,11 @@ public abstract class Piece {
 	{
 		this.twoTileIndex = twoTileIndex;
 	}
+	
+	public Vector<Tile> getValidMoves()
+	{
+		return validTileMoves;
+	}
 
 	/**  
 	 * moves the piece from one tile to another

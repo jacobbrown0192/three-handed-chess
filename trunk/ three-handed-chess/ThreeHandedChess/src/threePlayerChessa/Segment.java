@@ -64,6 +64,9 @@ public class Segment {
 		}
 	}
 
+	
+	
+	
 	/**
 	 * @return the tile chosen
 	 */
