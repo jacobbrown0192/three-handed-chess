@@ -207,9 +207,9 @@ public class MainConstruct {
 		gameController = aGameController;		
 				
 		//player thread construction
-		Turn aplayer1 = new Turn(theGame,gameTeams.elementAt(0));
-		Turn aplayer2 = new Turn(theGame,gameTeams.elementAt(1));
-		Turn aplayer3 = new Turn(theGame,gameTeams.elementAt(2));		
+		Turn aplayer1 = new Turn(theGame, this.gameTeams.elementAt(0), this.gameTeams.elementAt(1), this.gameTeams.elementAt(2));
+		Turn aplayer2 = new Turn(theGame, this.gameTeams.elementAt(1), this.gameTeams.elementAt(0), this.gameTeams.elementAt(2));
+		Turn aplayer3 = new Turn(theGame, this.gameTeams.elementAt(2), this.gameTeams.elementAt(0), this.gameTeams.elementAt(1));		
 		player1 = aplayer1;
 		player2 = aplayer2;
 		player3 = aplayer3;

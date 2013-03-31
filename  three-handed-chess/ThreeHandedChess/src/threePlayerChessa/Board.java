@@ -15,6 +15,12 @@ public class Board {
 	public Vector<Piece> pieces = new Vector<Piece>();
 	public Vector<Team> gameTeams = new Vector<Team>();
 	
+	
+	public Vector<Section> getSections()
+	{
+		return this.sections;
+	}
+	
 	/**  
 	 * @return Section at 0
 	 */

@@ -7,7 +7,9 @@ package threePlayerChessa;
 public class Turn extends Thread {
 	private Game theGame; //the game its self which contains everything
 	public Team gameTeam; //the player of which this thread belongs
-	public boolean check; //tells if the player is in check
+	private Team opponent1;
+	private Team opponent2;
+	private boolean check; //tells if the player is in check
 	boolean validClick1;
 	boolean validClick2;
 	
@@ -16,10 +18,15 @@ public class Turn extends Thread {
 	 * Controller constructor
 	 * @param aGame - the game itself which contains everything.
 	 * @param aTeam - the player of which this thread belongs to.
+	 * @param opponent2 
+	 * @param opponent1 
 	 */
-	public Turn(Game aGame,Team aTeam){
+	public Turn(Game aGame,Team aTeam, Team opponent1, Team opponent2)
+	{
 		setTheGame(aGame);
 		gameTeam = aTeam;
+		this.opponent1 = opponent1;
+		this.opponent2 = opponent2;
 	}
 	
 	/**  
@@ -28,11 +35,27 @@ public class Turn extends Thread {
 	@Override public void run(){
 		while(getTheGame().gameController.isInProgress() == true){ // checks to see if the game is in progress
 			validClick1 = false;
-			validClick2 = false;
-			check = getTheGame().gameController.inCheck();
-			if (check){ //checks for player in check. update to come.
+			validClick2 = false;			
+			this.check = getTheGame().gameController.inCheck(gameTeam, opponent1, opponent2);
+			
+			if (this.check)
+			{
+				switch (gameTeam.getNumber())
+				{
+					case 1://red team
+						System.out.println("Red is in check");
+						break;
+					case 2://blue team
+						System.out.println("Blue is in check");
+						break;
+					case 3://green team
+						System.out.println("Green is in check");
+						break;
+				}
+				//System.out.println("You are in Check.");
 				//check for checkmate
 			}
+			
 			Tile select1 = null;
 			Tile select2 = null;
 			if((getTheGame().gameController.turnCount % 3) == (gameTeam.getNumber() - 1))//checks to see if its current players turn
@@ -178,6 +201,29 @@ public class Turn extends Thread {
 	public void setTheGame(Game theGame) {
 		this.theGame = theGame;
 	}
+	
+	public Team getGameTeam()
+	{
+		return this.gameTeam;
+	}
 
+	public Team getOpponent1()
+	{
+		return this.opponent1;
+	}
 
+	public Team getOpponent2()
+	{
+		return this.opponent2;
+	}
+	
+	public void setCheck(boolean check)
+	{
+		this.check = check;
+	}
+	
+	public boolean getCheck()
+	{
+		return this.check;
+	}
 }

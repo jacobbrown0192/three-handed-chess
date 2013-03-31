@@ -129,7 +129,7 @@ public class Pawn extends Piece {
 						twoTileIndex = this.validTileMoves.size() - 1; 
 					}
 					//Can you hop?
-					if(this.tilesMoved < 3 && temp.hop != null && (temp.hop.getPiece() == null || temp.hop.getPiece().getPlayer() != this.getPlayer()))
+					if(this.tilesMoved < 3 && temp.hop != null && (temp.hop.getPiece() == null)) // || temp.hop.getPiece().getPlayer() != this.getPlayer()))
 					{
 						this.validTileMoves.add(temp.hop);
 					}
@@ -224,7 +224,7 @@ public class Pawn extends Piece {
 						this.setTwoTileIndex(this.validTileMoves.size() - 1);
 					}
 					//Can you hop?
-					if(temp.hop != null && (temp.hop.getPiece() == null || temp.hop.getPiece().getPlayer() != this.getPlayer()))
+					if(temp.hop != null && (temp.hop.getPiece() == null)) // || temp.hop.getPiece().getPlayer() != this.getPlayer()))
 					{
 						this.validTileMoves.add(temp.hop);
 					}
