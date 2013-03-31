@@ -60,6 +60,7 @@ public class Turn extends Thread {
 			Tile select2 = null;
 			if((getTheGame().gameController.turnCount % 3) == (gameTeam.getNumber() - 1))//checks to see if its current players turn
 			{ 
+				theGame.tBoardGUI.getLblGameAndStuff().setText(gameTeam.getName());
 				if(getTheGame().click1 != null)//check for first click
 				{ 
 					
