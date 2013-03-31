@@ -97,8 +97,8 @@ public class MainConstruct {
 		teamPieces1.add(rook11);
 		teamPieces1.add(knight11);
 		teamPieces1.add(bishop11);
-		teamPieces1.add(king1);
 		teamPieces1.add(queen11);
+		teamPieces1.add(king1);
 		teamPieces1.add(bishop21);
 		teamPieces1.add(knight21);
 		teamPieces1.add(rook21);
@@ -135,8 +135,8 @@ public class MainConstruct {
 		teamPieces2.add(rook12);
 		teamPieces2.add(knight12);
 		teamPieces2.add(bishop12);
-		teamPieces2.add(king2);
 		teamPieces2.add(queen12);
+		teamPieces2.add(king2);
 		teamPieces2.add(bishop22);
 		teamPieces2.add(knight22);
 		teamPieces2.add(rook22);
@@ -174,8 +174,8 @@ public class MainConstruct {
 		teamPieces3.add(rook13);
 		teamPieces3.add(knight13);
 		teamPieces3.add(bishop13);
-		teamPieces3.add(king3);
 		teamPieces3.add(queen13);
+		teamPieces3.add(king3);
 		teamPieces3.add(bishop23);
 		teamPieces3.add(knight23);
 		teamPieces3.add(rook23);
