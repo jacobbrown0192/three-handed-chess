@@ -54,21 +54,21 @@ public class Controller {
 	/**
 	 * @return the whether in check
 	 */
-	public boolean inCheck(Team me, Team opponent1, Team opponent2)
+	public boolean inCheck(Team me, Team opponent1, Team opponent2, Board board)
 	{
 		boolean result = false;
 		Vector<Tile> opponentMoves =  new Vector<Tile>();
 		Vector<Tile> kingPosition = new Vector<Tile>();
 		Vector<Tile> myMoves = new Vector<Tile>();
 		//Find everywhere your opponents can go and add them to a vector
-		opponentMoves.addAll(allPossibleMoves(opponent1));
-		opponentMoves.addAll(allPossibleMoves(opponent2));
+		opponentMoves.addAll(allPossibleMoves(opponent1, board));
+		opponentMoves.addAll(allPossibleMoves(opponent2, board));
 		
 		//Find everywhere you can go and add them to a vector
-		myMoves.addAll(allPossibleMoves(me));
+		myMoves.addAll(allPossibleMoves(me, board));
 		
 		//Find where your king is
-		kingPosition.addAll(findKingPosition(me));
+		kingPosition.addAll(findKingPosition(me, board));
 		
 		//Check to see if an opponent is attacking your king
 		for (int i = 0; i < opponentMoves.size(); i++)
@@ -89,7 +89,7 @@ public class Controller {
 		return result;
 	}
 
-	private Vector<Tile> findKingPosition(Team team)
+	private Vector<Tile> findKingPosition(Team team, Board board)
 	{
 		Vector<Tile> moves = new Vector<Tile>();
 		
@@ -99,12 +99,12 @@ public class Controller {
 			{
 				for(int k =0; k<16; k++)
 				{
-					if (this.theGame.getTheBoard().getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece() != null)
+					if (board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece() != null)
 					{
-						if (this.theGame.getTheBoard().getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getPlayer() == team
-								&& this.theGame.getTheBoard().getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getPieceType() == PieceType.KING)
+						if (board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getPlayer() == team
+								&& board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getPieceType() == PieceType.KING)
 						{
-							moves.add(this.theGame.getTheBoard().getSections().elementAt(i).getSegments().elementAt(j).getTiles(k));
+							moves.add(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k));
 							return moves;
 						}
 					}
@@ -114,7 +114,7 @@ public class Controller {
 		return null;
 	}
 
-	private Vector<Tile> allPossibleMoves(Team team)
+	private Vector<Tile> allPossibleMoves(Team team, Board board)
 	{
 		Vector<Tile> moves = new Vector<Tile>();
 		
@@ -124,12 +124,12 @@ public class Controller {
 			{
 				for(int k =0; k<16; k++)
 				{
-					if (this.theGame.getTheBoard().getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece() != null)
+					if (board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece() != null)
 					{
-						if (this.theGame.getTheBoard().getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getPlayer() == team)
+						if (board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getPlayer() == team)
 						{
-							this.theGame.getTheBoard().getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().possibleMoves();
-							moves.addAll(this.theGame.getTheBoard().getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getValidMoves());
+							board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().possibleMoves();
+							moves.addAll(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getValidMoves());
 						}
 					}
 				}

@@ -36,7 +36,7 @@ public class Turn extends Thread {
 		while(getTheGame().gameController.isInProgress() == true){ // checks to see if the game is in progress
 			validClick1 = false;
 			validClick2 = false;			
-			this.check = getTheGame().gameController.inCheck(gameTeam, opponent1, opponent2);
+			this.check = false;//getTheGame().gameController.inCheck(gameTeam, opponent1, opponent2);
 			
 			if (this.check)
 			{
@@ -54,6 +54,9 @@ public class Turn extends Thread {
 				}
 				//System.out.println("You are in Check.");
 				//check for checkmate
+				
+				//make a copy of board
+				Board deepCopyBoard = new Board(getTheGame().theBoard);
 			}
 			
 			Tile select1 = null;
