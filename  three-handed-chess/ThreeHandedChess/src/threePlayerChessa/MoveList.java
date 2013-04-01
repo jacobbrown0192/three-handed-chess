@@ -5,45 +5,44 @@ package threePlayerChessa;
  *This class will be updated to allow for this
  */
 public class MoveList {
-	int number;	//the move number coordinate
-	int letter; //the move letter coordiante 
+	private Tile tile;//the move letter coordiante 
+	private Piece piece; //the piece moved
 	
 
-	/**
-	 * @return the number
-	 */
-	public int getNumber() {
-		return number;
-	}
-	/**
-	 * @param number - used to set number
-	 */
-	public void setNumber(int number) {
-		this.number = number;
-	}
-
-	/**
-	 * @return the letter
-	 */
-	public int getLetter() {
-		return letter;
-	}
-	/**
-	 * @param letter - used to set letter
-	 */
-	public void setLetter(int letter) {
-		this.letter = letter;
-	}
 
 
+	/**
+	 * @return the tile
+	 */
+	public Tile getTile() {
+		return tile;
+	}
+	/**
+	 * @param tile - used to set tile
+	 */
+	public void setTile(Tile tile) {
+		this.tile = tile;
+	}
+	/**
+	 * @return the piece
+	 */
+	public Piece getPiece() {
+		return piece;
+	}
+	/**
+	 * @param piece - used to set piece
+	 */
+	public void setPiece(Piece piece) {
+		this.piece = piece;
+	}
 	/**
 	 * MoveList constructor
 	 * @param num - the number coordinate
 	 * @param let - the letter coordinate
 	 */
-	public MoveList(int number, int letter) {
-		this.number = number;
-		this.letter = letter;
+	public MoveList(Tile tile, Piece piece) {
+		this.tile = tile;
+		this.piece = piece;
 	}
 	
 }
