@@ -298,6 +298,7 @@ public class Rook extends Piece {
 					this.validTileMoves.add(temp.hop);
 					temp = temp.hop;
 					
+					if(temp.getPiece() == null){
 					if(temp.getPiece() == null )
 					{
 
@@ -422,9 +423,8 @@ public class Rook extends Piece {
 						}
 					}
 					
-				}
-				
-				
+				}	
+			}
 	}
 	
 }
