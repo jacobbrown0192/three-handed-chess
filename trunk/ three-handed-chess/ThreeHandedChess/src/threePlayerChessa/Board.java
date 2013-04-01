@@ -336,16 +336,16 @@ public class Board {
 							{
 								if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getName() == team2.pieces.elementAt(l).getName())
 								{
-									this.gameTeams.elementAt(0).pieces.elementAt(l).setCurrentTile(this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k));
-									this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).setPiece(this.gameTeams.elementAt(0).pieces.elementAt(l));
+									this.gameTeams.elementAt(1).pieces.elementAt(l).setCurrentTile(this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k));
+									this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).setPiece(this.gameTeams.elementAt(1).pieces.elementAt(l));
 								}
 							}
 							else if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getPlayer() == board.gameTeams.elementAt(2))
 							{
 								if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getName() == team3.pieces.elementAt(l).getName())
 								{
-									this.gameTeams.elementAt(0).pieces.elementAt(l).setCurrentTile(this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k));
-									this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).setPiece(this.gameTeams.elementAt(0).pieces.elementAt(l));
+									this.gameTeams.elementAt(2).pieces.elementAt(l).setCurrentTile(this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k));
+									this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).setPiece(this.gameTeams.elementAt(2).pieces.elementAt(l));
 								}
 							}
 						}
