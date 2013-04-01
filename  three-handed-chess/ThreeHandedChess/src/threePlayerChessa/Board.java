@@ -4,6 +4,7 @@ import java.util.Vector;
 
 import threePlayerChessa.Section;
 import threePlayerChessa.Piece;
+import threePlayerChessa.Piece.PieceType;
 
 
 /**  
@@ -92,6 +93,267 @@ public class Board {
 			}
 		}
 	}
+	
+	/** Board copy constructor
+	 * <p>Performs a deep copy of a Board.
+	 * 
+	 * @param board - the board being copied
+	 */
+	public Board(Board board)
+	{
+		Tile temp = null;
+		Tile thisTemp = null;
+		
+		Human team1 = new Human(1,"Player 1",1,this,null);
+		Human team2 = new Human(2,"Player 2",2,this,null);
+		Human team3 = new Human(3,"Player 3",3,this,null);
+		
+		this.gameTeams.add(team1);
+		this.gameTeams.add(team2);
+		this.gameTeams.add(team3);
+		
+		Section temp1 = new Section(4,1,4,1,8,5,gameTeams.elementAt(0),this);// bottom section
+		sections.add(0, temp1);
+		Section temp2 = new Section(8,5,12,9,4,1,gameTeams.elementAt(1),this);// left section
+		sections.add(1, temp2);
+		Section temp3 = new Section(12,9,8,5,12,9,gameTeams.elementAt(2),this);// right section
+		sections.add(2, temp3);
+		
+		TileRelations tileRelations = new TileRelations();
+		
+		for(int relate = 1; relate<97;relate++)
+		{
+			for( int i = 0; i<3; i++)
+			{
+				for(int j = 0; j<2; j++)
+				{
+					for(int k =0; k<16; k++)
+					{
+						if(this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).getLetter() == tileRelations.relations[relate][0][2] &&
+						   this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).getNumber() == tileRelations.relations[relate][0][1]){
+								thisTemp = this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k);
+						}
+					}
+				}
+			}
+			
+			for(int l =1; l<14; l++)
+			{
+				temp = null;						
+				for(int x =0; x < 3; x++)
+				{
+					for(int y =0; y<2;y++)
+					{
+						for(int z=0; z<16;z++)
+						{
+							if(this.sections.elementAt(x).segments.elementAt(y).tiles.elementAt(z).getLetter() == tileRelations.relations[relate][l][2] &&
+								this.sections.elementAt(x).segments.elementAt(y).tiles.elementAt(z).getNumber() == tileRelations.relations[relate][l][1]){
+								temp = this.sections.elementAt(x).segments.elementAt(y).tiles.elementAt(z);
+							}
+						}
+					}
+				}
+				
+				if(l==1){
+					thisTemp.up = temp;
+				}
+				else if(l==2){
+					thisTemp.down = temp;
+				}
+				else if(l==3){
+					thisTemp.left = temp;
+				}
+				else if(l==4){
+					thisTemp.right = temp;
+				}
+				else if(l==5){
+					thisTemp.downleft = temp;
+				}
+				else if(l==6){
+					thisTemp.downright = temp;
+				}
+				else if(l==7){
+					thisTemp.upleft = temp;
+				}
+				else if(l==8){
+					thisTemp.upright = temp;
+				}
+				else if(l==9){
+					thisTemp.hop = temp;
+				}
+				else if(l==10){
+					thisTemp.specialup = temp;
+				}
+				else if(l==11){
+					thisTemp.specialdown = temp;
+				}
+				else if(l==12){
+					thisTemp.specialleft = temp;
+				}
+				else if(l==13){
+					thisTemp.specialright = temp;
+				}
+			}
+		}
+				
+		//adding pieces to teams
+		Vector<Piece> teamPieces1 = new Vector<Piece>();
+		Vector<Piece> teamPieces2 = new Vector<Piece>();
+		Vector<Piece> teamPieces3 = new Vector<Piece>();
+		
+		Pawn pawn11 = new Pawn(this.gameTeams.elementAt(0),"Pawn1",this,null,PieceType.PAWN);
+		Pawn pawn21 = new Pawn(this.gameTeams.elementAt(0),"Pawn2",this,null,PieceType.PAWN);
+		Pawn pawn31 = new Pawn(this.gameTeams.elementAt(0),"Pawn3",this,null,PieceType.PAWN);
+		Pawn pawn41 = new Pawn(this.gameTeams.elementAt(0),"Pawn4",this,null,PieceType.PAWN);
+		Pawn pawn51 = new Pawn(this.gameTeams.elementAt(0),"Pawn5",this,null,PieceType.PAWN);
+		Pawn pawn61 = new Pawn(this.gameTeams.elementAt(0),"Pawn6",this,null,PieceType.PAWN);
+		Pawn pawn71 = new Pawn(this.gameTeams.elementAt(0),"Pawn7",this,null,PieceType.PAWN);
+		Pawn pawn81 = new Pawn(this.gameTeams.elementAt(0),"Pawn8",this,null,PieceType.PAWN);
+		Rook rook11 = new Rook(this.gameTeams.elementAt(0),"Rook1",this,null,PieceType.ROOK);
+		Knight knight11 = new Knight(this.gameTeams.elementAt(0),"Knight1",this,null,PieceType.KNIGHT);
+		Bishop bishop11 = new Bishop(this.gameTeams.elementAt(0),"Bishop1",this,null,PieceType.BISHOP);
+		King king1 = new King(this.gameTeams.elementAt(0),"King",this,null,PieceType.KING);
+		Queen queen11 = new Queen(this.gameTeams.elementAt(0),"Queen1",this,null,PieceType.QUEEN);
+		Bishop bishop21 = new Bishop(this.gameTeams.elementAt(0),"Bishop2",this,null,PieceType.BISHOP);
+		Knight knight21 = new Knight(this.gameTeams.elementAt(0),"Knight2",this,null,PieceType.KNIGHT);
+		Rook rook21 = new Rook(this.gameTeams.elementAt(0),"Rook2",this,null,PieceType.ROOK);
+		
+		teamPieces1.add(pawn11);
+		teamPieces1.add(pawn21);
+		teamPieces1.add(pawn31);
+		teamPieces1.add(pawn41);
+		teamPieces1.add(pawn51);
+		teamPieces1.add(pawn61);
+		teamPieces1.add(pawn71);
+		teamPieces1.add(pawn81);
+		teamPieces1.add(rook11);
+		teamPieces1.add(knight11);
+		teamPieces1.add(bishop11);
+		teamPieces1.add(king1);
+		teamPieces1.add(queen11);
+		teamPieces1.add(bishop21);
+		teamPieces1.add(knight21);
+		teamPieces1.add(rook21);
+		
+		team1.addFullTeam(teamPieces1);
+				
+		Pawn pawn12 = new Pawn(this.gameTeams.elementAt(1),"Pawn1",this,null,PieceType.PAWN);
+		Pawn pawn22 = new Pawn(this.gameTeams.elementAt(1),"Pawn2",this,null,PieceType.PAWN);
+		Pawn pawn32 = new Pawn(this.gameTeams.elementAt(1),"Pawn3",this,null,PieceType.PAWN);
+		Pawn pawn42 = new Pawn(this.gameTeams.elementAt(1),"Pawn4",this,null,PieceType.PAWN);
+		Pawn pawn52 = new Pawn(this.gameTeams.elementAt(1),"Pawn5",this,null,PieceType.PAWN);
+		Pawn pawn62 = new Pawn(this.gameTeams.elementAt(1),"Pawn6",this,null,PieceType.PAWN);
+		Pawn pawn72 = new Pawn(this.gameTeams.elementAt(1),"Pawn7",this,null,PieceType.PAWN);
+		Pawn pawn82 = new Pawn(this.gameTeams.elementAt(1),"Pawn8",this,null,PieceType.PAWN);
+		Rook rook12 = new Rook(this.gameTeams.elementAt(1),"Rook1",this,null,PieceType.ROOK);
+		Knight knight12 = new Knight(this.gameTeams.elementAt(1),"Knight1",this,null,PieceType.KNIGHT);
+		Bishop bishop12 = new Bishop(this.gameTeams.elementAt(1),"Bishop1",this,null,PieceType.BISHOP);
+		King king2 = new King(this.gameTeams.elementAt(1),"King",this,null,PieceType.KING);
+		Queen queen12 = new Queen(this.gameTeams.elementAt(1),"Queen1",this,null,PieceType.QUEEN);
+		Bishop bishop22 = new Bishop(this.gameTeams.elementAt(1),"Bishop2",this,null,PieceType.BISHOP);
+		Knight knight22 = new Knight(this.gameTeams.elementAt(1),"Knight2",this,null,PieceType.KNIGHT);
+		Rook rook22 = new Rook(this.gameTeams.elementAt(1),"Rook2",this,null,PieceType.ROOK);
+		
+		teamPieces2.add(pawn12);
+		teamPieces2.add(pawn22);
+		teamPieces2.add(pawn32);
+		teamPieces2.add(pawn42);
+		teamPieces2.add(pawn52);
+		teamPieces2.add(pawn62);
+		teamPieces2.add(pawn72);
+		teamPieces2.add(pawn82);
+		teamPieces2.add(rook12);
+		teamPieces2.add(knight12);
+		teamPieces2.add(bishop12);
+		teamPieces2.add(king2);
+		teamPieces2.add(queen12);
+		teamPieces2.add(bishop22);
+		teamPieces2.add(knight22);
+		teamPieces2.add(rook22);
+			
+		team2.addFullTeam(teamPieces2);
+
+		Pawn pawn13 = new Pawn(this.gameTeams.elementAt(2),"Pawn1",this,null,PieceType.PAWN);
+		Pawn pawn23 = new Pawn(this.gameTeams.elementAt(2),"Pawn2",this,null,PieceType.PAWN);
+		Pawn pawn33 = new Pawn(this.gameTeams.elementAt(2),"Pawn3",this,null,PieceType.PAWN);
+		Pawn pawn43 = new Pawn(this.gameTeams.elementAt(2),"Pawn4",this,null,PieceType.PAWN);
+		Pawn pawn53 = new Pawn(this.gameTeams.elementAt(2),"Pawn5",this,null,PieceType.PAWN);
+		Pawn pawn63 = new Pawn(this.gameTeams.elementAt(2),"Pawn6",this,null,PieceType.PAWN);
+		Pawn pawn73 = new Pawn(this.gameTeams.elementAt(2),"Pawn7",this,null,PieceType.PAWN);
+		Pawn pawn83 = new Pawn(this.gameTeams.elementAt(2),"Pawn8",this,null,PieceType.PAWN);
+		Rook rook13 = new Rook(this.gameTeams.elementAt(2),"Rook1",this,null,PieceType.ROOK);
+		Knight knight13 = new Knight(this.gameTeams.elementAt(2),"Knight1",this,null,PieceType.KNIGHT);
+		Bishop bishop13 = new Bishop(this.gameTeams.elementAt(2),"Bishop1",this,null,PieceType.BISHOP);
+		King king3 = new King(this.gameTeams.elementAt(2),"King",this,null,PieceType.KING);
+		Queen queen13 = new Queen(this.gameTeams.elementAt(2),"Queen1",this,null,PieceType.QUEEN);
+		Bishop bishop23 = new Bishop(this.gameTeams.elementAt(2),"Bishop2",this,null,PieceType.BISHOP);
+		Knight knight23 = new Knight(this.gameTeams.elementAt(2),"Knight2",this,null,PieceType.KNIGHT);
+		Rook rook23 = new Rook(this.gameTeams.elementAt(2),"Rook2",this,null,PieceType.ROOK);
+		
+		teamPieces3.add(pawn13);
+		teamPieces3.add(pawn23);
+		teamPieces3.add(pawn33);
+		teamPieces3.add(pawn43);
+		teamPieces3.add(pawn53);
+		teamPieces3.add(pawn63);
+		teamPieces3.add(pawn73);
+		teamPieces3.add(pawn83);
+		teamPieces3.add(rook13);
+		teamPieces3.add(knight13);
+		teamPieces3.add(bishop13);
+		teamPieces3.add(king3);
+		teamPieces3.add(queen13);
+		teamPieces3.add(bishop23);
+		teamPieces3.add(knight23);
+		teamPieces3.add(rook23);
+		
+		team3.addFullTeam(teamPieces3);
+			
+		team1.addboard(this);
+		team2.addboard(this);
+		team3.addboard(this);
+		
+		//Add Pieces to new board based on piece positions of old board
+		for(int i = 0; i < 3; i++)
+		{
+			for(int j = 0; j < 2; j++)
+			{
+				for(int k = 0; k < 16; k++)
+				{
+					for(int l = 0; l < 16; l++)
+					{
+						if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece() != null)
+						{
+							if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getPlayer() == board.gameTeams.elementAt(0))
+							{
+								if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getName() == team1.pieces.elementAt(l).getName())
+								{
+									this.gameTeams.elementAt(0).pieces.elementAt(l).setCurrentTile(this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k));
+									this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).setPiece(this.gameTeams.elementAt(0).pieces.elementAt(l));
+								}
+							}
+							else if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getPlayer() == board.gameTeams.elementAt(1))
+							{
+								if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getName() == team2.pieces.elementAt(l).getName())
+								{
+									this.gameTeams.elementAt(0).pieces.elementAt(l).setCurrentTile(this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k));
+									this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).setPiece(this.gameTeams.elementAt(0).pieces.elementAt(l));
+								}
+							}
+							else if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getPlayer() == board.gameTeams.elementAt(2))
+							{
+								if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getName() == team3.pieces.elementAt(l).getName())
+								{
+									this.gameTeams.elementAt(0).pieces.elementAt(l).setCurrentTile(this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k));
+									this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).setPiece(this.gameTeams.elementAt(0).pieces.elementAt(l));
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 
 	/**  
 	 * Board constructor
@@ -100,7 +362,8 @@ public class Board {
 	 * 
 	 * Constructs each section clockwise
 	 */
-	public Board(Vector<Team> gameTeams) {
+	public Board(Vector<Team> gameTeams)
+	{
 		Tile temp = null;
 		Tile thisTemp = null;
 		this.gameTeams = gameTeams;
@@ -113,11 +376,14 @@ public class Board {
 		
 		TileRelations tileRelations = new TileRelations();
 		
-		for(int relate = 1; relate<97;relate++){
-			
-			for( int i = 0; i<3; i++){
-				for(int j = 0; j<2; j++){
-					for(int k =0; k<16; k++){
+		for(int relate = 1; relate<97;relate++)
+		{
+			for( int i = 0; i<3; i++)
+			{
+				for(int j = 0; j<2; j++)
+				{
+					for(int k =0; k<16; k++)
+					{
 						if(this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).getLetter() == tileRelations.relations[relate][0][2] &&
 						   this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).getNumber() == tileRelations.relations[relate][0][1]){
 								thisTemp = this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k);
@@ -125,61 +391,64 @@ public class Board {
 					}
 				}
 			}
-						for(int l =1; l<14; l++){
-							temp = null;						
-	
-							for(int x =0; x < 3; x++){
-								for(int y =0; y<2;y++){
-									for(int z=0; z<16;z++){
-										if(this.sections.elementAt(x).segments.elementAt(y).tiles.elementAt(z).getLetter() == tileRelations.relations[relate][l][2] &&
-											this.sections.elementAt(x).segments.elementAt(y).tiles.elementAt(z).getNumber() == tileRelations.relations[relate][l][1]){
-											temp = this.sections.elementAt(x).segments.elementAt(y).tiles.elementAt(z);
-										}
-									}
-								}
-							}
-							if(l==1){
-								thisTemp.up = temp;
-							}
-							if(l==2){
-								thisTemp.down = temp;
-							}
-							if(l==3){
-								thisTemp.left = temp;
-							}
-							if(l==4){
-								thisTemp.right = temp;
-							}
-							if(l==5){
-								thisTemp.downleft = temp;
-							}
-							if(l==6){
-								thisTemp.downright = temp;
-							}
-							if(l==7){
-								thisTemp.upleft = temp;
-							}
-							if(l==8){
-								thisTemp.upright = temp;
-							}
-							if(l==9){
-								thisTemp.hop = temp;
-							}
-							if(l==10){
-								thisTemp.specialup = temp;
-							}
-							if(l==11){
-								thisTemp.specialdown = temp;
-							}
-							if(l==12){
-								thisTemp.specialleft = temp;
-							}
-							if(l==13){
-								thisTemp.specialright = temp;
+			
+			for(int l =1; l<14; l++)
+			{
+				temp = null;						
+				for(int x =0; x < 3; x++)
+				{
+					for(int y =0; y<2;y++)
+					{
+						for(int z=0; z<16;z++)
+						{
+							if(this.sections.elementAt(x).segments.elementAt(y).tiles.elementAt(z).getLetter() == tileRelations.relations[relate][l][2] &&
+								this.sections.elementAt(x).segments.elementAt(y).tiles.elementAt(z).getNumber() == tileRelations.relations[relate][l][1]){
+								temp = this.sections.elementAt(x).segments.elementAt(y).tiles.elementAt(z);
 							}
 						}
+					}
+				}
+				
+				if(l==1){
+					thisTemp.up = temp;
+				}
+				else if(l==2){
+					thisTemp.down = temp;
+				}
+				else if(l==3){
+					thisTemp.left = temp;
+				}
+				else if(l==4){
+					thisTemp.right = temp;
+				}
+				else if(l==5){
+					thisTemp.downleft = temp;
+				}
+				else if(l==6){
+					thisTemp.downright = temp;
+				}
+				else if(l==7){
+					thisTemp.upleft = temp;
+				}
+				else if(l==8){
+					thisTemp.upright = temp;
+				}
+				else if(l==9){
+					thisTemp.hop = temp;
+				}
+				else if(l==10){
+					thisTemp.specialup = temp;
+				}
+				else if(l==11){
+					thisTemp.specialdown = temp;
+				}
+				else if(l==12){
+					thisTemp.specialleft = temp;
+				}
+				else if(l==13){
+					thisTemp.specialright = temp;
+				}
+			}
 		}
 	}
-
-
 }
