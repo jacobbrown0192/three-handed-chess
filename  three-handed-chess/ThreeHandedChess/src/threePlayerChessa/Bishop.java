@@ -45,7 +45,10 @@ public class Bishop extends Piece {
 			}
 		}
 		
-		if (validMove){	//moves piece
+		if (validMove)
+		{	//moves piece
+			boolean check = player.getTheGame().getGameController().putIntoCheck(aStartTile, aMoveTile);
+			
 			if(aMoveTile.getPiece() != null){	// sets pieces current tile on aMoveTile to null
 				aMoveTile.getPiece().setCurrentTile(null);
 			}
