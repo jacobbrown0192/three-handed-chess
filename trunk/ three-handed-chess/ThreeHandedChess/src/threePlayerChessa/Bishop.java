@@ -35,12 +35,13 @@ public class Bishop extends Piece {
 	public void move(Tile aStartTile, Tile aMoveTile, Turn player) 
 	{
 		boolean validMove = false;
-		player.getTheGame().click1 = null;
+
 		player.getTheGame().click2 = null;
 
 		for(int i=0; i<validTileMoves.size();i++){
 			if(aMoveTile == validTileMoves.elementAt(i)){
 				validMove = true;
+				player.getTheGame().click1 = null;
 			}
 		}
 		
@@ -53,6 +54,7 @@ public class Bishop extends Piece {
 			aMoveTile.getPiece().setCurrentTile(aMoveTile);
 			player.getTheGame().boardGUI.setTileIcons();
 			player.getTheGame().gameController.addToCounter(); //adds one to turn counter and starts the next players turn
+			this.player.addToMoveList(aMoveTile, this);
 		}
 		else{	//if not a valid move returns for player to choose new tiles
 			return;

@@ -15,6 +15,7 @@ public abstract class Piece {
 	Section section1;
 	Section section2;
 	boolean initialMove;
+	boolean jumpTwo;
 	int twoTileIndex;
 	int tilesMoved;
 	public Vector<Tile> validTileMoves = new Vector<Tile>();
@@ -140,7 +141,21 @@ public abstract class Piece {
 	public void setInitialMove(boolean initialMove) {
 		this.initialMove = initialMove;
 	}
-	
+		
+	/**
+	 * @return the jumpTwo
+	 */
+	public boolean isJumpTwo() {
+		return jumpTwo;
+	}
+
+	/**
+	 * @param jumpTwo - used to set jumpTwo
+	 */
+	public void setJumpTwo(boolean jumpTwo) {
+		this.jumpTwo = jumpTwo;
+	}
+
 	public int getTilesMoved()
 	{
 		return tilesMoved;

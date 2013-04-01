@@ -9,7 +9,7 @@ import threePlayerChessa.Piece;
 public class Team {
 	private int colour; //piece colour 
 	private String name; //name of the player
-	private Vector<MoveList> moves = new Vector<MoveList>(); //list of moves made during game
+	public Vector<MoveList> moves = new Vector<MoveList>(); //list of moves made during game
 	private int number; //the players number. used for play order
 	public Vector<Piece> pieces = new Vector<Piece>(); //pieces belonging to this player
 	public Board theBoard; //the board of the game
@@ -108,8 +108,8 @@ public class Team {
 	 * @param num - used to add a move to list
 	 * @param let - used to add a move to list
 	 */
-	public void addToMoveList(int num, int let){
-		MoveList temp = new MoveList(num,let);
+	public void addToMoveList(Tile tile, Piece piece){
+		MoveList temp = new MoveList(tile,piece);
 		moves.add(temp);
 	}
 	
@@ -158,6 +158,7 @@ public class Team {
 				startTile.getPiece().setTwoTileIndex(-1);
 				startTile.getPiece().setSection2(null);
 				startTile.getPiece().setSection2(temp);
+				startTile.getPiece().setJumpTwo(false);
 				piece++;
 			}
 			for(int i = 0; i <4; i++){
@@ -169,6 +170,7 @@ public class Team {
 				startTile.getPiece().setTwoTileIndex(-1);
 				startTile.getPiece().setSection2(null);
 				startTile.getPiece().setSection2(temp);
+				startTile.getPiece().setJumpTwo(false);
 				piece++;
 			}
 			for(int i = 0; i <4; i++){
@@ -180,6 +182,7 @@ public class Team {
 				startTile.getPiece().setTwoTileIndex(-1);
 				startTile.getPiece().setSection2(null);
 				startTile.getPiece().setSection2(temp);
+				startTile.getPiece().setJumpTwo(false);
 				piece++;
 			}
 			for(int i = 0; i <4; i++){
@@ -191,6 +194,7 @@ public class Team {
 				startTile.getPiece().setTwoTileIndex(-1);
 				startTile.getPiece().setSection2(null);
 				startTile.getPiece().setSection2(temp);
+				startTile.getPiece().setJumpTwo(false);
 				piece++;
 			}
 			
@@ -206,6 +210,7 @@ public class Team {
 				startTile.getPiece().setTwoTileIndex(-1);
 				startTile.getPiece().setSection2(null);
 				startTile.getPiece().setSection2(temp);
+				startTile.getPiece().setJumpTwo(false);
 				piece++;
 			}
 			for(int i = 0; i <4; i++){
@@ -217,6 +222,7 @@ public class Team {
 				startTile.getPiece().setTwoTileIndex(-1);
 				startTile.getPiece().setSection2(null);
 				startTile.getPiece().setSection2(temp);
+				startTile.getPiece().setJumpTwo(false);
 				piece++;
 			}
 			for(int i = 0; i <4; i++){
@@ -228,6 +234,7 @@ public class Team {
 				startTile.getPiece().setTwoTileIndex(-1);
 				startTile.getPiece().setSection2(null);
 				startTile.getPiece().setSection2(temp);
+				startTile.getPiece().setJumpTwo(false);
 				piece++;
 			}
 			for(int i = 0; i <4; i++){
@@ -239,6 +246,7 @@ public class Team {
 				startTile.getPiece().setTwoTileIndex(-1);
 				startTile.getPiece().setSection2(null);
 				startTile.getPiece().setSection2(temp);
+				startTile.getPiece().setJumpTwo(false);
 				piece++;
 			}
 			
@@ -255,6 +263,7 @@ public class Team {
 				startTile.getPiece().setTwoTileIndex(-1);
 				startTile.getPiece().setSection2(null);
 				startTile.getPiece().setSection2(temp);
+				startTile.getPiece().setJumpTwo(false);
 				piece++;
 			}
 			for(int i = 0; i <4; i++){
@@ -266,6 +275,7 @@ public class Team {
 				startTile.getPiece().setTwoTileIndex(-1);
 				startTile.getPiece().setSection2(null);
 				startTile.getPiece().setSection2(temp);
+				startTile.getPiece().setJumpTwo(false);
 				piece++;
 			}
 			for(int i = 0; i <4; i++){
@@ -277,6 +287,7 @@ public class Team {
 				startTile.getPiece().setTwoTileIndex(-1);
 				startTile.getPiece().setSection2(null);
 				startTile.getPiece().setSection2(temp);
+				startTile.getPiece().setJumpTwo(false);
 				piece++;
 			}
 			for(int i = 0; i <4; i++){
@@ -288,6 +299,7 @@ public class Team {
 				startTile.getPiece().setTwoTileIndex(-1);
 				startTile.getPiece().setSection2(null);
 				startTile.getPiece().setSection2(temp);
+				startTile.getPiece().setJumpTwo(false);
 				piece++;
 			}
 		}
