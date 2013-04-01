@@ -935,7 +935,7 @@ public class Queen extends Piece {
 		if(temp.hop != null){
 			this.validTileMoves.add(temp.hop);
 			temp = temp.hop;
-			
+			if(temp.getPiece() == null){
 			if(temp.getPiece() == null )
 			{
 
@@ -1061,6 +1061,7 @@ public class Queen extends Piece {
 			}
 			
 		}
+	}
 		
 		
 }
