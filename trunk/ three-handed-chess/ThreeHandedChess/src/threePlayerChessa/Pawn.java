@@ -65,7 +65,12 @@ public class Pawn extends Piece {
 		}	
 		
 		//check for valid move
-		if (validMove){
+		if (validMove)
+		{
+			boolean check = player.getTheGame().getGameController().putIntoCheck(aStartTile, aMoveTile);
+			
+			
+			
 			if(aMoveTile.getPiece() != null){	// sets pieces current tile on aMoveTile to null
 				aMoveTile.getPiece().setCurrentTile(null);
 			}
