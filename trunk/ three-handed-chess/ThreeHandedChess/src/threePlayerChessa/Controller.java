@@ -85,6 +85,14 @@ public class Controller {
 		
 		//If in check, check to see if in checkmate
 		//To be done...
+		kingPosition.elementAt(0).getPiece().possibleMoves();
+		if(result == true && kingPosition.elementAt(0).getPiece().validTileMoves.size() == 0)
+		{
+			
+		}
+		
+		
+		
 		
 		return result;
 	}
@@ -138,6 +146,73 @@ public class Controller {
 		
 		return moves;
 	}
+	
+	public boolean putIntoCheck(Tile aStartTile, Tile aMoveTile){
+		
+		//First check to see if the move will put you into check on a copy constructed board
+		Board checkBoard = new Board(theGame.getTheBoard());
+		int moveSection = -1, moveSegment = -1, moveTile = -1;
+		int startSection = -1, startSegment = -1, startTile = -1;
+		
+		//Search for tiles
+		for(int i = 0; i < 3; i++)
+		{
+			for(int j = 0; j < 2; j++)
+			{
+				for(int k = 0; k < 16; k++)
+				{
+					if(checkBoard.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getNumber() == aMoveTile.getNumber()
+					&& checkBoard.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getLetter() == aMoveTile.getLetter())
+					{
+						moveSection = i;
+						moveSegment = j;
+						moveTile = k;
+					}
+					
+					if(checkBoard.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getNumber() == aStartTile.getNumber()
+					&& checkBoard.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getLetter() == aStartTile.getLetter())
+					{
+						startSection = i;
+						startSegment = j;
+						startTile = k;
+					}
+				}
+			}
+		}
+		
+		if(checkBoard.getSections().elementAt(moveSection).getSegments().elementAt(moveSegment).getTiles(moveTile).getPiece() != null)
+		{
+			checkBoard.getSections().elementAt(moveSection).getSegments().elementAt(moveSegment).getTiles(moveTile).getPiece().setCurrentTile(null);
+		}
+
+		checkBoard.getSections().elementAt(moveSection).getSegments().elementAt(moveSegment).getTiles(moveTile).setPiece(checkBoard.getSections().elementAt(startSection).getSegments().elementAt(startSegment).getTiles(startTile).getPiece());
+		checkBoard.getSections().elementAt(startSection).getSegments().elementAt(startSegment).getTiles(startTile).setPiece(null);
+		checkBoard.getSections().elementAt(moveSection).getSegments().elementAt(moveSegment).getTiles(moveTile).getPiece().setCurrentTile(checkBoard.getSections().elementAt(moveSection).getSegments().elementAt(moveSegment).getTiles(moveTile));
+		
+		int myTeamNum = checkBoard.getSections().elementAt(moveSection).getSegments().elementAt(moveSegment).getTiles(moveTile).getPiece().getPlayer().getNumber();
+		boolean check = false;
+		
+		if(myTeamNum == 1)
+		{
+			check = theGame.gameController.inCheck(checkBoard.gameTeams.elementAt(0), checkBoard.gameTeams.elementAt(1), checkBoard.gameTeams.elementAt(2), checkBoard);
+		}
+		else if(myTeamNum == 2)
+		{
+			check = theGame.gameController.inCheck(checkBoard.gameTeams.elementAt(1), checkBoard.gameTeams.elementAt(0), checkBoard.gameTeams.elementAt(2), checkBoard);
+		}
+		else if(myTeamNum == 3)
+		{
+			check = theGame.gameController.inCheck(checkBoard.gameTeams.elementAt(2), checkBoard.gameTeams.elementAt(1), checkBoard.gameTeams.elementAt(0), checkBoard);
+		}
+		
+		if (check)
+		{
+			System.out.println("Holy Shit it actually worked!");
+		}
+		return check;
+		
+	}
+	
 }
 
 
