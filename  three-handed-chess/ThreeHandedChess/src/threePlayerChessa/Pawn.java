@@ -48,19 +48,14 @@ public class Pawn extends Piece {
 	public void move(Tile aStartTile, Tile aMoveTile, Turn player) {
 		boolean validMove = false;
 		player.getTheGame().click2 = null;
+		int tempTwoTileIndex = -1;
 		
 		for(int i=0; i<validTileMoves.size();i++)
 		{
 			if(aMoveTile == validTileMoves.elementAt(i))
 			{
 				validMove = true;
-				if(i == this.twoTileIndex)
-				{
-					this.setTilesMoved(this.getTilesMoved() + 2);
-					this.setTwoTileIndex(-1);
-				}
-				else this.setTilesMoved(this.getTilesMoved() + 1);
-				player.getTheGame().click1 = null;
+				tempTwoTileIndex = i;
 			}
 		}	
 		
@@ -71,6 +66,14 @@ public class Pawn extends Piece {
 			
 			if(!check)
 			{
+				if(tempTwoTileIndex == this.twoTileIndex)
+				{
+					this.setTilesMoved(this.getTilesMoved() + 2);
+					this.setTwoTileIndex(-1);
+				}
+				else this.setTilesMoved(this.getTilesMoved() + 1);
+				player.getTheGame().click1 = null;
+				
 				if(aMoveTile.getPiece() != null){	// sets pieces current tile on aMoveTile to null
 					aMoveTile.getPiece().setCurrentTile(null);
 				}
@@ -140,7 +143,7 @@ public class Pawn extends Piece {
 					{
 						this.validTileMoves.add(temp.upright);
 					}
-					if(temp.right != null && temp.right.getPiece() != null && temp.right.getPiece().getPlayer() != this.getPlayer() && temp.upright.getPiece() == null){
+					/*if(temp.right != null && temp.right.getPiece() != null && temp.right.getPiece().getPlayer() != this.getPlayer() && temp.upright.getPiece() == null){
 						if(temp.right.getPiece().getPlayer().moves.lastElement().getPiece() == temp.right.getPiece() && temp.right.getPiece().isJumpTwo() == true){
 							this.validTileMoves.add(temp.upright);
 						}
@@ -149,7 +152,7 @@ public class Pawn extends Piece {
 						if(temp.left.getPiece().getPlayer().moves.lastElement().getPiece() == temp.left.getPiece() && temp.left.getPiece().isJumpTwo() == true){
 							this.validTileMoves.add(temp.upleft);
 						}
-					}
+					}*/
 				}
 				else
 				{
@@ -226,7 +229,7 @@ public class Pawn extends Piece {
 						{
 							this.validTileMoves.add(temp.downright);
 						}
-						if(temp.right != null && temp.right.getPiece() != null && temp.right.getPiece().getPlayer() != this.getPlayer() && temp.downright.getPiece() == null){
+						/*if(temp.right != null && temp.right.getPiece() != null && temp.right.getPiece().getPlayer() != this.getPlayer() && temp.downright.getPiece() == null){
 							if(temp.right.getPiece().getPlayer().moves.lastElement().getPiece() == temp.right.getPiece() && temp.right.getPiece().isJumpTwo() == true){
 								this.validTileMoves.add(temp.downright);
 							}
@@ -235,7 +238,7 @@ public class Pawn extends Piece {
 							if(temp.left.getPiece().getPlayer().moves.lastElement().getPiece() == temp.left.getPiece() && temp.left.getPiece().isJumpTwo() == true){
 								this.validTileMoves.add(temp.downleft);
 							}
-						}
+						}*/
 					}
 					else if ((segNumId == 8 && segLetId == 4) || (segNumId == 8 && segLetId == 12) || (segNumId == 12 && segLetId == 12) || (segNumId == 12 && segLetId == 8))
 					{
@@ -255,7 +258,7 @@ public class Pawn extends Piece {
 						{
 							this.validTileMoves.add(temp.upright);
 						}
-						if(temp.right != null && temp.right.getPiece() != null && temp.right.getPiece().getPlayer() != this.getPlayer() && temp.upright.getPiece() == null){
+						/*if(temp.right != null && temp.right.getPiece() != null && temp.right.getPiece().getPlayer() != this.getPlayer() && temp.upright.getPiece() == null){
 							if(temp.right.getPiece().getPlayer().moves.lastElement().getPiece() == temp.right.getPiece() && temp.right.getPiece().isJumpTwo() == true){
 								this.validTileMoves.add(temp.upright);
 							}
@@ -264,7 +267,7 @@ public class Pawn extends Piece {
 							if(temp.left.getPiece().getPlayer().moves.lastElement().getPiece() == temp.left.getPiece() && temp.left.getPiece().isJumpTwo() == true){
 								this.validTileMoves.add(temp.upleft);
 							}
-						}
+						}*/
 					}
 				}
 				else //Still in our own section
@@ -327,8 +330,9 @@ public class Pawn extends Piece {
 	 */
 	public void selectQueen(Tile aTile){
 		aTile.getPiece().setCurrentTile(null);
-		Queen temp = new Queen(aTile.getPiece().getPlayer(),"Promoted Piece",theBoard,aTile,PieceType.QUEEN);
+		Queen temp = new Queen(aTile.getPiece().getPlayer(),"PromotedQueen",theBoard,aTile,PieceType.QUEEN);
 		aTile.setPiece(temp);
+		getTheBoard().promotedPieces.add(temp);
 	}
 
 	/**  
@@ -341,8 +345,9 @@ public class Pawn extends Piece {
 	 */
 	public void selectBishop(Tile aTile){
 		aTile.getPiece().setCurrentTile(null);
-		Bishop temp = new Bishop(aTile.getPiece().getPlayer(),"Promoted Piece",theBoard,aTile,PieceType.BISHOP);
+		Bishop temp = new Bishop(aTile.getPiece().getPlayer(),"PromotedBishop",theBoard,aTile,PieceType.BISHOP);
 		aTile.setPiece(temp);
+		getTheBoard().promotedPieces.add(temp);
 	}
 
 	/**  
@@ -355,8 +360,9 @@ public class Pawn extends Piece {
 	 */
 	public void selectKnight(Tile aTile){
 		aTile.getPiece().setCurrentTile(null);
-		Knight temp = new Knight(aTile.getPiece().getPlayer(),"Promoted Piece",theBoard,aTile,PieceType.KNIGHT);
+		Knight temp = new Knight(aTile.getPiece().getPlayer(),"PromotedKnight",theBoard,aTile,PieceType.KNIGHT);
 		aTile.setPiece(temp);
+		getTheBoard().promotedPieces.add(temp);
 	}
 	
 	/**  
@@ -369,8 +375,9 @@ public class Pawn extends Piece {
 	 */
 	public void selectRook(Tile aTile){
 		aTile.getPiece().setCurrentTile(null);
-		Rook temp = new Rook(aTile.getPiece().getPlayer(),"Promoted Piece",theBoard,aTile,PieceType.ROOK);
+		Rook temp = new Rook(aTile.getPiece().getPlayer(),"PromotedRook",theBoard,aTile,PieceType.ROOK);
 		aTile.setPiece(temp);
+		getTheBoard().promotedPieces.add(temp);
 	}
 
 }
