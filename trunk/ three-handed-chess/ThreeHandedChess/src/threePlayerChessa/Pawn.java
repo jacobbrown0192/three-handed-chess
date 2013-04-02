@@ -56,6 +56,7 @@ public class Pawn extends Piece {
 			{
 				validMove = true;
 				tempTwoTileIndex = i;
+				player.getTheGame().click1 = null;
 			}
 		}	
 		
@@ -72,7 +73,6 @@ public class Pawn extends Piece {
 					this.setTwoTileIndex(-1);
 				}
 				else this.setTilesMoved(this.getTilesMoved() + 1);
-				player.getTheGame().click1 = null;
 				
 				if(aMoveTile.getPiece() != null){	// sets pieces current tile on aMoveTile to null
 					aMoveTile.getPiece().setCurrentTile(null);
