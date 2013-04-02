@@ -400,8 +400,6 @@ public class Board {
 		team2.addboard(this);
 		team3.addboard(this);
 		
-		int tempLength = 16 + promotedPieces.size();
-		
 		//Add Pieces to new board based on piece positions of old board
 		for(int i = 0; i < 3; i++)
 		{
@@ -429,7 +427,7 @@ public class Board {
 										}
 										if(this.gameTeams.elementAt(0).pieces.elementAt(l).getPieceType() == PieceType.KING || this.gameTeams.elementAt(0).pieces.elementAt(l).getPieceType() == PieceType.ROOK)
 										{
-											this.gameTeams.elementAt(0).pieces.elementAt(l).initialMove = board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().initialMove;
+											this.gameTeams.elementAt(0).pieces.elementAt(l).setInitialMove(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().initialMove);
 										}
 									}
 								}
@@ -456,7 +454,7 @@ public class Board {
 										}
 										if(this.gameTeams.elementAt(1).pieces.elementAt(l).getPieceType() == PieceType.KING || this.gameTeams.elementAt(1).pieces.elementAt(l).getPieceType() == PieceType.ROOK)
 										{
-											this.gameTeams.elementAt(1).pieces.elementAt(l).initialMove = board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().initialMove;
+											this.gameTeams.elementAt(1).pieces.elementAt(l).setInitialMove(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().initialMove);
 										}
 									}
 								}
@@ -483,7 +481,7 @@ public class Board {
 										}
 										if(this.gameTeams.elementAt(2).pieces.elementAt(l).getPieceType() == PieceType.KING || this.gameTeams.elementAt(2).pieces.elementAt(l).getPieceType() == PieceType.ROOK)
 										{
-											this.gameTeams.elementAt(2).pieces.elementAt(l).initialMove = board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().initialMove;
+											this.gameTeams.elementAt(2).pieces.elementAt(l).setInitialMove(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().initialMove);
 										}
 									}
 								}
