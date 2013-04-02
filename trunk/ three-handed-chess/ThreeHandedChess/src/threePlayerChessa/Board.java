@@ -15,6 +15,7 @@ public class Board {
 	public Vector<Section> sections = new Vector<Section>();
 	public Vector<Piece> pieces = new Vector<Piece>();
 	public Vector<Team> gameTeams = new Vector<Team>();
+	public Vector<Piece> promotedPieces = new Vector<Piece>();
 	
 	
 	public Vector<Section> getSections()
@@ -201,6 +202,92 @@ public class Board {
 		Vector<Piece> teamPieces2 = new Vector<Piece>();
 		Vector<Piece> teamPieces3 = new Vector<Piece>();
 		
+		this.promotedPieces = new Vector<Piece>(board.promotedPieces.size());
+		for(int i = 0; i < board.promotedPieces.size(); i++)
+		{
+			if(board.promotedPieces.elementAt(i) != null && board.promotedPieces.elementAt(i).getPlayer() == board.gameTeams.elementAt(0))
+			{
+				if(board.promotedPieces.elementAt(i).getPieceType() == PieceType.BISHOP)
+				{
+					Bishop bishopPromoted = new Bishop(this.gameTeams.elementAt(0), "PromotedBishop", this, null, PieceType.BISHOP);
+					teamPieces1.add(bishopPromoted);
+					this.promotedPieces.add(bishopPromoted);
+				}
+				if(board.promotedPieces.elementAt(i).getPieceType() == PieceType.KNIGHT)
+				{
+					Knight knightPromoted = new Knight(this.gameTeams.elementAt(0), "PromotedKnight", this, null, PieceType.KNIGHT);
+					teamPieces1.add(knightPromoted);
+					this.promotedPieces.add(knightPromoted);
+				}
+				if(board.promotedPieces.elementAt(i).getPieceType() == PieceType.QUEEN)
+				{
+					Queen queenPromoted = new Queen(this.gameTeams.elementAt(0), "PromotedQueen", this, null, PieceType.QUEEN);
+					teamPieces1.add(queenPromoted);
+					this.promotedPieces.add(queenPromoted);
+				}
+				if(board.promotedPieces.elementAt(i).getPieceType() == PieceType.ROOK)
+				{
+					Rook rookPromoted = new Rook(this.gameTeams.elementAt(0), "PromotedRook", this, null, PieceType.ROOK);
+					teamPieces1.add(rookPromoted);
+					this.promotedPieces.add(rookPromoted);
+				}
+			}
+			if(board.promotedPieces.elementAt(i) != null && board.promotedPieces.elementAt(i).getPlayer() == board.gameTeams.elementAt(1))
+			{
+				if(board.promotedPieces.elementAt(i).getPieceType() == PieceType.BISHOP)
+				{
+					Bishop bishopPromoted = new Bishop(this.gameTeams.elementAt(1), "PromotedBishop", this, null, PieceType.BISHOP);
+					teamPieces2.add(bishopPromoted);
+					this.promotedPieces.add(bishopPromoted);
+				}
+				if(board.promotedPieces.elementAt(i).getPieceType() == PieceType.KNIGHT)
+				{
+					Knight knightPromoted = new Knight(this.gameTeams.elementAt(1), "PromotedKnight", this, null, PieceType.KNIGHT);
+					teamPieces2.add(knightPromoted);
+					this.promotedPieces.add(knightPromoted);
+				}
+				if(board.promotedPieces.elementAt(i).getPieceType() == PieceType.QUEEN)
+				{
+					Queen queenPromoted = new Queen(this.gameTeams.elementAt(1), "PromotedQueen", this, null, PieceType.QUEEN);
+					teamPieces2.add(queenPromoted);
+					this.promotedPieces.add(queenPromoted);
+				}
+				if(board.promotedPieces.elementAt(i).getPieceType() == PieceType.ROOK)
+				{
+					Rook rookPromoted = new Rook(this.gameTeams.elementAt(1), "PromotedRook", this, null, PieceType.ROOK);
+					teamPieces2.add(rookPromoted);
+					this.promotedPieces.add(rookPromoted);
+				}
+			}
+			if(board.promotedPieces.elementAt(i) != null && board.promotedPieces.elementAt(i).getPlayer() == board.gameTeams.elementAt(2))
+			{
+				if(board.promotedPieces.elementAt(i).getPieceType() == PieceType.BISHOP)
+				{
+					Bishop bishopPromoted = new Bishop(this.gameTeams.elementAt(2), "PromotedBishop", this, null, PieceType.BISHOP);
+					teamPieces3.add(bishopPromoted);
+					this.promotedPieces.add(bishopPromoted);
+				}
+				if(board.promotedPieces.elementAt(i).getPieceType() == PieceType.KNIGHT)
+				{
+					Knight knightPromoted = new Knight(this.gameTeams.elementAt(2), "PromotedKnight", this, null, PieceType.KNIGHT);
+					teamPieces3.add(knightPromoted);
+					this.promotedPieces.add(knightPromoted);
+				}
+				if(board.promotedPieces.elementAt(i).getPieceType() == PieceType.QUEEN)
+				{
+					Queen queenPromoted = new Queen(this.gameTeams.elementAt(2), "PromotedQueen", this, null, PieceType.QUEEN);
+					teamPieces3.add(queenPromoted);
+					this.promotedPieces.add(queenPromoted);
+				}
+				if(board.promotedPieces.elementAt(i).getPieceType() == PieceType.ROOK)
+				{
+					Rook rookPromoted = new Rook(this.gameTeams.elementAt(2), "PromotedRook", this, null, PieceType.ROOK);
+					teamPieces3.add(rookPromoted);
+					this.promotedPieces.add(rookPromoted);
+				}
+			}
+		}
+				
 		Pawn pawn11 = new Pawn(this.gameTeams.elementAt(0),"Pawn1",this,null,PieceType.PAWN);
 		Pawn pawn21 = new Pawn(this.gameTeams.elementAt(0),"Pawn2",this,null,PieceType.PAWN);
 		Pawn pawn31 = new Pawn(this.gameTeams.elementAt(0),"Pawn3",this,null,PieceType.PAWN);
@@ -313,6 +400,8 @@ public class Board {
 		team2.addboard(this);
 		team3.addboard(this);
 		
+		int tempLength = 16 + promotedPieces.size();
+		
 		//Add Pieces to new board based on piece positions of old board
 		for(int i = 0; i < 3; i++)
 		{
@@ -320,32 +409,83 @@ public class Board {
 			{
 				for(int k = 0; k < 16; k++)
 				{
-					for(int l = 0; l < 16; l++)
+					for(int l = 0; l < team1.pieces.size(); l++)
 					{
 						if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece() != null)
 						{
 							if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getPlayer() == board.gameTeams.elementAt(0))
 							{
-								if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getName() == team1.pieces.elementAt(l).getName())
+								if(team1.pieces.elementAt(l) != null)
 								{
-									this.gameTeams.elementAt(0).pieces.elementAt(l).setCurrentTile(this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k));
-									this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).setPiece(this.gameTeams.elementAt(0).pieces.elementAt(l));
+									if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getName() == team1.pieces.elementAt(l).getName())
+									{
+										this.gameTeams.elementAt(0).pieces.elementAt(l).setCurrentTile(this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k));
+										this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).setPiece(this.gameTeams.elementAt(0).pieces.elementAt(l));
+										if(this.gameTeams.elementAt(0).pieces.elementAt(l).getPieceType() == PieceType.PAWN)
+										{
+											this.gameTeams.elementAt(0).pieces.elementAt(l).twoTileIndex = board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().twoTileIndex;
+											this.gameTeams.elementAt(0).pieces.elementAt(l).initialMove = board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().initialMove;
+											this.gameTeams.elementAt(0).pieces.elementAt(l).tilesMoved = board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().tilesMoved;
+										}
+										if(this.gameTeams.elementAt(0).pieces.elementAt(l).getPieceType() == PieceType.KING || this.gameTeams.elementAt(0).pieces.elementAt(l).getPieceType() == PieceType.ROOK)
+										{
+											this.gameTeams.elementAt(0).pieces.elementAt(l).initialMove = board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().initialMove;
+										}
+									}
 								}
 							}
-							else if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getPlayer() == board.gameTeams.elementAt(1))
+						}
+					}
+					for(int l = 0; l < team2.pieces.size(); l++)
+					{
+						if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece() != null)
+						{
+							if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getPlayer() == board.gameTeams.elementAt(1))
 							{
-								if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getName() == team2.pieces.elementAt(l).getName())
+								if(team2.pieces.elementAt(l) != null)
 								{
-									this.gameTeams.elementAt(1).pieces.elementAt(l).setCurrentTile(this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k));
-									this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).setPiece(this.gameTeams.elementAt(1).pieces.elementAt(l));
+									if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getName() == team2.pieces.elementAt(l).getName())
+									{
+										this.gameTeams.elementAt(1).pieces.elementAt(l).setCurrentTile(this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k));
+										this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).setPiece(this.gameTeams.elementAt(1).pieces.elementAt(l));
+										if(this.gameTeams.elementAt(1).pieces.elementAt(l).getPieceType() == PieceType.PAWN)
+										{
+											this.gameTeams.elementAt(1).pieces.elementAt(l).twoTileIndex = board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().twoTileIndex;
+											this.gameTeams.elementAt(1).pieces.elementAt(l).initialMove = board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().initialMove;
+											this.gameTeams.elementAt(1).pieces.elementAt(l).tilesMoved = board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().tilesMoved;
+										}
+										if(this.gameTeams.elementAt(1).pieces.elementAt(l).getPieceType() == PieceType.KING || this.gameTeams.elementAt(1).pieces.elementAt(l).getPieceType() == PieceType.ROOK)
+										{
+											this.gameTeams.elementAt(1).pieces.elementAt(l).initialMove = board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().initialMove;
+										}
+									}
 								}
 							}
-							else if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getPlayer() == board.gameTeams.elementAt(2))
+						}
+					}
+					for(int l = 0; l < team3.pieces.size(); l++)
+					{
+						if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece() != null)
+						{
+							if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getPlayer() == board.gameTeams.elementAt(2))
 							{
-								if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getName() == team3.pieces.elementAt(l).getName())
+								if(team3.pieces.elementAt(l) != null)
 								{
-									this.gameTeams.elementAt(2).pieces.elementAt(l).setCurrentTile(this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k));
-									this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).setPiece(this.gameTeams.elementAt(2).pieces.elementAt(l));
+									if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getName() == team3.pieces.elementAt(l).getName())
+									{
+										this.gameTeams.elementAt(2).pieces.elementAt(l).setCurrentTile(this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k));
+										this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).setPiece(this.gameTeams.elementAt(2).pieces.elementAt(l));
+										if(this.gameTeams.elementAt(2).pieces.elementAt(l).getPieceType() == PieceType.PAWN)
+										{
+											this.gameTeams.elementAt(2).pieces.elementAt(l).twoTileIndex = board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().twoTileIndex;
+											this.gameTeams.elementAt(2).pieces.elementAt(l).initialMove = board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().initialMove;
+											this.gameTeams.elementAt(2).pieces.elementAt(l).tilesMoved = board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().tilesMoved;
+										}
+										if(this.gameTeams.elementAt(2).pieces.elementAt(l).getPieceType() == PieceType.KING || this.gameTeams.elementAt(2).pieces.elementAt(l).getPieceType() == PieceType.ROOK)
+										{
+											this.gameTeams.elementAt(2).pieces.elementAt(l).initialMove = board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().initialMove;
+										}
+									}
 								}
 							}
 						}

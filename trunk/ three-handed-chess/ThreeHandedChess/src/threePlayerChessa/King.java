@@ -265,7 +265,53 @@ public class King extends Piece {
 		//castling
 		if(isInitialMove() == false){
 			temp = this.currentTile;
-			while(temp.left != null){
+			
+			int team = this.getPlayer().getNumber();
+			//int team = this.player.getNumber();
+			/*
+			switch(team)
+			{
+				//Player 1
+				case 1:
+					if(temp.left.getPiece() == null && temp.left.left.getPiece() == null && temp.left.left.left.getPiece() == null && temp.left.left.left.left.getPiece() != null)
+					{
+						if(temp.left.left.left.left.getPiece().getPieceType() == PieceType.ROOK && temp.left.left.left.left.getPiece().isInitialMove() == false)
+						{
+							this.validTileMoves.add(this.currentTile.left.left);
+						}
+					}
+					
+					if(temp.right.getPiece() == null && temp.right.right.getPiece() == null && temp.right.right.right.getPiece() != null)
+					{
+						if(temp.right.right.right.getPiece().getPieceType() == PieceType.ROOK && temp.right.right.right.getPiece().isInitialMove() == false)
+						{
+							this.validTileMoves.add(this.currentTile.right.right);
+						}
+					}
+					break;
+				//Player 2 and 3
+				case 2:
+				case 3:
+					if(temp.left.getPiece() == null && temp.left.left.getPiece() == null && temp.left.left.left.getPiece() != null)
+					{
+						if(temp.left.left.left.getPiece().getPieceType() == PieceType.ROOK && temp.left.left.left.getPiece().isInitialMove() == false)
+						{
+							this.validTileMoves.add(this.currentTile.left.left);
+						}
+					}
+					
+					if(temp.right.getPiece() == null && temp.right.right.getPiece() == null && temp.right.right.right.getPiece() == null && temp.right.right.right.right.getPiece() != null)
+					{
+						if(temp.right.right.right.right.getPiece().getPieceType() == PieceType.ROOK && temp.right.right.right.right.getPiece().isInitialMove() == false)
+						{
+							this.validTileMoves.add(this.currentTile.right.right);
+						}
+					}
+					break;
+			}*/			
+			temp = this.currentTile;
+			while(temp.left != null)
+			{
 				temp = temp.left;
 				if(temp.getPiece() != null){
 					if(temp.getPiece().getPieceType() == PieceType.ROOK && temp.getPiece().isInitialMove() == false){
@@ -274,7 +320,8 @@ public class King extends Piece {
 				}
 			}
 			temp = this.currentTile;
-			while(temp.right != null){
+			while(temp.right != null)
+			{
 				temp = temp.right;
 				if(temp.getPiece() != null){
 					if(temp.getPiece().getPieceType() == PieceType.ROOK && temp.getPiece().isInitialMove() == false){
