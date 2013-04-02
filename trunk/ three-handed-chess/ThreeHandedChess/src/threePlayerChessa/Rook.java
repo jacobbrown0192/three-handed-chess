@@ -33,13 +33,16 @@ public class Rook extends Piece {
 	 * @return null
 	 * 
 	 */
-	public void move(Tile aStartTile, Tile aMoveTile, Turn player) {
+	public void move(Tile aStartTile, Tile aMoveTile, Turn player)
+	{
 		boolean validMove = false;
 		player.getTheGame().click2 = null;
 		
 		
-		for( int i=0; i<validTileMoves.size();i++){
-			if(aMoveTile == validTileMoves.elementAt(i)){
+		for( int i=0; i<validTileMoves.size();i++)
+		{
+			if(aMoveTile == validTileMoves.elementAt(i))
+			{
 				validMove = true;
 				player.getTheGame().click1 = null;
 			}
@@ -49,21 +52,25 @@ public class Rook extends Piece {
 		{	//moves piece
 			boolean check = player.getTheGame().getGameController().putIntoCheck(aStartTile, aMoveTile);
 			
-			//-------------
-			if(aMoveTile.getPiece() != null){	// sets pieces current tile on aMoveTile to null
-				aMoveTile.getPiece().setCurrentTile(null);
+			if(!check)
+			{
+				if(aMoveTile.getPiece() != null){	// sets pieces current tile on aMoveTile to null
+					aMoveTile.getPiece().setCurrentTile(null);
+				}
+				if (initialMove == false)
+				{
+					initialMove = true;
+				}
+				aMoveTile.setPiece(aStartTile.getPiece());
+				aStartTile.setPiece(null);
+				aMoveTile.getPiece().setCurrentTile(aMoveTile);
+				player.getTheGame().boardGUI.setTileIcons();
+				player.getTheGame().gameController.addToCounter(); //adds one to turn counter and starts the next players turn
+				this.player.addToMoveList(aMoveTile, this);
 			}
-			if (initialMove == false){
-				initialMove = true;
-			}
-			aMoveTile.setPiece(aStartTile.getPiece());
-			aStartTile.setPiece(null);
-			aMoveTile.getPiece().setCurrentTile(aMoveTile);
-			player.getTheGame().boardGUI.setTileIcons();
-			player.getTheGame().gameController.addToCounter(); //adds one to turn counter and starts the next players turn
-			this.player.addToMoveList(aMoveTile, this);
 		}
-		else{	//if not a valid move returns for player to choose new tiles
+		else
+		{	//if not a valid move returns for player to choose new tiles
 			return;
 		}
 	}
