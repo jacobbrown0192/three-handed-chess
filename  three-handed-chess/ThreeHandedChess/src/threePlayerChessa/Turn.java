@@ -1,6 +1,9 @@
 package threePlayerChessa;
 
 
+import GUI_Interface.WinGUI;
+
+
 /**  
  *The turn class is an extension of thread implemented for each player.
  */
@@ -40,16 +43,22 @@ public class Turn extends Thread {
 			
 			Tile select1 = null;
 			Tile select2 = null;
+			Team winner = theGame.gameController.Checkmate(gameTeam,opponent1,opponent2, theGame.theBoard);
+			if(gameTeam.checkMate){
+				System.out.println("Holy Shit checkmate!");
+				WinGUI Win = new WinGUI(theGame);
+				Win.getLblWin().setText(winner.getName() + " Wins!");
+				theGame.gameFrame.getContentPane().removeAll();
+			    theGame.gameFrame.getContentPane().repaint();
+				theGame.gameFrame.getContentPane().add(Win);
+				theGame.gameFrame.setVisible(true);
+			}
 			if((getTheGame().gameController.turnCount % 3) == (gameTeam.getNumber() - 1))//checks to see if its current players turn
 			{ 
 				theGame.tBoardGUI.getLblGameAndStuff().setText(gameTeam.getName());
 				if(getTheGame().click1 != null)//check for first click
 				{
-					theGame.gameController.Checkmate(gameTeam,opponent1,opponent2, theGame.theBoard);
-					if(gameTeam.checkMate){
-						System.out.println("Holy Shit checkmate!");
-						
-					}
+
 					
 					//finds the tile clicked
 					for(int i =0; i < 3; i++){
