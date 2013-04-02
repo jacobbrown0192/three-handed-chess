@@ -85,7 +85,7 @@ public class Controller {
 		return result;
 	}
 	
-	public void Checkmate(Team me, Team opponent1, Team opponent2, Board board){
+	public Team Checkmate(Team me, Team opponent1, Team opponent2, Board board){
 		Vector<Tile> kingPosition = new Vector<Tile>();
 		Vector<Tile> myMoves = new Vector<Tile>();
 		
@@ -99,20 +99,52 @@ public class Controller {
 		
 		//If in check, check to see if in checkmate
 		Tile tempStart = null;
+		Team winner = null;
 		if(check == true)
-		{
+		{ 
 		me.checkMate = true;
 		boolean checkMateTemp = false;
-			for(int i = 0; i>16; i++){
+			for(int i = 0; i<16; i++){
 				tempStart = me.pieces.elementAt(i).currentTile;
-				for(int j = 0; j>me.pieces.elementAt(i).validTileMoves.size();j++){
-					checkMateTemp = putIntoCheck(tempStart,me.pieces.elementAt(i).validTileMoves.elementAt(j));
-					if(!checkMateTemp){
-						me.checkMate = false;						
+				if(tempStart != null){
+					for(int j = 0; j<me.pieces.elementAt(i).validTileMoves.size();j++){
+						checkMateTemp = putIntoCheck(tempStart,me.pieces.elementAt(i).validTileMoves.elementAt(j));
+						if(!checkMateTemp){
+						 	me.checkMate = false;						
+						}
+					}
+				}
+			}	
+			
+			
+			for(int k = 0; k<16; k++){
+				for(int l = 0; l<opponent1.pieces.elementAt(k).validTileMoves.size();l++){
+					if(opponent1.pieces.elementAt(k).validTileMoves.elementAt(l) != null){
+						if (opponent1.pieces.elementAt(k).validTileMoves.elementAt(l).getLetter() == kingPosition.elementAt(0).getLetter() && opponent1.pieces.elementAt(k).validTileMoves.elementAt(l).getNumber() == kingPosition.elementAt(0).getNumber())
+						{
+							winner = opponent1;
+							break;
+						}
 					}
 				}				
-			}			
+			}
+			
+			for(int m = 0; m<16; m++){
+				for(int n = 0; n<opponent2.pieces.elementAt(m).validTileMoves.size();n++){
+					if(opponent2.pieces.elementAt(m).validTileMoves.elementAt(n) != null){
+						if (opponent2.pieces.elementAt(m).validTileMoves.elementAt(n).getLetter() == kingPosition.elementAt(0).getLetter() && opponent2.pieces.elementAt(m).validTileMoves.elementAt(n).getNumber() == kingPosition.elementAt(0).getNumber())
+						{
+							winner = opponent2;
+							break;
+						}
+					}
+				}				
+			}
+			
+			
+			
 		}
+		return winner;
 	}
 	
 	
