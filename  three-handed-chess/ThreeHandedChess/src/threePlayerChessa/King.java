@@ -53,60 +53,64 @@ public class King extends Piece {
 		{	//moves piece
 			boolean check = player.getTheGame().getGameController().putIntoCheck(aStartTile, aMoveTile);
 			
-			if(aMoveTile.getPiece() != null){	// sets pieces current tile on aMoveTile to null
-				aMoveTile.getPiece().setCurrentTile(null);
-			}
-			if (initialMove = false){
-				initialMove = true;
-			}
-			
-			//castling move check so the rook is also moved
-			if(aStartTile.right.right == aMoveTile){
-				Piece temp = null;
-				if(aMoveTile.right.getPiece() != null){
-					if(aMoveTile.right.getPiece().getPieceType() == PieceType.ROOK){
-						temp = aMoveTile.right.getPiece();
-						temp.currentTile.setPiece(null);
-						temp.setCurrentTile(aMoveTile.left);
-						aMoveTile.left.setPiece(temp);
+			if(!check)
+			{
+				if(aMoveTile.getPiece() != null){	// sets pieces current tile on aMoveTile to null
+					aMoveTile.getPiece().setCurrentTile(null);
+				}
+				if (initialMove = false){
+					initialMove = true;
+				}
+				
+				//castling move check so the rook is also moved
+				if(aStartTile.right.right == aMoveTile){
+					Piece temp = null;
+					if(aMoveTile.right.getPiece() != null){
+						if(aMoveTile.right.getPiece().getPieceType() == PieceType.ROOK){
+							temp = aMoveTile.right.getPiece();
+							temp.currentTile.setPiece(null);
+							temp.setCurrentTile(aMoveTile.left);
+							aMoveTile.left.setPiece(temp);
+						}
+					}
+					if(aMoveTile.right.right != null &&	aMoveTile.right.right.getPiece() != null){
+						if(aMoveTile.right.right.getPiece().getPieceType() == PieceType.ROOK){
+							temp = aMoveTile.right.right.getPiece();
+							temp.currentTile.setPiece(null);
+							temp.setCurrentTile(aMoveTile.left);
+							aMoveTile.left.setPiece(temp);
+						}
 					}
 				}
-				if(aMoveTile.right.right != null &&	aMoveTile.right.right.getPiece() != null){
-					if(aMoveTile.right.right.getPiece().getPieceType() == PieceType.ROOK){
-						temp = aMoveTile.right.right.getPiece();
-						temp.currentTile.setPiece(null);
-						temp.setCurrentTile(aMoveTile.left);
-						aMoveTile.left.setPiece(temp);
+				if(aStartTile.left.left == aMoveTile){
+					Piece temp = null;
+					if(aMoveTile.left.getPiece() != null){
+						if(aMoveTile.left.getPiece().getPieceType() == PieceType.ROOK){
+							temp = aMoveTile.left.getPiece();
+							temp.currentTile.setPiece(null);
+							temp.setCurrentTile(aMoveTile.right);
+							aMoveTile.right.setPiece(temp);
+						}
+					}
+					if(aMoveTile.left.left != null && aMoveTile.left.left.getPiece() != null){
+						if(aMoveTile.left.left.getPiece().getPieceType() == PieceType.ROOK){
+							temp = aMoveTile.left.left.getPiece();
+							temp.currentTile.setPiece(null);
+							temp.setCurrentTile(aMoveTile.right);
+							aMoveTile.right.setPiece(temp);
+						}
 					}
 				}
+				aMoveTile.setPiece(aStartTile.getPiece());
+				aStartTile.setPiece(null);
+				aMoveTile.getPiece().setCurrentTile(aMoveTile);
+				player.getTheGame().boardGUI.setTileIcons();
+				player.getTheGame().gameController.addToCounter(); //adds one to turn counter and starts the next players turn
+				this.player.addToMoveList(aMoveTile, this);
 			}
-			if(aStartTile.left.left == aMoveTile){
-				Piece temp = null;
-				if(aMoveTile.left.getPiece() != null){
-					if(aMoveTile.left.getPiece().getPieceType() == PieceType.ROOK){
-						temp = aMoveTile.left.getPiece();
-						temp.currentTile.setPiece(null);
-						temp.setCurrentTile(aMoveTile.right);
-						aMoveTile.right.setPiece(temp);
-					}
-				}
-				if(aMoveTile.left.left != null && aMoveTile.left.left.getPiece() != null){
-					if(aMoveTile.left.left.getPiece().getPieceType() == PieceType.ROOK){
-						temp = aMoveTile.left.left.getPiece();
-						temp.currentTile.setPiece(null);
-						temp.setCurrentTile(aMoveTile.right);
-						aMoveTile.right.setPiece(temp);
-					}
-				}
-			}
-			aMoveTile.setPiece(aStartTile.getPiece());
-			aStartTile.setPiece(null);
-			aMoveTile.getPiece().setCurrentTile(aMoveTile);
-			player.getTheGame().boardGUI.setTileIcons();
-			player.getTheGame().gameController.addToCounter(); //adds one to turn counter and starts the next players turn
-			this.player.addToMoveList(aMoveTile, this);
 		}
-		else{	//if not a valid move returns for player to choose new tiles
+		else
+		{	//if not a valid move returns for player to choose new tiles
 			return;
 		}
 	}

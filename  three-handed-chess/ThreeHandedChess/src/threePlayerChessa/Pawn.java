@@ -69,44 +69,46 @@ public class Pawn extends Piece {
 		{
 			boolean check = player.getTheGame().getGameController().putIntoCheck(aStartTile, aMoveTile);
 			
-			
-			
-			if(aMoveTile.getPiece() != null){	// sets pieces current tile on aMoveTile to null
-				aMoveTile.getPiece().setCurrentTile(null);
-			}
-			if (initialMove == false){
-				initialMove = true;
-			}
-			if(aMoveTile == aStartTile.upright || aMoveTile == aStartTile.downright){
-				if(aMoveTile.getPiece() == null){
-					aStartTile.right.getPiece().setCurrentTile(null);
-					aStartTile.right.setPiece(null);
+			if(!check)
+			{
+				if(aMoveTile.getPiece() != null){	// sets pieces current tile on aMoveTile to null
+					aMoveTile.getPiece().setCurrentTile(null);
 				}
-			}
-			
-			if(aMoveTile == aStartTile.upleft || aMoveTile == aStartTile.downleft){
-				if(aMoveTile.getPiece() == null){
-					aStartTile.left.getPiece().setCurrentTile(null);
-					aStartTile.left.setPiece(null);
+				if (initialMove == false){
+					initialMove = true;
 				}
+				if(aMoveTile == aStartTile.upright || aMoveTile == aStartTile.downright){
+					if(aMoveTile.getPiece() == null){
+						aStartTile.right.getPiece().setCurrentTile(null);
+						aStartTile.right.setPiece(null);
+					}
+				}
+				
+				if(aMoveTile == aStartTile.upleft || aMoveTile == aStartTile.downleft){
+					if(aMoveTile.getPiece() == null){
+						aStartTile.left.getPiece().setCurrentTile(null);
+						aStartTile.left.setPiece(null);
+					}
+				}
+				
+				aMoveTile.setPiece(aStartTile.getPiece());
+				aStartTile.setPiece(null);
+				aMoveTile.getPiece().setCurrentTile(aMoveTile);
+				
+				if(aMoveTile.getNumber() == 1 || aMoveTile.getNumber() == 8 || aMoveTile.getNumber() == 12){
+					PromotePawn selector = new PromotePawn(this,player);
+					player.getTheGame().gameFrame.getContentPane().removeAll();
+				    player.getTheGame().gameFrame.getContentPane().repaint();
+					player.getTheGame().gameFrame.getContentPane().add(selector);
+					player.getTheGame().gameFrame.setVisible(true);
+				}
+				player.getTheGame().boardGUI.setTileIcons();
+				player.getTheGame().gameController.addToCounter();
+				this.player.addToMoveList(aMoveTile, this);
 			}
-			
-			aMoveTile.setPiece(aStartTile.getPiece());
-			aStartTile.setPiece(null);
-			aMoveTile.getPiece().setCurrentTile(aMoveTile);
-			
-			if(aMoveTile.getNumber() == 1 || aMoveTile.getNumber() == 8 || aMoveTile.getNumber() == 12){
-				PromotePawn selector = new PromotePawn(this,player);
-				player.getTheGame().gameFrame.getContentPane().removeAll();
-			    player.getTheGame().gameFrame.getContentPane().repaint();
-				player.getTheGame().gameFrame.getContentPane().add(selector);
-				player.getTheGame().gameFrame.setVisible(true);
-			}
-			player.getTheGame().boardGUI.setTileIcons();
-			player.getTheGame().gameController.addToCounter();
-			this.player.addToMoveList(aMoveTile, this);
 		}
-		else{
+		else
+		{
 			return;
 		}
 	}

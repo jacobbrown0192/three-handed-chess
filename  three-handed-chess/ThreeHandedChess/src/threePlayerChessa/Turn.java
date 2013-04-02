@@ -38,27 +38,6 @@ public class Turn extends Thread {
 			validClick2 = false;			
 			this.check = false;//getTheGame().gameController.inCheck(gameTeam, opponent1, opponent2);
 			
-			if (this.check)
-			{
-				switch (gameTeam.getNumber())
-				{
-					case 1://red team
-						System.out.println("Red is in check");
-						break;
-					case 2://blue team
-						System.out.println("Blue is in check");
-						break;
-					case 3://green team
-						System.out.println("Green is in check");
-						break;
-				}
-				//System.out.println("You are in Check.");
-				//check for checkmate
-				
-				//make a copy of board
-				Board deepCopyBoard = new Board(getTheGame().theBoard);
-			}
-			
 			Tile select1 = null;
 			Tile select2 = null;
 			if((getTheGame().gameController.turnCount % 3) == (gameTeam.getNumber() - 1))//checks to see if its current players turn
@@ -99,16 +78,20 @@ public class Turn extends Thread {
 					}
 					
 					
-					if(validClick1){
+					if(validClick1)
+					{
 						select1.getPiece().possibleMoves();
 						select1.getPiece().possibleMovesHighlight();
 						theGame.boardGUI.setTileIcons();
-						if(getTheGame().click2 != null){
-							
+						if(getTheGame().click2 != null)
+						{	
 							//finds the second clicked tile
-							for(int i =0; i < 3; i++){
-								for(int j =0; j<2;j++){
-									for(int k=0; k<16;k++){
+							for(int i =0; i < 3; i++)
+							{
+								for(int j =0; j<2;j++)
+								{
+									for(int k=0; k<16;k++)
+									{
 										if(getTheGame().theBoard.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).getLetter() == getTheGame().click2.getLet() &&
 											getTheGame().theBoard.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).getNumber() == getTheGame().click2.getNum()){
 											select2 = getTheGame().theBoard.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k);
@@ -117,25 +100,9 @@ public class Turn extends Thread {
 								}
 							}
 					
-							//checks if second click is valid
-							if( select2.getPiece() == null){
-								validClick2 = true;
-							}
-							else{
-								if(select2.getPiece().player != gameTeam)
-									validClick2 = true;
-								else{
-								select1.setSelected(false);
-								select2.setSelected(true);
-								select1.getPiece().possibleMovesUnhighlight();
-								theGame.boardGUI.setTileIcons();
-								getTheGame().click1 = getTheGame().click2;
-								getTheGame().click2 = null;
-								}
-							}
-								
 							
-							if(getTheGame().click1 == getTheGame().click2){
+							if(select1.getPiece() != null && select2.getPiece() != null && select1.getPiece() == select2.getPiece())
+							{
 								select1.setSelected(false);
 								select2.setSelected(false);
 								select1.getPiece().possibleMovesUnhighlight();
@@ -143,13 +110,23 @@ public class Turn extends Thread {
 								getTheGame().click1 = null;
 								getTheGame().click2 = null;
 							}
-							
-							//moves if second clikc is valid
-							if(validClick2){
+							else if(select2.getPiece() != null && select2.getPiece().player == gameTeam)
+							{
+								select1.setSelected(false);
+								select2.setSelected(true);
+								select1.getPiece().possibleMovesUnhighlight();
+								theGame.boardGUI.setTileIcons();
+								getTheGame().click1 = getTheGame().click2;
+								getTheGame().click2 = null;
+							}
+							//moves if second click is valid
+							else
+							{
 								select1.getPiece().possibleMovesUnhighlight();
 								select1.setSelected(false);
 								select2.setSelected(false);
-								select1.getPiece().move(select1, select2,this);								
+								select1.getPiece().move(select1, select2,this);
+								theGame.boardGUI.setTileIcons();
 							}							
 						}
 						else{

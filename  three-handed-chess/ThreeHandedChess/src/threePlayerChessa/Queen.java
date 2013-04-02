@@ -45,18 +45,21 @@ public class Queen extends Piece {
 		if (validMove)
 		{	//moves piece
 			boolean check = player.getTheGame().getGameController().putIntoCheck(aStartTile, aMoveTile);
-			
-			if(aMoveTile.getPiece() != null){	// sets pieces current tile on aMoveTile to null
-				aMoveTile.getPiece().setCurrentTile(null);
+			if(!check)
+			{
+				if(aMoveTile.getPiece() != null){	// sets pieces current tile on aMoveTile to null
+					aMoveTile.getPiece().setCurrentTile(null);
+				}
+				aMoveTile.setPiece(aStartTile.getPiece());
+				aStartTile.setPiece(null);
+				aMoveTile.getPiece().setCurrentTile(aMoveTile);
+				player.getTheGame().boardGUI.setTileIcons();
+				player.getTheGame().gameController.addToCounter(); //adds one to turn counter and starts the next players turn
+				this.player.addToMoveList(aMoveTile, this);		
 			}
-			aMoveTile.setPiece(aStartTile.getPiece());
-			aStartTile.setPiece(null);
-			aMoveTile.getPiece().setCurrentTile(aMoveTile);
-			player.getTheGame().boardGUI.setTileIcons();
-			player.getTheGame().gameController.addToCounter(); //adds one to turn counter and starts the next players turn
-			this.player.addToMoveList(aMoveTile, this);			
 		}
-		else{	//if not a valid move returns for player to choose new tiles
+		else
+		{	//if not a valid move returns for player to choose new tiles
 			return;
 		}
 	}
