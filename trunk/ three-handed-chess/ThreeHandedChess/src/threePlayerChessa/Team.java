@@ -15,6 +15,7 @@ public class Team {
 	public Board theBoard; //the board of the game
 	public boolean evil; //determines wither the team is a computer
 	public int AIDifficulty; //determines the difficulty of the team if it is a computer team
+	public boolean checkMate;
 
 	
 	/**
@@ -34,6 +35,7 @@ public class Team {
 		this.theBoard = theBoard;
 		evil = false;
 		AIDifficulty = 5;
+		checkMate = false;
 	}	
 	
 	/**
@@ -134,7 +136,20 @@ public class Team {
 		pieces = aPieces;
 	}
 	
-	
+	/**
+	 * @return the checkMate
+	 */
+	public boolean isCheckMate() {
+		return checkMate;
+	}
+
+	/**
+	 * @param checkMate - used to set checkMate
+	 */
+	public void setCheckMate(boolean checkMate) {
+		this.checkMate = checkMate;
+	}
+
 	/**
 	 * used to add pieces to the board initially
 	 */

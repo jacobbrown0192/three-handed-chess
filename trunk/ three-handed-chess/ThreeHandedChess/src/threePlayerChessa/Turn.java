@@ -44,7 +44,12 @@ public class Turn extends Thread {
 			{ 
 				theGame.tBoardGUI.getLblGameAndStuff().setText(gameTeam.getName());
 				if(getTheGame().click1 != null)//check for first click
-				{ 
+				{
+					theGame.gameController.Checkmate(gameTeam,opponent1,opponent2, theGame.theBoard);
+					if(gameTeam.checkMate){
+						System.out.println("Holy Shit checkmate!");
+						
+					}
 					
 					//finds the tile clicked
 					for(int i =0; i < 3; i++){
@@ -56,7 +61,7 @@ public class Turn extends Thread {
 								}
 							}
 						}
-					}
+					} 
 					
 					//see if first click is valid
 					if(select1.getPiece() != null)
