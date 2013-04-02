@@ -81,21 +81,41 @@ public class Controller {
 					break;
 				}
 			}
-		}
-		
-		//If in check, check to see if in checkmate
-		//To be done...
-		kingPosition.elementAt(0).getPiece().possibleMoves();
-		if(result == true && kingPosition.elementAt(0).getPiece().validTileMoves.size() == 0)
-		{
-			
-		}
-		
-		
-		
-		
+		}	
 		return result;
 	}
+	
+	public void Checkmate(Team me, Team opponent1, Team opponent2, Board board){
+		Vector<Tile> kingPosition = new Vector<Tile>();
+		Vector<Tile> myMoves = new Vector<Tile>();
+		
+		//Find everywhere you can go and add them to a vector
+		myMoves.addAll(allPossibleMoves(me, board));
+		
+		//Find where your king is
+		kingPosition.addAll(findKingPosition(me, board));
+		
+		boolean check = inCheck(me,opponent1,opponent2,board);
+		
+		//If in check, check to see if in checkmate
+		Tile tempStart = null;
+		if(check == true)
+		{
+		me.checkMate = true;
+		boolean checkMateTemp = false;
+			for(int i = 0; i>16; i++){
+				tempStart = me.pieces.elementAt(i).currentTile;
+				for(int j = 0; j>me.pieces.elementAt(i).validTileMoves.size();j++){
+					checkMateTemp = putIntoCheck(tempStart,me.pieces.elementAt(i).validTileMoves.elementAt(j));
+					if(!checkMateTemp){
+						me.checkMate = false;						
+					}
+				}				
+			}			
+		}
+	}
+	
+	
 
 	private Vector<Tile> findKingPosition(Team team, Board board)
 	{

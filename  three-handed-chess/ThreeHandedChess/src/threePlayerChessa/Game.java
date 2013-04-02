@@ -483,6 +483,10 @@ public class Game {
 		click1 = null;
 		click2 = null;		
 		
+		gameTeams.elementAt(0).setCheckMate(false);
+		gameTeams.elementAt(1).setCheckMate(false);
+		gameTeams.elementAt(2).setCheckMate(false);
+		
 		//starts the player threads
 		if(!player1.isAlive())
 			player1.start();
