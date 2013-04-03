@@ -17,7 +17,7 @@ public class Computer extends Team {
 	 * @param theBoard - the board which the game is played on
 	 */
 	public Computer(int colour, String name, int number,
-			Board theBoard, Vector<Piece> pieces ) {
+			Board theBoard, Vector<Piece> pieces) {
 		super(colour, name, number, theBoard, pieces);
 		// TODO Auto-generated constructor stub
 		evil = true;
