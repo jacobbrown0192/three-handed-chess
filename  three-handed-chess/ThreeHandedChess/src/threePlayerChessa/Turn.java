@@ -35,139 +35,194 @@ public class Turn extends Thread {
 	/**  
 	 *runs the thread 
 	 */
-	@Override public void run(){
-		while(getTheGame().getGameController().isInProgress() == true){ // checks to see if the game is in progress
-			validClick1 = false;
-			validClick2 = false;			
-			this.check = false;//getTheGame().gameController.inCheck(gameTeam, opponent1, opponent2);
-			
-			Tile select1 = null;
-			Tile select2 = null;
-			Team winner = theGame.getGameController().Checkmate(gameTeam,opponent1,opponent2, theGame.getTheBoard());
-			if(gameTeam.checkMate){
-				WinGUI Win = new WinGUI(theGame);
-				Win.getLblWin().setText(winner.getName() + " Wins!");
-				theGame.getGameFrame().getContentPane().removeAll();
-			    theGame.getGameFrame().getContentPane().repaint();
-				theGame.getGameFrame().getContentPane().add(Win);
-				theGame.getGameFrame().setVisible(true);
-			}
-			
-			if((getTheGame().getGameController().turnCount % 3) == (gameTeam.getNumber() - 1))//checks to see if its current players turn
-			{ 
-				theGame.gettBoardGUI().getLblGameAndStuff().setText(gameTeam.getName());
-				boolean printTime = false;
-				printTime = theGame.getGameController().inCheck(gameTeam, opponent1, opponent2, theGame.getTheBoard());
-				
-				if (printTime)
+	@Override public void run()
+	{
+		if(gameTeam.evil == true)//If you're a computer player
+		{
+			while(getTheGame().getGameController().isInProgress() == true)
+			{
+				if((getTheGame().getGameController().turnCount % 3) == (gameTeam.getNumber() - 1))//checks to see if its current players turn
 				{
-					theGame.getbBoardGUI().getLblCheckLabel().setText("You are in check");
-				}
-
-				
-				if(getTheGame().click1 != null)//check for first click
-				{
-
+					Tile select1 = null;
+					Tile select2 = null;
 					
-					//finds the tile clicked
-					for(int i =0; i < 3; i++){
-						for(int j =0; j<2;j++){
-							for(int k=0; k<16;k++){
-								if(getTheGame().getTheBoard().sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).getLetter() == getTheGame().click1.getLet() &&
-									getTheGame().getTheBoard().sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).getNumber() == getTheGame().click1.getNum()){
-									select1 = getTheGame().getTheBoard().sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k);
-								}
+					//Pick a random piece on your team
+					//If the piece has valid moves, pick a random move
+					//Else pick a random piece on your team and try again
+					//If move is successful, then we're fine
+					//Else pick a random piece on your team and try again
+					
+					int numPieces = gameTeam.getPieces().size();
+					int pieceIndex = (int) (Math.random()*numPieces);
+					int moveIndex = -1;
+					boolean successfulMove = false;
+					
+					while(!successfulMove)
+					{
+						gameTeam.getPieces().elementAt(pieceIndex).possibleMoves();
+						if(!gameTeam.getPieces().elementAt(pieceIndex).getValidMoves().isEmpty())
+						{
+							select1 = gameTeam.getPieces().elementAt(pieceIndex).getCurrentTile();
+							moveIndex = (int) (Math.random()*gameTeam.getPieces().elementAt(pieceIndex).getValidMoves().size());
+							select2 = gameTeam.getPieces().elementAt(pieceIndex).getValidMoves().elementAt(moveIndex);
+							
+							if(select1.getPiece().move(select1, select2, this))
+							{
+								successfulMove = true;
+							}
+							else
+							{
+								pieceIndex = (int) (Math.random()*numPieces);
 							}
 						}
-					} 
-					
-					//see if first click is valid
-					if(select1.getPiece() != null)
-					{					
-						if( select1.getPiece().player == gameTeam)
+						else
 						{
-							validClick1 = true;
-							select1.setSelected(true);
-							theGame.getBoardGUI().setTileIcons();
-							theGame.getbBoardGUI().getLblCheckLabel().setText("");
+							pieceIndex = (int) (Math.random()*numPieces);
+						}
+					}
+				}
+				else
+				{
+					suspendMe();
+				}
+			}
+		}
+		
+		else
+		{
+			while(getTheGame().getGameController().isInProgress() == true){ // checks to see if the game is in progress
+				validClick1 = false;
+				validClick2 = false;			
+				this.check = false;//getTheGame().gameController.inCheck(gameTeam, opponent1, opponent2);
+				
+				Tile select1 = null;
+				Tile select2 = null;
+				Team winner = theGame.getGameController().Checkmate(gameTeam,opponent1,opponent2, theGame.getTheBoard());
+				if(gameTeam.checkMate){
+					WinGUI Win = new WinGUI(theGame);
+					Win.getLblWin().setText(winner.getName() + " Wins!");
+					theGame.getGameFrame().getContentPane().removeAll();
+				    theGame.getGameFrame().getContentPane().repaint();
+					theGame.getGameFrame().getContentPane().add(Win);
+					theGame.getGameFrame().setVisible(true);
+				}
+				
+				if((getTheGame().getGameController().turnCount % 3) == (gameTeam.getNumber() - 1))//checks to see if its current players turn
+				{ 
+					theGame.gettBoardGUI().getLblGameAndStuff().setText(gameTeam.getName());
+					boolean printTime = false;
+					printTime = theGame.getGameController().inCheck(gameTeam, opponent1, opponent2, theGame.getTheBoard());
+					
+					if (printTime)
+					{
+						theGame.getbBoardGUI().getLblCheckLabel().setText("You are in check");
+					}
+	
+					
+					if(getTheGame().click1 != null)//check for first click
+					{
+	
+						
+						//finds the tile clicked
+						for(int i =0; i < 3; i++){
+							for(int j =0; j<2;j++){
+								for(int k=0; k<16;k++){
+									if(getTheGame().getTheBoard().sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).getLetter() == getTheGame().click1.getLet() &&
+										getTheGame().getTheBoard().sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).getNumber() == getTheGame().click1.getNum()){
+										select1 = getTheGame().getTheBoard().sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k);
+									}
+								}
+							}
+						} 
+						
+						//see if first click is valid
+						if(select1.getPiece() != null)
+						{					
+							if( select1.getPiece().player == gameTeam)
+							{
+								validClick1 = true;
+								select1.setSelected(true);
+								theGame.getBoardGUI().setTileIcons();
+								theGame.getbBoardGUI().getLblCheckLabel().setText("");
+							}
+							else
+							{
+								getTheGame().click1 = null;
+								theGame.getbBoardGUI().getLblCheckLabel().setText("That's not your piece");
+							}
 						}
 						else
 						{
 							getTheGame().click1 = null;
-							theGame.getbBoardGUI().getLblCheckLabel().setText("That's not your piece");
+							theGame.getbBoardGUI().getLblCheckLabel().setText("That Tile is empty");
 						}
-					}
-					else
-					{
-						getTheGame().click1 = null;
-						theGame.getbBoardGUI().getLblCheckLabel().setText("That Tile is empty");
-					}
-					
-					
-					if(validClick1)
-					{
-						select1.getPiece().possibleMoves();
-						select1.getPiece().possibleMovesHighlight();
-						theGame.getBoardGUI().setTileIcons();
-						if(getTheGame().click2 != null)
-						{	
-							//finds the second clicked tile
-							for(int i =0; i < 3; i++)
-							{
-								for(int j =0; j<2;j++)
+						
+						
+						if(validClick1)
+						{
+							select1.getPiece().possibleMoves();
+							select1.getPiece().possibleMovesHighlight();
+							theGame.getBoardGUI().setTileIcons();
+							if(getTheGame().click2 != null)
+							{	
+								//finds the second clicked tile
+								for(int i =0; i < 3; i++)
 								{
-									for(int k=0; k<16;k++)
+									for(int j =0; j<2;j++)
 									{
-										if(getTheGame().getTheBoard().sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).getLetter() == getTheGame().click2.getLet() &&
-											getTheGame().getTheBoard().sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).getNumber() == getTheGame().click2.getNum()){
-											select2 = getTheGame().getTheBoard().sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k);
+										for(int k=0; k<16;k++)
+										{
+											if(getTheGame().getTheBoard().sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).getLetter() == getTheGame().click2.getLet() &&
+												getTheGame().getTheBoard().sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).getNumber() == getTheGame().click2.getNum()){
+												select2 = getTheGame().getTheBoard().sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k);
+											}
 										}
 									}
 								}
+						
+								
+								if(select1.getPiece() != null && select2.getPiece() != null && select1.getPiece() == select2.getPiece())
+								{
+									select1.setSelected(false);
+									select2.setSelected(false);
+									select1.getPiece().possibleMovesUnhighlight();
+									theGame.getBoardGUI().setTileIcons();
+									getTheGame().click1 = null;
+									getTheGame().click2 = null;
+								}
+								else if(select2.getPiece() != null && select2.getPiece().player == gameTeam)
+								{
+									select1.setSelected(false);
+									select2.setSelected(true);
+									select1.getPiece().possibleMovesUnhighlight();
+									theGame.getBoardGUI().setTileIcons();
+									getTheGame().click1 = getTheGame().click2;
+									getTheGame().click2 = null;
+								}
+								//moves if second click is valid
+								else
+								{
+									select1.getPiece().possibleMovesUnhighlight();
+									select1.setSelected(false);
+									select2.setSelected(false);
+									select1.getPiece().move(select1, select2,this);
+									theGame.getBoardGUI().setTileIcons();
+								}							
 							}
-					
-							
-							if(select1.getPiece() != null && select2.getPiece() != null && select1.getPiece() == select2.getPiece())
-							{
-								select1.setSelected(false);
-								select2.setSelected(false);
-								select1.getPiece().possibleMovesUnhighlight();
-								theGame.getBoardGUI().setTileIcons();
-								getTheGame().click1 = null;
-								getTheGame().click2 = null;
+							else{
+								suspendMe();
 							}
-							else if(select2.getPiece() != null && select2.getPiece().player == gameTeam)
-							{
-								select1.setSelected(false);
-								select2.setSelected(true);
-								select1.getPiece().possibleMovesUnhighlight();
-								theGame.getBoardGUI().setTileIcons();
-								getTheGame().click1 = getTheGame().click2;
-								getTheGame().click2 = null;
-							}
-							//moves if second click is valid
-							else
-							{
-								select1.getPiece().possibleMovesUnhighlight();
-								select1.setSelected(false);
-								select2.setSelected(false);
-								select1.getPiece().move(select1, select2,this);
-								theGame.getBoardGUI().setTileIcons();
-							}							
-						}
-						else{
-							suspendMe();
 						}
 					}
+					else{
+						suspendMe();
+					}			
 				}
 				else{
 					suspendMe();
-				}			
+				}
 			}
-			else{
-				suspendMe();
-			}
-		}		
+		}
 	}
 	
 	

@@ -1,8 +1,6 @@
 package GUI_Interface;
 
 import javax.swing.JPanel;
-
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -50,6 +48,9 @@ public class BottomBoardGUI extends JPanel
 		
 		lblCheckLabel = new JLabel("");
 		add(lblCheckLabel);
+		
+		JLabel label_1 = new JLabel("");
+		add(label_1);
 	}
 	
 	public JLabel getLblCheckLabel()

@@ -45,7 +45,7 @@ public class Pawn extends Piece {
 	 * @return null
 	 * 
 	 */
-	public void move(Tile aStartTile, Tile aMoveTile, Turn player) {
+	public boolean move(Tile aStartTile, Tile aMoveTile, Turn player) {
 		boolean validMove = false;
 		player.getTheGame().click2 = null;
 		int tempTwoTileIndex = -1;
@@ -112,12 +112,11 @@ public class Pawn extends Piece {
 				player.getTheGame().getBoardGUI().setTileIcons();
 				player.getTheGame().getGameController().addToCounter();
 				this.player.addToMoveList(aMoveTile, this);
+				
+				return true;
 			}
 		}
-		else
-		{
-			return;
-		}
+		return false;
 	}
 	
 	public void possibleMoves()

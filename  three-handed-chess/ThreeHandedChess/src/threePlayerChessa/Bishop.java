@@ -33,7 +33,7 @@ public class Bishop extends Piece {
 	 * @return null
 	 * 
 	 */
-	public void move(Tile aStartTile, Tile aMoveTile, Turn player) 
+	public boolean move(Tile aStartTile, Tile aMoveTile, Turn player) 
 	{
 		boolean validMove = false;
 
@@ -67,12 +67,11 @@ public class Bishop extends Piece {
 				player.getTheGame().getBoardGUI().setTileIcons();
 				player.getTheGame().getGameController().addToCounter(); //adds one to turn counter and starts the next players turn
 				this.player.addToMoveList(aMoveTile, this);
+				return true;
 			}
 		}
-		else
-		{	//if not a valid move returns for player to choose new tiles
-			return;
-		}
+		//if not a valid move returns for player to choose new tiles
+		return false;
 	}
 
 	/** Finds all the possible moves that this bishop can perform and adds them to the <code>validMoveList</code>.

@@ -183,7 +183,8 @@ public abstract class Piece {
 	 * 			player - the current players thread
 	 * 
 	 */
-	public void move(Tile aStartTile, Tile aMoveTile, Turn player){
+	public boolean move(Tile aStartTile, Tile aMoveTile, Turn player){
+		return false;
 		
 	}
 
