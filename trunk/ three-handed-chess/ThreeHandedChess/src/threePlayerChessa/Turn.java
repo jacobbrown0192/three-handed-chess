@@ -59,16 +59,23 @@ public class Turn extends Thread {
 					
 					while(!successfulMove)
 					{
-						gameTeam.getPieces().elementAt(pieceIndex).possibleMoves();
-						if(!gameTeam.getPieces().elementAt(pieceIndex).getValidMoves().isEmpty())
+						if(gameTeam.getPieces().elementAt(pieceIndex).getCurrentTile() != null)
 						{
-							select1 = gameTeam.getPieces().elementAt(pieceIndex).getCurrentTile();
-							moveIndex = (int) (Math.random()*gameTeam.getPieces().elementAt(pieceIndex).getValidMoves().size());
-							select2 = gameTeam.getPieces().elementAt(pieceIndex).getValidMoves().elementAt(moveIndex);
-							
-							if(select1.getPiece().move(select1, select2, this))
+							gameTeam.getPieces().elementAt(pieceIndex).possibleMoves();
+							if(!gameTeam.getPieces().elementAt(pieceIndex).getValidMoves().isEmpty())
 							{
-								successfulMove = true;
+								select1 = gameTeam.getPieces().elementAt(pieceIndex).getCurrentTile();
+								moveIndex = (int) (Math.random()*gameTeam.getPieces().elementAt(pieceIndex).getValidMoves().size());
+								select2 = gameTeam.getPieces().elementAt(pieceIndex).getValidMoves().elementAt(moveIndex);
+								
+								if(select1.getPiece().move(select1, select2, this))
+								{
+									successfulMove = true;
+								}
+								else
+								{
+									pieceIndex = (int) (Math.random()*numPieces);
+								}
 							}
 							else
 							{
