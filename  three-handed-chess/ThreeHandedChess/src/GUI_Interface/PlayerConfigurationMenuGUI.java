@@ -125,12 +125,45 @@ public class PlayerConfigurationMenuGUI extends JPanel
 		add(btnNewButton);
 		
 		JToggleButton tglbtnNewToggleButton_2 = new JToggleButton("Computer");
+		tglbtnNewToggleButton_2.addActionListener(new ActionListener() {
+
+	         public void actionPerformed(ActionEvent e) {
+	            JToggleButton tBtn = (JToggleButton)e.getSource();
+	            if (tBtn.isSelected()) {
+	               theGame.getPlyerConfig().changePlayer0Allignment(true);
+	            } else {
+		           theGame.getPlyerConfig().changePlayer0Allignment(false);
+	            }
+	         }
+	      });
 		add(tglbtnNewToggleButton_2);
 		
 		JToggleButton tglbtnNewToggleButton_1 = new JToggleButton("Computer");
+		tglbtnNewToggleButton_1.addActionListener(new ActionListener() {
+
+	         public void actionPerformed(ActionEvent e) {
+	            JToggleButton tBtn = (JToggleButton)e.getSource();
+	            if (tBtn.isSelected()) {
+		               theGame.getPlyerConfig().changePlayer1Allignment(true);
+	            } else {
+		               theGame.getPlyerConfig().changePlayer1Allignment(false);
+	            }
+	         }
+	      });
 		add(tglbtnNewToggleButton_1);
 		
 		JToggleButton tglbtnNewToggleButton = new JToggleButton("Computer");
+		tglbtnNewToggleButton.addActionListener(new ActionListener() {
+
+	         public void actionPerformed(ActionEvent e) {
+	            JToggleButton tBtn = (JToggleButton)e.getSource();
+	            if (tBtn.isSelected()) {
+		               theGame.getPlyerConfig().changePlayer2Allignment(true);
+	            } else {
+		               theGame.getPlyerConfig().changePlayer2Allignment(false);
+	            }
+	         }
+	      });
 		add(tglbtnNewToggleButton);
 		
 		JSlider slider_2 = new JSlider();
