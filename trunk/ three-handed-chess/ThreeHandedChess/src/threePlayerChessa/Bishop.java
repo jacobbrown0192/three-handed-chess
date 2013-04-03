@@ -51,6 +51,10 @@ public class Bishop extends Piece {
 			//Consider if the move will put you into check
 			boolean check = player.getTheGame().getGameController().putIntoCheck(aStartTile, aMoveTile);
 			
+			if(check)
+			{
+				player.getTheGame().getbBoardGUI().getLblCheckLabel().setText("That move will put into check.");
+			}
 			//If it doesn't, move the piece on the game board
 			if(!check)
 			{

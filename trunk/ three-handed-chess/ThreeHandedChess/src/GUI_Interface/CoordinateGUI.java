@@ -1,12 +1,5 @@
 package GUI_Interface;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Polygon;
-
-import threePlayerChessa.Piece.PieceType;
-
 /** Simple two integer class for handling points of the hexagonal board.
  * <p>Used by BoardGUI to set and access the points of the tile vertices.
  */
