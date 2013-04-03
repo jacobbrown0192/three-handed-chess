@@ -9,12 +9,12 @@ import GUI_Interface.WinGUI;
  */
 public class Turn extends Thread {
 	private Game theGame; //the game its self which contains everything
-	public Team gameTeam; //the player of which this thread belongs
+	private Team gameTeam; //the player of which this thread belongs
 	private Team opponent1;
 	private Team opponent2;
 	private boolean check; //tells if the player is in check
-	boolean validClick1;
-	boolean validClick2;
+	private boolean validClick1;
+	private boolean validClick2;
 	
 	
 	/**
@@ -36,26 +36,26 @@ public class Turn extends Thread {
 	 *runs the thread 
 	 */
 	@Override public void run(){
-		while(getTheGame().gameController.isInProgress() == true){ // checks to see if the game is in progress
+		while(getTheGame().getGameController().isInProgress() == true){ // checks to see if the game is in progress
 			validClick1 = false;
 			validClick2 = false;			
 			this.check = false;//getTheGame().gameController.inCheck(gameTeam, opponent1, opponent2);
 			
 			Tile select1 = null;
 			Tile select2 = null;
-			Team winner = theGame.gameController.Checkmate(gameTeam,opponent1,opponent2, theGame.theBoard);
+			Team winner = theGame.getGameController().Checkmate(gameTeam,opponent1,opponent2, theGame.getTheBoard());
 			if(gameTeam.checkMate){
 				System.out.println("Holy Shit checkmate!");
 				WinGUI Win = new WinGUI(theGame);
 				Win.getLblWin().setText(winner.getName() + " Wins!");
-				theGame.gameFrame.getContentPane().removeAll();
-			    theGame.gameFrame.getContentPane().repaint();
-				theGame.gameFrame.getContentPane().add(Win);
-				theGame.gameFrame.setVisible(true);
+				theGame.getGameFrame().getContentPane().removeAll();
+			    theGame.getGameFrame().getContentPane().repaint();
+				theGame.getGameFrame().getContentPane().add(Win);
+				theGame.getGameFrame().setVisible(true);
 			}
-			if((getTheGame().gameController.turnCount % 3) == (gameTeam.getNumber() - 1))//checks to see if its current players turn
+			if((getTheGame().getGameController().turnCount % 3) == (gameTeam.getNumber() - 1))//checks to see if its current players turn
 			{ 
-				theGame.tBoardGUI.getLblGameAndStuff().setText(gameTeam.getName());
+				theGame.gettBoardGUI().getLblGameAndStuff().setText(gameTeam.getName());
 				if(getTheGame().click1 != null)//check for first click
 				{
 
@@ -64,9 +64,9 @@ public class Turn extends Thread {
 					for(int i =0; i < 3; i++){
 						for(int j =0; j<2;j++){
 							for(int k=0; k<16;k++){
-								if(getTheGame().theBoard.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).getLetter() == getTheGame().click1.getLet() &&
-									getTheGame().theBoard.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).getNumber() == getTheGame().click1.getNum()){
-									select1 = getTheGame().theBoard.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k);
+								if(getTheGame().getTheBoard().sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).getLetter() == getTheGame().click1.getLet() &&
+									getTheGame().getTheBoard().sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).getNumber() == getTheGame().click1.getNum()){
+									select1 = getTheGame().getTheBoard().sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k);
 								}
 							}
 						}
@@ -79,7 +79,7 @@ public class Turn extends Thread {
 						{
 							validClick1 = true;
 							select1.setSelected(true);
-							theGame.boardGUI.setTileIcons();
+							theGame.getBoardGUI().setTileIcons();
 						}
 						else
 						{
@@ -96,7 +96,7 @@ public class Turn extends Thread {
 					{
 						select1.getPiece().possibleMoves();
 						select1.getPiece().possibleMovesHighlight();
-						theGame.boardGUI.setTileIcons();
+						theGame.getBoardGUI().setTileIcons();
 						if(getTheGame().click2 != null)
 						{	
 							//finds the second clicked tile
@@ -106,9 +106,9 @@ public class Turn extends Thread {
 								{
 									for(int k=0; k<16;k++)
 									{
-										if(getTheGame().theBoard.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).getLetter() == getTheGame().click2.getLet() &&
-											getTheGame().theBoard.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).getNumber() == getTheGame().click2.getNum()){
-											select2 = getTheGame().theBoard.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k);
+										if(getTheGame().getTheBoard().sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).getLetter() == getTheGame().click2.getLet() &&
+											getTheGame().getTheBoard().sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).getNumber() == getTheGame().click2.getNum()){
+											select2 = getTheGame().getTheBoard().sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k);
 										}
 									}
 								}
@@ -120,7 +120,7 @@ public class Turn extends Thread {
 								select1.setSelected(false);
 								select2.setSelected(false);
 								select1.getPiece().possibleMovesUnhighlight();
-								theGame.boardGUI.setTileIcons();
+								theGame.getBoardGUI().setTileIcons();
 								getTheGame().click1 = null;
 								getTheGame().click2 = null;
 							}
@@ -129,7 +129,7 @@ public class Turn extends Thread {
 								select1.setSelected(false);
 								select2.setSelected(true);
 								select1.getPiece().possibleMovesUnhighlight();
-								theGame.boardGUI.setTileIcons();
+								theGame.getBoardGUI().setTileIcons();
 								getTheGame().click1 = getTheGame().click2;
 								getTheGame().click2 = null;
 							}
@@ -140,16 +140,13 @@ public class Turn extends Thread {
 								select1.setSelected(false);
 								select2.setSelected(false);
 								select1.getPiece().move(select1, select2,this);
-								theGame.boardGUI.setTileIcons();
+								theGame.getBoardGUI().setTileIcons();
 							}							
 						}
 						else{
 							suspendMe();
 						}
 					}
-					
-					
-					
 				}
 				else{
 					suspendMe();
@@ -174,13 +171,6 @@ public class Turn extends Thread {
 		}
 	}
 	
-	/**  
-	 *used to notify the thread
-	 */
-	synchronized void unsuspendMe(){
-		Thread.currentThread().notify();
-	}
-
 
 	/**
 	 * @return the theGame

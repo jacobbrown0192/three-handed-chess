@@ -160,10 +160,10 @@ public class PlayerConfigurationMenu {
 	 * used to return to the main menu
 	 */
 	public void close(){
-		theGame.gameFrame.getContentPane().removeAll();
-        theGame.gameFrame.getContentPane().repaint();
-		theGame.gameFrame.getContentPane().add(theGame.mainMenuGUI);
-		theGame.gameFrame.setVisible(true);		
+		theGame.getGameFrame().getContentPane().removeAll();
+        theGame.getGameFrame().getContentPane().repaint();
+		theGame.getGameFrame().getContentPane().add(theGame.getMainMenuGUI());
+		theGame.getGameFrame().setVisible(true);		
 	}
 
 }

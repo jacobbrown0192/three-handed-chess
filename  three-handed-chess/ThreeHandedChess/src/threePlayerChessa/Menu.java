@@ -31,10 +31,10 @@ public class Menu {
 	 * used to enter the player configuration menu
 	 */
 	public void playerConfig() {
-		theGame.gameFrame.getContentPane().removeAll();
-	    theGame.gameFrame.getContentPane().repaint();
-		theGame.gameFrame.getContentPane().add(theGame.playerConfigGUI);
-		theGame.gameFrame.setVisible(true);
+		theGame.getGameFrame().getContentPane().removeAll();
+	    theGame.getGameFrame().getContentPane().repaint();
+		theGame.getGameFrame().getContentPane().add(theGame.getPlayerConfigGUI());
+		theGame.getGameFrame().setVisible(true);
 	}
 
 	/**

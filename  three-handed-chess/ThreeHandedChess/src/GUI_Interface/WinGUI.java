@@ -37,13 +37,13 @@ public class WinGUI extends JPanel {
 		JButton btnNewButton = new JButton("Finish");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				theGame.gameFrame.getContentPane().removeAll();
-			    theGame.gameFrame.getContentPane().repaint();
-				theGame.gameFrame.getContentPane().add(theGame.tBoardGUI,BorderLayout.NORTH);
-				theGame.gameFrame.getContentPane().add(theGame.boardGUI);
-				theGame.gameFrame.getContentPane().add(theGame.bBoardGUI,BorderLayout.SOUTH);
-				theGame.gameFrame.setVisible(true);
-				theGame.gameController.setInProgress(false);
+				theGame.getGameFrame().getContentPane().removeAll();
+			    theGame.getGameFrame().getContentPane().repaint();
+				theGame.getGameFrame().getContentPane().add(theGame.gettBoardGUI(),BorderLayout.NORTH);
+				theGame.getGameFrame().getContentPane().add(theGame.getBoardGUI());
+				theGame.getGameFrame().getContentPane().add(theGame.getbBoardGUI(),BorderLayout.SOUTH);
+				theGame.getGameFrame().setVisible(true);
+				theGame.getGameController().setInProgress(false);
 			}
 		});
 		add(btnNewButton);

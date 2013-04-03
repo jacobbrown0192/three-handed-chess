@@ -43,7 +43,7 @@ public class MainMenuGUI extends JPanel {
 		JButton btnStart = new JButton("Start");
 		btnStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-					theGame.mainMenu.Start();
+					theGame.getMainMenu().Start();
 			}
 		});
 		add(btnStart);
@@ -51,7 +51,7 @@ public class MainMenuGUI extends JPanel {
 		JButton btnPlayerConfiguration = new JButton("Player Configuration");
 		btnPlayerConfiguration.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				theGame.mainMenu.playerConfig();
+				theGame.getMainMenu().playerConfig();
 				
 			}
 		});
@@ -60,7 +60,7 @@ public class MainMenuGUI extends JPanel {
 		JButton btnClose = new JButton("Close");
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				theGame.mainMenu.Close();
+				theGame.getMainMenu().Close();
 			}
 		});
 		add(btnClose);

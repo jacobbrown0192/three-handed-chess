@@ -36,7 +36,7 @@ public class CallForStalemateGUI extends JPanel
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				theGame.stalemate.yes();
+				theGame.getStalemate().yes();
 			}
 		});
 		
@@ -67,7 +67,7 @@ public class CallForStalemateGUI extends JPanel
 		{
 			public void actionPerformed(ActionEvent arg0)
 			{
-				theGame.stalemate.no();
+				theGame.getStalemate().no();
 			}
 		});
 		add(btnNewButton_1);

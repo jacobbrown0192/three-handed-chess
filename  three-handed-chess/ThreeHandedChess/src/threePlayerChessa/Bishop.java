@@ -22,6 +22,7 @@ public class Bishop extends Piece {
 	public Bishop(Team player, String name, Board theBoard, Tile currentTile,PieceType type) {
 		super(player, name, theBoard, currentTile,type);
 		// TODO Auto-generated constructor stub
+		this.jumpTwo = false;
 	}
 
 	/**  
@@ -57,8 +58,8 @@ public class Bishop extends Piece {
 				aMoveTile.setPiece(aStartTile.getPiece());
 				aStartTile.setPiece(null);
 				aMoveTile.getPiece().setCurrentTile(aMoveTile);
-				player.getTheGame().boardGUI.setTileIcons();
-				player.getTheGame().gameController.addToCounter(); //adds one to turn counter and starts the next players turn
+				player.getTheGame().getBoardGUI().setTileIcons();
+				player.getTheGame().getGameController().addToCounter(); //adds one to turn counter and starts the next players turn
 				this.player.addToMoveList(aMoveTile, this);
 			}
 		}

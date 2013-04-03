@@ -47,12 +47,12 @@ public class PromotePawn extends JPanel
 			public void actionPerformed(ActionEvent e) 
 			{
 				thePawn.selectQueen(thePawn.getCurrentTile());
-				thePlayer.getTheGame().gameFrame.getContentPane().removeAll();
-			    thePlayer.getTheGame().gameFrame.getContentPane().repaint();
-				thePlayer.getTheGame().gameFrame.getContentPane().add(thePlayer.getTheGame().tBoardGUI,BorderLayout.NORTH);
-				thePlayer.getTheGame().gameFrame.getContentPane().add(thePlayer.getTheGame().boardGUI);
-				thePlayer.getTheGame().gameFrame.getContentPane().add(thePlayer.getTheGame().bBoardGUI,BorderLayout.SOUTH);
-				thePlayer.getTheGame().gameFrame.setVisible(true);
+				thePlayer.getTheGame().getGameFrame().getContentPane().removeAll();
+			    thePlayer.getTheGame().getGameFrame().getContentPane().repaint();
+				thePlayer.getTheGame().getGameFrame().getContentPane().add(thePlayer.getTheGame().gettBoardGUI(),BorderLayout.NORTH);
+				thePlayer.getTheGame().getGameFrame().getContentPane().add(thePlayer.getTheGame().getBoardGUI());
+				thePlayer.getTheGame().getGameFrame().getContentPane().add(thePlayer.getTheGame().getbBoardGUI(),BorderLayout.SOUTH);
+				thePlayer.getTheGame().getGameFrame().setVisible(true);
 			}
 		});
 		add(QueenButton);
@@ -63,12 +63,12 @@ public class PromotePawn extends JPanel
 			public void actionPerformed(ActionEvent e) 
 			{
 				thePawn.selectBishop(thePawn.getCurrentTile());
-				thePlayer.getTheGame().gameFrame.getContentPane().removeAll();
-			    thePlayer.getTheGame().gameFrame.getContentPane().repaint();
-				thePlayer.getTheGame().gameFrame.getContentPane().add(thePlayer.getTheGame().tBoardGUI,BorderLayout.NORTH);
-				thePlayer.getTheGame().gameFrame.getContentPane().add(thePlayer.getTheGame().boardGUI);
-				thePlayer.getTheGame().gameFrame.getContentPane().add(thePlayer.getTheGame().bBoardGUI,BorderLayout.SOUTH);
-				thePlayer.getTheGame().gameFrame.setVisible(true);
+				thePlayer.getTheGame().getGameFrame().getContentPane().removeAll();
+			    thePlayer.getTheGame().getGameFrame().getContentPane().repaint();
+				thePlayer.getTheGame().getGameFrame().getContentPane().add(thePlayer.getTheGame().gettBoardGUI(),BorderLayout.NORTH);
+				thePlayer.getTheGame().getGameFrame().getContentPane().add(thePlayer.getTheGame().getBoardGUI());
+				thePlayer.getTheGame().getGameFrame().getContentPane().add(thePlayer.getTheGame().getbBoardGUI(),BorderLayout.SOUTH);
+				thePlayer.getTheGame().getGameFrame().setVisible(true);
 			}
 		});
 		add(BishopButton);
@@ -79,12 +79,12 @@ public class PromotePawn extends JPanel
 			public void actionPerformed(ActionEvent e) 
 			{
 				thePawn.selectKnight(thePawn.getCurrentTile());
-				thePlayer.getTheGame().gameFrame.getContentPane().removeAll();
-			    thePlayer.getTheGame().gameFrame.getContentPane().repaint();
-				thePlayer.getTheGame().gameFrame.getContentPane().add(thePlayer.getTheGame().tBoardGUI,BorderLayout.NORTH);
-				thePlayer.getTheGame().gameFrame.getContentPane().add(thePlayer.getTheGame().boardGUI);
-				thePlayer.getTheGame().gameFrame.getContentPane().add(thePlayer.getTheGame().bBoardGUI,BorderLayout.SOUTH);
-				thePlayer.getTheGame().gameFrame.setVisible(true);
+				thePlayer.getTheGame().getGameFrame().getContentPane().removeAll();
+			    thePlayer.getTheGame().getGameFrame().getContentPane().repaint();
+				thePlayer.getTheGame().getGameFrame().getContentPane().add(thePlayer.getTheGame().gettBoardGUI(),BorderLayout.NORTH);
+				thePlayer.getTheGame().getGameFrame().getContentPane().add(thePlayer.getTheGame().getBoardGUI());
+				thePlayer.getTheGame().getGameFrame().getContentPane().add(thePlayer.getTheGame().getbBoardGUI(),BorderLayout.SOUTH);
+				thePlayer.getTheGame().getGameFrame().setVisible(true);
 			}
 		});
 		add(KnightButton);
@@ -95,12 +95,12 @@ public class PromotePawn extends JPanel
 			public void actionPerformed(ActionEvent e) 
 			{
 				thePawn.selectRook(thePawn.getCurrentTile());
-				thePlayer.getTheGame().gameFrame.getContentPane().removeAll();
-			    thePlayer.getTheGame().gameFrame.getContentPane().repaint();
-				thePlayer.getTheGame().gameFrame.getContentPane().add(thePlayer.getTheGame().tBoardGUI,BorderLayout.NORTH);
-				thePlayer.getTheGame().gameFrame.getContentPane().add(thePlayer.getTheGame().boardGUI);
-				thePlayer.getTheGame().gameFrame.getContentPane().add(thePlayer.getTheGame().bBoardGUI,BorderLayout.SOUTH);
-				thePlayer.getTheGame().gameFrame.setVisible(true);
+				thePlayer.getTheGame().getGameFrame().getContentPane().removeAll();
+			    thePlayer.getTheGame().getGameFrame().getContentPane().repaint();
+				thePlayer.getTheGame().getGameFrame().getContentPane().add(thePlayer.getTheGame().gettBoardGUI(),BorderLayout.NORTH);
+				thePlayer.getTheGame().getGameFrame().getContentPane().add(thePlayer.getTheGame().getBoardGUI());
+				thePlayer.getTheGame().getGameFrame().getContentPane().add(thePlayer.getTheGame().getbBoardGUI(),BorderLayout.SOUTH);
+				thePlayer.getTheGame().getGameFrame().setVisible(true);
 			}
 		});
 		add(RookButton);
