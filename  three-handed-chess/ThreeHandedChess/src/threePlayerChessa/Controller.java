@@ -157,7 +157,8 @@ public class Controller {
 				}				
 			}
 			
-			for(int x = 0; x<theGame.getTheBoard().promotedPieces.size();x++){
+/*
+ 			for(int x = 0; x<theGame.getTheBoard().promotedPieces.size();x++){
 				tempStart = theGame.getTheBoard().promotedPieces.elementAt(x).getCurrentTile();
 				if(theGame.getTheBoard().promotedPieces.elementAt(x).getPlayer() == opponent1 || theGame.getTheBoard().promotedPieces.elementAt(x).getPlayer() == opponent2){
 					if(tempStart != null){
@@ -171,6 +172,7 @@ public class Controller {
 					}
 				}
 			}
+			*/
 			
 			
 			

@@ -1,6 +1,8 @@
 package threePlayerChessa;
 
 
+import java.util.Vector;
+
 import GUI_Interface.WinGUI;
 
 
@@ -43,6 +45,20 @@ public class Turn extends Thread {
 			{
 				if((getTheGame().getGameController().turnCount % 3) == (gameTeam.getNumber() - 1))//checks to see if its current players turn
 				{
+					Team winner = theGame.getGameController().Checkmate(gameTeam,opponent1,opponent2, theGame.getTheBoard());
+					if(gameTeam.checkMate){
+						WinGUI Win = new WinGUI(theGame);
+						Win.getLblWin().setText(winner.getName() + " Wins!");
+						theGame.getGameFrame().getContentPane().removeAll();
+					    theGame.getGameFrame().getContentPane().repaint();
+						theGame.getGameFrame().getContentPane().add(Win);
+						theGame.getGameFrame().setVisible(true);
+					}
+					try {
+					    Thread.sleep(100);
+					} catch(InterruptedException ex) {
+					    Thread.currentThread().interrupt();
+					}
 					Tile select1 = null;
 					Tile select2 = null;
 					
@@ -52,21 +68,28 @@ public class Turn extends Thread {
 					//If move is successful, then we're fine
 					//Else pick a random piece on your team and try again
 					
-					int numPieces = gameTeam.getPieces().size();
+					
+					Vector <Piece> teamPieces = new Vector <Piece>(gameTeam.getPieces());
+					for(int i = 0; i<theGame.getTheBoard().promotedPieces.size();i++){
+						if(theGame.getTheBoard().promotedPieces.elementAt(i).getPlayer() == gameTeam){
+							teamPieces.add(theGame.getTheBoard().promotedPieces.elementAt(i));
+						}
+					}
+					int numPieces = teamPieces.size();
 					int pieceIndex = (int) (Math.random()*numPieces);
 					int moveIndex = -1;
 					boolean successfulMove = false;
 					
 					while(!successfulMove)
 					{
-						if(gameTeam.getPieces().elementAt(pieceIndex).getCurrentTile() != null)
+						if(teamPieces.elementAt(pieceIndex).getCurrentTile() != null)
 						{
-							gameTeam.getPieces().elementAt(pieceIndex).possibleMoves();
-							if(!gameTeam.getPieces().elementAt(pieceIndex).getValidMoves().isEmpty())
+							teamPieces.elementAt(pieceIndex).possibleMoves();
+							if(!teamPieces.elementAt(pieceIndex).getValidMoves().isEmpty())
 							{
-								select1 = gameTeam.getPieces().elementAt(pieceIndex).getCurrentTile();
-								moveIndex = (int) (Math.random()*gameTeam.getPieces().elementAt(pieceIndex).getValidMoves().size());
-								select2 = gameTeam.getPieces().elementAt(pieceIndex).getValidMoves().elementAt(moveIndex);
+								select1 = teamPieces.elementAt(pieceIndex).getCurrentTile();
+								moveIndex = (int) (Math.random()*teamPieces.elementAt(pieceIndex).getValidMoves().size());
+								select2 = teamPieces.elementAt(pieceIndex).getValidMoves().elementAt(moveIndex);
 								
 								if(select1.getPiece().move(select1, select2, this))
 								{

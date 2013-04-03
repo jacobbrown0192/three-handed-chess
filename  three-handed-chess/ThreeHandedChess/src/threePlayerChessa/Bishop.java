@@ -46,7 +46,7 @@ public class Bishop extends Piece {
 			}
 		}
 		
-		if (validMove)
+		if (validMove && aMoveTile != null && aStartTile != null)
 		{	
 			//Consider if the move will put you into check
 			boolean check = player.getTheGame().getGameController().putIntoCheck(aStartTile, aMoveTile);
