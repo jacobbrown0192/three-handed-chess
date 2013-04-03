@@ -2,8 +2,6 @@ package GUI_Interface;
 import java.awt.*;
 import java.awt.event.*;
 
-import javax.swing.*;
-
 /** Class for the containment of the polygon, and indexing systems
  * (View and Model) a tile
  */

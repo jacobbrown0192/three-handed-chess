@@ -65,6 +65,10 @@ public class Pawn extends Piece {
 		{
 			boolean check = player.getTheGame().getGameController().putIntoCheck(aStartTile, aMoveTile);
 			
+			if(check)
+			{
+				player.getTheGame().getbBoardGUI().getLblCheckLabel().setText("That move will put into check.");
+			}
 			if(!check)
 			{
 				if(tempTwoTileIndex == this.twoTileIndex)
