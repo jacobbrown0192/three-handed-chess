@@ -2,7 +2,7 @@ package threePlayerChessa;
 
 import java.util.Vector;
 
-import javax.swing.JLabel;
+
 
 import threePlayerChessa.Piece.PieceType;
 
@@ -297,15 +297,6 @@ public class Controller {
 		else if(myTeamNum == 3)
 		{
 			check = theGame.getGameController().inCheck(checkBoard.gameTeams.elementAt(2), checkBoard.gameTeams.elementAt(1), checkBoard.gameTeams.elementAt(0), checkBoard);
-		}
-		
-		if (check)
-		{
-			theGame.getbBoardGUI().getLblCheckLabel().setText("You are in check");
-		}
-		else
-		{
-			theGame.getbBoardGUI().getLblCheckLabel().setText("");
 		}
 		return check;	
 	}
