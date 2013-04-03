@@ -40,14 +40,14 @@ public class Controller {
 	 */
 	public synchronized void addToCounter(){
 		turnCount ++;
-		synchronized (theGame.player1){
-			theGame.player1.notify();
+		synchronized (theGame.getPlayer1()){
+			theGame.getPlayer1().notify();
 		}
-		synchronized (theGame.player2){
-			theGame.player2.notify();
+		synchronized (theGame.getPlayer2()){
+			theGame.getPlayer2().notify();
 		}
-		synchronized (theGame.player3){
-			theGame.player3.notify();
+		synchronized (theGame.getPlayer3()){
+			theGame.getPlayer3().notify();
 		}
 	}
 	
@@ -246,15 +246,15 @@ public class Controller {
 		
 		if(myTeamNum == 1)
 		{
-			check = theGame.gameController.inCheck(checkBoard.gameTeams.elementAt(0), checkBoard.gameTeams.elementAt(1), checkBoard.gameTeams.elementAt(2), checkBoard);
+			check = theGame.getGameController().inCheck(checkBoard.gameTeams.elementAt(0), checkBoard.gameTeams.elementAt(1), checkBoard.gameTeams.elementAt(2), checkBoard);
 		}
 		else if(myTeamNum == 2)
 		{
-			check = theGame.gameController.inCheck(checkBoard.gameTeams.elementAt(1), checkBoard.gameTeams.elementAt(0), checkBoard.gameTeams.elementAt(2), checkBoard);
+			check = theGame.getGameController().inCheck(checkBoard.gameTeams.elementAt(1), checkBoard.gameTeams.elementAt(0), checkBoard.gameTeams.elementAt(2), checkBoard);
 		}
 		else if(myTeamNum == 3)
 		{
-			check = theGame.gameController.inCheck(checkBoard.gameTeams.elementAt(2), checkBoard.gameTeams.elementAt(1), checkBoard.gameTeams.elementAt(0), checkBoard);
+			check = theGame.getGameController().inCheck(checkBoard.gameTeams.elementAt(2), checkBoard.gameTeams.elementAt(1), checkBoard.gameTeams.elementAt(0), checkBoard);
 		}
 		
 		if (check)

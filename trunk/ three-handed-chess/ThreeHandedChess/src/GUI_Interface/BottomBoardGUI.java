@@ -36,10 +36,10 @@ public class BottomBoardGUI extends JPanel
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				theGame.gameFrame.getContentPane().removeAll();
-			    theGame.gameFrame.getContentPane().repaint();
-				theGame.gameFrame.getContentPane().add(theGame.pauseMenuGUI);
-				theGame.gameFrame.setVisible(true);
+				theGame.getGameFrame().getContentPane().removeAll();
+			    theGame.getGameFrame().getContentPane().repaint();
+				theGame.getGameFrame().getContentPane().add(theGame.getPauseMenuGUI());
+				theGame.getGameFrame().setVisible(true);
 			}
 		});
 		

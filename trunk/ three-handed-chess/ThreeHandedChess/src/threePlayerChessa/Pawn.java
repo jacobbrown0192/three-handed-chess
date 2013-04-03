@@ -100,13 +100,13 @@ public class Pawn extends Piece {
 				
 				if(aMoveTile.getNumber() == 1 || aMoveTile.getNumber() == 8 || aMoveTile.getNumber() == 12){
 					PromotePawn selector = new PromotePawn(this,player);
-					player.getTheGame().gameFrame.getContentPane().removeAll();
-				    player.getTheGame().gameFrame.getContentPane().repaint();
-					player.getTheGame().gameFrame.getContentPane().add(selector);
-					player.getTheGame().gameFrame.setVisible(true);
+					player.getTheGame().getGameFrame().getContentPane().removeAll();
+				    player.getTheGame().getGameFrame().getContentPane().repaint();
+					player.getTheGame().getGameFrame().getContentPane().add(selector);
+					player.getTheGame().getGameFrame().setVisible(true);
 				}
-				player.getTheGame().boardGUI.setTileIcons();
-				player.getTheGame().gameController.addToCounter();
+				player.getTheGame().getBoardGUI().setTileIcons();
+				player.getTheGame().getGameController().addToCounter();
 				this.player.addToMoveList(aMoveTile, this);
 			}
 		}
@@ -143,16 +143,20 @@ public class Pawn extends Piece {
 					{
 						this.validTileMoves.add(temp.upright);
 					}
-					/*if(temp.right != null && temp.right.getPiece() != null && temp.right.getPiece().getPlayer() != this.getPlayer() && temp.upright.getPiece() == null){
-						if(temp.right.getPiece().getPlayer().moves.lastElement().getPiece() == temp.right.getPiece() && temp.right.getPiece().isJumpTwo() == true){
-							this.validTileMoves.add(temp.upright);
+					if(this.currentTile.getNumber() == 5 && this.currentTile.getNumber() == 9 && this.currentTile.getNumber() == 4){
+						if(temp.right != null && temp.right.getPiece() != null && temp.right.getPiece().getPlayer() != this.getPlayer() && temp.upright.getPiece() == null){
+							if(temp.right.getPiece().getPlayer().moves.lastElement().getPiece() == temp.right.getPiece() && temp.right.getPiece().isJumpTwo() == true){
+								this.validTileMoves.add(temp.upright);
+							}
 						}
 					}
-					if(temp.left != null && temp.left.getPiece() != null && temp.left.getPiece().getPlayer() != this.getPlayer() && temp.upleft.getPiece() == null){
-						if(temp.left.getPiece().getPlayer().moves.lastElement().getPiece() == temp.left.getPiece() && temp.left.getPiece().isJumpTwo() == true){
-							this.validTileMoves.add(temp.upleft);
+					if(this.currentTile.getNumber() == 5 && this.currentTile.getNumber() == 9 && this.currentTile.getNumber() == 4){
+						if(temp.left != null && temp.left.getPiece() != null && temp.left.getPiece().getPlayer() != this.getPlayer() && temp.upleft.getPiece() == null){
+							if(temp.left.getPiece().getPlayer().moves.lastElement().getPiece() == temp.left.getPiece() && temp.left.getPiece().isJumpTwo() == true){
+								this.validTileMoves.add(temp.upleft);
+							}
 						}
-					}*/
+					}
 				}
 				else
 				{
@@ -229,16 +233,20 @@ public class Pawn extends Piece {
 						{
 							this.validTileMoves.add(temp.downright);
 						}
-						/*if(temp.right != null && temp.right.getPiece() != null && temp.right.getPiece().getPlayer() != this.getPlayer() && temp.downright.getPiece() == null){
-							if(temp.right.getPiece().getPlayer().moves.lastElement().getPiece() == temp.right.getPiece() && temp.right.getPiece().isJumpTwo() == true){
-								this.validTileMoves.add(temp.downright);
+						if(this.currentTile.getNumber() == 5 && this.currentTile.getNumber() == 9 && this.currentTile.getNumber() == 4){
+							if(temp.right != null && temp.right.getPiece() != null && temp.right.getPiece().getPlayer() != this.getPlayer() && temp.downright.getPiece() == null){
+								if(temp.right.getPiece().getPlayer().moves.lastElement().getPiece() == temp.right.getPiece() && temp.right.getPiece().isJumpTwo() == true){
+									this.validTileMoves.add(temp.downright);
+								}
 							}
 						}
-						if(temp.left != null && temp.left.getPiece() != null && temp.left.getPiece().getPlayer() != this.getPlayer() && temp.downleft.getPiece() == null){
-							if(temp.left.getPiece().getPlayer().moves.lastElement().getPiece() == temp.left.getPiece() && temp.left.getPiece().isJumpTwo() == true){
-								this.validTileMoves.add(temp.downleft);
+						if(this.currentTile.getNumber() == 5 && this.currentTile.getNumber() == 9 && this.currentTile.getNumber() == 4){
+							if(temp.left != null && temp.left.getPiece() != null && temp.left.getPiece().getPlayer() != this.getPlayer() && temp.downleft.getPiece() == null){
+								if(temp.left.getPiece().getPlayer().moves.lastElement().getPiece() == temp.left.getPiece() && temp.left.getPiece().isJumpTwo() == true){
+									this.validTileMoves.add(temp.downleft);
+								}
 							}
-						}*/
+						}
 					}
 					else if ((segNumId == 8 && segLetId == 4) || (segNumId == 8 && segLetId == 12) || (segNumId == 12 && segLetId == 12) || (segNumId == 12 && segLetId == 8))
 					{
@@ -258,7 +266,7 @@ public class Pawn extends Piece {
 						{
 							this.validTileMoves.add(temp.upright);
 						}
-						/*if(temp.right != null && temp.right.getPiece() != null && temp.right.getPiece().getPlayer() != this.getPlayer() && temp.upright.getPiece() == null){
+						if(temp.right != null && temp.right.getPiece() != null && temp.right.getPiece().getPlayer() != this.getPlayer() && temp.upright.getPiece() == null){
 							if(temp.right.getPiece().getPlayer().moves.lastElement().getPiece() == temp.right.getPiece() && temp.right.getPiece().isJumpTwo() == true){
 								this.validTileMoves.add(temp.upright);
 							}
@@ -267,7 +275,7 @@ public class Pawn extends Piece {
 							if(temp.left.getPiece().getPlayer().moves.lastElement().getPiece() == temp.left.getPiece() && temp.left.getPiece().isJumpTwo() == true){
 								this.validTileMoves.add(temp.upleft);
 							}
-						}*/
+						}
 					}
 				}
 				else //Still in our own section

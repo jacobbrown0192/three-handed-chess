@@ -42,7 +42,7 @@ public class PauseMenuGUI extends JPanel
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				theGame.pauseMenu.resume();
+				theGame.getPauseMenu().resume();
 			}
 		});
 		add(btnNewButton_3);
@@ -52,7 +52,7 @@ public class PauseMenuGUI extends JPanel
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				theGame.pauseMenu.callForStalemate();
+				theGame.getPauseMenu().callForStalemate();
 			}
 		});
 		add(btnNewButton_1);
@@ -62,7 +62,7 @@ public class PauseMenuGUI extends JPanel
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				theGame.pauseMenu.endGame();
+				theGame.getPauseMenu().endGame();
 			}
 		});
 		add(btnNewButton_2);
@@ -72,7 +72,7 @@ public class PauseMenuGUI extends JPanel
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				theGame.pauseMenu.reset();
+				theGame.getPauseMenu().reset();
 			}
 		});
 		add(btnNewButton);

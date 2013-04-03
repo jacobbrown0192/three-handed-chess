@@ -36,7 +36,7 @@ public class CallForStalemateMenu {
 	public void yes(){
 		if(player0Yes == true && player1Yes == true && player2Yes == true){
 			theBoard.reset();
-			theGame.gameController.setInProgress(false);
+			theGame.getGameController().setInProgress(false);
 		}		
 	}
 	
@@ -47,10 +47,10 @@ public class CallForStalemateMenu {
 		this.player0Yes = false;
 		this.player1Yes = false;
 		this.player2Yes = false;
-		theGame.gameFrame.getContentPane().removeAll();
-	    theGame.gameFrame.getContentPane().repaint();
-		theGame.gameFrame.getContentPane().add(theGame.pauseMenuGUI);
-		theGame.gameFrame.setVisible(true);
+		theGame.getGameFrame().getContentPane().removeAll();
+	    theGame.getGameFrame().getContentPane().repaint();
+		theGame.getGameFrame().getContentPane().add(theGame.getPauseMenuGUI());
+		theGame.getGameFrame().setVisible(true);
 	}
 	
 	

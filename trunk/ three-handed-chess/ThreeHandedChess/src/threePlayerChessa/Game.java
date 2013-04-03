@@ -11,26 +11,26 @@ import GUI_Interface.*;
  *The Game class is the class which contains everything used in the game
  */
 public class Game {
-	public Vector<Team> gameTeams = new Vector<Team>(); //teams playing the game
-	public Board theBoard; //the board of the game
-	public Menu mainMenu; //the model of main menu 
-	public PauseMenu pauseMenu; //the model of the pause menu 
-	public PlayerConfigurationMenu plyerConfig; //the model of the player configuration menu 
-	public CallForStalemateMenu stalemate; //the model of the call for stalemate menu 
-	public MainMenuGUI mainMenuGUI; //the GUI of the main menu 
-	public PauseMenuGUI pauseMenuGUI; //the GUI of the pause menu 
-	public PlayerConfigurationMenuGUI playerConfigGUI; //the GUI of the player configuration menu 
-	public CallForStalemateGUI stalemateGUI; //the GUI of the call for stalemate menu 
-	public BoardGUI boardGUI;  //the GUI of the board 
-	public BottomBoardGUI bBoardGUI;  //the GUI of the bottom panel of the board 
-	public TopBoardGUI tBoardGUI; //the GUI of the top panel of the board 
-	public JFrame gameFrame; //the frame which all panels are put 
-	public Controller gameController; //the game controller
+	private Vector<Team> gameTeams = new Vector<Team>(); //teams playing the game
+	private Board theBoard; //the board of the game
+	private Menu mainMenu; //the model of main menu 
+	private PauseMenu pauseMenu; //the model of the pause menu 
+	private PlayerConfigurationMenu plyerConfig; //the model of the player configuration menu 
+	private CallForStalemateMenu stalemate; //the model of the call for stalemate menu 
+	private MainMenuGUI mainMenuGUI; //the GUI of the main menu 
+	private PauseMenuGUI pauseMenuGUI; //the GUI of the pause menu 
+	private PlayerConfigurationMenuGUI playerConfigGUI; //the GUI of the player configuration menu 
+	private CallForStalemateGUI stalemateGUI; //the GUI of the call for stalemate menu 
+	private BoardGUI boardGUI;  //the GUI of the board 
+	private BottomBoardGUI bBoardGUI;  //the GUI of the bottom panel of the board 
+	private TopBoardGUI tBoardGUI; //the GUI of the top panel of the board 
+	private JFrame gameFrame; //the frame which all panels are put 
+	private Controller gameController; //the game controller
 	public Click click1; //the first click
 	public Click click2; //the second click
-	public Turn player1; //the player one's thread
-	public Turn player2; //the player two's thread
-	public Turn player3; //the player three's thread
+	private Turn player1; //the player one's thread
+	private Turn player2; //the player two's thread
+	private Turn player3; //the player three's thread
 
 	
 	public Game() {

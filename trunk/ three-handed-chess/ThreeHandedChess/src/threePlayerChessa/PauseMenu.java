@@ -31,7 +31,7 @@ public class PauseMenu {
 	 */
 	public void reset() {
 		theBoard.reset();
-		theGame.gameController.setInProgress(false);
+		theGame.getGameController().setInProgress(false);
 		theGame.startGame();
 	}
 
@@ -40,32 +40,32 @@ public class PauseMenu {
 	 */
 	public void endGame() {
 		theBoard.reset();
-		theGame.gameFrame.getContentPane().removeAll();
-	    theGame.gameFrame.getContentPane().repaint();
-		theGame.gameFrame.getContentPane().add(theGame.mainMenuGUI);
-		theGame.gameFrame.setVisible(true);
-		theGame.gameController.setInProgress(false);
+		theGame.getGameFrame().getContentPane().removeAll();
+	    theGame.getGameFrame().getContentPane().repaint();
+		theGame.getGameFrame().getContentPane().add(theGame.getMainMenuGUI());
+		theGame.getGameFrame().setVisible(true);
+		theGame.getGameController().setInProgress(false);
 	}
 
 	/**
 	 * used to enter the stalemate menu 
 	 */
 	public void callForStalemate() {
-		theGame.gameFrame.getContentPane().removeAll();
-	    theGame.gameFrame.getContentPane().repaint();
-		theGame.gameFrame.getContentPane().add(theGame.stalemateGUI);
-		theGame.gameFrame.setVisible(true);
+		theGame.getGameFrame().getContentPane().removeAll();
+	    theGame.getGameFrame().getContentPane().repaint();
+		theGame.getGameFrame().getContentPane().add(theGame.getStalemateGUI());
+		theGame.getGameFrame().setVisible(true);
 	}
 
 	/**
 	 * used to resume the game
 	 */
 	public void resume() {
-		theGame.gameFrame.getContentPane().removeAll();
-	    theGame.gameFrame.getContentPane().repaint();
-		theGame.gameFrame.getContentPane().add(theGame.tBoardGUI,BorderLayout.NORTH);
-		theGame.gameFrame.getContentPane().add(theGame.boardGUI);
-		theGame.gameFrame.getContentPane().add(theGame.bBoardGUI,BorderLayout.SOUTH);
-		theGame.gameFrame.setVisible(true);
+		theGame.getGameFrame().getContentPane().removeAll();
+	    theGame.getGameFrame().getContentPane().repaint();
+		theGame.getGameFrame().getContentPane().add(theGame.gettBoardGUI(),BorderLayout.NORTH);
+		theGame.getGameFrame().getContentPane().add(theGame.getBoardGUI());
+		theGame.getGameFrame().getContentPane().add(theGame.getbBoardGUI(),BorderLayout.SOUTH);
+		theGame.getGameFrame().setVisible(true);
 	}
 }

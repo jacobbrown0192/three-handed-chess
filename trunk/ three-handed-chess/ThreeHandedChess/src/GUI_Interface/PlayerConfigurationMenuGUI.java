@@ -78,7 +78,7 @@ public class PlayerConfigurationMenuGUI extends JPanel
 			{
 				String input = txtPlayer.getText();
 				labelPlayer1.setText(input);
-				theGame.plyerConfig.player0SetName(input);
+				theGame.getPlyerConfig().player0SetName(input);
 				
 			}
 		});
@@ -94,7 +94,7 @@ public class PlayerConfigurationMenuGUI extends JPanel
 			{
 				String input = txtPlayer_1.getText();
 				labelPlayer2.setText(input);
-				theGame.plyerConfig.player1SetName(input);
+				theGame.getPlyerConfig().player1SetName(input);
 			}
 		});
 		txtPlayer_1.setText("Player 2");
@@ -108,7 +108,7 @@ public class PlayerConfigurationMenuGUI extends JPanel
 			{
 				String input = txtPlayer_2.getText();
 				labelPlayer3.setText(input);
-				theGame.plyerConfig.player2SetName(input);
+				theGame.getPlyerConfig().player2SetName(input);
 			}
 		});
 		txtPlayer_2.setText("Player 3");
@@ -156,7 +156,7 @@ public class PlayerConfigurationMenuGUI extends JPanel
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				theGame.plyerConfig.close();
+				theGame.getPlyerConfig().close();
 			}
 		});
 		add(btnNewButton_3);
