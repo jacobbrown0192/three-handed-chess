@@ -7,10 +7,8 @@ package threePlayerChessa;
 public class MoveList {
 	private Tile tile;//the move letter coordiante 
 	private Piece piece; //the piece moved
+
 	
-
-
-
 	/**
 	 * @return the tile
 	 */

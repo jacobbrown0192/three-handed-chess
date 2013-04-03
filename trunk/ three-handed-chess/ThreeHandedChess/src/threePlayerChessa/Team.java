@@ -149,6 +149,48 @@ public class Team {
 	public void setCheckMate(boolean checkMate) {
 		this.checkMate = checkMate;
 	}
+	
+	/**
+	 * @return the moves
+	 */
+	public Vector<MoveList> getMoves() {
+		return moves;
+	}
+
+	/**
+	 * @param moves - used to set moves
+	 */
+	public void setMoves(Vector<MoveList> moves) {
+		this.moves = moves;
+	}
+
+	/**
+	 * @return the pieces
+	 */
+	public Vector<Piece> getPieces() {
+		return pieces;
+	}
+
+	/**
+	 * @param pieces - used to set pieces
+	 */
+	public void setPieces(Vector<Piece> pieces) {
+		this.pieces = pieces;
+	}
+
+	/**
+	 * @return the theBoard
+	 */
+	public Board getTheBoard() {
+		return theBoard;
+	}
+
+	/**
+	 * @param theBoard - used to set theBoard
+	 */
+	public void setTheBoard(Board theBoard) {
+		this.theBoard = theBoard;
+	}
 
 	/**
 	 * used to add pieces to the board initially

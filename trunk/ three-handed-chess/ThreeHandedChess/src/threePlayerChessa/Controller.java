@@ -116,6 +116,20 @@ public class Controller {
 				}
 			}	
 			
+			for(int x = 0; x<theGame.getTheBoard().promotedPieces.size();x++){
+				tempStart = theGame.getTheBoard().promotedPieces.elementAt(x).getCurrentTile();
+				if(theGame.getTheBoard().promotedPieces.elementAt(x).getPlayer() == me){
+					if(tempStart != null){
+						for(int y = 0; y<theGame.getTheBoard().promotedPieces.elementAt(x).validTileMoves.size();y++){
+							checkMateTemp = putIntoCheck(tempStart,theGame.getTheBoard().promotedPieces.elementAt(x).validTileMoves.elementAt(y));
+							if(!checkMateTemp){
+							 	me.checkMate = false;						
+							}
+						}
+					}
+				}
+			}
+			
 			
 			for(int k = 0; k<16; k++){
 				for(int l = 0; l<opponent1.pieces.elementAt(k).validTileMoves.size();l++){
@@ -139,6 +153,21 @@ public class Controller {
 						}
 					}
 				}				
+			}
+			
+			for(int x = 0; x<theGame.getTheBoard().promotedPieces.size();x++){
+				tempStart = theGame.getTheBoard().promotedPieces.elementAt(x).getCurrentTile();
+				if(theGame.getTheBoard().promotedPieces.elementAt(x).getPlayer() == opponent1 || theGame.getTheBoard().promotedPieces.elementAt(x).getPlayer() == opponent2){
+					if(tempStart != null){
+						for(int y = 0; y<theGame.getTheBoard().promotedPieces.elementAt(x).validTileMoves.size();y++){
+							if (theGame.getTheBoard().promotedPieces.elementAt(x).validTileMoves.elementAt(y).getLetter() == kingPosition.elementAt(0).getLetter() && theGame.getTheBoard().promotedPieces.elementAt(x).validTileMoves.elementAt(y).getNumber() == kingPosition.elementAt(0).getNumber())
+							{
+								winner = opponent2;
+								break;
+							}
+						}
+					}
+				}
 			}
 			
 			

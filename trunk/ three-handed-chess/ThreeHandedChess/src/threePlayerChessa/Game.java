@@ -34,11 +34,7 @@ public class Game {
 
 	
 	public Game() {
-
 	}
-	
-
-
 	
 	/**
 	 * @return the gameTeams
@@ -47,28 +43,19 @@ public class Game {
 		return gameTeams;
 	}
 
-
-
-
 	/**
 	 * @param gameTeams - used to set gameTeams
 	 */
 	public void setGameTeams(Vector<Team> gameTeams) {
 		this.gameTeams = gameTeams;
 	}
-
-
-
-
+	
 	/**
 	 * @return the theBoard
 	 */
 	public Board getTheBoard() {
 		return theBoard;
 	}
-
-
-
 
 	/**
 	 * @param theBoard - used to set theBoard
@@ -77,18 +64,12 @@ public class Game {
 		this.theBoard = theBoard;
 	}
 
-
-
-
 	/**
 	 * @return the mainMenu
 	 */
 	public Menu getMainMenu() {
 		return mainMenu;
 	}
-
-
-
 
 	/**
 	 * @param mainMenu - used to set mainMenu
@@ -97,18 +78,12 @@ public class Game {
 		this.mainMenu = mainMenu;
 	}
 
-
-
-
 	/**
 	 * @return the pauseMenu
 	 */
 	public PauseMenu getPauseMenu() {
 		return pauseMenu;
 	}
-
-
-
 
 	/**
 	 * @param pauseMenu - used to set pauseMenu
@@ -117,18 +92,12 @@ public class Game {
 		this.pauseMenu = pauseMenu;
 	}
 
-
-
-
 	/**
 	 * @return the plyerConfig
 	 */
 	public PlayerConfigurationMenu getPlyerConfig() {
 		return plyerConfig;
 	}
-
-
-
 
 	/**
 	 * @param plyerConfig - used to set plyerConfig
@@ -137,18 +106,12 @@ public class Game {
 		this.plyerConfig = plyerConfig;
 	}
 
-
-
-
 	/**
 	 * @return the stalemate
 	 */
 	public CallForStalemateMenu getStalemate() {
 		return stalemate;
 	}
-
-
-
 
 	/**
 	 * @param stalemate - used to set stalemate
@@ -157,18 +120,12 @@ public class Game {
 		this.stalemate = stalemate;
 	}
 
-
-
-
 	/**
 	 * @return the mainMenuGUI
 	 */
 	public MainMenuGUI getMainMenuGUI() {
 		return mainMenuGUI;
 	}
-
-
-
 
 	/**
 	 * @param mainMenuGUI - used to set mainMenuGUI
@@ -177,18 +134,12 @@ public class Game {
 		this.mainMenuGUI = mainMenuGUI;
 	}
 
-
-
-
 	/**
 	 * @return the pauseMenuGUI
 	 */
 	public PauseMenuGUI getPauseMenuGUI() {
 		return pauseMenuGUI;
 	}
-
-
-
 
 	/**
 	 * @param pauseMenuGUI - used to set pauseMenuGUI
@@ -197,18 +148,12 @@ public class Game {
 		this.pauseMenuGUI = pauseMenuGUI;
 	}
 
-
-
-
 	/**
 	 * @return the playerConfigGUI
 	 */
 	public PlayerConfigurationMenuGUI getPlayerConfigGUI() {
 		return playerConfigGUI;
 	}
-
-
-
 
 	/**
 	 * @param playerConfigGUI - used to set playerConfigGUI
@@ -217,18 +162,12 @@ public class Game {
 		this.playerConfigGUI = playerConfigGUI;
 	}
 
-
-
-
 	/**
 	 * @return the stalemateGUI
 	 */
 	public CallForStalemateGUI getStalemateGUI() {
 		return stalemateGUI;
 	}
-
-
-
 
 	/**
 	 * @param stalemateGUI - used to set stalemateGUI
@@ -237,18 +176,12 @@ public class Game {
 		this.stalemateGUI = stalemateGUI;
 	}
 
-
-
-
 	/**
 	 * @return the boardGUI
 	 */
 	public BoardGUI getBoardGUI() {
 		return boardGUI;
 	}
-
-
-
 
 	/**
 	 * @param boardGUI - used to set boardGUI
@@ -257,18 +190,12 @@ public class Game {
 		this.boardGUI = boardGUI;
 	}
 
-
-
-
 	/**
 	 * @return the bBoardGUI
 	 */
 	public BottomBoardGUI getbBoardGUI() {
 		return bBoardGUI;
 	}
-
-
-
 
 	/**
 	 * @param bBoardGUI - used to set bBoardGUI
@@ -277,18 +204,12 @@ public class Game {
 		this.bBoardGUI = bBoardGUI;
 	}
 
-
-
-
 	/**
 	 * @return the tBoardGUI
 	 */
 	public TopBoardGUI gettBoardGUI() {
 		return tBoardGUI;
 	}
-
-
-
 
 	/**
 	 * @param tBoardGUI - used to set tBoardGUI
@@ -297,18 +218,12 @@ public class Game {
 		this.tBoardGUI = tBoardGUI;
 	}
 
-
-
-
 	/**
 	 * @return the gameFrame
 	 */
 	public JFrame getGameFrame() {
 		return gameFrame;
 	}
-
-
-
 
 	/**
 	 * @param gameFrame - used to set gameFrame
@@ -317,18 +232,12 @@ public class Game {
 		this.gameFrame = gameFrame;
 	}
 
-
-
-
 	/**
 	 * @return the gameController
 	 */
 	public Controller getGameController() {
 		return gameController;
 	}
-
-
-
 
 	/**
 	 * @param gameController - used to set gameController
@@ -337,18 +246,12 @@ public class Game {
 		this.gameController = gameController;
 	}
 
-
-
-
 	/**
 	 * @return the click1
 	 */
 	public Click getClick1() {
 		return click1;
 	}
-
-
-
 
 	/**
 	 * @param click1 - used to set click1
@@ -357,18 +260,12 @@ public class Game {
 		this.click1 = click1;
 	}
 
-
-
-
 	/**
 	 * @return the click2
 	 */
 	public Click getClick2() {
 		return click2;
 	}
-
-
-
 
 	/**
 	 * @param click2 - used to set click2
@@ -377,18 +274,12 @@ public class Game {
 		this.click2 = click2;
 	}
 
-
-
-
 	/**
 	 * @return the player1
 	 */
 	public Turn getPlayer1() {
 		return player1;
 	}
-
-
-
 
 	/**
 	 * @param player1 - used to set player1
@@ -397,18 +288,12 @@ public class Game {
 		this.player1 = player1;
 	}
 
-
-
-
 	/**
 	 * @return the player2
 	 */
 	public Turn getPlayer2() {
 		return player2;
 	}
-
-
-
 
 	/**
 	 * @param player2 - used to set player2
@@ -417,9 +302,6 @@ public class Game {
 		this.player2 = player2;
 	}
 
-
-
-
 	/**
 	 * @return the player3
 	 */
@@ -427,17 +309,12 @@ public class Game {
 		return player3;
 	}
 
-
-
-
 	/**
 	 * @param player3 - used to set player3
 	 */
 	public void setPlayer3(Turn player3) {
 		this.player3 = player3;
 	}
-
-
 
 	/**
 	 * used to set the in coming the clicks to the game

@@ -143,14 +143,14 @@ public class Pawn extends Piece {
 					{
 						this.validTileMoves.add(temp.upright);
 					}
-					if(this.currentTile.getNumber() == 5 && this.currentTile.getNumber() == 9 && this.currentTile.getNumber() == 4){
+					if(this.currentTile.getNumber() == 5 || this.currentTile.getNumber() == 9 || this.currentTile.getNumber() == 4){
 						if(temp.right != null && temp.right.getPiece() != null && temp.right.getPiece().getPlayer() != this.getPlayer() && temp.upright.getPiece() == null){
 							if(temp.right.getPiece().getPlayer().moves.lastElement().getPiece() == temp.right.getPiece() && temp.right.getPiece().isJumpTwo() == true){
 								this.validTileMoves.add(temp.upright);
 							}
 						}
 					}
-					if(this.currentTile.getNumber() == 5 && this.currentTile.getNumber() == 9 && this.currentTile.getNumber() == 4){
+					if(this.currentTile.getNumber() == 5 || this.currentTile.getNumber() == 9 || this.currentTile.getNumber() == 4){
 						if(temp.left != null && temp.left.getPiece() != null && temp.left.getPiece().getPlayer() != this.getPlayer() && temp.upleft.getPiece() == null){
 							if(temp.left.getPiece().getPlayer().moves.lastElement().getPiece() == temp.left.getPiece() && temp.left.getPiece().isJumpTwo() == true){
 								this.validTileMoves.add(temp.upleft);
@@ -233,14 +233,14 @@ public class Pawn extends Piece {
 						{
 							this.validTileMoves.add(temp.downright);
 						}
-						if(this.currentTile.getNumber() == 5 && this.currentTile.getNumber() == 9 && this.currentTile.getNumber() == 4){
+						if(this.currentTile.getNumber() == 5 || this.currentTile.getNumber() == 9 || this.currentTile.getNumber() == 4){
 							if(temp.right != null && temp.right.getPiece() != null && temp.right.getPiece().getPlayer() != this.getPlayer() && temp.downright.getPiece() == null){
 								if(temp.right.getPiece().getPlayer().moves.lastElement().getPiece() == temp.right.getPiece() && temp.right.getPiece().isJumpTwo() == true){
 									this.validTileMoves.add(temp.downright);
 								}
 							}
 						}
-						if(this.currentTile.getNumber() == 5 && this.currentTile.getNumber() == 9 && this.currentTile.getNumber() == 4){
+						if(this.currentTile.getNumber() == 5 || this.currentTile.getNumber() == 9 || this.currentTile.getNumber() == 4){
 							if(temp.left != null && temp.left.getPiece() != null && temp.left.getPiece().getPlayer() != this.getPlayer() && temp.downleft.getPiece() == null){
 								if(temp.left.getPiece().getPlayer().moves.lastElement().getPiece() == temp.left.getPiece() && temp.left.getPiece().isJumpTwo() == true){
 									this.validTileMoves.add(temp.downleft);
