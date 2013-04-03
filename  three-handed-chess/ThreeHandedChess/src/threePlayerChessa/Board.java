@@ -105,9 +105,17 @@ public class Board {
 		Tile temp = null;
 		Tile thisTemp = null;
 		
-		Human team1 = new Human(1,"Player 1",1,this,null);
-		Human team2 = new Human(2,"Player 2",2,this,null);
-		Human team3 = new Human(3,"Player 3",3,this,null);
+        Vector<MoveList> move1 = new Vector<MoveList>(board.gameTeams.elementAt(0).getMoves());
+        Vector<MoveList> move2 = new Vector<MoveList>(board.gameTeams.elementAt(1).getMoves());
+        Vector<MoveList> move3 = new Vector<MoveList>(board.gameTeams.elementAt(2).getMoves());
+        
+        Human team1 = new Human(1,"Player 1",1,this,null);
+        Human team2 = new Human(2,"Player 2",2,this,null);
+        Human team3 = new Human(3,"Player 3",3,this,null);
+        
+        team1.setMoves(move1);
+        team2.setMoves(move2);
+        team3.setMoves(move3);
 		
 		this.gameTeams.add(team1);
 		this.gameTeams.add(team2);
