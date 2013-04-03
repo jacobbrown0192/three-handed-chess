@@ -53,24 +53,18 @@ public class Turn extends Thread {
 				theGame.getGameFrame().setVisible(true);
 			}
 			
-			boolean printTime = false;
-			printTime = theGame.getGameController().inCheck(gameTeam, opponent1, opponent2, theGame.getTheBoard());
-			
-			if (printTime)
-			{
-				theGame.getbBoardGUI().getLblCheckLabel().setText("You are in check");
-			}
-			else
-			{
-				theGame.getbBoardGUI().getLblCheckLabel().setText("");
-			}
-			
-			
-			
-			
 			if((getTheGame().getGameController().turnCount % 3) == (gameTeam.getNumber() - 1))//checks to see if its current players turn
 			{ 
 				theGame.gettBoardGUI().getLblGameAndStuff().setText(gameTeam.getName());
+				boolean printTime = false;
+				printTime = theGame.getGameController().inCheck(gameTeam, opponent1, opponent2, theGame.getTheBoard());
+				
+				if (printTime)
+				{
+					theGame.getbBoardGUI().getLblCheckLabel().setText("You are in check");
+				}
+
+				
 				if(getTheGame().click1 != null)//check for first click
 				{
 
@@ -95,15 +89,18 @@ public class Turn extends Thread {
 							validClick1 = true;
 							select1.setSelected(true);
 							theGame.getBoardGUI().setTileIcons();
+							theGame.getbBoardGUI().getLblCheckLabel().setText("");
 						}
 						else
 						{
 							getTheGame().click1 = null;
+							theGame.getbBoardGUI().getLblCheckLabel().setText("That's not your piece");
 						}
 					}
 					else
 					{
 						getTheGame().click1 = null;
+						theGame.getbBoardGUI().getLblCheckLabel().setText("That Tile is empty");
 					}
 					
 					
