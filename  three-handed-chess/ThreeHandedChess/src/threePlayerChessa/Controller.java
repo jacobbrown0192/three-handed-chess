@@ -2,6 +2,8 @@ package threePlayerChessa;
 
 import java.util.Vector;
 
+import javax.swing.JLabel;
+
 import threePlayerChessa.Piece.PieceType;
 
 /** 
@@ -51,8 +53,11 @@ public class Controller {
 		}
 	}
 	
-	/**
-	 * @return the whether in check
+	/** Looks to see if you're in check
+	 * @param me - The team who's is check to see if they are in check.
+	 * @param opponent1 - One of the other team whose moves must be analyzed to see if the me team is in check.
+	 * @param opponent2 - One of the other team whose moves must be analyzed to see if the me team is in check.
+	 * @return whether in check or not
 	 */
 	public boolean inCheck(Team me, Team opponent1, Team opponent2, Board board)
 	{
@@ -63,9 +68,6 @@ public class Controller {
 		//Find everywhere your opponents can go and add them to a vector
 		opponentMoves.addAll(allPossibleMoves(opponent1, board));
 		opponentMoves.addAll(allPossibleMoves(opponent2, board));
-		
-		//Find everywhere you can go and add them to a vector
-		myMoves.addAll(allPossibleMoves(me, board));
 		
 		//Find where your king is
 		kingPosition.addAll(findKingPosition(me, board));
@@ -178,6 +180,11 @@ public class Controller {
 	
 	
 
+	/** Finds the position of the king
+	 * @param team - Team that is looking for their king
+	 * @param board - board on which the king is being looked for on
+	 * @return vector containing one tile which has the king's position
+	 */
 	private Vector<Tile> findKingPosition(Team team, Board board)
 	{
 		Vector<Tile> moves = new Vector<Tile>();
@@ -203,6 +210,11 @@ public class Controller {
 		return null;
 	}
 
+	/** Finds all moves that a team can make
+	 * @param team - Team that's looking for their possible moves
+	 * @param board - board that is being searched for possible moves
+	 * @return vector containing all possible moves the team can make
+	 */
 	private Vector<Tile> allPossibleMoves(Team team, Board board)
 	{
 		Vector<Tile> moves = new Vector<Tile>();
@@ -228,8 +240,9 @@ public class Controller {
 		return moves;
 	}
 	
-	public boolean putIntoCheck(Tile aStartTile, Tile aMoveTile){
-		
+	public boolean putIntoCheck(Tile aStartTile, Tile aMoveTile)
+	{
+		if (aMoveTile == null) return false;
 		//First check to see if the move will put you into check on a copy constructed board
 		Board checkBoard = new Board(theGame.getTheBoard());
 		int moveSection = -1, moveSegment = -1, moveTile = -1;
@@ -288,36 +301,13 @@ public class Controller {
 		
 		if (check)
 		{
-			System.out.println("Holy Shit it actually worked!");
+			theGame.getbBoardGUI().getLblCheckLabel().setText("You are in check");
 		}
-		return check;
-		
+		else
+		{
+			theGame.getbBoardGUI().getLblCheckLabel().setText("");
+		}
+		return check;	
 	}
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

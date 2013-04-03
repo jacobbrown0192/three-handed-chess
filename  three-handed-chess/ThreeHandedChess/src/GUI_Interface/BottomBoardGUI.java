@@ -19,6 +19,7 @@ public class BottomBoardGUI extends JPanel
 {
 	private static final long serialVersionUID = 1L;
 	Game theGame;
+	private JLabel lblCheckLabel;
 	
 	/**
 	 * Create the panel.
@@ -45,10 +46,20 @@ public class BottomBoardGUI extends JPanel
 		
 		add(btnNewButton);
 		
-		JLabel label = new JLabel("");
-		add(label);
+		lblCheckLabel = new JLabel("");
+		add(lblCheckLabel);
 		
 		JLabel label_1 = new JLabel("");
 		add(label_1);
+	}
+	
+	public JLabel getLblCheckLabel()
+	{
+		return lblCheckLabel;
+	}
+	
+	public void setLblCheckLabel(JLabel lblCheckLabel)
+	{
+		this.lblCheckLabel = lblCheckLabel;
 	}
 }

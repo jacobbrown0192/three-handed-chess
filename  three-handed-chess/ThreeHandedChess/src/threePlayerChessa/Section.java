@@ -20,6 +20,9 @@ public class Section {
 	public Board theBoard;	
 	public Vector<Segment> segments = new Vector<Segment>();
 
+	/**
+	 * @return Vector of segments
+	 */
 	public Vector<Segment> getSegments()
 	{
 		return this.segments;
