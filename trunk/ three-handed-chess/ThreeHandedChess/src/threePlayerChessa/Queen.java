@@ -32,7 +32,7 @@ public class Queen extends Piece {
 	 * @return null
 	 * 
 	 */
-	public void move(Tile aStartTile, Tile aMoveTile, Turn player) {
+	public boolean move(Tile aStartTile, Tile aMoveTile, Turn player) {
 		boolean validMove = false;
 		player.getTheGame().click2 = null;
 
@@ -63,13 +63,12 @@ public class Queen extends Piece {
 				aMoveTile.getPiece().setCurrentTile(aMoveTile);
 				player.getTheGame().getBoardGUI().setTileIcons();
 				player.getTheGame().getGameController().addToCounter(); //adds one to turn counter and starts the next players turn
-				this.player.addToMoveList(aMoveTile, this);		
+				this.player.addToMoveList(aMoveTile, this);	
+				return true;
 			}
 		}
-		else
-		{	//if not a valid move returns for player to choose new tiles
-			return;
-		}
+		//if not a valid move returns for player to choose new tiles
+		return false;
 	}
 	
 	/** Finds all the possible moves that this queen can perform and adds them to the <code>validMoveList</code>.
