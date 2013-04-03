@@ -35,20 +35,30 @@ public class PlayerConfigurationMenu {
 	public void changePlayer0Allignment(boolean buttonPress){
 		gameTeams.elementAt(0).setEvil(buttonPress);
 		if(buttonPress){
-			Vector <Piece> piecesTeam1 = new Vector<Piece>(gameTeams.elementAt(0).pieces);
 			Computer temp = new Computer(gameTeams.elementAt(0).getColour(),gameTeams.elementAt(0).getName(),
-					gameTeams.elementAt(0).getNumber(),gameTeams.elementAt(0).theBoard, null);
-			temp.setPieces(piecesTeam1);
+					gameTeams.elementAt(0).getNumber(),gameTeams.elementAt(0).theBoard, gameTeams.elementAt(0).pieces);
+			for(int x = 0; x < 16; x++){
+				temp.pieces.elementAt(x).setPlayer(temp);
+			}
 			gameTeams.remove(0);
 			gameTeams.add(0, temp);
 			theGame.getTheBoard().getSections().elementAt(0).setColour(temp);
+			theGame.getPlayer1().setGameTeam(temp);
+			theGame.getPlayer2().setOpponent1(temp);
+			theGame.getPlayer3().setOpponent1(temp);
 		}
 		else{
 			Human temp = new Human(gameTeams.elementAt(0).getColour(),gameTeams.elementAt(0).getName(),
 					gameTeams.elementAt(0).getNumber(),gameTeams.elementAt(0).theBoard,gameTeams.elementAt(0).pieces);
+			for(int x = 0; x < 16; x++){
+				temp.pieces.elementAt(x).setPlayer(temp);
+			}
 			gameTeams.remove(0);
 			gameTeams.add(0, temp);	
 			theGame.getTheBoard().getSections().elementAt(0).setColour(temp);
+			theGame.getPlayer1().setGameTeam(temp);
+			theGame.getPlayer2().setOpponent1(temp);
+			theGame.getPlayer3().setOpponent1(temp);
 		}
 	}
 	
@@ -59,16 +69,28 @@ public class PlayerConfigurationMenu {
 		if(buttonPress ){
 			Computer temp = new Computer(gameTeams.elementAt(1).getColour(),gameTeams.elementAt(1).getName(),
 					gameTeams.elementAt(1).getNumber(),gameTeams.elementAt(1).theBoard,gameTeams.elementAt(1).pieces);
+			for(int x = 0; x < 16; x++){
+				temp.pieces.elementAt(x).setPlayer(temp);
+			}
 			gameTeams.remove(1);
 			gameTeams.add(1, temp);
 			theGame.getTheBoard().getSections().elementAt(1).setColour(temp);
+			theGame.getPlayer1().setOpponent1(temp);
+			theGame.getPlayer2().setGameTeam(temp);
+			theGame.getPlayer3().setOpponent2(temp);
 		}
 		else{
 			Human temp = new Human(gameTeams.elementAt(1).getColour(),gameTeams.elementAt(1).getName(),
 					gameTeams.elementAt(1).getNumber(),gameTeams.elementAt(1).theBoard,gameTeams.elementAt(1).pieces);
+			for(int x = 0; x < 16; x++){
+				temp.pieces.elementAt(x).setPlayer(temp);
+			}
 			gameTeams.remove(1);
 			gameTeams.add(1, temp);	
 			theGame.getTheBoard().getSections().elementAt(1).setColour(temp);
+			theGame.getPlayer1().setOpponent1(temp);
+			theGame.getPlayer2().setGameTeam(temp);
+			theGame.getPlayer3().setOpponent2(temp);
 		}
 	}	
 	
@@ -79,16 +101,28 @@ public class PlayerConfigurationMenu {
 		if(buttonPress ){
 			Computer temp = new Computer(gameTeams.elementAt(2).getColour(),gameTeams.elementAt(2).getName(),
 					gameTeams.elementAt(2).getNumber(),gameTeams.elementAt(2).theBoard,gameTeams.elementAt(2).pieces);
+			for(int x = 0; x < 16; x++){
+				temp.pieces.elementAt(x).setPlayer(temp);
+			}
 			gameTeams.remove(2);
 			gameTeams.add(2, temp);
 			theGame.getTheBoard().getSections().elementAt(2).setColour(temp);
+			theGame.getPlayer1().setOpponent2(temp);
+			theGame.getPlayer2().setOpponent2(temp);
+			theGame.getPlayer3().setGameTeam(temp);
 		}
 		else{
 			Human temp = new Human(gameTeams.elementAt(2).getColour(),gameTeams.elementAt(2).getName(),
 					gameTeams.elementAt(2).getNumber(),gameTeams.elementAt(2).theBoard,gameTeams.elementAt(2).pieces);
+			for(int x = 0; x < 16; x++){
+				temp.pieces.elementAt(x).setPlayer(temp);
+			}
 			gameTeams.remove(2);
 			gameTeams.add(2, temp);		
 			theGame.getTheBoard().getSections().elementAt(2).setColour(temp);
+			theGame.getPlayer1().setOpponent2(temp);
+			theGame.getPlayer2().setOpponent2(temp);
+			theGame.getPlayer3().setGameTeam(temp);
 		}
 	}
 	

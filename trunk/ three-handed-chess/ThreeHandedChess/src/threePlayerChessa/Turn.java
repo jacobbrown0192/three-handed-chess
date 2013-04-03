@@ -278,4 +278,28 @@ public class Turn extends Thread {
 	{
 		return this.check;
 	}
+
+	/**
+	 * @param gameTeam - used to set gameTeam
+	 */
+	public void setGameTeam(Team gameTeam) {
+		this.gameTeam = gameTeam;
+	}
+
+	/**
+	 * @param opponent1 - used to set opponent1
+	 */
+	public void setOpponent1(Team opponent1) {
+		this.opponent1 = opponent1;
+	}
+
+	/**
+	 * @param opponent2 - used to set opponent2
+	 */
+	public void setOpponent2(Team opponent2) {
+		this.opponent2 = opponent2;
+	}
+	
+	
+	
 }
