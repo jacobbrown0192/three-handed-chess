@@ -49,7 +49,7 @@ public class King extends Piece {
 			}
 		}
 		
-		if (validMove)
+		if (validMove && aMoveTile != null && aStartTile != null)
 		{
 			//Consider if the move will put you into check
 			boolean check = player.getTheGame().getGameController().putIntoCheck(aStartTile, aMoveTile);
@@ -69,6 +69,7 @@ public class King extends Piece {
 				}
 				
 				//castling move check so the rook is also moved
+				if(aMoveTile.right != null && aMoveTile.right.right != null &&	aMoveTile.right.right.getPiece() != null){
 				if(aStartTile.right.right == aMoveTile){
 					Piece temp = null;
 					if(aMoveTile.right.getPiece() != null){
@@ -79,7 +80,7 @@ public class King extends Piece {
 							aMoveTile.left.setPiece(temp);
 						}
 					}
-					if(aMoveTile.right.right != null &&	aMoveTile.right.right.getPiece() != null){
+
 						if(aMoveTile.right.right.getPiece().getPieceType() == PieceType.ROOK){
 							temp = aMoveTile.right.right.getPiece();
 							temp.currentTile.setPiece(null);
@@ -88,6 +89,7 @@ public class King extends Piece {
 						}
 					}
 				}
+				if(aMoveTile.left != null && aMoveTile.left.left != null && aMoveTile.left.left.getPiece() != null){
 				if(aStartTile.left.left == aMoveTile){
 					Piece temp = null;
 					if(aMoveTile.left.getPiece() != null){
@@ -106,6 +108,7 @@ public class King extends Piece {
 							aMoveTile.right.setPiece(temp);
 						}
 					}
+				}
 				}
 				aMoveTile.setPiece(aStartTile.getPiece());
 				aStartTile.setPiece(null);
@@ -280,6 +283,7 @@ public class King extends Piece {
 			{
 				//Player 1
 				case 1:
+					if(temp.getNumber() == 1 && temp.getLetter() ==5){
 					if(temp.left != null && temp.left.left != null && temp.left.left.left != null && temp.left.left.left.left != null && temp.left.getPiece() == null && temp.left.left.getPiece() == null && temp.left.left.left.getPiece() == null && temp.left.left.left.left.getPiece() != null)
 					{
 						if(temp.left.left.left.left.getPiece().getPieceType() == PieceType.ROOK && temp.left.left.left.left.getPiece().isInitialMove() == false)
@@ -295,10 +299,12 @@ public class King extends Piece {
 							this.validTileMoves.add(this.currentTile.right.right);
 						}
 					}
+					}
 					break;
 				//Player 2 and 3
 				case 2:
 				case 3:
+					if((temp.getNumber() == 8 && temp.getLetter() == 4) || (temp.getNumber() == 12 && temp.getLetter() == 9))
 					if(temp.left != null && temp.left.left != null && temp.left.left.left != null && temp.left.getPiece() == null && temp.left.left.getPiece() == null && temp.left.left.left.getPiece() != null)
 					{
 						if(temp.left.left.left.getPiece().getPieceType() == PieceType.ROOK && temp.left.left.left.getPiece().isInitialMove() == false)

@@ -98,16 +98,24 @@ public class Pawn extends Piece {
 					}
 				}
 				
+				if(aMoveTile.getPiece() != null){	// sets pieces current tile on aMoveTile to null
+					aMoveTile.getPiece().setCurrentTile(null);
+				}
 				aMoveTile.setPiece(aStartTile.getPiece());
 				aStartTile.setPiece(null);
 				aMoveTile.getPiece().setCurrentTile(aMoveTile);
 				
 				if(aMoveTile.getNumber() == 1 || aMoveTile.getNumber() == 8 || aMoveTile.getNumber() == 12){
+					if(this.player.isEvil() == true){
+						this.selectQueen(currentTile);
+					}
+					else{
 					PromotePawn selector = new PromotePawn(this,player);
 					player.getTheGame().getGameFrame().getContentPane().removeAll();
 				    player.getTheGame().getGameFrame().getContentPane().repaint();
 					player.getTheGame().getGameFrame().getContentPane().add(selector);
 					player.getTheGame().getGameFrame().setVisible(true);
+					}
 				}
 				player.getTheGame().getBoardGUI().setTileIcons();
 				player.getTheGame().getGameController().addToCounter();

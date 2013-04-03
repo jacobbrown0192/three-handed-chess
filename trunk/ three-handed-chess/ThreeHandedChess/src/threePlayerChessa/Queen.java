@@ -43,7 +43,7 @@ public class Queen extends Piece {
 			}
 		}
 		
-		if (validMove)
+		if (validMove && aMoveTile != null && aStartTile != null)
 		{	
 			//Consider if the move will put you into check
 			boolean check = player.getTheGame().getGameController().putIntoCheck(aStartTile, aMoveTile);
@@ -79,6 +79,7 @@ public class Queen extends Piece {
 		Tile tempPrevious = this.currentTile;
 		
 		//UPLEFT CHECK
+		if(temp != null){
 		while (temp.upleft != null)
 		{
 			//Check that you're looking in the right direction
@@ -1079,6 +1080,7 @@ public class Queen extends Piece {
 		
 		
 }
+	}
 
 
 	
