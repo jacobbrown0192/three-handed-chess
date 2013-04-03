@@ -32,58 +32,63 @@ public class PlayerConfigurationMenu {
 	/**
 	 * used to change a human team to a computer team for player one
 	 */
-	public void changePlayer0Allignment(){
-		boolean buttonPress = true;
+	public void changePlayer0Allignment(boolean buttonPress){
 		gameTeams.elementAt(0).setEvil(buttonPress);
 		if(buttonPress){
+			Vector <Piece> piecesTeam1 = new Vector<Piece>(gameTeams.elementAt(0).pieces);
 			Computer temp = new Computer(gameTeams.elementAt(0).getColour(),gameTeams.elementAt(0).getName(),
-					gameTeams.elementAt(0).getNumber(),gameTeams.elementAt(0).theBoard, gameTeams.elementAt(0).pieces);
+					gameTeams.elementAt(0).getNumber(),gameTeams.elementAt(0).theBoard, null);
+			temp.setPieces(piecesTeam1);
 			gameTeams.remove(0);
 			gameTeams.add(0, temp);
+			theGame.getTheBoard().getSections().elementAt(0).setColour(temp);
 		}
 		else{
 			Human temp = new Human(gameTeams.elementAt(0).getColour(),gameTeams.elementAt(0).getName(),
 					gameTeams.elementAt(0).getNumber(),gameTeams.elementAt(0).theBoard,gameTeams.elementAt(0).pieces);
 			gameTeams.remove(0);
-			gameTeams.add(0, temp);				
+			gameTeams.add(0, temp);	
+			theGame.getTheBoard().getSections().elementAt(0).setColour(temp);
 		}
 	}
 	
 	/**
 	 * used to change a human team to a computer team for player two
 	 */
-	public void changePlayer1Allignment(){
-		boolean buttonPress = true;
+	public void changePlayer1Allignment(boolean buttonPress){
 		if(buttonPress ){
 			Computer temp = new Computer(gameTeams.elementAt(1).getColour(),gameTeams.elementAt(1).getName(),
 					gameTeams.elementAt(1).getNumber(),gameTeams.elementAt(1).theBoard,gameTeams.elementAt(1).pieces);
 			gameTeams.remove(1);
 			gameTeams.add(1, temp);
+			theGame.getTheBoard().getSections().elementAt(1).setColour(temp);
 		}
 		else{
 			Human temp = new Human(gameTeams.elementAt(1).getColour(),gameTeams.elementAt(1).getName(),
 					gameTeams.elementAt(1).getNumber(),gameTeams.elementAt(1).theBoard,gameTeams.elementAt(1).pieces);
 			gameTeams.remove(1);
-			gameTeams.add(1, temp);				
+			gameTeams.add(1, temp);	
+			theGame.getTheBoard().getSections().elementAt(1).setColour(temp);
 		}
 	}	
 	
 	/**
 	 * used to change a human team to a computer team for player three
 	 */
-	public void changePlayer2Allignment(){
-		boolean buttonPress = true;
+	public void changePlayer2Allignment(boolean buttonPress){
 		if(buttonPress ){
 			Computer temp = new Computer(gameTeams.elementAt(2).getColour(),gameTeams.elementAt(2).getName(),
 					gameTeams.elementAt(2).getNumber(),gameTeams.elementAt(2).theBoard,gameTeams.elementAt(2).pieces);
 			gameTeams.remove(2);
 			gameTeams.add(2, temp);
+			theGame.getTheBoard().getSections().elementAt(2).setColour(temp);
 		}
 		else{
 			Human temp = new Human(gameTeams.elementAt(2).getColour(),gameTeams.elementAt(2).getName(),
 					gameTeams.elementAt(2).getNumber(),gameTeams.elementAt(2).theBoard,gameTeams.elementAt(2).pieces);
 			gameTeams.remove(2);
-			gameTeams.add(2, temp);				
+			gameTeams.add(2, temp);		
+			theGame.getTheBoard().getSections().elementAt(2).setColour(temp);
 		}
 	}
 	
