@@ -55,10 +55,10 @@ public class BoardGUI extends JPanel implements MouseListener
 		this.add(layeredPane);
 	}
 	
-	/** Adds a hexarant (16) of PieceGUIs to the layered pane.
+	/** Adds all 96 instances of PieceGUIs to the layered pane.
 	 * 
-	 * @param pane
-	 * @param hexarant
+	 * @param pane - the JLayeredPane onto which the labels are being added in a specific order to control depth
+	 * @param pieces - the extensions of JLabel used to set the image of each tile
 	 */	
 	private void addPieceLabels(JLayeredPane pane, PieceGUI[][] pieces)
 	{
@@ -177,10 +177,9 @@ public class BoardGUI extends JPanel implements MouseListener
 		paintBoard(g);
 	}
 	
-	/** Loops through the painting of each tile in a hexarant.
+	/** Loops through the painting of each tile on the board.
 	 * 
 	 * @param g <code>Graphics</code> object.
-	 * @param hexarant Array of coordinates of the segment being painted.
 	 * @param hexarantName String of segment name passed for the naming of tiles.
 	 */	
 	public void paintBoard(Graphics g)
@@ -204,9 +203,7 @@ public class BoardGUI extends JPanel implements MouseListener
 	 * painting of the pieces.
 	 * 
 	 * @param g <code>Graphics</code> object.
-	 * @param hexarant Array of coordinates of the segment being painted.
 	 * @param uL Upper left coordinate index of the tile.
-	 * @param hexarantName Name of the hexarant that the tile belongs to.
 	 */	
 	private void paintTile(Graphics g, int i, int uL) 
 	{
@@ -469,8 +466,8 @@ public class BoardGUI extends JPanel implements MouseListener
 				{
 					Click tileClicked = new Click(boardTiles[i][j].getBoardNumber(), boardTiles[i][j].getBoardLetter());
 					theGame.getClick(tileClicked);
-					System.out.println(boardTiles[i][j].getBoardNumber());
-					System.out.println(boardTiles[i][j].getBoardLetter());
+					//System.out.println(boardTiles[i][j].getBoardNumber());
+					//System.out.println(boardTiles[i][j].getBoardLetter());
 				}
 			}
 		}

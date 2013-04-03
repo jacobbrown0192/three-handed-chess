@@ -50,9 +50,11 @@ public class King extends Piece {
 		}
 		
 		if (validMove)
-		{	//moves piece
+		{
+			//Consider if the move will put you into check
 			boolean check = player.getTheGame().getGameController().putIntoCheck(aStartTile, aMoveTile);
 			
+			//If it doesn't, move the piece on the game board
 			if(!check)
 			{
 				if(aMoveTile.getPiece() != null){	// sets pieces current tile on aMoveTile to null
@@ -115,6 +117,8 @@ public class King extends Piece {
 		}
 	}
 	
+	/** Finds all the possible moves that this king can perform and adds them to the <code>validMoveList</code>.
+	 */
 	public void possibleMoves()
 	{
 		this.validTileMoves.clear();

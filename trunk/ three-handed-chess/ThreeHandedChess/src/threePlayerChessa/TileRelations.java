@@ -1,8 +1,12 @@
 package threePlayerChessa;
 
+/**
+ * Tile Relations class defines the adjacency of each tile on the board.
+ * <p> This class is used to allow tiles to know who is next to them.
+ * <p>This allows pieces to find out where they can move to.
+ */
 public class TileRelations {
 	public int relations[][][] = new int[97][14][3]; //number then letter
-	
 	
 	public TileRelations(){
 		//a1
