@@ -15,7 +15,7 @@ import threePlayerChessa.Game;
 public class TopBoardGUI extends JPanel 
 {
 	private static final long serialVersionUID = 1L;
-	Game theGame;
+	private Game theGame;
 	private JLabel lblGameAndStuff;
 	
 	/**

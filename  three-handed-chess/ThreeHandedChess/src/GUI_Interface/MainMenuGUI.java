@@ -23,9 +23,9 @@ import threePlayerChessa.Game;
  */
 public class MainMenuGUI extends JPanel {
 
-	Game theGame;
+	private Game theGame;
 	private static final long serialVersionUID = 1L;
-	int buttonPress;
+	private int buttonPress;
 	
 	/**
 	 * Create the panel.

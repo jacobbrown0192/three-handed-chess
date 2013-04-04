@@ -24,8 +24,8 @@ import java.awt.event.ActionEvent;
 public class PromotePawn extends JPanel
 {
 	private static final long serialVersionUID = 1L;
-	Pawn thePawn;
-	Turn thePlayer;
+	private Pawn thePawn;
+	private Turn thePlayer;
 	
 	/**
 	 * Create the panel.

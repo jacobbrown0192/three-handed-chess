@@ -6,8 +6,8 @@ package GUI_Interface;
 public class CoordinateGUI
 {
 	private static final long serialVersionUID = 1L;
-	public double x;
-	public double y;
+	public double x; //Intentionally left public
+	public double y; //Intentionally left public
 	
 	/** Default empty constructor.
 	 */

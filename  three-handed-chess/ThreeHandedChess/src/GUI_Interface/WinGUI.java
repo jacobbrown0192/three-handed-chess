@@ -19,8 +19,8 @@ public class WinGUI extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	Game theGame;
-	JLabel lblWin;
+	private Game theGame;
+	private JLabel lblWin;
 	
 	/**
 	 * Create the panel.
