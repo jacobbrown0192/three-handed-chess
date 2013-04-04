@@ -22,8 +22,8 @@ public class Rook extends Piece {
 	public Rook(Team player, String name, Board theBoard, Tile currentTile,PieceType type) {
 		super(player, name, theBoard, currentTile,type);
 		// TODO Auto-generated constructor stub
-		initialMove = false;
-		this.jumpTwo = false;
+		setInitialMove(false);
+
 	}
 
 	/**  
@@ -37,15 +37,15 @@ public class Rook extends Piece {
 	public boolean move(Tile aStartTile, Tile aMoveTile, Turn player)
 	{
 		boolean validMove = false;
-		player.getTheGame().click2 = null;
+		player.getTheGame().setClick2(null);
 		
 		
-		for( int i=0; i<validTileMoves.size();i++)
+		for( int i=0; i<getValidMoves().size();i++)
 		{
-			if(aMoveTile == validTileMoves.elementAt(i))
+			if(aMoveTile == getValidMoves().elementAt(i))
 			{
 				validMove = true;
-				player.getTheGame().click1 = null;
+				player.getTheGame().setClick1(null);
 			}
 		}
 		
@@ -64,16 +64,16 @@ public class Rook extends Piece {
 				if(aMoveTile.getPiece() != null){	// sets pieces current tile on aMoveTile to null
 					aMoveTile.getPiece().setCurrentTile(null);
 				}
-				if (initialMove == false)
+				if (isInitialMove() == false)
 				{
-					initialMove = true;
+					setInitialMove(true);
 				}
 				aMoveTile.setPiece(aStartTile.getPiece());
 				aStartTile.setPiece(null);
 				aMoveTile.getPiece().setCurrentTile(aMoveTile);
 				player.getTheGame().getBoardGUI().setTileIcons();
 				player.getTheGame().getGameController().addToCounter(); //adds one to turn counter and starts the next players turn
-				this.player.addToMoveList(aMoveTile, this);
+				this.getPlayer().addToMoveList(aMoveTile, this);
 				return true;
 			}
 		}
@@ -83,9 +83,9 @@ public class Rook extends Piece {
 	/** Finds all the possible moves that this rook can perform and adds them to the <code>validMoveList</code>.
 	 */
 	public void possibleMoves(){
-		validTileMoves.clear();
-		Tile temp = this.currentTile;
-		Tile tempPrevious = this.currentTile;
+		getValidMoves().clear();
+		Tile temp = this.getCurrentTile();
+		Tile tempPrevious = this.getCurrentTile();
 		
 		
 				while (temp.up != null)
@@ -119,7 +119,7 @@ public class Rook extends Piece {
 					//Check that the tile you're adding in this direction isn't the tile you added last
 					if(tempPrevious == temp.up)
 					{
-						this.validTileMoves.add(temp.down);
+						this.getValidMoves().add(temp.down);
 						tempPrevious = temp;
 						temp = temp.down;
 
@@ -127,7 +127,7 @@ public class Rook extends Piece {
 					}
 					else
 					{
-						this.validTileMoves.add(temp.up);
+						this.getValidMoves().add(temp.up);
 						tempPrevious = temp;
 						temp = temp.up;
 					}
@@ -141,8 +141,8 @@ public class Rook extends Piece {
 				}
 				
 				
-				temp = this.currentTile;
-				tempPrevious = this.currentTile;
+				temp = this.getCurrentTile();
+				tempPrevious = this.getCurrentTile();
 				//Upper Left Check
 				while (temp.down != null)
 				{
@@ -180,7 +180,7 @@ public class Rook extends Piece {
 					//Check that the tile you're adding in this direction isn't the tile you added last
 					if(tempPrevious == temp.down)
 					{
-						this.validTileMoves.add(temp.up);
+						this.getValidMoves().add(temp.up);
 						if(temp.up == null){
 							break;
 						}
@@ -189,7 +189,7 @@ public class Rook extends Piece {
 					}
 					else
 					{
-						this.validTileMoves.add(temp.down);
+						this.getValidMoves().add(temp.down);
 						tempPrevious = temp;
 						temp = temp.down;
 					}
@@ -203,8 +203,8 @@ public class Rook extends Piece {
 				}
 					
 					
-				temp = this.currentTile;
-				tempPrevious = this.currentTile;
+				temp = this.getCurrentTile();
+				tempPrevious = this.getCurrentTile();
 				//Upper Left Check
 				while (temp.left != null)
 				{
@@ -236,14 +236,14 @@ public class Rook extends Piece {
 					//Check that the tile you're adding in this direction isn't the tile you added last
 					if(tempPrevious == temp.left)
 					{
-						this.validTileMoves.add(temp.right);
+						this.getValidMoves().add(temp.right);
 						tempPrevious = temp;
 						temp = temp.right;
 						
 					}
 					else
 					{
-						this.validTileMoves.add(temp.left);
+						this.getValidMoves().add(temp.left);
 						tempPrevious = temp;
 						temp = temp.left;
 					}
@@ -257,8 +257,8 @@ public class Rook extends Piece {
 				}
 				
 				
-				temp = this.currentTile;
-				tempPrevious = this.currentTile;
+				temp = this.getCurrentTile();
+				tempPrevious = this.getCurrentTile();
 				//Upper Left Check
 				while (temp.right != null)
 				{
@@ -290,14 +290,14 @@ public class Rook extends Piece {
 					//Check that the tile you're adding in this direction isn't the tile you added last
 					if(tempPrevious == temp.right)
 					{
-						this.validTileMoves.add(temp.left);
+						this.getValidMoves().add(temp.left);
 						tempPrevious = temp;
 						temp = temp.left;
 						
 					}
 					else
 					{
-						this.validTileMoves.add(temp.right);
+						this.getValidMoves().add(temp.right);
 						tempPrevious = temp;
 						temp = temp.right;
 					}
@@ -310,10 +310,10 @@ public class Rook extends Piece {
 					}
 				}
 			
-				temp = this.currentTile;
-				tempPrevious = this.currentTile;
+				temp = this.getCurrentTile();
+				tempPrevious = this.getCurrentTile();
 				if(temp.hop != null){
-					this.validTileMoves.add(temp.hop);
+					this.getValidMoves().add(temp.hop);
 					temp = temp.hop;
 					
 					if(temp.getPiece() == null){
@@ -342,7 +342,7 @@ public class Rook extends Piece {
 						
 						//Check that the tile you're adding in this direction isn't the tile you added last
 	
-							this.validTileMoves.add(temp.up);
+							this.getValidMoves().add(temp.up);
 							tempPrevious = temp;
 							temp = temp.up;
 						
@@ -355,7 +355,7 @@ public class Rook extends Piece {
 					}
 					
 					
-					temp = this.currentTile.hop;
+					temp = this.getCurrentTile().hop;
 					//Upper Left Check
 					while (temp.down != null && temp.down.getSegment() == temp.getSegment())
 					{
@@ -372,7 +372,7 @@ public class Rook extends Piece {
 						
 						//Check that the tile you're adding in this direction isn't the tile you added last
 
-							this.validTileMoves.add(temp.down);
+							this.getValidMoves().add(temp.down);
 							temp = temp.down;
 
 						
@@ -385,7 +385,7 @@ public class Rook extends Piece {
 					}
 						
 						
-					temp = this.currentTile.hop;
+					temp = this.getCurrentTile().hop;
 					//Upper Left Check
 					while (temp.left != null && temp.left.getSegment() == temp.getSegment())
 					{
@@ -402,7 +402,7 @@ public class Rook extends Piece {
 						
 						//Check that the tile you're adding in this direction isn't the tile you added last
 
-							this.validTileMoves.add(temp.left);
+							this.getValidMoves().add(temp.left);
 							temp = temp.left;
 						
 						//If piece belonging to enemy is there
@@ -413,7 +413,7 @@ public class Rook extends Piece {
 						}
 					}
 					
-					temp = this.currentTile.hop;
+					temp = this.getCurrentTile().hop;
 					//Upper Left Check
 					while (temp.right != null && temp.right.getSegment() == temp.getSegment())
 					{
@@ -430,7 +430,7 @@ public class Rook extends Piece {
 						
 						//Check that the tile you're adding in this direction isn't the tile you added last
 
-							this.validTileMoves.add(temp.right);
+							this.getValidMoves().add(temp.right);
 							temp = temp.right;
 
 						//If piece belonging to enemy is there

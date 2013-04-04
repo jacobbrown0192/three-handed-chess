@@ -5,8 +5,8 @@ package threePlayerChessa;
  *has clicked from the view to the model.
  */
 public class Click {
-	int num; //the number coordinate of the click
-	int let; //the letter coordinate of the click
+	private int num; //the number coordinate of the click
+	private int let; //the letter coordinate of the click
 		
 	/**
 	 * Click constructor

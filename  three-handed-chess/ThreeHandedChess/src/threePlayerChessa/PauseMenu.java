@@ -8,9 +8,9 @@ import java.util.Vector;
  *reset the game, end the game, enter the call for stalemate menu, and resume the game
  */
 public class PauseMenu {
-	public Board theBoard; //the board of the game
-	public Vector<Team> gameTeams = new Vector<Team>(); //teams playing the game
-	public Game theGame; //the game its self which contains everything
+	private Board theBoard; //the board of the game
+	private Vector<Team> gameTeams = new Vector<Team>(); //teams playing the game
+	private Game theGame; //the game its self which contains everything
 
 
 	/**

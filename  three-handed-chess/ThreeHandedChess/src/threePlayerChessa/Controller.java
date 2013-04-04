@@ -11,9 +11,9 @@ import threePlayerChessa.Piece.PieceType;
  *and whether someone is in check. Checking for check has yet to be implemented.
  */
 public class Controller {
-	Game theGame; //the game its self which contains everything
-	int turnCount; //counter for the number of turns so far
-	boolean inProgress; //determines if the game is in progress
+	private Game theGame; //the game its self which contains everything
+	private int turnCount; //counter for the number of turns so far
+	private boolean inProgress; //determines if the game is in progress
 	
 	/**
 	 * Controller constructor
@@ -35,6 +35,35 @@ public class Controller {
 	 */
 	public void setInProgress(boolean inProgress) {
 		this.inProgress = inProgress;
+	}
+	
+
+	/**
+	 * @return the theGame
+	 */
+	public Game getTheGame() {
+		return theGame;
+	}
+
+	/**
+	 * @param theGame - used to set theGame
+	 */
+	public void setTheGame(Game theGame) {
+		this.theGame = theGame;
+	}
+
+	/**
+	 * @return the turnCount
+	 */
+	public int getTurnCount() {
+		return turnCount;
+	}
+
+	/**
+	 * @param turnCount - used to set turnCount
+	 */
+	public void setTurnCount(int turnCount) {
+		this.turnCount = turnCount;
 	}
 
 	/**
@@ -104,28 +133,28 @@ public class Controller {
 		Team winner = null;
 		if(check == true)
 		{ 
-		me.checkMate = true;
+		me.setCheckMate(true);
 		boolean checkMateTemp = false;
 			for(int i = 0; i<16; i++){
-				tempStart = me.pieces.elementAt(i).currentTile;
+				tempStart = me.getPieces().elementAt(i).getCurrentTile();
 				if(tempStart != null){
-					for(int j = 0; j<me.pieces.elementAt(i).validTileMoves.size();j++){
-						checkMateTemp = putIntoCheck(tempStart,me.pieces.elementAt(i).validTileMoves.elementAt(j));
+					for(int j = 0; j<me.getPieces().elementAt(i).getValidMoves().size();j++){
+						checkMateTemp = putIntoCheck(tempStart,me.getPieces().elementAt(i).getValidMoves().elementAt(j));
 						if(!checkMateTemp){
-						 	me.checkMate = false;						
+						 	me.setCheckMate(false);						
 						}
 					}
 				}
 			}	
 			
-			for(int x = 0; x<theGame.getTheBoard().promotedPieces.size();x++){
-				tempStart = theGame.getTheBoard().promotedPieces.elementAt(x).getCurrentTile();
-				if(theGame.getTheBoard().promotedPieces.elementAt(x).getPlayer() == me){
+			for(int x = 0; x<theGame.getTheBoard().getPromotedPieces().size();x++){
+				tempStart = theGame.getTheBoard().getPromotedPieces().elementAt(x).getCurrentTile();
+				if(theGame.getTheBoard().getPromotedPieces().elementAt(x).getPlayer() == me){
 					if(tempStart != null){
-						for(int y = 0; y<theGame.getTheBoard().promotedPieces.elementAt(x).validTileMoves.size();y++){
-							checkMateTemp = putIntoCheck(tempStart,theGame.getTheBoard().promotedPieces.elementAt(x).validTileMoves.elementAt(y));
+						for(int y = 0; y<theGame.getTheBoard().getPromotedPieces().elementAt(x).getValidMoves().size();y++){
+							checkMateTemp = putIntoCheck(tempStart,theGame.getTheBoard().getPromotedPieces().elementAt(x).getValidMoves().elementAt(y));
 							if(!checkMateTemp){
-							 	me.checkMate = false;						
+							 	me.setCheckMate(false);					
 							}
 						}
 					}
@@ -134,9 +163,9 @@ public class Controller {
 			
 			
 			for(int k = 0; k<16; k++){
-				for(int l = 0; l<opponent1.pieces.elementAt(k).validTileMoves.size();l++){
-					if(opponent1.pieces.elementAt(k).validTileMoves.elementAt(l) != null){
-						if (opponent1.pieces.elementAt(k).validTileMoves.elementAt(l).getLetter() == kingPosition.elementAt(0).getLetter() && opponent1.pieces.elementAt(k).validTileMoves.elementAt(l).getNumber() == kingPosition.elementAt(0).getNumber())
+				for(int l = 0; l<opponent1.getPieces().elementAt(k).getValidMoves().size();l++){
+					if(opponent1.getPieces().elementAt(k).getValidMoves().elementAt(l) != null){
+						if (opponent1.getPieces().elementAt(k).getValidMoves().elementAt(l).getLetter() == kingPosition.elementAt(0).getLetter() && opponent1.getPieces().elementAt(k).getValidMoves().elementAt(l).getNumber() == kingPosition.elementAt(0).getNumber())
 						{
 							winner = opponent1;
 							break;
@@ -146,9 +175,9 @@ public class Controller {
 			}
 			
 			for(int m = 0; m<16; m++){
-				for(int n = 0; n<opponent2.pieces.elementAt(m).validTileMoves.size();n++){
-					if(opponent2.pieces.elementAt(m).validTileMoves.elementAt(n) != null){
-						if (opponent2.pieces.elementAt(m).validTileMoves.elementAt(n).getLetter() == kingPosition.elementAt(0).getLetter() && opponent2.pieces.elementAt(m).validTileMoves.elementAt(n).getNumber() == kingPosition.elementAt(0).getNumber())
+				for(int n = 0; n<opponent2.getPieces().elementAt(m).getValidMoves().size();n++){
+					if(opponent2.getPieces().elementAt(m).getValidMoves().elementAt(n) != null){
+						if (opponent2.getPieces().elementAt(m).getValidMoves().elementAt(n).getLetter() == kingPosition.elementAt(0).getLetter() && opponent2.getPieces().elementAt(m).getValidMoves().elementAt(n).getNumber() == kingPosition.elementAt(0).getNumber())
 						{
 							winner = opponent2;
 							break;
@@ -290,15 +319,15 @@ public class Controller {
 		
 		if(myTeamNum == 1)
 		{
-			check = theGame.getGameController().inCheck(checkBoard.gameTeams.elementAt(0), checkBoard.gameTeams.elementAt(1), checkBoard.gameTeams.elementAt(2), checkBoard);
+			check = theGame.getGameController().inCheck(checkBoard.getGameTeams().elementAt(0), checkBoard.getGameTeams().elementAt(1), checkBoard.getGameTeams().elementAt(2), checkBoard);
 		}
 		else if(myTeamNum == 2)
 		{
-			check = theGame.getGameController().inCheck(checkBoard.gameTeams.elementAt(1), checkBoard.gameTeams.elementAt(0), checkBoard.gameTeams.elementAt(2), checkBoard);
+			check = theGame.getGameController().inCheck(checkBoard.getGameTeams().elementAt(1), checkBoard.getGameTeams().elementAt(0), checkBoard.getGameTeams().elementAt(2), checkBoard);
 		}
 		else if(myTeamNum == 3)
 		{
-			check = theGame.getGameController().inCheck(checkBoard.gameTeams.elementAt(2), checkBoard.gameTeams.elementAt(1), checkBoard.gameTeams.elementAt(0), checkBoard);
+			check = theGame.getGameController().inCheck(checkBoard.getGameTeams().elementAt(2), checkBoard.getGameTeams().elementAt(1), checkBoard.getGameTeams().elementAt(0), checkBoard);
 		}
 		return check;	
 	}

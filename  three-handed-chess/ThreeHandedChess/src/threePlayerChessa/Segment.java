@@ -8,12 +8,12 @@ import threePlayerChessa.Tile;
  *Splitting up the board makes it more manageable 
  */
 public class Segment {
-	int maxNum;
-	int minNum;
-	int maxLet;
-	int minLet;
-	Section section;
-	public Vector<Tile> tiles = new Vector<Tile>();
+	private int maxNum;
+	private int minNum;
+	private int maxLet;
+	private int minLet;
+	private Section section;
+	private Vector<Tile> tiles = new Vector<Tile>();
 
 	
 	/**
@@ -88,4 +88,70 @@ public class Segment {
 	{
 		return this.maxLet;
 	}
+
+	/**
+	 * @return the minNum
+	 */
+	public int getMinNum() {
+		return minNum;
+	}
+
+	/**
+	 * @param minNum - used to set minNum
+	 */
+	public void setMinNum(int minNum) {
+		this.minNum = minNum;
+	}
+
+	/**
+	 * @return the minLet
+	 */
+	public int getMinLet() {
+		return minLet;
+	}
+
+	/**
+	 * @param minLet - used to set minLet
+	 */
+	public void setMinLet(int minLet) {
+		this.minLet = minLet;
+	}
+
+	/**
+	 * @return the tiles
+	 */
+	public Vector<Tile> getTiles() {
+		return tiles;
+	}
+
+	/**
+	 * @param tiles - used to set tiles
+	 */
+	public void setTiles(Vector<Tile> tiles) {
+		this.tiles = tiles;
+	}
+
+	/**
+	 * @param maxNum - used to set maxNum
+	 */
+	public void setMaxNum(int maxNum) {
+		this.maxNum = maxNum;
+	}
+
+	/**
+	 * @param maxLet - used to set maxLet
+	 */
+	public void setMaxLet(int maxLet) {
+		this.maxLet = maxLet;
+	}
+
+	/**
+	 * @param section - used to set section
+	 */
+	public void setSection(Section section) {
+		this.section = section;
+	}
+	
+	
+	
 }

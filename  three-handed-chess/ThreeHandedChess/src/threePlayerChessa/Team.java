@@ -9,13 +9,13 @@ import threePlayerChessa.Piece;
 public class Team {
 	private int colour; //piece colour 
 	private String name; //name of the player
-	public Vector<MoveList> moves = new Vector<MoveList>(); //list of moves made during game
+	private Vector<MoveList> moves = new Vector<MoveList>(); //list of moves made during game
 	private int number; //the players number. used for play order
-	public Vector<Piece> pieces = new Vector<Piece>(); //pieces belonging to this player
-	public Board theBoard; //the board of the game
-	public boolean evil; //determines wither the team is a computer
-	public int AIDifficulty; //determines the difficulty of the team if it is a computer team
-	public boolean checkMate;
+	private Vector<Piece> pieces = new Vector<Piece>(); //pieces belonging to this player
+	private Board theBoard; //the board of the game
+	private boolean evil; //determines wither the team is a computer
+	private int AIDifficulty; //determines the difficulty of the team if it is a computer team
+	private boolean checkMate;
 
 	
 	/**
@@ -200,14 +200,14 @@ public class Team {
 		Section temp = null;
 		Tile startTile = null;
 		for (int i =0; i <3; i++){
-			if(theBoard.sections.elementAt(i).getColour() == this){
-				temp = theBoard.sections.elementAt(i);
+			if(theBoard.getSections().elementAt(i).getColour() == this){
+				temp = theBoard.getSections().elementAt(i);
 			}
 		}
 		// adds player ones pieces to the board using start positions
 		if (this.getNumber() == 1){
 			for(int i = 0; i <4; i++){
-				startTile =	temp.segments.elementAt(0).tiles.elementAt(i+4);
+				startTile =	temp.getSegments().elementAt(0).getTiles().elementAt(i+4);
 				startTile.setPiece(pieces.elementAt(piece));
 				pieces.elementAt(piece).setCurrentTile(startTile);
 				startTile.getPiece().setInitialMove(false);
@@ -219,7 +219,7 @@ public class Team {
 				piece++;
 			}
 			for(int i = 0; i <4; i++){
-				startTile =	temp.segments.elementAt(1).tiles.elementAt(i+4);
+				startTile =	temp.getSegments().elementAt(1).getTiles().elementAt(i+4);
 				startTile.setPiece(pieces.elementAt(piece));
 				pieces.elementAt(piece).setCurrentTile(startTile);
 				startTile.getPiece().setInitialMove(false);
@@ -231,7 +231,7 @@ public class Team {
 				piece++;
 			}
 			for(int i = 0; i <4; i++){
-				startTile =	temp.segments.elementAt(0).tiles.elementAt(i);
+				startTile =	temp.getSegments().elementAt(0).getTiles().elementAt(i);
 				startTile.setPiece(pieces.elementAt(piece));
 				pieces.elementAt(piece).setCurrentTile(startTile);
 				startTile.getPiece().setInitialMove(false);
@@ -243,7 +243,7 @@ public class Team {
 				piece++;
 			}
 			for(int i = 0; i <4; i++){
-				startTile =	temp.segments.elementAt(1).tiles.elementAt(i);
+				startTile =	temp.getSegments().elementAt(1).getTiles().elementAt(i);
 				startTile.setPiece(pieces.elementAt(piece));
 				pieces.elementAt(piece).setCurrentTile(startTile);
 				startTile.getPiece().setInitialMove(false);
@@ -259,7 +259,7 @@ public class Team {
 		// adds player twos pieces to the board using start positions
 		if(this.getNumber() == 2){
 			for(int i = 0; i <4; i++){
-				startTile =	temp.segments.elementAt(0).tiles.elementAt(11-i);
+				startTile =	temp.getSegments().elementAt(0).getTiles().elementAt(11-i);
 				startTile.setPiece(pieces.elementAt(piece));
 				pieces.elementAt(piece).setCurrentTile(startTile);
 				startTile.getPiece().setInitialMove(false);
@@ -271,7 +271,7 @@ public class Team {
 				piece++;
 			}
 			for(int i = 0; i <4; i++){
-				startTile =	temp.segments.elementAt(1).tiles.elementAt(11-i);
+				startTile =	temp.getSegments().elementAt(1).getTiles().elementAt(11-i);
 				startTile.setPiece(pieces.elementAt(piece));
 				pieces.elementAt(piece).setCurrentTile(startTile);
 				startTile.getPiece().setInitialMove(false);
@@ -283,7 +283,7 @@ public class Team {
 				piece++;
 			}
 			for(int i = 0; i <4; i++){
-				startTile =	temp.segments.elementAt(0).tiles.elementAt(15-i);
+				startTile =	temp.getSegments().elementAt(0).getTiles().elementAt(15-i);
 				startTile.setPiece(pieces.elementAt(piece));
 				pieces.elementAt(piece).setCurrentTile(startTile);
 				startTile.getPiece().setInitialMove(false);
@@ -295,7 +295,7 @@ public class Team {
 				piece++;
 			}
 			for(int i = 0; i <4; i++){
-				startTile =	temp.segments.elementAt(1).tiles.elementAt(15-i);
+				startTile =	temp.getSegments().elementAt(1).getTiles().elementAt(15-i);
 				startTile.setPiece(pieces.elementAt(piece));
 				pieces.elementAt(piece).setCurrentTile(startTile);
 				startTile.getPiece().setInitialMove(false);
@@ -312,7 +312,7 @@ public class Team {
 		// adds player threes pieces to the board using start positions
 		if(this.getNumber() == 3){
 			for(int i = 0; i <4; i++){
-				startTile =	temp.segments.elementAt(0).tiles.elementAt(11-i);
+				startTile =	temp.getSegments().elementAt(0).getTiles().elementAt(11-i);
 				startTile.setPiece(pieces.elementAt(piece));
 				pieces.elementAt(piece).setCurrentTile(startTile);
 				startTile.getPiece().setInitialMove(false);
@@ -324,7 +324,7 @@ public class Team {
 				piece++;
 			}
 			for(int i = 0; i <4; i++){
-				startTile =	temp.segments.elementAt(1).tiles.elementAt(8+i);
+				startTile =	temp.getSegments().elementAt(1).getTiles().elementAt(8+i);
 				startTile.setPiece(pieces.elementAt(piece));
 				pieces.elementAt(piece).setCurrentTile(startTile);
 				startTile.getPiece().setInitialMove(false);
@@ -336,7 +336,7 @@ public class Team {
 				piece++;
 			}
 			for(int i = 0; i <4; i++){
-				startTile =	temp.segments.elementAt(0).tiles.elementAt(15-i);
+				startTile =	temp.getSegments().elementAt(0).getTiles().elementAt(15-i);
 				startTile.setPiece(pieces.elementAt(piece));
 				pieces.elementAt(piece).setCurrentTile(startTile);
 				startTile.getPiece().setInitialMove(false);
@@ -348,7 +348,7 @@ public class Team {
 				piece++;
 			}
 			for(int i = 0; i <4; i++){
-				startTile =	temp.segments.elementAt(1).tiles.elementAt(12+i);
+				startTile =	temp.getSegments().elementAt(1).getTiles().elementAt(12+i);
 				startTile.setPiece(pieces.elementAt(piece));
 				pieces.elementAt(piece).setCurrentTile(startTile);
 				startTile.getPiece().setInitialMove(false);

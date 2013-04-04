@@ -10,15 +10,15 @@ import threePlayerChessa.Segment;
  * 
  */
 public class Section {
-	int maxNum;
-	int minNum;
-	int maxLet1;
-	int minLet1;
-	int maxLet2;
-	int minLet2;	
+	private int maxNum;
+	private int minNum;
+	private int maxLet1;
+	private int minLet1;
+	private int maxLet2;
+	private int minLet2;	
 	private Team colour;
-	public Board theBoard;	
-	public Vector<Segment> segments = new Vector<Segment>();
+	private Board theBoard;	
+	private Vector<Segment> segments = new Vector<Segment>();
 
 	/**
 	 * @return Vector of segments

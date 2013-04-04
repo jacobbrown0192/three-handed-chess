@@ -20,7 +20,7 @@ public class Tile {
 	private int number;
 	private int letter;
 	private Piece piece;
-	public Segment segment;
+	private Segment segment;
 	private boolean selected;
 	private boolean attacked;
 	private boolean accessed;

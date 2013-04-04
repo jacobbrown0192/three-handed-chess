@@ -22,7 +22,7 @@ public class Knight extends Piece {
 	public Knight(Team player, String name, Board theBoard, Tile currentTile,PieceType type) {
 		super(player, name, theBoard, currentTile,type);
 		// TODO Auto-generated constructor stub
-		this.jumpTwo = false;
+
 	}
 
 	/**  
@@ -37,13 +37,13 @@ public class Knight extends Piece {
 	{
 		boolean validMove = false;
 
-		player.getTheGame().click2 = null;
+		player.getTheGame().setClick2(null);
 		
 		//check for valid move
-		for(int i=0; i<validTileMoves.size();i++){
-			if(aMoveTile == validTileMoves.elementAt(i)){
+		for(int i=0; i<getValidMoves().size();i++){
+			if(aMoveTile == getValidMoves().elementAt(i)){
 				validMove = true;
-				player.getTheGame().click1 = null;
+				player.getTheGame().setClick1(null);
 			}
 		}
 				
@@ -67,7 +67,7 @@ public class Knight extends Piece {
 				aMoveTile.getPiece().setCurrentTile(aMoveTile);
 				player.getTheGame().getBoardGUI().setTileIcons();
 				player.getTheGame().getGameController().addToCounter(); //adds one to turn counter and starts the next players turn
-				this.player.addToMoveList(aMoveTile, this);
+				this.getPlayer().addToMoveList(aMoveTile, this);
 				return true;
 			}
 		}
@@ -79,8 +79,8 @@ public class Knight extends Piece {
 	 */
 	public void possibleMoves()
 	{
-		this.validTileMoves.clear(); //Flush previously held possible moves
-		Tile temp = this.currentTile;
+		this.getValidMoves().clear(); //Flush previously held possible moves
+		Tile temp = this.getCurrentTile();
 		
 		//Up 2 Left 1
 		//Check if there is a tile up from us
@@ -102,7 +102,7 @@ public class Knight extends Piece {
 							//If there is: check if there's nobody there or if the piece belongs to the enemy
 							if(temp.up.down.right.getPiece() == null || temp.up.down.right.getPiece().getPlayer() != this.getPlayer())
 							{
-								this.validTileMoves.add(temp.up.down.right);
+								this.getValidMoves().add(temp.up.down.right);
 							}
 						}
 					}
@@ -111,7 +111,7 @@ public class Knight extends Piece {
 				{
 					if(temp.up.up.left.getPiece() == null || temp.up.up.left.getPiece().getPlayer() != this.getPlayer())
 					{
-						this.validTileMoves.add(temp.up.up.left);
+						this.getValidMoves().add(temp.up.up.left);
 					}
 				}
 			}
@@ -133,7 +133,7 @@ public class Knight extends Piece {
 						//If they do: check if there's nobody there or if the piece belongs to the enemy
 						if(temp.up.down.left.getPiece() == null || temp.up.down.left.getPiece().getPlayer() != this.getPlayer())
 						{
-							this.validTileMoves.add(temp.up.down.left);
+							this.getValidMoves().add(temp.up.down.left);
 						}
 					}
 				}
@@ -141,7 +141,7 @@ public class Knight extends Piece {
 				{
 					if(temp.up.up.right.getPiece() == null || temp.up.up.right.getPiece().getPlayer() != this.getPlayer())
 					{
-						this.validTileMoves.add(temp.up.up.right);
+						this.getValidMoves().add(temp.up.up.right);
 					}
 				}
 			}
@@ -156,7 +156,7 @@ public class Knight extends Piece {
 				{
 					if(temp.left.left.up.getPiece() == null || temp.left.left.up.getPiece().getPlayer() != this.getPlayer())
 					{
-						this.validTileMoves.add(temp.left.left.up);
+						this.getValidMoves().add(temp.left.left.up);
 					}
 				}
 			}
@@ -171,7 +171,7 @@ public class Knight extends Piece {
 				{
 					if(temp.right.right.up.getPiece() == null || temp.right.right.up.getPiece().getPlayer() != this.getPlayer())
 					{
-						this.validTileMoves.add(temp.right.right.up);
+						this.getValidMoves().add(temp.right.right.up);
 					}
 				}
 			}
@@ -193,7 +193,7 @@ public class Knight extends Piece {
 						//If they do: check if there's nobody there or if the piece belongs to the enemy
 						if(temp.down.up.right.getPiece() == null || temp.down.up.right.getPiece().getPlayer() != this.getPlayer())
 						{
-							this.validTileMoves.add(temp.down.up.right);
+							this.getValidMoves().add(temp.down.up.right);
 						}
 					}
 				}
@@ -201,7 +201,7 @@ public class Knight extends Piece {
 				{
 					if(temp.down.down.left.getPiece() == null || temp.down.down.left.getPiece().getPlayer() != this.getPlayer())
 					{
-						this.validTileMoves.add(temp.down.down.left);
+						this.getValidMoves().add(temp.down.down.left);
 					}
 				}
 			}
@@ -223,7 +223,7 @@ public class Knight extends Piece {
 						//If they do: check if there's nobody there or if the piece belongs to the enemy
 						if(temp.down.up.left.getPiece() == null || temp.down.up.left.getPiece().getPlayer() != this.getPlayer())
 						{
-							this.validTileMoves.add(temp.down.up.left);
+							this.getValidMoves().add(temp.down.up.left);
 						}
 					}
 				}
@@ -231,7 +231,7 @@ public class Knight extends Piece {
 				{
 					if(temp.down.down.right.getPiece() == null || temp.down.down.right.getPiece().getPlayer() != this.getPlayer())
 					{
-						this.validTileMoves.add(temp.down.down.right);
+						this.getValidMoves().add(temp.down.down.right);
 					}
 				}
 			}
@@ -246,7 +246,7 @@ public class Knight extends Piece {
 				{
 					if(temp.left.left.down.getPiece() == null || temp.left.left.down.getPiece().getPlayer() != this.getPlayer())
 					{
-						this.validTileMoves.add(temp.left.left.down);
+						this.getValidMoves().add(temp.left.left.down);
 					}
 				}
 			}
@@ -261,7 +261,7 @@ public class Knight extends Piece {
 				{
 					if(temp.right.right.down.getPiece() == null || temp.right.right.down.getPiece().getPlayer() != this.getPlayer())
 					{
-						this.validTileMoves.add(temp.right.right.down);
+						this.getValidMoves().add(temp.right.right.down);
 					}
 				}
 			}
@@ -276,17 +276,17 @@ public class Knight extends Piece {
 				//Hop Left Up
 				if(temp.hop.left.up.getPiece() == null || temp.hop.left.up.getPiece().getPlayer() != this.getPlayer())
 				{
-					this.validTileMoves.add(temp.hop.left.up);
+					this.getValidMoves().add(temp.hop.left.up);
 				}
 				//Hop Left Down
 				if(temp.hop.left.down.getPiece() == null || temp.hop.left.down.getPiece().getPlayer() != this.getPlayer())
 				{
-					this.validTileMoves.add(temp.hop.left.down);
+					this.getValidMoves().add(temp.hop.left.down);
 				}
 				//Hop Up Right
 				if(temp.hop.up.right.getPiece() == null || temp.hop.up.right.getPiece().getPlayer() != this.getPlayer())
 				{
-					this.validTileMoves.add(temp.hop.up.right);
+					this.getValidMoves().add(temp.hop.up.right);
 				}
 			}
 			
@@ -296,17 +296,17 @@ public class Knight extends Piece {
 				//Hop Left Up
 				if(temp.hop.left.up.getPiece() == null || temp.hop.left.up.getPiece().getPlayer() != this.getPlayer())
 				{
-					this.validTileMoves.add(temp.hop.left.up);
+					this.getValidMoves().add(temp.hop.left.up);
 				}
 				//Hop Up Right
 				if(temp.hop.up.right.getPiece() == null || temp.hop.up.right.getPiece().getPlayer() != this.getPlayer())
 				{
-					this.validTileMoves.add(temp.hop.up.right);
+					this.getValidMoves().add(temp.hop.up.right);
 				}
 				//Hop Right Down
 				if(temp.hop.right.down.getPiece() == null || temp.hop.right.down.getPiece().getPlayer() != this.getPlayer())
 				{
-					this.validTileMoves.add(temp.hop.right.down);
+					this.getValidMoves().add(temp.hop.right.down);
 				}
 			}
 
@@ -317,17 +317,17 @@ public class Knight extends Piece {
 				//Hop Up Right
 				if(temp.hop.up.right.getPiece() == null || temp.hop.up.right.getPiece().getPlayer() != this.getPlayer())
 				{
-					this.validTileMoves.add(temp.hop.up.right);
+					this.getValidMoves().add(temp.hop.up.right);
 				}
 				//Hop Left Up
 				if(temp.hop.left.up.getPiece() == null || temp.hop.left.up.getPiece().getPlayer() != this.getPlayer())
 				{
-					this.validTileMoves.add(temp.hop.left.up);
+					this.getValidMoves().add(temp.hop.left.up);
 				}
 				//Hop Left Down
 				if(temp.hop.left.down.getPiece() == null || temp.hop.left.down.getPiece().getPlayer() != this.getPlayer())
 				{
-					this.validTileMoves.add(temp.hop.left.down);
+					this.getValidMoves().add(temp.hop.left.down);
 				}
 			}
 			
@@ -337,17 +337,17 @@ public class Knight extends Piece {
 				//Hop Left Down
 				if(temp.hop.left.down.getPiece() == null || temp.hop.left.down.getPiece().getPlayer() != this.getPlayer())
 				{
-					this.validTileMoves.add(temp.hop.left.down);
+					this.getValidMoves().add(temp.hop.left.down);
 				}
 				//Hop Left Up
 				if(temp.hop.left.up.getPiece() == null || temp.hop.left.up.getPiece().getPlayer() != this.getPlayer())
 				{
-					this.validTileMoves.add(temp.hop.left.up);
+					this.getValidMoves().add(temp.hop.left.up);
 				}
 				//Hop Right Down
 				if(temp.hop.right.down.getPiece() == null || temp.hop.right.down.getPiece().getPlayer() != this.getPlayer())
 				{
-					this.validTileMoves.add(temp.hop.right.down);
+					this.getValidMoves().add(temp.hop.right.down);
 				}
 			}
 			
@@ -357,17 +357,17 @@ public class Knight extends Piece {
 				//Hop Right Down
 				if(temp.hop.right.down.getPiece() == null || temp.hop.right.down.getPiece().getPlayer() != this.getPlayer())
 				{
-					this.validTileMoves.add(temp.hop.right.down);
+					this.getValidMoves().add(temp.hop.right.down);
 				}
 				//Hop Left Down
 				if(temp.hop.left.down.getPiece() == null || temp.hop.left.down.getPiece().getPlayer() != this.getPlayer())
 				{
-					this.validTileMoves.add(temp.hop.left.down);
+					this.getValidMoves().add(temp.hop.left.down);
 				}
 				//Hop Up Right
 				if(temp.hop.up.right.getPiece() == null || temp.hop.up.right.getPiece().getPlayer() != this.getPlayer())
 				{
-					this.validTileMoves.add(temp.hop.up.right);
+					this.getValidMoves().add(temp.hop.up.right);
 				}
 			}
 			
@@ -377,18 +377,18 @@ public class Knight extends Piece {
 				//Hop Right Down
 				if(temp.hop.right.down.getPiece() == null || temp.hop.right.down.getPiece().getPlayer() != this.getPlayer())
 				{
-					this.validTileMoves.add(temp.hop.right.down);
+					this.getValidMoves().add(temp.hop.right.down);
 				}
 				//Hop Up Right
 				if(temp.hop.up.right.getPiece() == null || temp.hop.up.right.getPiece().getPlayer() != this.getPlayer())
 				{
-					this.validTileMoves.add(temp.hop.up.right);
+					this.getValidMoves().add(temp.hop.up.right);
 				}
 				
 				//Hop Left Up
 				if(temp.hop.left.up.getPiece() == null || temp.hop.left.up.getPiece().getPlayer() != this.getPlayer())
 				{
-					this.validTileMoves.add(temp.hop.left.up);
+					this.getValidMoves().add(temp.hop.left.up);
 				}
 			}
 		}
@@ -399,7 +399,7 @@ public class Knight extends Piece {
 			//Check if up up hop is available
 			if(temp.up.up.hop.getPiece() == null || temp.up.up.hop.getPiece().getPlayer() != this.getPlayer())
 			{
-				this.validTileMoves.add(temp.up.up.hop);
+				this.getValidMoves().add(temp.up.up.hop);
 			}
 		}
 		else if(temp.getNumber() == 4 && temp.getLetter() == 3)
@@ -407,7 +407,7 @@ public class Knight extends Piece {
 			//Check if right right hop is available
 			if(temp.right.right.hop.getPiece() == null || temp.right.right.hop.getPiece().getPlayer() != this.getPlayer())
 			{
-				this.validTileMoves.add(temp.right.right.hop);
+				this.getValidMoves().add(temp.right.right.hop);
 			}
 		}
 		else if(temp.getNumber() == 5 && temp.getLetter() == 3)
@@ -415,7 +415,7 @@ public class Knight extends Piece {
 			//Check if right right hop is available
 			if(temp.right.right.hop.getPiece() == null || temp.right.right.hop.getPiece().getPlayer() != this.getPlayer())
 			{
-				this.validTileMoves.add(temp.right.right.hop);
+				this.getValidMoves().add(temp.right.right.hop);
 			}
 		}
 		else if(temp.getNumber() == 6 && temp.getLetter() == 4)
@@ -423,7 +423,7 @@ public class Knight extends Piece {
 			//Check if down down hop is available
 			if(temp.down.down.hop.getPiece() == null || temp.down.down.hop.getPiece().getPlayer() != this.getPlayer())
 			{
-				this.validTileMoves.add(temp.down.down.hop);
+				this.getValidMoves().add(temp.down.down.hop);
 			}			
 		}
 		else if(temp.getNumber() == 6 && temp.getLetter() == 9)
@@ -431,7 +431,7 @@ public class Knight extends Piece {
 			//Check if down down hop is available
 			if(temp.down.down.hop.getPiece() == null || temp.down.down.hop.getPiece().getPlayer() != this.getPlayer())
 			{
-				this.validTileMoves.add(temp.down.down.hop);
+				this.getValidMoves().add(temp.down.down.hop);
 			}				
 		}
 		else if(temp.getNumber() == 5 && temp.getLetter() == 10)
@@ -439,7 +439,7 @@ public class Knight extends Piece {
 			//Check if left left hop is available
 			if(temp.left.left.hop.getPiece() == null || temp.left.left.hop.getPiece().getPlayer() != this.getPlayer())
 			{
-				this.validTileMoves.add(temp.left.left.hop);
+				this.getValidMoves().add(temp.left.left.hop);
 			}	
 		}
 		else if(temp.getNumber() == 9 && temp.getLetter() == 10)
@@ -447,7 +447,7 @@ public class Knight extends Piece {
 			//Check if right right hop is available
 			if(temp.right.right.hop.getPiece() == null || temp.right.right.hop.getPiece().getPlayer() != this.getPlayer())
 			{
-				this.validTileMoves.add(temp.right.right.hop);
+				this.getValidMoves().add(temp.right.right.hop);
 			}
 		}
 		else if(temp.getNumber() == 10 && temp.getLetter() == 9)
@@ -455,7 +455,7 @@ public class Knight extends Piece {
 			//Check if down down hop is available
 			if(temp.down.down.hop.getPiece() == null || temp.down.down.hop.getPiece().getPlayer() != this.getPlayer())
 			{
-				this.validTileMoves.add(temp.down.down.hop);
+				this.getValidMoves().add(temp.down.down.hop);
 			}
 		}
 		else if(temp.getNumber() == 10 && temp.getLetter() == 5)
@@ -463,7 +463,7 @@ public class Knight extends Piece {
 			//Check if down down hop is available
 			if(temp.down.down.hop.getPiece() == null || temp.down.down.hop.getPiece().getPlayer() != this.getPlayer())
 			{
-				this.validTileMoves.add(temp.down.down.hop);
+				this.getValidMoves().add(temp.down.down.hop);
 			}			
 		}
 		else if(temp.getNumber() == 9 && temp.getLetter() == 6)
@@ -471,7 +471,7 @@ public class Knight extends Piece {
 			//Check if left left hop is available
 			if(temp.left.left.hop.getPiece() == null || temp.left.left.hop.getPiece().getPlayer() != this.getPlayer())
 			{
-				this.validTileMoves.add(temp.left.left.hop);
+				this.getValidMoves().add(temp.left.left.hop);
 			}			
 		}
 		else if(temp.getNumber() == 4 && temp.getLetter() == 6)
@@ -479,7 +479,7 @@ public class Knight extends Piece {
 			//Check if left left hop is available
 			if(temp.left.left.hop.getPiece() == null || temp.left.left.hop.getPiece().getPlayer() != this.getPlayer())
 			{
-				this.validTileMoves.add(temp.left.left.hop);
+				this.getValidMoves().add(temp.left.left.hop);
 			}
 		}
 		else if(temp.getNumber() == 3 && temp.getLetter() == 5)
@@ -487,7 +487,7 @@ public class Knight extends Piece {
 			//Check if up up hop is available
 			if(temp.up.up.hop.getPiece() == null || temp.up.up.hop.getPiece().getPlayer() != this.getPlayer())
 			{
-				this.validTileMoves.add(temp.up.up.hop);
+				this.getValidMoves().add(temp.up.up.hop);
 			}
 		}
 	}

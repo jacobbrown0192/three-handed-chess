@@ -7,11 +7,11 @@ package threePlayerChessa;
  * This class will be updated to allow for this
  */
 public class CallForStalemateMenu {
-	boolean player0Yes; //the response from player 1
-	boolean player1Yes; //the response from player 2
-	boolean player2Yes; //the response from player 3
-	Board theBoard; //the board of the game
-	Game theGame; //the game its self which contains everything
+	private boolean player0Yes; //the response from player 1
+	private boolean player1Yes; //the response from player 2
+	private boolean player2Yes; //the response from player 3
+	private Board theBoard; //the board of the game
+	private Game theGame; //the game its self which contains everything
 	
 	
 	/**
