@@ -22,7 +22,7 @@ import java.awt.event.ActionEvent;
 public class PauseMenuGUI extends JPanel 
 {
 	private static final long serialVersionUID = 1L;
-	Game theGame;
+	private Game theGame;
 	
 	/**
 	 * Create the panel.

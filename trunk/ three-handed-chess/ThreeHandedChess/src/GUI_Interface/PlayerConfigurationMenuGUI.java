@@ -37,7 +37,7 @@ public class PlayerConfigurationMenuGUI extends JPanel
 	private JLabel labelPlayer1;
 	private JLabel labelPlayer2;
 	private JLabel labelPlayer3;
-	Game theGame;
+	private Game theGame;
 	
 
 	/**
