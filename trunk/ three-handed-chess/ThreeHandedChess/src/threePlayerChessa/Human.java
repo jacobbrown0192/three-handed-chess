@@ -21,7 +21,7 @@ public class Human extends Team {
 			Board theBoard, Vector<Piece> pieces) {
 		super(colour, name, number, theBoard, pieces);
 		// TODO Auto-generated constructor stub
-		evil = false; //probably
+		this.setEvil(false); //probably
 	}
 
 }

@@ -20,7 +20,7 @@ public class Computer extends Team {
 			Board theBoard, Vector<Piece> pieces) {
 		super(colour, name, number, theBoard, pieces);
 		// TODO Auto-generated constructor stub
-		evil = true;
+		this.setEvil(true);
 	}
 
 

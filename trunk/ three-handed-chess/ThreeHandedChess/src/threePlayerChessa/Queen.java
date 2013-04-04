@@ -21,7 +21,7 @@ public class Queen extends Piece {
 	public Queen(Team player, String name, Board theBoard, Tile currentTile,PieceType type) {
 		super(player, name, theBoard, currentTile,type);
 		// TODO Auto-generated constructor stub
-		this.jumpTwo = false;
+
 	}
 
 	/**  
@@ -34,12 +34,12 @@ public class Queen extends Piece {
 	 */
 	public boolean move(Tile aStartTile, Tile aMoveTile, Turn player) {
 		boolean validMove = false;
-		player.getTheGame().click2 = null;
+		player.getTheGame().setClick2(null);
 
-		for( int i=0; i<validTileMoves.size();i++){
-			if(aMoveTile == validTileMoves.elementAt(i)){
+		for( int i=0; i<getValidMoves().size();i++){
+			if(aMoveTile == getValidMoves().elementAt(i)){
 				validMove = true;
-				player.getTheGame().click1 = null;
+				player.getTheGame().setClick1(null);
 			}
 		}
 		
@@ -63,7 +63,7 @@ public class Queen extends Piece {
 				aMoveTile.getPiece().setCurrentTile(aMoveTile);
 				player.getTheGame().getBoardGUI().setTileIcons();
 				player.getTheGame().getGameController().addToCounter(); //adds one to turn counter and starts the next players turn
-				this.player.addToMoveList(aMoveTile, this);	
+				this.getPlayer().addToMoveList(aMoveTile, this);	
 				return true;
 			}
 		}
@@ -74,9 +74,9 @@ public class Queen extends Piece {
 	/** Finds all the possible moves that this queen can perform and adds them to the <code>validMoveList</code>.
 	 */
 	public void possibleMoves(){
-		this.validTileMoves.clear(); //Flush previously held possible moves
-		Tile temp = this.currentTile;
-		Tile tempPrevious = this.currentTile;
+		this.getValidMoves().clear(); //Flush previously held possible moves
+		Tile temp = this.getCurrentTile();
+		Tile tempPrevious = this.getCurrentTile();
 		
 		//UPLEFT CHECK
 		if(temp != null){
@@ -113,14 +113,14 @@ public class Queen extends Piece {
 			if(tempPrevious == temp.upleft)
 			{
 				//Wrong direction
-				this.validTileMoves.add(temp.downright);
+				this.getValidMoves().add(temp.downright);
 				tempPrevious = temp;
 				temp = temp.downright;			
 			}
 			else
 			{
 				//Right direction
-				this.validTileMoves.add(temp.upleft);
+				this.getValidMoves().add(temp.upleft);
 				tempPrevious = temp;
 				temp = temp.upleft;
 			}
@@ -138,11 +138,11 @@ public class Queen extends Piece {
 			tempPrevious = temp;
 			if(temp.specialleft.getPiece() != null){
 				if(temp.specialleft.getPiece().getPlayer() != this.getPlayer()){
-					this.validTileMoves.add(temp.specialleft);
+					this.getValidMoves().add(temp.specialleft);
 				}				
 			}
 			else{
-				this.validTileMoves.add(temp.specialleft);
+				this.getValidMoves().add(temp.specialleft);
 				temp = temp.specialleft;
 				while (temp.upleft != null)
 				{
@@ -156,7 +156,7 @@ public class Queen extends Piece {
 						}
 					}
 					
-					this.validTileMoves.add(temp.upleft);
+					this.getValidMoves().add(temp.upleft);
 					temp = temp.upleft;
 					//If piece belonging to enemy is there
 					if(temp.getPiece() != null)
@@ -170,11 +170,11 @@ public class Queen extends Piece {
 				temp = tempPrevious;
 				if(temp.specialup.getPiece() != null){
 					if(temp.specialup.getPiece().getPlayer() != this.getPlayer()){
-						this.validTileMoves.add(temp.specialup);
+						this.getValidMoves().add(temp.specialup);
 					}				
 				}
 				else{
-					this.validTileMoves.add(temp.specialup);
+					this.getValidMoves().add(temp.specialup);
 					temp = temp.specialup;
 					while (temp.upleft != null)
 					{
@@ -188,7 +188,7 @@ public class Queen extends Piece {
 							}
 						}
 						
-						this.validTileMoves.add(temp.upleft);
+						this.getValidMoves().add(temp.upleft);
 						temp = temp.upleft;
 						//If piece belonging to enemy is there
 						if(temp.getPiece() != null)
@@ -201,8 +201,8 @@ public class Queen extends Piece {
 		}
 		
 		//upleft CHECK
-		temp = this.currentTile;
-		tempPrevious = this.currentTile;
+		temp = this.getCurrentTile();
+		tempPrevious = this.getCurrentTile();
 		while (temp.upright != null)
 		{
 			//Check that you're looking in the right direction
@@ -236,14 +236,14 @@ public class Queen extends Piece {
 			if(tempPrevious == temp.upright)
 			{
 				//Wrong direction
-				this.validTileMoves.add(temp.downleft);
+				this.getValidMoves().add(temp.downleft);
 				tempPrevious = temp;
 				temp = temp.downleft;
 			}
 			else
 			{
 				//Right direction
-				this.validTileMoves.add(temp.upright);
+				this.getValidMoves().add(temp.upright);
 				tempPrevious = temp;
 				temp = temp.upright;
 			}
@@ -261,11 +261,11 @@ public class Queen extends Piece {
 			tempPrevious = temp;
 			if(temp.specialright.getPiece() != null){
 				if(temp.specialright.getPiece().getPlayer() != this.getPlayer()){
-					this.validTileMoves.add(temp.specialright);
+					this.getValidMoves().add(temp.specialright);
 				}				
 			}
 			else{
-				this.validTileMoves.add(temp.specialright);
+				this.getValidMoves().add(temp.specialright);
 				temp = temp.specialright;
 				while (temp.upright != null)
 				{
@@ -279,7 +279,7 @@ public class Queen extends Piece {
 						}
 					}
 					
-					this.validTileMoves.add(temp.upright);
+					this.getValidMoves().add(temp.upright);
 					temp = temp.upright;
 					//If piece belonging to enemy is there
 					if(temp.getPiece() != null)
@@ -293,11 +293,11 @@ public class Queen extends Piece {
 				temp = tempPrevious;
 				if(temp.specialup.getPiece() != null){
 					if(temp.specialup.getPiece().getPlayer() != this.getPlayer()){
-						this.validTileMoves.add(temp.specialup);
+						this.getValidMoves().add(temp.specialup);
 					}				
 				}
 				else{
-					this.validTileMoves.add(temp.specialup);
+					this.getValidMoves().add(temp.specialup);
 					temp = temp.specialup;
 					while (temp.upright != null)
 					{
@@ -311,7 +311,7 @@ public class Queen extends Piece {
 							}
 						}
 						
-						this.validTileMoves.add(temp.upright);
+						this.getValidMoves().add(temp.upright);
 						temp = temp.upright;
 						//If piece belonging to enemy is there
 						if(temp.getPiece() != null)
@@ -328,8 +328,8 @@ public class Queen extends Piece {
 		
 		
 		//DOWNLEFT CHECK
-		temp = this.currentTile;
-		tempPrevious = this.currentTile;
+		temp = this.getCurrentTile();
+		tempPrevious = this.getCurrentTile();
 		while (temp.downleft != null)
 		{
 			//Check that you're looking in the right direction
@@ -362,7 +362,7 @@ public class Queen extends Piece {
 			if(tempPrevious == temp.downleft)
 			{
 				//Wrong direction
-				this.validTileMoves.add(temp.upright);
+				this.getValidMoves().add(temp.upright);
 				tempPrevious = temp;
 				if(temp.upright == null)
 				{
@@ -374,7 +374,7 @@ public class Queen extends Piece {
 			else
 			{
 				//Right direction
-				this.validTileMoves.add(temp.downleft);
+				this.getValidMoves().add(temp.downleft);
 				tempPrevious = temp;
 				temp = temp.downleft;
 			}
@@ -393,11 +393,11 @@ public class Queen extends Piece {
 			tempPrevious = temp;
 			if(temp.specialdown.getPiece() != null){
 				if(temp.specialdown.getPiece().getPlayer() != this.getPlayer()){
-					this.validTileMoves.add(temp.specialdown);
+					this.getValidMoves().add(temp.specialdown);
 				}				
 			}
 			else{
-				this.validTileMoves.add(temp.specialdown);
+				this.getValidMoves().add(temp.specialdown);
 				temp = temp.specialdown;
 				while (temp.downleft != null)
 				{
@@ -411,7 +411,7 @@ public class Queen extends Piece {
 						}
 					}
 					
-					this.validTileMoves.add(temp.downleft);
+					this.getValidMoves().add(temp.downleft);
 					temp = temp.downleft;
 					//If piece belonging to enemy is there
 					if(temp.getPiece() != null)
@@ -425,11 +425,11 @@ public class Queen extends Piece {
 				temp = tempPrevious;
 				if(temp.specialleft.getPiece() != null){
 					if(temp.specialleft.getPiece().getPlayer() != this.getPlayer()){
-						this.validTileMoves.add(temp.specialleft);
+						this.getValidMoves().add(temp.specialleft);
 					}				
 				}
 				else{
-					this.validTileMoves.add(temp.specialleft);
+					this.getValidMoves().add(temp.specialleft);
 					temp = temp.specialleft;
 					while (temp.upright != null)
 					{
@@ -443,7 +443,7 @@ public class Queen extends Piece {
 							}
 						}
 						
-						this.validTileMoves.add(temp.upright);
+						this.getValidMoves().add(temp.upright);
 						temp = temp.upright;
 						//If piece belonging to enemy is there
 						if(temp.getPiece() != null)
@@ -460,11 +460,11 @@ public class Queen extends Piece {
 			tempPrevious = temp;
 			if(temp.specialdown.getPiece() != null){
 				if(temp.specialdown.getPiece().getPlayer() != this.getPlayer()){
-					this.validTileMoves.add(temp.specialdown);
+					this.getValidMoves().add(temp.specialdown);
 				}				
 			}
 			else{
-				this.validTileMoves.add(temp.specialdown);
+				this.getValidMoves().add(temp.specialdown);
 				temp = temp.specialdown;
 				while (temp.upright != null)
 				{
@@ -478,7 +478,7 @@ public class Queen extends Piece {
 						}
 					}
 					
-					this.validTileMoves.add(temp.upright);
+					this.getValidMoves().add(temp.upright);
 					temp = temp.upright;
 					//If piece belonging to enemy is there
 					if(temp.getPiece() != null)
@@ -492,11 +492,11 @@ public class Queen extends Piece {
 				temp = tempPrevious;
 				if(temp.specialleft.getPiece() != null){
 					if(temp.specialleft.getPiece().getPlayer() != this.getPlayer()){
-						this.validTileMoves.add(temp.specialleft);
+						this.getValidMoves().add(temp.specialleft);
 					}				
 				}
 				else{
-					this.validTileMoves.add(temp.specialleft);
+					this.getValidMoves().add(temp.specialleft);
 					temp = temp.specialleft;
 					while (temp.downleft != null)
 					{
@@ -510,7 +510,7 @@ public class Queen extends Piece {
 							}
 						}
 						
-						this.validTileMoves.add(temp.downleft);
+						this.getValidMoves().add(temp.downleft);
 						temp = temp.downleft;
 						//If piece belonging to enemy is there
 						if(temp.getPiece() != null)
@@ -525,8 +525,8 @@ public class Queen extends Piece {
 		
 		
 		//DOWNRIGHT CHECK
-		temp = this.currentTile;
-		tempPrevious = this.currentTile;
+		temp = this.getCurrentTile();
+		tempPrevious = this.getCurrentTile();
 		while (temp.downright != null)
 		{
 			//Check that you're looking in the right direction
@@ -559,7 +559,7 @@ public class Queen extends Piece {
 			if(tempPrevious == temp.downright)
 			{
 				//Wrong direction
-				this.validTileMoves.add(temp.upleft);
+				this.getValidMoves().add(temp.upleft);
 				tempPrevious = temp;
 				if(temp.upleft == null)
 				{
@@ -570,7 +570,7 @@ public class Queen extends Piece {
 			else
 			{
 				//Right direction
-				this.validTileMoves.add(temp.downright);
+				this.getValidMoves().add(temp.downright);
 				tempPrevious = temp;
 				temp = temp.downright;
 			}
@@ -589,11 +589,11 @@ public class Queen extends Piece {
 			tempPrevious = temp;
 			if(temp.specialdown.getPiece() != null){
 				if(temp.specialdown.getPiece().getPlayer() != this.getPlayer()){
-					this.validTileMoves.add(temp.specialdown);
+					this.getValidMoves().add(temp.specialdown);
 				}				
 			}
 			else{
-				this.validTileMoves.add(temp.specialdown);
+				this.getValidMoves().add(temp.specialdown);
 				temp = temp.specialdown;
 				while (temp.downright != null)
 				{
@@ -607,7 +607,7 @@ public class Queen extends Piece {
 						}
 					}
 					
-					this.validTileMoves.add(temp.downright);
+					this.getValidMoves().add(temp.downright);
 					temp = temp.downright;
 					//If piece belonging to enemy is there
 					if(temp.getPiece() != null)
@@ -621,11 +621,11 @@ public class Queen extends Piece {
 				temp = tempPrevious;
 				if(temp.specialright.getPiece() != null){
 					if(temp.specialright.getPiece().getPlayer() != this.getPlayer()){
-						this.validTileMoves.add(temp.specialright);
+						this.getValidMoves().add(temp.specialright);
 					}				
 				}
 				else{
-					this.validTileMoves.add(temp.specialright);
+					this.getValidMoves().add(temp.specialright);
 					temp = temp.specialright;
 					while (temp.upleft != null)
 					{
@@ -639,7 +639,7 @@ public class Queen extends Piece {
 							}
 						}
 						
-						this.validTileMoves.add(temp.upleft);
+						this.getValidMoves().add(temp.upleft);
 						temp = temp.upleft;
 						//If piece belonging to enemy is there
 						if(temp.getPiece() != null)
@@ -657,11 +657,11 @@ public class Queen extends Piece {
 			tempPrevious = temp;
 			if(temp.specialright.getPiece() != null){
 				if(temp.specialright.getPiece().getPlayer() != this.getPlayer()){
-					this.validTileMoves.add(temp.specialright);
+					this.getValidMoves().add(temp.specialright);
 				}				
 			}
 			else{
-				this.validTileMoves.add(temp.specialright);
+				this.getValidMoves().add(temp.specialright);
 				temp = temp.specialright;
 				while (temp.downright != null)
 				{
@@ -675,7 +675,7 @@ public class Queen extends Piece {
 						}
 					}
 					
-					this.validTileMoves.add(temp.downright);
+					this.getValidMoves().add(temp.downright);
 					temp = temp.downright;
 					//If piece belonging to enemy is there
 					if(temp.getPiece() != null)
@@ -689,11 +689,11 @@ public class Queen extends Piece {
 				temp = tempPrevious;
 				if(temp.specialdown.getPiece() != null){
 					if(temp.specialdown.getPiece().getPlayer() != this.getPlayer()){
-						this.validTileMoves.add(temp.specialdown);
+						this.getValidMoves().add(temp.specialdown);
 					}				
 				}
 				else{
-					this.validTileMoves.add(temp.specialdown);
+					this.getValidMoves().add(temp.specialdown);
 					temp = temp.specialdown;
 					while (temp.upleft != null)
 					{
@@ -707,7 +707,7 @@ public class Queen extends Piece {
 							}
 						}
 						
-						this.validTileMoves.add(temp.upleft);
+						this.getValidMoves().add(temp.upleft);
 						temp = temp.upleft;
 						//If piece belonging to enemy is there
 						if(temp.getPiece() != null)
@@ -721,8 +721,8 @@ public class Queen extends Piece {
 		}
 		
 
-		temp = this.currentTile;
-		tempPrevious = this.currentTile;
+		temp = this.getCurrentTile();
+		tempPrevious = this.getCurrentTile();
 		while (temp.up != null)
 		{
 
@@ -754,7 +754,7 @@ public class Queen extends Piece {
 			//Check that the tile you're adding in this direction isn't the tile you added last
 			if(tempPrevious == temp.up)
 			{
-				this.validTileMoves.add(temp.down);
+				this.getValidMoves().add(temp.down);
 				tempPrevious = temp;
 				temp = temp.down;
 
@@ -762,7 +762,7 @@ public class Queen extends Piece {
 			}
 			else
 			{
-				this.validTileMoves.add(temp.up);
+				this.getValidMoves().add(temp.up);
 				tempPrevious = temp;
 				temp = temp.up;
 			}
@@ -776,8 +776,8 @@ public class Queen extends Piece {
 		}
 		
 		
-		temp = this.currentTile;
-		tempPrevious = this.currentTile;
+		temp = this.getCurrentTile();
+		tempPrevious = this.getCurrentTile();
 		//Upper Left Check
 		while (temp.down != null)
 		{
@@ -815,7 +815,7 @@ public class Queen extends Piece {
 			//Check that the tile you're adding in this direction isn't the tile you added last
 			if(tempPrevious == temp.down)
 			{
-				this.validTileMoves.add(temp.up);
+				this.getValidMoves().add(temp.up);
 				if(temp.up == null){
 					break;
 				}
@@ -824,7 +824,7 @@ public class Queen extends Piece {
 			}
 			else
 			{
-				this.validTileMoves.add(temp.down);
+				this.getValidMoves().add(temp.down);
 				tempPrevious = temp;
 				temp = temp.down;
 			}
@@ -838,8 +838,8 @@ public class Queen extends Piece {
 		}
 			
 			
-		temp = this.currentTile;
-		tempPrevious = this.currentTile;
+		temp = this.getCurrentTile();
+		tempPrevious = this.getCurrentTile();
 		//Upper Left Check
 		while (temp.left != null)
 		{
@@ -871,14 +871,14 @@ public class Queen extends Piece {
 			//Check that the tile you're adding in this direction isn't the tile you added last
 			if(tempPrevious == temp.left)
 			{
-				this.validTileMoves.add(temp.right);
+				this.getValidMoves().add(temp.right);
 				tempPrevious = temp;
 				temp = temp.right;
 				
 			}
 			else
 			{
-				this.validTileMoves.add(temp.left);
+				this.getValidMoves().add(temp.left);
 				tempPrevious = temp;
 				temp = temp.left;
 			}
@@ -892,8 +892,8 @@ public class Queen extends Piece {
 		}
 		
 		
-		temp = this.currentTile;
-		tempPrevious = this.currentTile;
+		temp = this.getCurrentTile();
+		tempPrevious = this.getCurrentTile();
 		//Upper Left Check
 		while (temp.right != null)
 		{
@@ -925,14 +925,14 @@ public class Queen extends Piece {
 			//Check that the tile you're adding in this direction isn't the tile you added last
 			if(tempPrevious == temp.right)
 			{
-				this.validTileMoves.add(temp.left);
+				this.getValidMoves().add(temp.left);
 				tempPrevious = temp;
 				temp = temp.left;
 				
 			}
 			else
 			{
-				this.validTileMoves.add(temp.right);
+				this.getValidMoves().add(temp.right);
 				tempPrevious = temp;
 				temp = temp.right;
 			}
@@ -945,10 +945,10 @@ public class Queen extends Piece {
 			}
 		}
 	
-		temp = this.currentTile;
-		tempPrevious = this.currentTile;
+		temp = this.getCurrentTile();
+		tempPrevious = this.getCurrentTile();
 		if(temp.hop != null){
-			this.validTileMoves.add(temp.hop);
+			this.getValidMoves().add(temp.hop);
 			temp = temp.hop;
 			if(temp.getPiece() == null){
 			if(temp.getPiece() == null )
@@ -976,7 +976,7 @@ public class Queen extends Piece {
 				
 				//Check that the tile you're adding in this direction isn't the tile you added last
 
-					this.validTileMoves.add(temp.up);
+					this.getValidMoves().add(temp.up);
 					tempPrevious = temp;
 					temp = temp.up;
 				
@@ -989,7 +989,7 @@ public class Queen extends Piece {
 			}
 			
 			
-			temp = this.currentTile.hop;
+			temp = this.getCurrentTile().hop;
 			//Upper Left Check
 			while (temp.down != null && temp.down.getSegment() == temp.getSegment())
 			{
@@ -1006,7 +1006,7 @@ public class Queen extends Piece {
 				
 				//Check that the tile you're adding in this direction isn't the tile you added last
 
-					this.validTileMoves.add(temp.down);
+					this.getValidMoves().add(temp.down);
 					temp = temp.down;
 
 				
@@ -1019,7 +1019,7 @@ public class Queen extends Piece {
 			}
 				
 				
-			temp = this.currentTile.hop;
+			temp = this.getCurrentTile().hop;
 			//Upper Left Check
 			while (temp.left != null && temp.left.getSegment() == temp.getSegment())
 			{
@@ -1036,7 +1036,7 @@ public class Queen extends Piece {
 				
 				//Check that the tile you're adding in this direction isn't the tile you added last
 
-					this.validTileMoves.add(temp.left);
+					this.getValidMoves().add(temp.left);
 					temp = temp.left;
 				
 				//If piece belonging to enemy is there
@@ -1047,7 +1047,7 @@ public class Queen extends Piece {
 				}
 			}
 			
-			temp = this.currentTile.hop;
+			temp = this.getCurrentTile().hop;
 			//Upper Left Check
 			while (temp.right != null && temp.right.getSegment() == temp.getSegment())
 			{
@@ -1064,7 +1064,7 @@ public class Queen extends Piece {
 				
 				//Check that the tile you're adding in this direction isn't the tile you added last
 
-					this.validTileMoves.add(temp.right);
+					this.getValidMoves().add(temp.right);
 					temp = temp.right;
 
 				//If piece belonging to enemy is there

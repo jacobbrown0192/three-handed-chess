@@ -12,10 +12,10 @@ import threePlayerChessa.Piece.PieceType;
  *It is also used to tell where everything goes
  */
 public class Board {
-	public Vector<Section> sections = new Vector<Section>();
-	public Vector<Piece> pieces = new Vector<Piece>();
-	public Vector<Team> gameTeams = new Vector<Team>();
-	public Vector<Piece> promotedPieces = new Vector<Piece>();
+	private Vector<Section> sections = new Vector<Section>();
+	private Vector<Piece> pieces = new Vector<Piece>();
+	private Vector<Team> gameTeams = new Vector<Team>();
+	private Vector<Piece> promotedPieces = new Vector<Piece>();
 	
 	
 	public Vector<Section> getSections()
@@ -67,6 +67,55 @@ public class Board {
 		this.sections.remove(2);
 		this.sections.add(aSection2);
 	}
+	
+	/**
+	 * @return the pieces
+	 */
+	public Vector<Piece> getPieces() {
+		return pieces;
+	}
+
+	/**
+	 * @param pieces - used to set pieces
+	 */
+	public void setPieces(Vector<Piece> pieces) {
+		this.pieces = pieces;
+	}
+
+	/**
+	 * @return the gameTeams
+	 */
+	public Vector<Team> getGameTeams() {
+		return gameTeams;
+	}
+
+	/**
+	 * @param gameTeams - used to set gameTeams
+	 */
+	public void setGameTeams(Vector<Team> gameTeams) {
+		this.gameTeams = gameTeams;
+	}
+
+	/**
+	 * @return the promotedPieces
+	 */
+	public Vector<Piece> getPromotedPieces() {
+		return promotedPieces;
+	}
+
+	/**
+	 * @param promotedPieces - used to set promotedPieces
+	 */
+	public void setPromotedPieces(Vector<Piece> promotedPieces) {
+		this.promotedPieces = promotedPieces;
+	}
+
+	/**
+	 * @param sections - used to set sections
+	 */
+	public void setSections(Vector<Section> sections) {
+		this.sections = sections;
+	}
 
 	//might not be necessary 
 	public void addPiece(Piece aPiece){
@@ -86,10 +135,10 @@ public class Board {
 		for( int i = 0; i<3; i++){
 			for(int j = 0; j<2; j++){
 				for(int k =0; k<16; k++){
-					this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).setPiece(null);
-					this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).setAccessed(false);
-					this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).setAttacked(false);
-					this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).setSelected(false);
+					this.sections.elementAt(i).getSegments().elementAt(j).getTiles().elementAt(k).setPiece(null);
+					this.sections.elementAt(i).getSegments().elementAt(j).getTiles().elementAt(k).setAccessed(false);
+					this.sections.elementAt(i).getSegments().elementAt(j).getTiles().elementAt(k).setAttacked(false);
+					this.sections.elementAt(i).getSegments().elementAt(j).getTiles().elementAt(k).setSelected(false);
 				}
 			}
 		}
@@ -138,9 +187,9 @@ public class Board {
 				{
 					for(int k =0; k<16; k++)
 					{
-						if(this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).getLetter() == tileRelations.relations[relate][0][2] &&
-						   this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).getNumber() == tileRelations.relations[relate][0][1]){
-								thisTemp = this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k);
+						if(this.sections.elementAt(i).getSegments().elementAt(j).getTiles().elementAt(k).getLetter() == tileRelations.relations[relate][0][2] &&
+						   this.sections.elementAt(i).getSegments().elementAt(j).getTiles().elementAt(k).getNumber() == tileRelations.relations[relate][0][1]){
+								thisTemp = this.sections.elementAt(i).getSegments().elementAt(j).getTiles().elementAt(k);
 						}
 					}
 				}
@@ -155,9 +204,9 @@ public class Board {
 					{
 						for(int z=0; z<16;z++)
 						{
-							if(this.sections.elementAt(x).segments.elementAt(y).tiles.elementAt(z).getLetter() == tileRelations.relations[relate][l][2] &&
-								this.sections.elementAt(x).segments.elementAt(y).tiles.elementAt(z).getNumber() == tileRelations.relations[relate][l][1]){
-								temp = this.sections.elementAt(x).segments.elementAt(y).tiles.elementAt(z);
+							if(this.sections.elementAt(x).getSegments().elementAt(y).getTiles().elementAt(z).getLetter() == tileRelations.relations[relate][l][2] &&
+								this.sections.elementAt(x).getSegments().elementAt(y).getTiles().elementAt(z).getNumber() == tileRelations.relations[relate][l][1]){
+								temp = this.sections.elementAt(x).getSegments().elementAt(y).getTiles().elementAt(z);
 							}
 						}
 					}
@@ -415,81 +464,81 @@ public class Board {
 			{
 				for(int k = 0; k < 16; k++)
 				{
-					for(int l = 0; l < team1.pieces.size(); l++)
+					for(int l = 0; l < team1.getPieces().size(); l++)
 					{
 						if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece() != null)
 						{
 							if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getPlayer() == board.gameTeams.elementAt(0))
 							{
-								if(team1.pieces.elementAt(l) != null)
+								if(team1.getPieces().elementAt(l) != null)
 								{
-									if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getName() == team1.pieces.elementAt(l).getName())
+									if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getName() == team1.getPieces().elementAt(l).getName())
 									{
-										this.gameTeams.elementAt(0).pieces.elementAt(l).setCurrentTile(this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k));
-										this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).setPiece(this.gameTeams.elementAt(0).pieces.elementAt(l));
-										if(this.gameTeams.elementAt(0).pieces.elementAt(l).getPieceType() == PieceType.PAWN)
+										this.gameTeams.elementAt(0).getPieces().elementAt(l).setCurrentTile(this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k));
+										this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).setPiece(this.gameTeams.elementAt(0).getPieces().elementAt(l));
+										if(this.gameTeams.elementAt(0).getPieces().elementAt(l).getPieceType() == PieceType.PAWN)
 										{
-											this.gameTeams.elementAt(0).pieces.elementAt(l).twoTileIndex = board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().twoTileIndex;
-											this.gameTeams.elementAt(0).pieces.elementAt(l).initialMove = board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().initialMove;
-											this.gameTeams.elementAt(0).pieces.elementAt(l).tilesMoved = board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().tilesMoved;
+											this.gameTeams.elementAt(0).getPieces().elementAt(l).setTwoTileIndex(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getTwoTileIndex());
+											this.gameTeams.elementAt(0).getPieces().elementAt(l).setInitialMove(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().isInitialMove());
+											this.gameTeams.elementAt(0).getPieces().elementAt(l).setTilesMoved(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getTilesMoved());
 										}
-										if(this.gameTeams.elementAt(0).pieces.elementAt(l).getPieceType() == PieceType.KING || this.gameTeams.elementAt(0).pieces.elementAt(l).getPieceType() == PieceType.ROOK)
+										if(this.gameTeams.elementAt(0).getPieces().elementAt(l).getPieceType() == PieceType.KING || this.gameTeams.elementAt(0).getPieces().elementAt(l).getPieceType() == PieceType.ROOK)
 										{
-											this.gameTeams.elementAt(0).pieces.elementAt(l).setInitialMove(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().initialMove);
+											this.gameTeams.elementAt(0).getPieces().elementAt(l).setInitialMove(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().isInitialMove());
 										}
 									}
 								}
 							}
 						}
 					}
-					for(int l = 0; l < team2.pieces.size(); l++)
+					for(int l = 0; l < team2.getPieces().size(); l++)
 					{
 						if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece() != null)
 						{
 							if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getPlayer() == board.gameTeams.elementAt(1))
 							{
-								if(team2.pieces.elementAt(l) != null)
+								if(team2.getPieces().elementAt(l) != null)
 								{
-									if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getName() == team2.pieces.elementAt(l).getName())
+									if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getName() == team2.getPieces().elementAt(l).getName())
 									{
-										this.gameTeams.elementAt(1).pieces.elementAt(l).setCurrentTile(this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k));
-										this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).setPiece(this.gameTeams.elementAt(1).pieces.elementAt(l));
-										if(this.gameTeams.elementAt(1).pieces.elementAt(l).getPieceType() == PieceType.PAWN)
+										this.gameTeams.elementAt(1).getPieces().elementAt(l).setCurrentTile(this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k));
+										this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).setPiece(this.gameTeams.elementAt(1).getPieces().elementAt(l));
+										if(this.gameTeams.elementAt(1).getPieces().elementAt(l).getPieceType() == PieceType.PAWN)
 										{
-											this.gameTeams.elementAt(1).pieces.elementAt(l).twoTileIndex = board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().twoTileIndex;
-											this.gameTeams.elementAt(1).pieces.elementAt(l).initialMove = board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().initialMove;
-											this.gameTeams.elementAt(1).pieces.elementAt(l).tilesMoved = board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().tilesMoved;
+											this.gameTeams.elementAt(1).getPieces().elementAt(l).setTwoTileIndex(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getTwoTileIndex());
+											this.gameTeams.elementAt(1).getPieces().elementAt(l).setInitialMove(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().isInitialMove());
+											this.gameTeams.elementAt(1).getPieces().elementAt(l).setTilesMoved(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getTilesMoved());
 										}
-										if(this.gameTeams.elementAt(1).pieces.elementAt(l).getPieceType() == PieceType.KING || this.gameTeams.elementAt(1).pieces.elementAt(l).getPieceType() == PieceType.ROOK)
+										if(this.gameTeams.elementAt(1).getPieces().elementAt(l).getPieceType() == PieceType.KING || this.gameTeams.elementAt(1).getPieces().elementAt(l).getPieceType() == PieceType.ROOK)
 										{
-											this.gameTeams.elementAt(1).pieces.elementAt(l).setInitialMove(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().initialMove);
+											this.gameTeams.elementAt(1).getPieces().elementAt(l).setInitialMove(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().isInitialMove());
 										}
 									}
 								}
 							}
 						}
 					}
-					for(int l = 0; l < team3.pieces.size(); l++)
+					for(int l = 0; l < team3.getPieces().size(); l++)
 					{
 						if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece() != null)
 						{
 							if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getPlayer() == board.gameTeams.elementAt(2))
 							{
-								if(team3.pieces.elementAt(l) != null)
+								if(team3.getPieces().elementAt(l) != null)
 								{
-									if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getName() == team3.pieces.elementAt(l).getName())
+									if(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getName() == team3.getPieces().elementAt(l).getName())
 									{
-										this.gameTeams.elementAt(2).pieces.elementAt(l).setCurrentTile(this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k));
-										this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).setPiece(this.gameTeams.elementAt(2).pieces.elementAt(l));
-										if(this.gameTeams.elementAt(2).pieces.elementAt(l).getPieceType() == PieceType.PAWN)
+										this.gameTeams.elementAt(2).getPieces().elementAt(l).setCurrentTile(this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k));
+										this.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).setPiece(this.gameTeams.elementAt(2).getPieces().elementAt(l));
+										if(this.gameTeams.elementAt(2).getPieces().elementAt(l).getPieceType() == PieceType.PAWN)
 										{
-											this.gameTeams.elementAt(2).pieces.elementAt(l).twoTileIndex = board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().twoTileIndex;
-											this.gameTeams.elementAt(2).pieces.elementAt(l).initialMove = board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().initialMove;
-											this.gameTeams.elementAt(2).pieces.elementAt(l).tilesMoved = board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().tilesMoved;
+											this.gameTeams.elementAt(2).getPieces().elementAt(l).setTwoTileIndex(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getTwoTileIndex());
+											this.gameTeams.elementAt(2).getPieces().elementAt(l).setInitialMove(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().isInitialMove());
+											this.gameTeams.elementAt(2).getPieces().elementAt(l).setTilesMoved(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().getTilesMoved());
 										}
-										if(this.gameTeams.elementAt(2).pieces.elementAt(l).getPieceType() == PieceType.KING || this.gameTeams.elementAt(2).pieces.elementAt(l).getPieceType() == PieceType.ROOK)
+										if(this.gameTeams.elementAt(2).getPieces().elementAt(l).getPieceType() == PieceType.KING || this.gameTeams.elementAt(2).getPieces().elementAt(l).getPieceType() == PieceType.ROOK)
 										{
-											this.gameTeams.elementAt(2).pieces.elementAt(l).setInitialMove(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().initialMove);
+											this.gameTeams.elementAt(2).getPieces().elementAt(l).setInitialMove(board.getSections().elementAt(i).getSegments().elementAt(j).getTiles(k).getPiece().isInitialMove());
 										}
 									}
 								}
@@ -530,9 +579,9 @@ public class Board {
 				{
 					for(int k =0; k<16; k++)
 					{
-						if(this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).getLetter() == tileRelations.relations[relate][0][2] &&
-						   this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k).getNumber() == tileRelations.relations[relate][0][1]){
-								thisTemp = this.sections.elementAt(i).segments.elementAt(j).tiles.elementAt(k);
+						if(this.sections.elementAt(i).getSegments().elementAt(j).getTiles().elementAt(k).getLetter() == tileRelations.relations[relate][0][2] &&
+						   this.sections.elementAt(i).getSegments().elementAt(j).getTiles().elementAt(k).getNumber() == tileRelations.relations[relate][0][1]){
+								thisTemp = this.sections.elementAt(i).getSegments().elementAt(j).getTiles().elementAt(k);
 						}
 					}
 				}
@@ -547,9 +596,9 @@ public class Board {
 					{
 						for(int z=0; z<16;z++)
 						{
-							if(this.sections.elementAt(x).segments.elementAt(y).tiles.elementAt(z).getLetter() == tileRelations.relations[relate][l][2] &&
-								this.sections.elementAt(x).segments.elementAt(y).tiles.elementAt(z).getNumber() == tileRelations.relations[relate][l][1]){
-								temp = this.sections.elementAt(x).segments.elementAt(y).tiles.elementAt(z);
+							if(this.sections.elementAt(x).getSegments().elementAt(y).getTiles().elementAt(z).getLetter() == tileRelations.relations[relate][l][2] &&
+								this.sections.elementAt(x).getSegments().elementAt(y).getTiles().elementAt(z).getNumber() == tileRelations.relations[relate][l][1]){
+								temp = this.sections.elementAt(x).getSegments().elementAt(y).getTiles().elementAt(z);
 							}
 						}
 					}

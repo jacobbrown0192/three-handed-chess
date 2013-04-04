@@ -9,9 +9,9 @@ import java.util.Vector;
  *close the game, start the game, or enter the configuration menu
  */
 public class Menu {
-	public Board theBoard; //the board of the game
-	public Vector<Team> gameTeams = new Vector<Team>(); //teams playing the game
-	public Game theGame; //the game its self which contains everything
+	private Board theBoard; //the board of the game
+	private Vector<Team> gameTeams = new Vector<Team>(); //teams playing the game
+	private Game theGame; //the game its self which contains everything
 
 	/**
 	 * Menu constructor
@@ -32,7 +32,7 @@ public class Menu {
 	 */
 	public void playerConfig() {
 		theGame.getGameFrame().getContentPane().removeAll();
-	    theGame.getGameFrame().getContentPane().repaint();
+	    theGame.getGameFrame().getContentPane(). repaint();
 		theGame.getGameFrame().getContentPane().add(theGame.getPlayerConfigGUI());
 		theGame.getGameFrame().setVisible(true);
 	}

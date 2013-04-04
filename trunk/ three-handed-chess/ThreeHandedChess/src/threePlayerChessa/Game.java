@@ -26,8 +26,8 @@ public class Game {
 	private TopBoardGUI tBoardGUI; //the GUI of the top panel of the board 
 	private JFrame gameFrame; //the frame which all panels are put 
 	private Controller gameController; //the game controller
-	public Click click1; //the first click
-	public Click click2; //the second click
+	private Click click1; //the first click
+	private Click click2; //the second click
 	private Turn player1; //the player one's thread
 	private Turn player2; //the player two's thread
 	private Turn player3; //the player three's thread
@@ -356,7 +356,7 @@ public class Game {
 		boardGUI.setTileIcons();
 		gameFrame.setVisible(true);
 		gameController.setInProgress(true);
-		gameController.turnCount = 0;
+		gameController.setTurnCount(0);
 		click1 = null;
 		click2 = null;		
 		

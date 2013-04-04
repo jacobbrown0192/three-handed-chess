@@ -22,7 +22,6 @@ public class Bishop extends Piece {
 	public Bishop(Team player, String name, Board theBoard, Tile currentTile,PieceType type) {
 		super(player, name, theBoard, currentTile,type);
 		// TODO Auto-generated constructor stub
-		this.jumpTwo = false;
 	}
 
 	/**  
@@ -37,12 +36,12 @@ public class Bishop extends Piece {
 	{
 		boolean validMove = false;
 
-		player.getTheGame().click2 = null;
+		player.getTheGame().setClick2(null);
 
-		for(int i=0; i<validTileMoves.size();i++){
-			if(aMoveTile == validTileMoves.elementAt(i)){
+		for(int i=0; i<getValidMoves().size();i++){
+			if(aMoveTile == getValidMoves().elementAt(i)){
 				validMove = true;
-				player.getTheGame().click1 = null;
+				player.getTheGame().setClick1(null);
 			}
 		}
 		
@@ -66,7 +65,7 @@ public class Bishop extends Piece {
 				aMoveTile.getPiece().setCurrentTile(aMoveTile);
 				player.getTheGame().getBoardGUI().setTileIcons();
 				player.getTheGame().getGameController().addToCounter(); //adds one to turn counter and starts the next players turn
-				this.player.addToMoveList(aMoveTile, this);
+				this.getPlayer().addToMoveList(aMoveTile, this);
 				return true;
 			}
 		}
@@ -78,9 +77,9 @@ public class Bishop extends Piece {
 	 */
 	public void possibleMoves()
 	{
-		this.validTileMoves.clear(); //Flush previously held possible moves
-		Tile temp = this.currentTile;
-		Tile tempPrevious = this.currentTile;
+		this.getValidMoves().clear(); //Flush previously held possible moves
+		Tile temp = this.getCurrentTile();
+		Tile tempPrevious = this.getCurrentTile();
 		
 		//UPLEFT CHECK
 		while (temp.upleft != null)
@@ -116,14 +115,14 @@ public class Bishop extends Piece {
 			if(tempPrevious == temp.upleft)
 			{
 				//Wrong direction
-				this.validTileMoves.add(temp.downright);
+				this.getValidMoves().add(temp.downright);
 				tempPrevious = temp;
 				temp = temp.downright;			
 			}
 			else
 			{
 				//Right direction
-				this.validTileMoves.add(temp.upleft);
+				this.getValidMoves().add(temp.upleft);
 				tempPrevious = temp;
 				temp = temp.upleft;
 			}
@@ -141,11 +140,11 @@ public class Bishop extends Piece {
 			tempPrevious = temp;
 			if(temp.specialleft.getPiece() != null){
 				if(temp.specialleft.getPiece().getPlayer() != this.getPlayer()){
-					this.validTileMoves.add(temp.specialleft);
+					this.getValidMoves().add(temp.specialleft);
 				}				
 			}
 			else{
-				this.validTileMoves.add(temp.specialleft);
+				this.getValidMoves().add(temp.specialleft);
 				temp = temp.specialleft;
 				while (temp.upleft != null)
 				{
@@ -159,7 +158,7 @@ public class Bishop extends Piece {
 						}
 					}
 					
-					this.validTileMoves.add(temp.upleft);
+					this.getValidMoves().add(temp.upleft);
 					temp = temp.upleft;
 					//If piece belonging to enemy is there
 					if(temp.getPiece() != null)
@@ -173,11 +172,11 @@ public class Bishop extends Piece {
 				temp = tempPrevious;
 				if(temp.specialup.getPiece() != null){
 					if(temp.specialup.getPiece().getPlayer() != this.getPlayer()){
-						this.validTileMoves.add(temp.specialup);
+						this.getValidMoves().add(temp.specialup);
 					}				
 				}
 				else{
-					this.validTileMoves.add(temp.specialup);
+					this.getValidMoves().add(temp.specialup);
 					temp = temp.specialup;
 					while (temp.upleft != null)
 					{
@@ -191,7 +190,7 @@ public class Bishop extends Piece {
 							}
 						}
 						
-						this.validTileMoves.add(temp.upleft);
+						this.getValidMoves().add(temp.upleft);
 						temp = temp.upleft;
 						//If piece belonging to enemy is there
 						if(temp.getPiece() != null)
@@ -204,8 +203,8 @@ public class Bishop extends Piece {
 		}
 		
 		//upleft CHECK
-		temp = this.currentTile;
-		tempPrevious = this.currentTile;
+		temp = this.getCurrentTile();
+		tempPrevious = this.getCurrentTile();
 		while (temp.upright != null)
 		{
 			//Check that you're looking in the right direction
@@ -239,14 +238,14 @@ public class Bishop extends Piece {
 			if(tempPrevious == temp.upright)
 			{
 				//Wrong direction
-				this.validTileMoves.add(temp.downleft);
+				this.getValidMoves().add(temp.downleft);
 				tempPrevious = temp;
 				temp = temp.downleft;
 			}
 			else
 			{
 				//Right direction
-				this.validTileMoves.add(temp.upright);
+				this.getValidMoves().add(temp.upright);
 				tempPrevious = temp;
 				temp = temp.upright;
 			}
@@ -264,11 +263,11 @@ public class Bishop extends Piece {
 			tempPrevious = temp;
 			if(temp.specialright.getPiece() != null){
 				if(temp.specialright.getPiece().getPlayer() != this.getPlayer()){
-					this.validTileMoves.add(temp.specialright);
+					this.getValidMoves().add(temp.specialright);
 				}				
 			}
 			else{
-				this.validTileMoves.add(temp.specialright);
+				this.getValidMoves().add(temp.specialright);
 				temp = temp.specialright;
 				while (temp.upright != null)
 				{
@@ -282,7 +281,7 @@ public class Bishop extends Piece {
 						}
 					}
 					
-					this.validTileMoves.add(temp.upright);
+					this.getValidMoves().add(temp.upright);
 					temp = temp.upright;
 					//If piece belonging to enemy is there
 					if(temp.getPiece() != null)
@@ -296,11 +295,11 @@ public class Bishop extends Piece {
 				temp = tempPrevious;
 				if(temp.specialup.getPiece() != null){
 					if(temp.specialup.getPiece().getPlayer() != this.getPlayer()){
-						this.validTileMoves.add(temp.specialup);
+						this.getValidMoves().add(temp.specialup);
 					}				
 				}
 				else{
-					this.validTileMoves.add(temp.specialup);
+					this.getValidMoves().add(temp.specialup);
 					temp = temp.specialup;
 					while (temp.upright != null)
 					{
@@ -314,7 +313,7 @@ public class Bishop extends Piece {
 							}
 						}
 						
-						this.validTileMoves.add(temp.upright);
+						this.getValidMoves().add(temp.upright);
 						temp = temp.upright;
 						//If piece belonging to enemy is there
 						if(temp.getPiece() != null)
@@ -331,8 +330,8 @@ public class Bishop extends Piece {
 		
 		
 		//DOWNLEFT CHECK
-		temp = this.currentTile;
-		tempPrevious = this.currentTile;
+		temp = this.getCurrentTile();
+		tempPrevious = this.getCurrentTile();
 		while (temp.downleft != null)
 		{
 			//Check that you're looking in the right direction
@@ -365,7 +364,7 @@ public class Bishop extends Piece {
 			if(tempPrevious == temp.downleft)
 			{
 				//Wrong direction
-				this.validTileMoves.add(temp.upright);
+				this.getValidMoves().add(temp.upright);
 				tempPrevious = temp;
 				if(temp.upright == null)
 				{
@@ -377,7 +376,7 @@ public class Bishop extends Piece {
 			else
 			{
 				//Right direction
-				this.validTileMoves.add(temp.downleft);
+				this.getValidMoves().add(temp.downleft);
 				tempPrevious = temp;
 				temp = temp.downleft;
 			}
@@ -396,11 +395,11 @@ public class Bishop extends Piece {
 			tempPrevious = temp;
 			if(temp.specialdown.getPiece() != null){
 				if(temp.specialdown.getPiece().getPlayer() != this.getPlayer()){
-					this.validTileMoves.add(temp.specialdown);
+					this.getValidMoves().add(temp.specialdown);
 				}				
 			}
 			else{
-				this.validTileMoves.add(temp.specialdown);
+				this.getValidMoves().add(temp.specialdown);
 				temp = temp.specialdown;
 				while (temp.downleft != null)
 				{
@@ -414,7 +413,7 @@ public class Bishop extends Piece {
 						}
 					}
 					
-					this.validTileMoves.add(temp.downleft);
+					this.getValidMoves().add(temp.downleft);
 					temp = temp.downleft;
 					//If piece belonging to enemy is there
 					if(temp.getPiece() != null)
@@ -428,11 +427,11 @@ public class Bishop extends Piece {
 				temp = tempPrevious;
 				if(temp.specialleft.getPiece() != null){
 					if(temp.specialleft.getPiece().getPlayer() != this.getPlayer()){
-						this.validTileMoves.add(temp.specialleft);
+						this.getValidMoves().add(temp.specialleft);
 					}				
 				}
 				else{
-					this.validTileMoves.add(temp.specialleft);
+					this.getValidMoves().add(temp.specialleft);
 					temp = temp.specialleft;
 					while (temp.upright != null)
 					{
@@ -446,7 +445,7 @@ public class Bishop extends Piece {
 							}
 						}
 						
-						this.validTileMoves.add(temp.upright);
+						this.getValidMoves().add(temp.upright);
 						temp = temp.upright;
 						//If piece belonging to enemy is there
 						if(temp.getPiece() != null)
@@ -463,11 +462,11 @@ public class Bishop extends Piece {
 			tempPrevious = temp;
 			if(temp.specialdown.getPiece() != null){
 				if(temp.specialdown.getPiece().getPlayer() != this.getPlayer()){
-					this.validTileMoves.add(temp.specialdown);
+					this.getValidMoves().add(temp.specialdown);
 				}				
 			}
 			else{
-				this.validTileMoves.add(temp.specialdown);
+				this.getValidMoves().add(temp.specialdown);
 				temp = temp.specialdown;
 				while (temp.upright != null)
 				{
@@ -481,7 +480,7 @@ public class Bishop extends Piece {
 						}
 					}
 					
-					this.validTileMoves.add(temp.upright);
+					this.getValidMoves().add(temp.upright);
 					temp = temp.upright;
 					//If piece belonging to enemy is there
 					if(temp.getPiece() != null)
@@ -495,11 +494,11 @@ public class Bishop extends Piece {
 				temp = tempPrevious;
 				if(temp.specialleft.getPiece() != null){
 					if(temp.specialleft.getPiece().getPlayer() != this.getPlayer()){
-						this.validTileMoves.add(temp.specialleft);
+						this.getValidMoves().add(temp.specialleft);
 					}				
 				}
 				else{
-					this.validTileMoves.add(temp.specialleft);
+					this.getValidMoves().add(temp.specialleft);
 					temp = temp.specialleft;
 					while (temp.downleft != null)
 					{
@@ -513,7 +512,7 @@ public class Bishop extends Piece {
 							}
 						}
 						
-						this.validTileMoves.add(temp.downleft);
+						this.getValidMoves().add(temp.downleft);
 						temp = temp.downleft;
 						//If piece belonging to enemy is there
 						if(temp.getPiece() != null)
@@ -528,8 +527,8 @@ public class Bishop extends Piece {
 		
 		
 		//DOWNRIGHT CHECK
-		temp = this.currentTile;
-		tempPrevious = this.currentTile;
+		temp = this.getCurrentTile();
+		tempPrevious = this.getCurrentTile();
 		while (temp.downright != null)
 		{
 			//Check that you're looking in the right direction
@@ -562,7 +561,7 @@ public class Bishop extends Piece {
 			if(tempPrevious == temp.downright)
 			{
 				//Wrong direction
-				this.validTileMoves.add(temp.upleft);
+				this.getValidMoves().add(temp.upleft);
 				tempPrevious = temp;
 				if(temp.upleft == null)
 				{
@@ -573,7 +572,7 @@ public class Bishop extends Piece {
 			else
 			{
 				//Right direction
-				this.validTileMoves.add(temp.downright);
+				this.getValidMoves().add(temp.downright);
 				tempPrevious = temp;
 				temp = temp.downright;
 			}
@@ -592,11 +591,11 @@ public class Bishop extends Piece {
 			tempPrevious = temp;
 			if(temp.specialdown.getPiece() != null){
 				if(temp.specialdown.getPiece().getPlayer() != this.getPlayer()){
-					this.validTileMoves.add(temp.specialdown);
+					this.getValidMoves().add(temp.specialdown);
 				}				
 			}
 			else{
-				this.validTileMoves.add(temp.specialdown);
+				this.getValidMoves().add(temp.specialdown);
 				temp = temp.specialdown;
 				while (temp.downright != null)
 				{
@@ -610,7 +609,7 @@ public class Bishop extends Piece {
 						}
 					}
 					
-					this.validTileMoves.add(temp.downright);
+					this.getValidMoves().add(temp.downright);
 					temp = temp.downright;
 					//If piece belonging to enemy is there
 					if(temp.getPiece() != null)
@@ -624,11 +623,11 @@ public class Bishop extends Piece {
 				temp = tempPrevious;
 				if(temp.specialright.getPiece() != null){
 					if(temp.specialright.getPiece().getPlayer() != this.getPlayer()){
-						this.validTileMoves.add(temp.specialright);
+						this.getValidMoves().add(temp.specialright);
 					}				
 				}
 				else{
-					this.validTileMoves.add(temp.specialright);
+					this.getValidMoves().add(temp.specialright);
 					temp = temp.specialright;
 					while (temp.upleft != null)
 					{
@@ -642,7 +641,7 @@ public class Bishop extends Piece {
 							}
 						}
 						
-						this.validTileMoves.add(temp.upleft);
+						this.getValidMoves().add(temp.upleft);
 						temp = temp.upleft;
 						//If piece belonging to enemy is there
 						if(temp.getPiece() != null)
@@ -660,11 +659,11 @@ public class Bishop extends Piece {
 			tempPrevious = temp;
 			if(temp.specialright.getPiece() != null){
 				if(temp.specialright.getPiece().getPlayer() != this.getPlayer()){
-					this.validTileMoves.add(temp.specialright);
+					this.getValidMoves().add(temp.specialright);
 				}				
 			}
 			else{
-				this.validTileMoves.add(temp.specialright);
+				this.getValidMoves().add(temp.specialright);
 				temp = temp.specialright;
 				while (temp.downright != null)
 				{
@@ -678,7 +677,7 @@ public class Bishop extends Piece {
 						}
 					}
 					
-					this.validTileMoves.add(temp.downright);
+					this.getValidMoves().add(temp.downright);
 					temp = temp.downright;
 					//If piece belonging to enemy is there
 					if(temp.getPiece() != null)
@@ -692,11 +691,11 @@ public class Bishop extends Piece {
 				temp = tempPrevious;
 				if(temp.specialdown.getPiece() != null){
 					if(temp.specialdown.getPiece().getPlayer() != this.getPlayer()){
-						this.validTileMoves.add(temp.specialdown);
+						this.getValidMoves().add(temp.specialdown);
 					}				
 				}
 				else{
-					this.validTileMoves.add(temp.specialdown);
+					this.getValidMoves().add(temp.specialdown);
 					temp = temp.specialdown;
 					while (temp.upleft != null)
 					{
@@ -710,7 +709,7 @@ public class Bishop extends Piece {
 							}
 						}
 						
-						this.validTileMoves.add(temp.upleft);
+						this.getValidMoves().add(temp.upleft);
 						temp = temp.upleft;
 						//If piece belonging to enemy is there
 						if(temp.getPiece() != null)

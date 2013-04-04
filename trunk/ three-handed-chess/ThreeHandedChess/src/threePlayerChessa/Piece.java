@@ -7,18 +7,18 @@ import java.util.Vector;
  *This class holds everything for the subclasses and the subclasses are only used for movement specification
  */
 public abstract class Piece {
-	Team player;
-	String name;
-	Board theBoard;
-	Tile currentTile;
-	PieceType type;
-	Section section1;
-	Section section2;
-	boolean initialMove;
-	boolean jumpTwo;
-	int twoTileIndex;
-	int tilesMoved;
-	public Vector<Tile> validTileMoves = new Vector<Tile>();
+	private Team player;
+	private String name;
+	private Board theBoard;
+	private Tile currentTile;
+	private PieceType type;
+	private Section section1;
+	private Section section2;
+	private boolean initialMove;
+	private boolean jumpTwo;
+	private int twoTileIndex;
+	private int tilesMoved;
+	private Vector<Tile> validTileMoves = new Vector<Tile>();
 	
 	/**  
 	 *enumerated type used to tell what kind of piece is
@@ -174,6 +174,43 @@ public abstract class Piece {
 	public Vector<Tile> getValidMoves()
 	{
 		return validTileMoves;
+	}
+	
+	
+
+	/**
+	 * @return the type
+	 */
+	public PieceType getType() {
+		return type;
+	}
+
+	/**
+	 * @param type - used to set type
+	 */
+	public void setType(PieceType type) {
+		this.type = type;
+	}
+
+	/**
+	 * @return the validTileMoves
+	 */
+	public Vector<Tile> getValidTileMoves() {
+		return validTileMoves;
+	}
+
+	/**
+	 * @param validTileMoves - used to set validTileMoves
+	 */
+	public void setValidTileMoves(Vector<Tile> validTileMoves) {
+		this.validTileMoves = validTileMoves;
+	}
+
+	/**
+	 * @return the twoTileIndex
+	 */
+	public int getTwoTileIndex() {
+		return twoTileIndex;
 	}
 
 	/**  

@@ -25,8 +25,8 @@ public class King extends Piece {
 	public King(Team player, String name, Board theBoard, Tile currentTile,PieceType type) {
 		super(player, name, theBoard, currentTile,type);
 		// TODO Auto-generated constructor stub
-		initialMove = false;
-		this.jumpTwo = false;
+		setInitialMove(false);
+
 	}
 
 	/**  
@@ -39,13 +39,13 @@ public class King extends Piece {
 	 */
 	public boolean move(Tile aStartTile, Tile aMoveTile, Turn player) {
 		boolean validMove = false;
-		player.getTheGame().click2 = null;
+		player.getTheGame().setClick2(null);
 		
 		//check for valid move		
-		for(int i=0; i<validTileMoves.size();i++){
-			if(aMoveTile == validTileMoves.elementAt(i)){
+		for(int i=0; i<getValidMoves().size();i++){
+			if(aMoveTile == getValidMoves().elementAt(i)){
 				validMove = true;
-				player.getTheGame().click1 = null;
+				player.getTheGame().setClick1(null);
 			}
 		}
 		
@@ -64,7 +64,7 @@ public class King extends Piece {
 				if(aMoveTile.getPiece() != null){	// sets pieces current tile on aMoveTile to null
 					aMoveTile.getPiece().setCurrentTile(null);
 				}
-				if (initialMove = false){
+				if (isInitialMove() == false){
 					setInitialMove(true);// = true;
 				}
 				
@@ -75,7 +75,7 @@ public class King extends Piece {
 					if(aMoveTile.right.getPiece() != null){
 						if(aMoveTile.right.getPiece().getPieceType() == PieceType.ROOK){
 							temp = aMoveTile.right.getPiece();
-							temp.currentTile.setPiece(null);
+							temp.getCurrentTile().setPiece(null);
 							temp.setCurrentTile(aMoveTile.left);
 							aMoveTile.left.setPiece(temp);
 						}
@@ -83,7 +83,7 @@ public class King extends Piece {
 
 						if(aMoveTile.right.right.getPiece().getPieceType() == PieceType.ROOK){
 							temp = aMoveTile.right.right.getPiece();
-							temp.currentTile.setPiece(null);
+							temp.getCurrentTile().setPiece(null);
 							temp.setCurrentTile(aMoveTile.left);
 							aMoveTile.left.setPiece(temp);
 						}
@@ -95,7 +95,7 @@ public class King extends Piece {
 					if(aMoveTile.left.getPiece() != null){
 						if(aMoveTile.left.getPiece().getPieceType() == PieceType.ROOK){
 							temp = aMoveTile.left.getPiece();
-							temp.currentTile.setPiece(null);
+							temp.getCurrentTile().setPiece(null);
 							temp.setCurrentTile(aMoveTile.right);
 							aMoveTile.right.setPiece(temp);
 						}
@@ -103,7 +103,7 @@ public class King extends Piece {
 					if(aMoveTile.left.left != null && aMoveTile.left.left.getPiece() != null){
 						if(aMoveTile.left.left.getPiece().getPieceType() == PieceType.ROOK){
 							temp = aMoveTile.left.left.getPiece();
-							temp.currentTile.setPiece(null);
+							temp.getCurrentTile().setPiece(null);
 							temp.setCurrentTile(aMoveTile.right);
 							aMoveTile.right.setPiece(temp);
 						}
@@ -115,7 +115,7 @@ public class King extends Piece {
 				aMoveTile.getPiece().setCurrentTile(aMoveTile);
 				player.getTheGame().getBoardGUI().setTileIcons();
 				player.getTheGame().getGameController().addToCounter(); //adds one to turn counter and starts the next players turn
-				this.player.addToMoveList(aMoveTile, this);
+				this.getPlayer().addToMoveList(aMoveTile, this);
 				return true;
 			}
 		}
@@ -127,8 +127,8 @@ public class King extends Piece {
 	 */
 	public void possibleMoves()
 	{
-		this.validTileMoves.clear();
-		Tile temp = this.currentTile;
+		this.getValidMoves().clear();
+		Tile temp = this.getCurrentTile();
 		
 		//Up Check
 		//Check if there's a tile up
@@ -137,7 +137,7 @@ public class King extends Piece {
 			//Check if there's nobody there or if the piece there belongs to the enemy
 			if(temp.up.getPiece() == null || temp.up.getPiece().getPlayer() != this.getPlayer())
 			{
-				this.validTileMoves.add(temp.up);
+				this.getValidMoves().add(temp.up);
 			}
 		}
 		
@@ -148,7 +148,7 @@ public class King extends Piece {
 			//Check if there's nobody there or if the piece there belongs to the enemy
 			if(temp.down.getPiece() == null || temp.down.getPiece().getPlayer() != this.getPlayer())
 			{
-				this.validTileMoves.add(temp.down);
+				this.getValidMoves().add(temp.down);
 			}
 		}
 		
@@ -159,7 +159,7 @@ public class King extends Piece {
 			//Check if there's nobody there or if the piece there belongs to the enemy
 			if(temp.left.getPiece() == null || temp.left.getPiece().getPlayer() != this.getPlayer())
 			{
-				this.validTileMoves.add(temp.left);
+				this.getValidMoves().add(temp.left);
 			}
 		}
 		
@@ -170,7 +170,7 @@ public class King extends Piece {
 			//Check if there's nobody there or if the piece there belongs to the enemy
 			if(temp.right.getPiece() == null || temp.right.getPiece().getPlayer() != this.getPlayer())
 			{
-				this.validTileMoves.add(temp.right);
+				this.getValidMoves().add(temp.right);
 			}
 		}
 		
@@ -181,7 +181,7 @@ public class King extends Piece {
 			//Check if there's nobody there or if the piece there belongs to the enemy
 			if(temp.downleft.getPiece() == null || temp.downleft.getPiece().getPlayer() != this.getPlayer())
 			{
-				this.validTileMoves.add(temp.downleft);
+				this.getValidMoves().add(temp.downleft);
 			}
 		}
 		
@@ -192,7 +192,7 @@ public class King extends Piece {
 			//Check if there's nobody there or if the piece there belongs to the enemy
 			if(temp.downright.getPiece() == null || temp.downright.getPiece().getPlayer() != this.getPlayer())
 			{
-				this.validTileMoves.add(temp.downright);
+				this.getValidMoves().add(temp.downright);
 			}
 		}
 		
@@ -203,7 +203,7 @@ public class King extends Piece {
 			//Check if there's nobody there or if the piece there belongs to the enemy
 			if(temp.upleft.getPiece() == null || temp.upleft.getPiece().getPlayer() != this.getPlayer())
 			{
-				this.validTileMoves.add(temp.upleft);
+				this.getValidMoves().add(temp.upleft);
 			}
 		}
 		
@@ -214,7 +214,7 @@ public class King extends Piece {
 			//Check if there's nobody there or if the piece there belongs to the enemy
 			if(temp.upright.getPiece() == null || temp.upright.getPiece().getPlayer() != this.getPlayer())
 			{
-				this.validTileMoves.add(temp.upright);
+				this.getValidMoves().add(temp.upright);
 			}
 		}
 		
@@ -225,7 +225,7 @@ public class King extends Piece {
 			//Check if there's nobody there or if the piece there belongs to the enemy
 			if(temp.hop.getPiece() == null || temp.hop.getPiece().getPlayer() != this.getPlayer())
 			{
-				this.validTileMoves.add(temp.hop);
+				this.getValidMoves().add(temp.hop);
 			}
 		}
 		
@@ -236,7 +236,7 @@ public class King extends Piece {
 			//Check if there's nobody there or if the piece there belongs to the enemy
 			if(temp.specialup.getPiece() == null || temp.specialup.getPiece().getPlayer() != this.getPlayer())
 			{
-				this.validTileMoves.add(temp.specialup);
+				this.getValidMoves().add(temp.specialup);
 			}
 		}
 		
@@ -247,7 +247,7 @@ public class King extends Piece {
 			//Check if there's nobody there or if the piece there belongs to the enemy
 			if(temp.specialdown.getPiece() == null || temp.specialdown.getPiece().getPlayer() != this.getPlayer())
 			{
-				this.validTileMoves.add(temp.specialdown);
+				this.getValidMoves().add(temp.specialdown);
 			}
 		}
 		
@@ -258,7 +258,7 @@ public class King extends Piece {
 			//Check if there's nobody there or if the piece there belongs to the enemy
 			if(temp.specialleft.getPiece() == null || temp.specialleft.getPiece().getPlayer() != this.getPlayer())
 			{
-				this.validTileMoves.add(temp.specialleft);
+				this.getValidMoves().add(temp.specialleft);
 			}
 		}
 		
@@ -269,12 +269,12 @@ public class King extends Piece {
 			//Check if there's nobody there or if the piece there belongs to the enemy
 			if(temp.specialright.getPiece() == null || temp.specialright.getPiece().getPlayer() != this.getPlayer())
 			{
-				this.validTileMoves.add(temp.specialright);
+				this.getValidMoves().add(temp.specialright);
 			}
 		}
 		//castling
-		if(initialMove == false){
-			temp = this.currentTile;
+		if(isInitialMove() == false){
+			temp = this.getCurrentTile();
 			
 			int team = this.getPlayer().getNumber();
 			//int team = this.player.getNumber();
@@ -288,7 +288,7 @@ public class King extends Piece {
 					{
 						if(temp.left.left.left.left.getPiece().getPieceType() == PieceType.ROOK && temp.left.left.left.left.getPiece().isInitialMove() == false)
 						{
-							this.validTileMoves.add(this.currentTile.left.left);
+							this.getValidMoves().add(this.getCurrentTile().left.left);
 						}
 					}
 					
@@ -296,7 +296,7 @@ public class King extends Piece {
 					{
 						if(temp.right.right.right.getPiece().getPieceType() == PieceType.ROOK && temp.right.right.right.getPiece().isInitialMove() == false)
 						{
-							this.validTileMoves.add(this.currentTile.right.right);
+							this.getValidMoves().add(this.getCurrentTile().right.right);
 						}
 					}
 					}
@@ -309,7 +309,7 @@ public class King extends Piece {
 					{
 						if(temp.left.left.left.getPiece().getPieceType() == PieceType.ROOK && temp.left.left.left.getPiece().isInitialMove() == false)
 						{
-							this.validTileMoves.add(this.currentTile.left.left);
+							this.getValidMoves().add(this.getCurrentTile().left.left);
 						}
 					}
 					
@@ -317,7 +317,7 @@ public class King extends Piece {
 					{
 						if(temp.right.right.right.right.getPiece().getPieceType() == PieceType.ROOK && temp.right.right.right.right.getPiece().isInitialMove() == false)
 						{
-							this.validTileMoves.add(this.currentTile.right.right);
+							this.getValidMoves().add(this.getCurrentTile().right.right);
 						}
 					}
 					break;
@@ -328,7 +328,7 @@ public class King extends Piece {
 				temp = temp.left;
 				if(temp.getPiece() != null){
 					if(temp.getPiece().getPieceType() == PieceType.ROOK && temp.getPiece().isInitialMove() == false){
-						this.validTileMoves.add(this.currentTile.left.left);
+						this.getValidMoves().add(this.currentTile.left.left);
 					}
 				}
 			}
@@ -338,7 +338,7 @@ public class King extends Piece {
 				temp = temp.right;
 				if(temp.getPiece() != null){
 					if(temp.getPiece().getPieceType() == PieceType.ROOK && temp.getPiece().isInitialMove() == false){
-						this.validTileMoves.add(this.currentTile.right.right);
+						this.getValidMoves().add(this.currentTile.right.right);
 					}
 				}
 			}*/			

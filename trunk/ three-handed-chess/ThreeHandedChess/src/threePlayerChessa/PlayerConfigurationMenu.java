@@ -9,9 +9,9 @@ import java.util.Vector;
  */
 public class PlayerConfigurationMenu {
 
-	public Board theBoard; //the board of the game
-	public Vector<Team> gameTeams = new Vector<Team>(); //teams playing the game
-	public Game theGame; //the game its self which contains everything
+	private Board theBoard; //the board of the game
+	private Vector<Team> gameTeams = new Vector<Team>(); //teams playing the game
+	private Game theGame; //the game its self which contains everything
 	
 	
 	
@@ -36,9 +36,9 @@ public class PlayerConfigurationMenu {
 		gameTeams.elementAt(0).setEvil(buttonPress);
 		if(buttonPress){
 			Computer temp = new Computer(gameTeams.elementAt(0).getColour(),gameTeams.elementAt(0).getName(),
-					gameTeams.elementAt(0).getNumber(),gameTeams.elementAt(0).theBoard, gameTeams.elementAt(0).pieces);
+					gameTeams.elementAt(0).getNumber(),theBoard, gameTeams.elementAt(0).getPieces());
 			for(int x = 0; x < 16; x++){
-				temp.pieces.elementAt(x).setPlayer(temp);
+				temp.getPieces().elementAt(x).setPlayer(temp);
 			}
 			gameTeams.remove(0);
 			gameTeams.add(0, temp);
@@ -49,9 +49,9 @@ public class PlayerConfigurationMenu {
 		}
 		else{
 			Human temp = new Human(gameTeams.elementAt(0).getColour(),gameTeams.elementAt(0).getName(),
-					gameTeams.elementAt(0).getNumber(),gameTeams.elementAt(0).theBoard,gameTeams.elementAt(0).pieces);
+					gameTeams.elementAt(0).getNumber(),theBoard,gameTeams.elementAt(0).getPieces());
 			for(int x = 0; x < 16; x++){
-				temp.pieces.elementAt(x).setPlayer(temp);
+				temp.getPieces().elementAt(x).setPlayer(temp);
 			}
 			gameTeams.remove(0);
 			gameTeams.add(0, temp);	
@@ -68,9 +68,9 @@ public class PlayerConfigurationMenu {
 	public void changePlayer1Allignment(boolean buttonPress){
 		if(buttonPress ){
 			Computer temp = new Computer(gameTeams.elementAt(1).getColour(),gameTeams.elementAt(1).getName(),
-					gameTeams.elementAt(1).getNumber(),gameTeams.elementAt(1).theBoard,gameTeams.elementAt(1).pieces);
+					gameTeams.elementAt(1).getNumber(),theBoard,gameTeams.elementAt(1).getPieces());
 			for(int x = 0; x < 16; x++){
-				temp.pieces.elementAt(x).setPlayer(temp);
+				temp.getPieces().elementAt(x).setPlayer(temp);
 			}
 			gameTeams.remove(1);
 			gameTeams.add(1, temp);
@@ -81,9 +81,9 @@ public class PlayerConfigurationMenu {
 		}
 		else{
 			Human temp = new Human(gameTeams.elementAt(1).getColour(),gameTeams.elementAt(1).getName(),
-					gameTeams.elementAt(1).getNumber(),gameTeams.elementAt(1).theBoard,gameTeams.elementAt(1).pieces);
+					gameTeams.elementAt(1).getNumber(),theBoard,gameTeams.elementAt(1).getPieces());
 			for(int x = 0; x < 16; x++){
-				temp.pieces.elementAt(x).setPlayer(temp);
+				temp.getPieces().elementAt(x).setPlayer(temp);
 			}
 			gameTeams.remove(1);
 			gameTeams.add(1, temp);	
@@ -100,9 +100,9 @@ public class PlayerConfigurationMenu {
 	public void changePlayer2Allignment(boolean buttonPress){
 		if(buttonPress ){
 			Computer temp = new Computer(gameTeams.elementAt(2).getColour(),gameTeams.elementAt(2).getName(),
-					gameTeams.elementAt(2).getNumber(),gameTeams.elementAt(2).theBoard,gameTeams.elementAt(2).pieces);
+					gameTeams.elementAt(2).getNumber(),theBoard,gameTeams.elementAt(2).getPieces());
 			for(int x = 0; x < 16; x++){
-				temp.pieces.elementAt(x).setPlayer(temp);
+				temp.getPieces().elementAt(x).setPlayer(temp);
 			}
 			gameTeams.remove(2);
 			gameTeams.add(2, temp);
@@ -113,9 +113,9 @@ public class PlayerConfigurationMenu {
 		}
 		else{
 			Human temp = new Human(gameTeams.elementAt(2).getColour(),gameTeams.elementAt(2).getName(),
-					gameTeams.elementAt(2).getNumber(),gameTeams.elementAt(2).theBoard,gameTeams.elementAt(2).pieces);
+					gameTeams.elementAt(2).getNumber(),theBoard,gameTeams.elementAt(2).getPieces());
 			for(int x = 0; x < 16; x++){
-				temp.pieces.elementAt(x).setPlayer(temp);
+				temp.getPieces().elementAt(x).setPlayer(temp);
 			}
 			gameTeams.remove(2);
 			gameTeams.add(2, temp);		
