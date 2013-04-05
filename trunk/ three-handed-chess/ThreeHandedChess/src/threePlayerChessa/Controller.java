@@ -97,6 +97,11 @@ public class Controller {
 		//Find everywhere your opponents can go and add them to a vector
 		opponentMoves.addAll(allPossibleMoves(opponent1, board));
 		opponentMoves.addAll(allPossibleMoves(opponent2, board));
+		for(int x = 0; x<theGame.getTheBoard().getPromotedPieces().size();x++){
+			if(theGame.getTheBoard().getPromotedPieces().elementAt(x).getPlayer() == opponent1 || theGame.getTheBoard().getPromotedPieces().elementAt(x).getPlayer() == opponent2){
+				opponentMoves.addAll(theGame.getTheBoard().getPromotedPieces().elementAt(x).getValidMoves());
+			}
+		}
 		
 		//Find where your king is
 		kingPosition.addAll(findKingPosition(me, board));
@@ -186,7 +191,7 @@ public class Controller {
 				}				
 			}
 			
-
+/*
  			for(int x = 0; x<theGame.getTheBoard().getPromotedPieces().size();x++){
 				tempStart = theGame.getTheBoard().getPromotedPieces().elementAt(x).getCurrentTile();
 				if(theGame.getTheBoard().getPromotedPieces().elementAt(x).getPlayer() == opponent1 || theGame.getTheBoard().getPromotedPieces().elementAt(x).getPlayer() == opponent2){
@@ -201,7 +206,7 @@ public class Controller {
 					}
 				}
 			}
-
+*/
 			
 			
 			
