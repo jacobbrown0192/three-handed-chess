@@ -218,6 +218,7 @@ public class MainConstruct {
 		JFrame aGameFrame = new JFrame();		
 		gameFrame = aGameFrame;
 		gameFrame.setLayout(new BorderLayout(0, 0));
+		gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//GUI construction
 		MainMenuGUI MenuGUI = new MainMenuGUI(theGame);
