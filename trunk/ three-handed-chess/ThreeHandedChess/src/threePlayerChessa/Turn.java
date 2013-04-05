@@ -39,6 +39,7 @@ public class Turn extends Thread {
 	 */
 	@Override public void run()
 	{
+
 		if(gameTeam.isEvil() == true)//If you're a computer player
 		{
 			while(getTheGame().getGameController().isInProgress() == true)
@@ -256,6 +257,7 @@ public class Turn extends Thread {
 			}
 		}
 	}
+
 	
 	
 	/**  

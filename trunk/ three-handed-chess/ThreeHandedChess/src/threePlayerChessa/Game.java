@@ -371,6 +371,7 @@ public class Game {
 			player2.start();
 		if(!player3.isAlive())
 			player3.start();	
+
 			
 
 	}

@@ -30,6 +30,7 @@ public class PauseMenu {
 	 * used to restart the game
 	 */
 	public void reset() {
+
 		theBoard.reset();
 		theGame.getGameController().setInProgress(false);
 		theGame.startGame();
@@ -39,12 +40,13 @@ public class PauseMenu {
 	 * used to end the game
 	 */
 	public void endGame() {
+
 		theBoard.reset();
 		theGame.getGameFrame().getContentPane().removeAll();
 	    theGame.getGameFrame().getContentPane().repaint();
 		theGame.getGameFrame().getContentPane().add(theGame.getMainMenuGUI());
 		theGame.getGameFrame().setVisible(true);
-		theGame.getGameController().setInProgress(false);
+		theGame.getGameController().setInProgress(false);	
 	}
 
 	/**
