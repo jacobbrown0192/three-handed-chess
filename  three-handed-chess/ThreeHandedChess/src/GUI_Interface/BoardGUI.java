@@ -456,7 +456,10 @@ public class BoardGUI extends JPanel implements MouseListener
 	 * <p>Checks for containment are carried out by <code>searchForTile</code>
 	 */
 	@Override
-	public void mouseClicked(MouseEvent e)
+	public void mouseClicked(MouseEvent e){}
+
+	@Override
+	public void mousePressed(MouseEvent e)
 	{
 		for (int i=0; i<6; i++)
 		{
@@ -472,9 +475,6 @@ public class BoardGUI extends JPanel implements MouseListener
 			}
 		}
 	}
-
-	@Override
-	public void mousePressed(MouseEvent e){}
 
 	@Override
 	public void mouseReleased(MouseEvent e){}
