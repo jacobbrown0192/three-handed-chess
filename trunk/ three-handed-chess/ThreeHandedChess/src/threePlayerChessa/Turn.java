@@ -128,17 +128,19 @@ public class Turn extends Thread {
 				Tile select1 = null;
 				Tile select2 = null;
 				Team winner = theGame.getGameController().Checkmate(gameTeam,opponent1,opponent2, theGame.getTheBoard());
-				if(gameTeam.isCheckMate()){
-					WinGUI Win = new WinGUI(theGame);
-					Win.getLblWin().setText(winner.getName() + " Wins!");
-					theGame.getGameFrame().getContentPane().removeAll();
-				    theGame.getGameFrame().getContentPane().repaint();
-					theGame.getGameFrame().getContentPane().add(Win);
-					theGame.getGameFrame().setVisible(true);
-				}
 				
 				if((getTheGame().getGameController().getTurnCount() % 3) == (gameTeam.getNumber() - 1))//checks to see if its current players turn
 				{ 
+					if(gameTeam.isCheckMate())
+					{
+						WinGUI Win = new WinGUI(theGame);
+						Win.getLblWin().setText(winner.getName() + " Wins!");
+						theGame.getGameFrame().getContentPane().removeAll();
+					    theGame.getGameFrame().getContentPane().repaint();
+						theGame.getGameFrame().getContentPane().add(Win);
+						theGame.getGameFrame().setVisible(true);
+					}
+					
 					theGame.gettBoardGUI().getLblGameAndStuff().setText(gameTeam.getName());
 					boolean printTime = false;
 					printTime = theGame.getGameController().inCheck(gameTeam, opponent1, opponent2, theGame.getTheBoard());
