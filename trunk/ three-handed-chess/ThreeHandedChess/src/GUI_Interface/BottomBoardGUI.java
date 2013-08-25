@@ -37,6 +37,7 @@ public class BottomBoardGUI extends JPanel
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
+				theGame.setPaused(true);
 				theGame.getGameFrame().getContentPane().removeAll();
 			    theGame.getGameFrame().getContentPane().repaint();
 				theGame.getGameFrame().getContentPane().add(theGame.getPauseMenuGUI());

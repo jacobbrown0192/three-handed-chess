@@ -28,10 +28,12 @@ public class Game {
 	private Controller gameController; //the game controller
 	private Click click1; //the first click
 	private Click click2; //the second click
-	private Turn player1; //the player one's thread
+	private boolean paused;
+	private Vector<Turn> players = new Vector<Turn>();
+/*	private Turn player1; //the player one's thread
 	private Turn player2; //the player two's thread
 	private Turn player3; //the player three's thread
-
+*/
 	
 	public Game() {
 	}
@@ -275,47 +277,63 @@ public class Game {
 	}
 
 	/**
-	 * @return the player1
+	 * @return the players
 	 */
+	public Vector<Turn> getPlayers() {
+		return players;
+	}
+
+	/**
+	 * @param players - used to set players
+	 */
+	public void setPlayers(Vector<Turn> players) {
+		this.players = players;
+	}
+	
+/*	*//**
+	 * @return the player1
+	 *//*
 	public Turn getPlayer1() {
 		return player1;
 	}
 
-	/**
+	*//**
 	 * @param player1 - used to set player1
-	 */
+	 *//*
 	public void setPlayer1(Turn player1) {
 		this.player1 = player1;
 	}
 
-	/**
+	*//**
 	 * @return the player2
-	 */
+	 *//*
 	public Turn getPlayer2() {
 		return player2;
 	}
 
-	/**
+	*//**
 	 * @param player2 - used to set player2
-	 */
+	 *//*
 	public void setPlayer2(Turn player2) {
 		this.player2 = player2;
 	}
 
-	/**
+	*//**
 	 * @return the player3
-	 */
+	 *//*
 	public Turn getPlayer3() {
 		return player3;
 	}
 
-	/**
+	*//**
 	 * @param player3 - used to set player3
-	 */
+	 *//*
 	public void setPlayer3(Turn player3) {
 		this.player3 = player3;
-	}
+	}*/
 
+	
+	
 	/**
 	 * used to set the in coming the clicks to the game
 	 * @param aClick - used to set the click
@@ -329,21 +347,43 @@ public class Game {
 			click2 = aClick;
 		}
 		notifyAll();
-		synchronized (player1){
-			player1.notify();
+		
+		for(int x = 0; x<3;x++){
+			synchronized (players.elementAt(x)){
+				players.elementAt(x).notify();
+			}
 		}
+		
+/*		synchronized (player1){
+			player1.notify();
+		}		
 		synchronized (player2){
 			player2.notify();
 		}
 		synchronized (player3){
 			player3.notify();
-		}
+		}*/
+	}
+
+	/**
+	 * @return the paused
+	 */
+	public boolean isPaused() {
+		return paused;
+	}
+
+	/**
+	 * @param paused - used to set paused
+	 */
+	public void setPaused(boolean paused) {
+		this.paused = paused;
 	}
 
 	/**
 	 * starts the game by clearing and adding pieces to the board
 	 */
 	public void startGame(){
+		paused = false;
 		gameFrame.getContentPane().removeAll();
 	    gameFrame.getContentPane().repaint();
 		gameFrame.getContentPane().add(tBoardGUI,BorderLayout.NORTH);
@@ -365,12 +405,26 @@ public class Game {
 		gameTeams.elementAt(2).setCheckMate(false);
 		
 		//starts the player threads
-		if(!player1.isAlive())
+		
+		
+		for(int x = 0; x<3;x++){
+			if(!players.elementAt(x).isAlive()){
+				players.elementAt(x).start();
+			}
+		}
+		
+		for(int x = 0; x<3;x++){
+			synchronized (players.elementAt(x)){
+				players.elementAt(x).notify();
+			}
+		}
+		
+/*		if(!player1.isAlive())
 			player1.start();
 		if(!player2.isAlive())
 			player2.start();
 		if(!player3.isAlive())
-			player3.start();	
+			player3.start();	*/
 
 			
 
