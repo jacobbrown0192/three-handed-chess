@@ -16,8 +16,7 @@ public class Turn extends Thread {
 	private Team opponent2;
 	private boolean check; //tells if the player is in check
 	private boolean validClick1;
-	private boolean validClick2;
-	
+	private boolean validClick2;	
 	
 	/**
 	 * Controller constructor
@@ -44,7 +43,7 @@ public class Turn extends Thread {
 		{
 			while(getTheGame().getGameController().isInProgress() == true)
 			{
-				if((getTheGame().getGameController().getTurnCount() % 3) == (gameTeam.getNumber() - 1))//checks to see if its current players turn
+				if(((getTheGame().getGameController().getTurnCount() % 3) == (gameTeam.getNumber() - 1)) && (getTheGame().isPaused() == false))//checks to see if its current players turn
 				{
 					Team winner = theGame.getGameController().Checkmate(gameTeam,opponent1,opponent2, theGame.getTheBoard());
 					if(gameTeam.isCheckMate()){

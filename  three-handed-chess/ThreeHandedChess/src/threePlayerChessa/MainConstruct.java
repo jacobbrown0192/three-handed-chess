@@ -37,9 +37,11 @@ public class MainConstruct {
 	private TopBoardGUI tBoardGUI; //the GUI of the top panel of the board 
 	private JFrame gameFrame; //the frame which all panels are put 
 	private Controller gameController; //the game controller
-	private Turn player1; //the player one's thread
-	private Turn player2; //the player two's thread
-	private Turn player3; //the player three's thread
+	private Vector<Turn> players = new Vector<Turn>(); //the players threads
+/*	private Turn player1;
+	private Turn player2;
+	private Turn player3;*/
+	
 	
 	/**
 	 * MainConstruct constructor
@@ -209,10 +211,17 @@ public class MainConstruct {
 		//player thread construction
 		Turn aplayer1 = new Turn(theGame, this.gameTeams.elementAt(0), this.gameTeams.elementAt(1), this.gameTeams.elementAt(2));
 		Turn aplayer2 = new Turn(theGame, this.gameTeams.elementAt(1), this.gameTeams.elementAt(0), this.gameTeams.elementAt(2));
-		Turn aplayer3 = new Turn(theGame, this.gameTeams.elementAt(2), this.gameTeams.elementAt(0), this.gameTeams.elementAt(1));		
-		player1 = aplayer1;
-		player2 = aplayer2;
-		player3 = aplayer3;
+		Turn aplayer3 = new Turn(theGame, this.gameTeams.elementAt(2), this.gameTeams.elementAt(0), this.gameTeams.elementAt(1));	
+	
+		
+		players.add(aplayer1);
+		players.add(aplayer2);
+		players.add(aplayer3);
+
+		
+		//player1 = aplayer1;
+		//player2 = aplayer2;
+		//player3 = aplayer3;
 		
 		//frame construction
 		JFrame aGameFrame = new JFrame();		
@@ -265,11 +274,10 @@ public class MainConstruct {
 		theGame.setbBoardGUI(bBoardGUI);
 		theGame.settBoardGUI(tBoardGUI);
 		theGame.setGameController(gameController);
-		theGame.setPlayer1(player1);
+		theGame.setPlayers(players);
+/*		theGame.setPlayer1(player1);
 		theGame.setPlayer2(player2);
-		theGame.setPlayer3(player3);
-		
-		
+		theGame.setPlayer3(player3);*/
 		
 	}
 	

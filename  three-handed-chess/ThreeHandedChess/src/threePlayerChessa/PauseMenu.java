@@ -30,7 +30,6 @@ public class PauseMenu {
 	 * used to restart the game
 	 */
 	public void reset() {
-
 		theBoard.reset();
 		theGame.getGameController().setInProgress(false);
 		theGame.startGame();

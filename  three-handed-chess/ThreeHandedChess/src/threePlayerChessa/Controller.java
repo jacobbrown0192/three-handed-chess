@@ -71,7 +71,15 @@ public class Controller {
 	 */
 	public synchronized void addToCounter(){
 		turnCount ++;
-		synchronized (theGame.getPlayer1()){
+		
+		for(int x = 0; x<3;x++)
+		{
+			synchronized (theGame.getPlayers().elementAt(x)){
+				theGame.getPlayers().elementAt(x).notify();
+			}
+		}
+		
+/*		synchronized (theGame.getPlayer1()){
 			theGame.getPlayer1().notify();
 		}
 		synchronized (theGame.getPlayer2()){
@@ -79,7 +87,7 @@ public class Controller {
 		}
 		synchronized (theGame.getPlayer3()){
 			theGame.getPlayer3().notify();
-		}
+		}*/
 	}
 	
 	/** Looks to see if you're in check
