@@ -384,6 +384,13 @@ public class Game {
 	 */
 	public void startGame(){
 		paused = false;
+		
+		for(int x = 0; x<3;x++){
+			synchronized (players.elementAt(x)){
+				players.elementAt(x).notify();
+			}
+		}
+		
 		gameFrame.getContentPane().removeAll();
 	    gameFrame.getContentPane().repaint();
 		gameFrame.getContentPane().add(tBoardGUI,BorderLayout.NORTH);
@@ -405,6 +412,13 @@ public class Game {
 		gameTeams.elementAt(2).setCheckMate(false);
 		
 		//starts the player threads
+		Turn aplayer1 = new Turn(this, this.gameTeams.elementAt(0), this.gameTeams.elementAt(1), this.gameTeams.elementAt(2));
+		Turn aplayer2 = new Turn(this, this.gameTeams.elementAt(1), this.gameTeams.elementAt(0), this.gameTeams.elementAt(2));
+		Turn aplayer3 = new Turn(this, this.gameTeams.elementAt(2), this.gameTeams.elementAt(0), this.gameTeams.elementAt(1));	
+		
+		players.add(0, aplayer1);
+		players.add(1, aplayer2);
+		players.add(2, aplayer3);
 		
 		
 		for(int x = 0; x<3;x++){
