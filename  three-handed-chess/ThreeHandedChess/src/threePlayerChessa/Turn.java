@@ -38,7 +38,14 @@ public class Turn extends Thread {
 	 */
 	@Override public void run()
 	{
-
+		
+		
+		if(getTheGame().getGameController().isInProgress() == false)
+		{
+			joinMe();			
+		}		
+		
+		
 		if(gameTeam.isEvil() == true)//If you're a computer player
 		{
 			while(getTheGame().getGameController().isInProgress() == true)
@@ -270,6 +277,16 @@ public class Turn extends Thread {
 			e.printStackTrace();
 		}
 	}
+	
+	synchronized void joinMe(){
+		try {
+			Thread.currentThread().join();
+		}
+		catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	
 
 	/**

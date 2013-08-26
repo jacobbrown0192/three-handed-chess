@@ -31,8 +31,9 @@ public class PlayerConfigurationMenu {
 	
 	/**
 	 * used to change a human team to a computer team for player one
+	 * @return 
 	 */
-	public void changePlayer0Allignment(boolean buttonPress){
+	public synchronized void changePlayer0Allignment(boolean buttonPress){
 		gameTeams.elementAt(0).setEvil(buttonPress);
 		if(buttonPress){
 			Computer temp = new Computer(gameTeams.elementAt(0).getColour(),gameTeams.elementAt(0).getName(),
@@ -43,17 +44,10 @@ public class PlayerConfigurationMenu {
 			gameTeams.remove(0);
 			gameTeams.add(0, temp);
 			theGame.getTheBoard().getSections().elementAt(0).setColour(temp);
-/*			theGame.getPlayer1().setGameTeam(temp);
-			theGame.getPlayer2().setOpponent1(temp);
-			theGame.getPlayer3().setOpponent1(temp);*/
+			theGame.getPlayers().elementAt(0).setGameTeam(temp);
+			theGame.getPlayers().elementAt(1).setOpponent1(temp);
+			theGame.getPlayers().elementAt(2).setOpponent2(temp);
 			
-			for(int x = 0; x<3;x++)
-			{
-				if(x==0)
-					theGame.getPlayers().elementAt(x).setGameTeam(temp);
-				else
-					theGame.getPlayers().elementAt(x).setOpponent1(temp);
-			}
 		}
 		else{
 			Human temp = new Human(gameTeams.elementAt(0).getColour(),gameTeams.elementAt(0).getName(),
@@ -64,24 +58,17 @@ public class PlayerConfigurationMenu {
 			gameTeams.remove(0);
 			gameTeams.add(0, temp);	
 			theGame.getTheBoard().getSections().elementAt(0).setColour(temp);
-/*			theGame.getPlayer1().setGameTeam(temp);
-			theGame.getPlayer2().setOpponent1(temp);
-			theGame.getPlayer3().setOpponent1(temp);*/
+			theGame.getPlayers().elementAt(0).setGameTeam(temp);
+			theGame.getPlayers().elementAt(1).setOpponent1(temp);
+			theGame.getPlayers().elementAt(2).setOpponent2(temp);
 			
-			for(int x = 0; x<3;x++)
-			{
-				if(x==0)
-					theGame.getPlayers().elementAt(x).setGameTeam(temp);
-				else
-					theGame.getPlayers().elementAt(x).setOpponent1(temp);
-			}			
 		}
 	}
 	
 	/**
 	 * used to change a human team to a computer team for player two
 	 */
-	public void changePlayer1Allignment(boolean buttonPress){
+	public synchronized void changePlayer1Allignment(boolean buttonPress){
 		if(buttonPress ){
 			Computer temp = new Computer(gameTeams.elementAt(1).getColour(),gameTeams.elementAt(1).getName(),
 					gameTeams.elementAt(1).getNumber(),theBoard,gameTeams.elementAt(1).getPieces());
@@ -91,17 +78,10 @@ public class PlayerConfigurationMenu {
 			gameTeams.remove(1);
 			gameTeams.add(1, temp);
 			theGame.getTheBoard().getSections().elementAt(1).setColour(temp);
-/*			theGame.getPlayer1().setOpponent1(temp);
-			theGame.getPlayer2().setGameTeam(temp);
-			theGame.getPlayer3().setOpponent2(temp);*/
-			
-			for(int x = 0; x<3;x++)
-			{
-				if(x==1)
-					theGame.getPlayers().elementAt(x).setGameTeam(temp);
-				else
-					theGame.getPlayers().elementAt(x).setOpponent1(temp);
-			}	
+			theGame.getPlayers().elementAt(0).setOpponent1(temp);
+			theGame.getPlayers().elementAt(1).setGameTeam(temp);
+			theGame.getPlayers().elementAt(2).setOpponent2(temp);
+				
 		}
 		else{
 			Human temp = new Human(gameTeams.elementAt(1).getColour(),gameTeams.elementAt(1).getName(),
@@ -112,24 +92,17 @@ public class PlayerConfigurationMenu {
 			gameTeams.remove(1);
 			gameTeams.add(1, temp);	
 			theGame.getTheBoard().getSections().elementAt(1).setColour(temp);
-/*			theGame.getPlayer1().setOpponent1(temp);
-			theGame.getPlayer2().setGameTeam(temp);
-			theGame.getPlayer3().setOpponent2(temp);*/
+			theGame.getPlayers().elementAt(0).setOpponent1(temp);
+			theGame.getPlayers().elementAt(1).setGameTeam(temp);
+			theGame.getPlayers().elementAt(2).setOpponent2(temp);
 			
-			for(int x = 0; x<3;x++)
-			{
-				if(x==1)
-					theGame.getPlayers().elementAt(x).setGameTeam(temp);
-				else
-					theGame.getPlayers().elementAt(x).setOpponent1(temp);
-			}		
 		}
 	}	
 	
 	/**
 	 * used to change a human team to a computer team for player three
 	 */
-	public void changePlayer2Allignment(boolean buttonPress){
+	public synchronized void changePlayer2Allignment(boolean buttonPress){
 		if(buttonPress ){
 			Computer temp = new Computer(gameTeams.elementAt(2).getColour(),gameTeams.elementAt(2).getName(),
 					gameTeams.elementAt(2).getNumber(),theBoard,gameTeams.elementAt(2).getPieces());
@@ -139,17 +112,10 @@ public class PlayerConfigurationMenu {
 			gameTeams.remove(2);
 			gameTeams.add(2, temp);
 			theGame.getTheBoard().getSections().elementAt(2).setColour(temp);
-/*			theGame.getPlayer1().setOpponent2(temp);
-			theGame.getPlayer2().setOpponent2(temp);
-			theGame.getPlayer3().setGameTeam(temp);*/
+			theGame.getPlayers().elementAt(0).setOpponent1(temp);
+			theGame.getPlayers().elementAt(1).setOpponent2(temp);
+			theGame.getPlayers().elementAt(2).setGameTeam(temp);
 			
-			for(int x = 0; x<3;x++)
-			{
-				if(x==2)
-					theGame.getPlayers().elementAt(x).setGameTeam(temp);
-				else
-					theGame.getPlayers().elementAt(x).setOpponent1(temp);
-			}	
 		}
 		else{
 			Human temp = new Human(gameTeams.elementAt(2).getColour(),gameTeams.elementAt(2).getName(),
@@ -160,17 +126,10 @@ public class PlayerConfigurationMenu {
 			gameTeams.remove(2);
 			gameTeams.add(2, temp);		
 			theGame.getTheBoard().getSections().elementAt(2).setColour(temp);
-/*			theGame.getPlayer1().setOpponent2(temp);
-			theGame.getPlayer2().setOpponent2(temp);
-			theGame.getPlayer3().setGameTeam(temp);*/
-			
-			for(int x = 0; x<3;x++)
-			{
-				if(x==2)
-					theGame.getPlayers().elementAt(x).setGameTeam(temp);
-				else
-					theGame.getPlayers().elementAt(x).setOpponent1(temp);
-			}		
+			theGame.getPlayers().elementAt(0).setOpponent1(temp);
+			theGame.getPlayers().elementAt(1).setOpponent2(temp);
+			theGame.getPlayers().elementAt(2).setGameTeam(temp);
+
 		}
 	}
 	
